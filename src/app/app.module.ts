@@ -7,6 +7,7 @@ import { WhoComponent } from './who/who.component';
 import { WhatComponent } from './what/what.component';
 import { WorkExamplesComponent } from './work-examples/work-examples.component';
 import { FooterComponent } from './footer/footer.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FooterComponent } from './footer/footer.component';
     FooterComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

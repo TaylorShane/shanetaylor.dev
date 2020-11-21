@@ -1,241 +1,374 @@
 <div class="container-fluid bg-5 text-center">
-	<a id="work"></a>
-	<h3 class="margin">Example Work</h3>
-	<div>
-		<p>My Github profile with an iOS - Swift app, Oracle SQL Developer database, and other develper example work can be found <a href="https://github.com/TaylorShane" target="_blank" style="color: orange;">here</a>.</p> 
-	</div>
-	<div class="row" >
-		
-		<div class="container-fluid"> 
-			<a id="android"></a>
-			<p style="padding: 5%"><span class="emphasis">Graphy Project Highlights</span> <br>
-			Live in Playstore <a href="https://play.google.com/store/apps/details?id=com.shane_taylor.Graphy" target="_blank" style="color: orange;">[download]</a><span class="emphasis"> &#8281;</span> Event Driven Programming <span class="emphasis"> &#8281;</span> Responsive Layout <span class="emphasis"> &#8281;</span> Validation Controls <span class="emphasis"> &#8281;</span> Multilayered Logic <span class="emphasis"> &#8281;</span> Compatible With 90+% Android OS <span class="emphasis"> &#8281;</span> Imported Custom Library <br>
-			<br>
-			Graphy is an educational Android App designed for common class-room Chrome tablets that I created during a 10-week internship at Northeastern Illinois University. Selected as the Computer Science expert for a mathematics focused group of students and professors, I worked on a National Science Foundation research grant focusing on Computational Thinking and bringing that thinking to younger students. I solely developed and deployed the educational app Graphy to help pre-service teachers teach the fundamentals of Geometry to middle school students while employing Computational Thinking. Graphy's Github repository can be found <a href="https://github.com/TaylorShane/NEIU2017SummerInternship" target="_blank" style="color: orange;">here</a>.</p>
-			<div id="myCarousel2" class="carousel slide" style="max-width: 800px; margin: auto" data-ride="carousel">
-				<!-- Indicators -->
-				<ol class="carousel-indicators">
-					<li data-target="#myCarousel2" data-slide-to="0" class="active">
-					<li data-target="#myCarousel2" data-slide-to="1">
-					<li data-target="#myCarousel2" data-slide-to="2">
-					<li data-target="#myCarousel2" data-slide-to="3">
-					<li data-target="#myCarousel2" data-slide-to="4">
-					<li data-target="#myCarousel2" data-slide-to="5">
-					<li data-target="#myCarousel2" data-slide-to="6">
-				</ol>
+  <a id="work"></a>
+  <h3 class="margin">Example Work</h3>
+  <div>
+    <p>
+      My Github profile with an iOS - Swift app, Oracle SQL Developer database,
+      and other develper example work can be found
+      <a [href]="personalRepos" target="_blank" style="color: orange">here</a>.
+    </p>
+  </div>
+  <div class="row">
+    <div class="container-fluid">
+      <a id="android"></a>
+      <p style="padding: 5%">
+        <span class="emphasis">Graphy Project Highlights</span> <br />
+        Live in Playstore
+        <a [href]="graphyLink" target="_blank" style="color: orange"
+          >[download]</a
+        ><span class="emphasis"> &#8281;</span> Event Driven Programming
+        <span class="emphasis"> &#8281;</span> Responsive Layout
+        <span class="emphasis"> &#8281;</span> Validation Controls
+        <span class="emphasis"> &#8281;</span> Multilayered Logic
+        <span class="emphasis"> &#8281;</span> Compatible With 90+% Android OS
+        <span class="emphasis"> &#8281;</span> Imported Custom Library <br />
+        <br />
+        Graphy is an educational Android App designed for common class-room
+        Chrome tablets that I created during a 10-week internship at
+        Northeastern Illinois University. Selected as the Computer Science
+        expert for a mathematics focused group of students and professors, I
+        worked on a National Science Foundation research grant focusing on
+        Computational Thinking and bringing that thinking to younger students. I
+        solely developed and deployed the educational app Graphy to help
+        pre-service teachers teach the fundamentals of Geometry to middle school
+        students while employing Computational Thinking. Graphy's Github
+        repository can be found
+        <a
+          href="https://github.com/TaylorShane/NEIU2017SummerInternship"
+          target="_blank"
+          style="color: orange"
+          >here</a
+        >.
+      </p>
+      <div>
+        <ngb-carousel
+          #graphyCarousel
+          [interval]="slideInterval"
+          [pauseOnHover]="true"
+          [pauseOnFocus]="true"
+        >
+          <ng-template ngbSlide *ngFor="let image of graphyImages; index as i">
+            <div class="picsum-img-wrapper">
+              <img [src]="image" alt="Graphy Screen Shot" />
+            </div>
+          </ng-template>
+        </ngb-carousel>
+      </div>
+    </div>
+  </div>
 
-				<!-- Wrapper for slides -->
-				<div class="carousel-inner">
-					<div class="item active">
-						<a href="../../assets/img/graphy/Screenshot_1500149152.png" target="_blank">
-						<img src="../../assets/img/graphy/Screenshot_1500149152.png" class="img-responsive" alt="Graphy Screen"></a>
-					</div>
+  <div class="row">
+    <div class="container-fluid">
+      <p style="padding: 5%">
+        <span class="emphasis">Brew Buddy Project Highlights</span> <br />
+        SQLite Database <span class="emphasis"> &#8281;</span> Listviews
+        <span class="emphasis"> &#8281;</span> Adapters
+        <span class="emphasis"> &#8281; </span> Validation Controls
+        <span class="emphasis"> &#8281; </span> Database Versioning
+        <span class="emphasis"> &#8281; </span> Cursors &amp; Cursor Adapters<br />
+        <br />
+        Brewbuddy is an Android Application designed to help the homebrewer brew
+        great beers. Brewbuddy has a database of popular recipes, an ABV
+        calculator, and a bottle calculator so that come bottling day you know
+        exactly how many bottles to sanitize. You can even add your favorite
+        recipes direclty to the home screen for quick access. BrewBuddy's Github
+        repository can be found
+        <a
+          href="https://github.com/TaylorShane/Taylor_BrewBuddy"
+          target="_blank"
+          style="color: orange"
+          >here</a
+        >.
+      </p>
+      <div
+        id="myCarousel3"
+        class="carousel slide"
+        style="max-width: 300px; margin: auto"
+        data-ride="carousel"
+      >
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel3" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel3" data-slide-to="1"></li>
+          <li data-target="#myCarousel3" data-slide-to="2"></li>
+        </ol>
 
-					<div class="item">
-						<a href="../../assets/img/graphy/Screenshot_1500149154.png" target="_blank">
-						<img src="../../assets/img/graphy/Screenshot_1500149154.png" class="img-responsive" alt="Graphy Screen"></a>
-					</div>
+        <div class="carousel-inner">
+          <div class="item active">
+            <a
+              href="../../assets/img/brewbuddy/Screenshot_1507672671.png"
+              class="img-responsive"
+              target="_blank"
+            >
+              <img
+                src="../../assets/img/brewbuddy/Screenshot_1507672671.png"
+                alt="Graphy Screen"
+            /></a>
+          </div>
 
-					<div class="item">
-						<a href="../../assets/img/graphy/Screenshot_1500149157.png" target="_blank">
-						<img src="../../assets/img/graphy/Screenshot_1500149157.png" class="img-responsive" alt="Graphy Screen"></a>
-					</div>
-					
-					<div class="item">
-						<a href="../../assets/img/graphy/Screenshot_1500149159.png" target="_blank">
-						<img src="../../assets/img/graphy/Screenshot_1500149159.png" class="img-responsive" alt="Graphy Screen"></a>
-					</div>
-					
-					<div class="item">
-						<a href="../../assets/img/graphy/Screenshot_1500149162.png" target="_blank">
-						<img src="../../assets/img/graphy/Screenshot_1500149162.png" class="img-responsive" alt="Graphy Screen"></a>
-					</div>
-					
-					<div class="item">
-						<a href="../../assets/img/graphy/Screenshot_1500149174.png" target="_blank">
-						<img src="../../assets/img/graphy/Screenshot_1500149174.png" class="img-responsive" alt="Graphy Screen"></a>
-					</div>
-					
-					<div class="item">
-						<a href="../../assets/img/graphy/Screenshot_1500149189.png" target="_blank">
-						<img src="../../assets/img/graphy/Screenshot_1500149189.png" class="img-responsive" alt="Graphy Screen"></a>
-					</div>
-				</div>
+          <div class="item">
+            <a
+              href="../../assets/img/brewbuddy/Screenshot_1507672646.png"
+              class="img-responsive"
+              target="_blank"
+            >
+              <img
+                src="../../assets/img/brewbuddy/Screenshot_1507672646.png"
+                alt="Graphy Screen"
+            /></a>
+          </div>
 
-					<!-- Left and right controls -->
-					<a class="left carousel-control" href="#myCarousel2" data-slide="prev">
-						<span class="glyphicon glyphicon-chevron-left"></span>
-						<span class="sr-only">Previous</span>
-					</a>
-					<a class="right carousel-control" href="#myCarousel2" data-slide="next">
-						<span class="glyphicon glyphicon-chevron-right"></span>
-						<span class="sr-only">Next</span>
-					</a>
-			</div>
-		</div>
-	</div>
+          <div class="item">
+            <a
+              href="../../assets/img/brewbuddy/Screenshot_1507672664.png"
+              class="img-responsive"
+              target="_blank"
+            >
+              <img
+                src="../../assets/img/brewbuddy/Screenshot_1507672664.png"
+                alt="Graphy Screen"
+            /></a>
+          </div>
+        </div>
 
-	<div class="row">
-		<div class="container-fluid"> 
-			<p style="padding: 5%"><span class="emphasis">Brew Buddy Project Highlights</span> <br>
-			SQLite Database <span class="emphasis"> &#8281;</span> Listviews <span class="emphasis"> &#8281;</span> Adapters <span class="emphasis"> &#8281; </span> Validation Controls <span class="emphasis"> &#8281; </span> Database Versioning <span class="emphasis"> &#8281; </span> Cursors &amp; Cursor Adapters<br>
-			<br>
-			Brewbuddy is an Android Application designed to help the homebrewer brew great beers. Brewbuddy has a database of popular recipes, an ABV calculator, and a bottle calculator so that come bottling day you know exactly how many bottles to sanitize. You can even add your favorite recipes direclty to the home screen for quick access. BrewBuddy's Github repository can be found <a href="https://github.com/TaylorShane/Taylor_BrewBuddy" target="_blank" style="color: orange;">here</a>.</p>
-			<div id="myCarousel3" class="carousel slide" style="max-width: 300px; margin: auto" data-ride="carousel">
-				<!-- Indicators -->
-				<ol class="carousel-indicators">
-					<li data-target="#myCarousel3" data-slide-to="0" class="active">
-					<li data-target="#myCarousel3" data-slide-to="1">
-					<li data-target="#myCarousel3" data-slide-to="2">
-				</ol>
+        <a class="left carousel-control" href="#myCarousel3" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel3" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+  </div>
 
-				<!-- Wrapper for slides -->
-				<div class="carousel-inner">
-					<div class="item active">
-						<a href="../../assets/img/brewbuddy/Screenshot_1507672671.png" class="img-responsive" target="_blank">
-						<img src="../../assets/img/brewbuddy/Screenshot_1507672671.png" alt="Graphy Screen"></a>
-					</div>
+  <hr />
 
-					<div class="item">
-						<a href="../../assets/img/brewbuddy/Screenshot_1507672646.png" class="img-responsive" target="_blank">
-						<img src="../../assets/img/brewbuddy/Screenshot_1507672646.png" alt="Graphy Screen"></a>
-					</div>
+  <div class="row">
+    <div class="container-fluid">
+      <a id="wpf"></a>
+      <p style="padding: 5%">
+        <span class="emphasis">Spotter Project Highlights</span> <br />
+        XML Database <span class="emphasis"> &#8281; </span> Event Driven
+        Programming <span class="emphasis"> &#8281; </span> Collaborative Work
+        Via Github <span class="emphasis"> &#8281; </span> Databinding
+        <span class="emphasis"> &#8281; </span> C# Collections
+        <span class="emphasis"> &#8281; </span> Microsoft .NET Framework
+        <span class="emphasis"> &#8281; </span> Coupling and Cohesion Best
+        Practices <br />
+        <br />
+        Spotter is a Windows Presentation Foundation application written in C#
+        and created in Visual Studio. Spotter is a powerful diet and excercise
+        App to help users manage their calorie count, select a workout type,
+        manage their workout schedule, and motivate them to achieve the body
+        type they desire. The Spotter project proposal can be found
+        <a href="EDProposal.html" target="_blank" style="color: orange">here</a
+        >, and Spotter's Github repository can be found
+        <a
+          href="https://github.com/TaylorShane/Spotter_group"
+          target="_blank"
+          style="color: orange"
+          >here</a
+        >.
+      </p>
+      <div
+        id="myCarousel"
+        class="carousel slide"
+        style="max-width: 800px; margin: auto"
+        data-ride="carousel"
+      >
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+          <li data-target="#myCarousel" data-slide-to="3"></li>
+          <li data-target="#myCarousel" data-slide-to="4"></li>
+        </ol>
 
-					<div class="item">
-						<a href="../../assets/img/brewbuddy/Screenshot_1507672664.png" class="img-responsive" target="_blank">
-						<img src="../../assets/img/brewbuddy/Screenshot_1507672664.png" alt="Graphy Screen"></a>
-					</div>
-				
-				</div>
+        <div class="carousel-inner">
+          <div class="item active">
+            <a
+              href="../../assets/img/spotter/signin_register.png"
+              class="img-responsive"
+              target="_blank"
+            >
+              <img
+                src="../../assets/img/spotter/signin_register.png"
+                alt="Spotter Splash Screen"
+            /></a>
+          </div>
 
-				<!-- Left and right controls -->
-				<a class="left carousel-control" href="#myCarousel3" data-slide="prev">
-					<span class="glyphicon glyphicon-chevron-left"></span>
-					<span class="sr-only">Previous</span>
-				</a>
-				<a class="right carousel-control" href="#myCarousel3" data-slide="next">
-					<span class="glyphicon glyphicon-chevron-right"></span>
-					<span class="sr-only">Next</span>
-				</a>
-			</div>
-		</div>
-	</div>
-	
-	<hr>
+          <div class="item">
+            <a
+              href="../../assets/img/spotter/signin.png"
+              class="img-responsive"
+              target="_blank"
+            >
+              <img
+                src="../../assets/img/spotter/signin.png"
+                alt="Sptter Signin Screen"
+            /></a>
+          </div>
 
-	<div class="row">
-		<div class="container-fluid">
-			<a id="wpf"></a>
-			<p style="padding: 5%"> <span class="emphasis">Spotter Project Highlights</span> <br>
-			XML Database <span class="emphasis"> &#8281; </span>	 Event Driven Programming <span class="emphasis"> &#8281; </span> Collaborative Work Via Github <span class="emphasis"> &#8281; </span> Databinding <span class="emphasis"> &#8281; </span> C# Collections <span class="emphasis"> &#8281; </span> Microsoft .NET Framework <span class="emphasis"> &#8281; </span> Coupling and Cohesion Best Practices <br>
-			<br>
-			Spotter is a Windows Presentation Foundation application written in C# and created in Visual Studio. Spotter is a powerful diet and excercise App to help users manage their calorie count, select a workout type, manage their workout schedule, and motivate them to achieve the body type they desire. The Spotter project proposal can be found <a href="EDProposal.html" target="_blank" style="color: orange;">here</a>, and Spotter's Github repository can be found <a href="https://github.com/TaylorShane/Spotter_group" target="_blank" style="color: orange;">here</a>.</p>
-			<div id="myCarousel" class="carousel slide" style="max-width: 800px; margin: auto" data-ride="carousel" >
-				<!-- Indicators -->
-				<ol class="carousel-indicators">
-					<li data-target="#myCarousel" data-slide-to="0" class="active">
-					<li data-target="#myCarousel" data-slide-to="1">
-					<li data-target="#myCarousel" data-slide-to="2">
-					<li data-target="#myCarousel" data-slide-to="3">
-					<li data-target="#myCarousel" data-slide-to="4">
-				</ol>
+          <div class="item">
+            <a
+              href="../../assets/img/spotter/registration.png"
+              class="img-responsive"
+              target="_blank"
+            >
+              <img
+                src="../../assets/img/spotter/registration.png"
+                alt="Spotter Registration Screen"
+            /></a>
+          </div>
 
-				<!-- Wrapper for slides -->
-				<div class="carousel-inner">
-					<div class="item active">
-						<a href="../../assets/img/spotter/signin_register.png" class="img-responsive" target="_blank">
-						<img src="../../assets/img/spotter/signin_register.png" alt="Spotter Splash Screen"></a>
-					</div>
+          <div class="item">
+            <a
+              href="../../assets/img/spotter/meal_calories_total.png"
+              class="img-responsive"
+              target="_blank"
+            >
+              <img
+                src="../../assets/img/spotter/meal_calories_total.png"
+                alt="Spotter Calorie Counter Screen"
+            /></a>
+          </div>
 
-					<div class="item">
-						<a href="../../assets/img/spotter/signin.png" class="img-responsive" target="_blank">
-						<img src="../../assets/img/spotter/signin.png" alt="Sptter Signin Screen"></a>
-					</div>
+          <div class="item">
+            <a
+              href="../../assets/img/spotter/user_profile.png"
+              class="img-responsive"
+              target="_blank"
+            >
+              <img
+                src="../../assets/img/spotter/user_profile.png"
+                alt="Spotter User Profile ScreenCalorie Counter"
+            /></a>
+          </div>
+        </div>
 
-					<div class="item">
-						<a href="../../assets/img/spotter/registration.png" class="img-responsive" target="_blank">
-						<img src="../../assets/img/spotter/registration.png" alt="Spotter Registration Screen"></a>
-					</div>
-					
-					<div class="item">
-						<a href="../../assets/img/spotter/meal_calories_total.png" class="img-responsive" target="_blank">
-						<img src="../../assets/img/spotter/meal_calories_total.png" alt="Spotter Calorie Counter Screen"></a>
-					</div>
-					
-					<div class="item">
-						<a href="../../assets/img/spotter/user_profile.png" class="img-responsive" target="_blank">
-						<img src="../../assets/img/spotter/user_profile.png" alt="Spotter User Profile ScreenCalorie Counter"></a>
-					</div>
-				</div>			
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+  </div>
 
-				<!-- Left and right controls -->
-				<a class="left carousel-control" href="#myCarousel" data-slide="prev">
-					<span class="glyphicon glyphicon-chevron-left"></span>
-					<span class="sr-only">Previous</span>
-				</a>
-				<a class="right carousel-control" href="#myCarousel" data-slide="next">
-					<span class="glyphicon glyphicon-chevron-right"></span>
-					<span class="sr-only">Next</span>
-				</a>
-			</div>
-		</div>
-	</div>
-	
-	<hr>
+  <hr />
 
-	<div class="row">
-		<div class="container-fluid"> 
-			<a id="documentation"></a>
-			<p style="padding: 5%"><span class="emphasis">Software Engineering Documentation Project Highlights</span> <br>
-			Thorough Graphical UI Mockups <span class="emphasis"> &#8281; </span> Detailed Input, Output, Actions, Post Conditions, and Validation <span class="emphasis"> &#8281; </span> Easy to Read and Understandable Format <span class="emphasis"> &#8281; </span> Entity Relation Diagrams <span class="emphasis"> &#8281; </span> Flow Charts <span class="emphasis"> &#8281; </span> UML 2.0 Diagrams<br>
-			<br>
-			Trained in the methods of Software Engineering and the life cycle of the software development process, I am Agile and Scrum knowledgeable. I understand the necessity of exceptional communication skills and the imperative of working within a considered strategy. To that end, feel free to peruse my example <a href="/PixelHeroSRS.html" target="_blank" style="color: orange;">Analysis and Design Document</a> and <a href="http://www.shane-taylor.com/shane-taylor.com/PixelHeroSRS.html" target="_blank" style="color: orange;">Software Requirements and Specifications</a>.</p>
-			<div id="myCarousel4" class="carousel slide" style="max-width: 300px; margin: auto" data-ride="carousel">
-				<!-- Indicators -->
-				<ol class="carousel-indicators">
-					<li data-target="#myCarousel4" data-slide-to="0" class="active">
-					<li data-target="#myCarousel4" data-slide-to="1">
-				</ol>
+  <div class="row">
+    <div class="container-fluid">
+      <a id="documentation"></a>
+      <p style="padding: 5%">
+        <span class="emphasis"
+          >Software Engineering Documentation Project Highlights</span
+        >
+        <br />
+        Thorough Graphical UI Mockups
+        <span class="emphasis"> &#8281; </span> Detailed Input, Output, Actions,
+        Post Conditions, and Validation
+        <span class="emphasis"> &#8281; </span> Easy to Read and Understandable
+        Format <span class="emphasis"> &#8281; </span> Entity Relation Diagrams
+        <span class="emphasis"> &#8281; </span> Flow Charts
+        <span class="emphasis"> &#8281; </span> UML 2.0 Diagrams<br />
+        <br />
+        Trained in the methods of Software Engineering and the life cycle of the
+        software development process, I am Agile and Scrum knowledgeable. I
+        understand the necessity of exceptional communication skills and the
+        imperative of working within a considered strategy. To that end, feel
+        free to peruse my example
+        <a href="/PixelHeroSRS.html" target="_blank" style="color: orange"
+          >Analysis and Design Document</a
+        >
+        and
+        <a
+          href="http://www.shane-taylor.com/shane-taylor.com/PixelHeroSRS.html"
+          target="_blank"
+          style="color: orange"
+          >Software Requirements and Specifications</a
+        >.
+      </p>
+      <div
+        id="myCarousel4"
+        class="carousel slide"
+        style="max-width: 300px; margin: auto"
+        data-ride="carousel"
+      >
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel4" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel4" data-slide-to="1"></li>
+        </ol>
 
-				<!-- Wrapper for slides -->
-				<div class="carousel-inner">
-					<div class="item active">
-						<a href="http://www.shane-taylor.com/shane-taylor.com/PixelHeroADD.html" class="img-responsive" target="_blank">
-						<img src="../../assets/img/pixelhero/add.png" alt="ADD Cover Sheet"></a>
-					</div>
+        <div class="carousel-inner">
+          <div class="item active">
+            <a
+              href="http://www.shane-taylor.com/shane-taylor.com/PixelHeroADD.html"
+              class="img-responsive"
+              target="_blank"
+            >
+              <img
+                src="../../assets/img/pixelhero/add.png"
+                alt="ADD Cover Sheet"
+            /></a>
+          </div>
 
-					<div class="item">
-						<a href="http://www.shane-taylor.com/shane-taylor.com/PixelHeroSRS.html" class="img-responsive" target="_blank">
-						<img src="../../assets/img/pixelhero/srs.png" alt="SRS Cover Sheet"></a>
-					</div>
-				
-				</div>
+          <div class="item">
+            <a
+              href="http://www.shane-taylor.com/shane-taylor.com/PixelHeroSRS.html"
+              class="img-responsive"
+              target="_blank"
+            >
+              <img
+                src="../../assets/img/pixelhero/srs.png"
+                alt="SRS Cover Sheet"
+            /></a>
+          </div>
+        </div>
 
-				<!-- Left and right controls -->
-				<a class="left carousel-control" href="#myCarousel4" data-slide="prev">
-					<span class="glyphicon glyphicon-chevron-left"></span>
-					<span class="sr-only">Previous</span>
-				</a>
-				<a class="right carousel-control" href="#myCarousel4" data-slide="next">
-					<span class="glyphicon glyphicon-chevron-right"></span>
-					<span class="sr-only">Next</span>
-				</a>
-			</div>
-		</div>
-	</div>
-	
-	<hr>
+        <a class="left carousel-control" href="#myCarousel4" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel4" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+  </div>
 
-	<div class="row">
-		<div class="container-fluid"> 
-			<a id="php"></a>
-			<p style="padding: 5%"><span class="emphasis">Pixel Hero Project Highlights</span> <br>
-			Cooperatively Created Through Agile Process <span class="emphasis"> &#8281; </span> Functional Multi-Entity MySQL Database <span class="emphasis"> &#8281; </span> Secure Administrative URLs <span class="emphasis"> &#8281; </span> mysqli_connect Authentication <span class="emphasis"> &#8281;</span> Full Stack Functionality <br>
-			<br>
-			Pixel Hero is an example online game hub built with PHP (version 4.5.4) designed to connect gamers with each other and content they care about. Using phpMyAdmin on a MySQL server type, my team created a robust site with a database consisting of multiple entities full of user and administrator specific tools.</p>
-			<iframe style="height: 1000px;" class="frame" src="https://www.shanetaylor.dev/Pixel_Hero/index.php"></iframe>
-		</div>
-	</div>
+  <hr />
+
+  <div class="row">
+    <div class="container-fluid">
+      <a id="php"></a>
+      <p style="padding: 5%">
+        <span class="emphasis">Pixel Hero Project Highlights</span> <br />
+        Cooperatively Created Through Agile Process
+        <span class="emphasis"> &#8281; </span> Functional Multi-Entity MySQL
+        Database <span class="emphasis"> &#8281; </span> Secure Administrative
+        URLs <span class="emphasis"> &#8281; </span> mysqli_connect
+        Authentication <span class="emphasis"> &#8281;</span> Full Stack
+        Functionality <br />
+        <br />
+        Pixel Hero is an example online game hub built with PHP (version 4.5.4)
+        designed to connect gamers with each other and content they care about.
+        Using phpMyAdmin on a MySQL server type, my team created a robust site
+        with a database consisting of multiple entities full of user and
+        administrator specific tools.
+      </p>
+      <iframe
+        style="height: 1000px"
+        class="frame"
+        src="https://www.shanetaylor.dev/Pixel_Hero/index.php"
+      ></iframe>
+    </div>
+  </div>
 </div>
 
 <!-- TODO: fix image references -->
