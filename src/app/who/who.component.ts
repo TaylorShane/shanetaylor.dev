@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./who.component.css']
 })
 export class WhoComponent implements OnInit {
-  private headshot = require('../../assets/img/profile_image.jpg');
+  profileImage = '../../assets/img/profile_image.jpg';
 
   constructor() { }
 

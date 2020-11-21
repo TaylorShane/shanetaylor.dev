@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./what.component.css']
 })
 export class WhatComponent implements OnInit {
-  private networkCertification = require('../../assets/docs/Shane_Taylor_TestOut_Network_Pro_Certification.pdf');
+  networkCert = '../../assets/docs/Shane_Taylor_TestOut_Network_Pro_Certification.pdf';
   constructor() { }
 
   ngOnInit(): void {
