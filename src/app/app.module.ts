@@ -7,7 +7,7 @@ import { WhoComponent } from './who/who.component';
 import { WhatComponent } from './what/what.component';
 import { WorkExamplesComponent } from './work-examples/work-examples.component';
 import { FooterComponent } from './footer/footer.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 @NgModule({
   declarations: [
@@ -16,13 +16,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     WhoComponent,
     WhatComponent,
     WorkExamplesComponent,
-    FooterComponent
+    FooterComponent,
   ],
-  imports: [
-    BrowserModule,
-    NgbModule
-  ],
+  imports: [BrowserModule, CarouselModule.forRoot()],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
