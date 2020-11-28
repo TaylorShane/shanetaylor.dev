@@ -9,91 +9,132 @@
     </p>
   </div>
 
-  <div #graphy class="row">
-    <div class="container-fluid">
-      <a id="android"></a>
-      <p style="padding: 5%">
-        <span class="emphasis">Graphy Project Highlights</span> <br />
-        Live in Playstore
-        <a [href]="graphyLink" target="_blank" style="color: orange"
-          >[download]</a
-        ><span class="emphasis"> &#8281;</span> Event Driven Programming
-        <span class="emphasis"> &#8281;</span> Responsive Layout
-        <span class="emphasis"> &#8281;</span> Validation Controls
-        <span class="emphasis"> &#8281;</span> Multilayered Logic
-        <span class="emphasis"> &#8281;</span> Compatible With 90+% Android OS
-        <span class="emphasis"> &#8281;</span> Imported Custom Library <br />
-        <br />
-        Graphy is an educational Android App designed for common class-room
-        Chrome tablets that I created during a 10-week internship at
-        Northeastern Illinois University. Selected as the Computer Science
-        expert for a mathematics focused group of students and professors, I
-        worked on a National Science Foundation research grant focusing on
-        Computational Thinking and bringing that thinking to younger students. I
-        solely developed and deployed the educational app Graphy to help
-        pre-service teachers teach the fundamentals of Geometry to middle school
-        students while employing Computational Thinking. Graphy's Github
-        repository can be found
-        <a
-          href="https://github.com/TaylorShane/NEIU2017SummerInternship"
-          target="_blank"
-          style="color: orange"
-          >here</a
-        >.
-      </p>
-      <div class="d-flex m-auto w-50">
-        <carousel [isAnimated]="true">
-          <slide *ngFor="let image of graphyImages; index as i; count as c">
-            <img
-              [src]="image"
-              alt="Graphy Application Screen Shot"
-              class="d-block w-100"
-            />
-          </slide>
-        </carousel>
+  <div>
+    <a
+      [href]="graphyInfo.graphyRepoLink"
+      class="btn btn-outline-secondary mr-3"
+    >
+      <i class="fab fa-github"></i> View Project
+    </a>
+    <!-- <fa-icon [icon]="filmIcon"></fa-icon> -->
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card shadow-lg">
+        <div #graphy class="row">
+          <div class="container-fluid">
+            <a id="android"></a>
+            <div>
+              <span class="emphasis">Graphy Project Highlights</span>
+            </div>
+            <a
+              [href]="graphyInfo.graphyRepoLink"
+              class="btn btn-outline-secondary mr-3"
+            >
+              <i class="fab fa-github"></i> View Project
+            </a>
+            Live in Playstore
+            <a
+              [href]="graphyInfo.graphyPlaystoreLink"
+              target="_blank"
+              style="color: orange"
+              >[download]</a
+            >
+            <div
+              class="row d-flex justify-content-center align-content-between"
+            >
+              <p
+                *ngFor="let attribute of graphyInfo.graphyAttributes"
+                class="m-0"
+              >
+                <span class="emphasis">&#8281;</span> &nbsp;
+                {{ attribute }} &nbsp;
+              </p>
+            </div>
+            <p style="padding: 5%">
+              {{ graphyInfo.graphyBlurb }}
+              <a
+                [href]="graphyInfo.graphyRepoLink"
+                target="_blank"
+                style="color: orange"
+                >{{ here }}</a
+              >.
+            </p>
+            <div class="d-flex m-auto w-60">
+              <carousel [isAnimated]="true">
+                <slide
+                  *ngFor="
+                    let image of graphyInfo.graphyImages;
+                    index as i;
+                    count as c
+                  "
+                >
+                  <img
+                    [src]="image"
+                    alt="Graphy Application Screen Shot"
+                    class="d-block w-100"
+                  />
+                </slide>
+              </carousel>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div #thg class="row">
-    <div class="container-fluid">
-      <a id="android"></a>
-      <p style="padding: 5%">
-        <span class="emphasis">Trump Haiku Generator</span> <br />
-        Live in Playstore
-        <a [href]="thgPlaystoreLink" target="_blank" style="color: orange"
-          >[download]</a
-        ><span class="emphasis"> &#8281;</span> Twitter API integration to
-        curate <span class="emphasis"> &#8281;</span> Responsive Layout
-        <span class="emphasis"> &#8281;</span> Validation Controls
-        <span class="emphasis"> &#8281;</span> Multilayered Logic
-        <span class="emphasis"> &#8281;</span> Compatible With 90+% Android OS
-        <span class="emphasis"> &#8281;</span> Imported Custom Library <br />
-        <br />
-        Trump Haiku Generator creates beautiful and inspirational haiku using
-        words taken directly from the presidents typed and spoken words. Two
-        flavors of haiku are offered. The random button creates a haiku using
-        three random sentences that Donald Trump has spoken. The real displays a
-        haiku that Donald Trump has spoken fully and word for word.
-        <a [href]="thgWebsiteLink" target="_blank" style="color: orange"
-          >THG website</a
-        >.
-      </p>
-      <div class="d-flex m-auto w-25">
-        <carousel [isAnimated]="true">
-          <slide *ngFor="let image of thgImages; index as i; count as c">
-            <img
-              [src]="image"
-              alt="THG Application Screen Shot"
-              class="d-block w-100"
-            />
-          </slide>
-        </carousel>
+    <div class="col-md-6">
+      <div class="card shadow-lg">
+        <div #thg class="row">
+          <div class="container-fluid">
+            <a id="android"></a>
+            <span class="emphasis">Trump Haiku Generator</span> <br />
+            Live in Playstore
+            <a
+              [href]="thgInfo.thgPlaystoreLink"
+              target="_blank"
+              style="color: orange"
+              >[download]</a
+            >
+            <div
+              class="row d-flex justify-content-center align-content-between"
+            >
+              <p *ngFor="let attribute of thgInfo.thgAttributes" class="m-0">
+                <span class="emphasis">&#8281;</span> &nbsp;
+                {{ attribute }} &nbsp;
+              </p>
+            </div>
+            <p style="padding: 5%">
+              {{ thgInfo.thgBlurb }}
+              <a
+                [href]="thgInfo.thgWebsiteLink"
+                target="_blank"
+                style="color: orange"
+                >THG website</a
+              >.
+            </p>
+            <div class="d-flex">
+              <carousel class="w-50 m-auto" [isAnimated]="true">
+                <slide
+                  *ngFor="
+                    let image of thgInfo.thgImages;
+                    index as i;
+                    count as c
+                  "
+                >
+                  <img
+                    [src]="image"
+                    alt="THG Application Screen Shot"
+                    class="d-block w-100"
+                  />
+                </slide>
+              </carousel>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- <div #brewbuddy class="row">
+    <!-- <div #brewbuddy class="row">
     <div class="container-fluid">
       <p style="padding: 5%">
         <span class="emphasis">Brew Buddy Project Highlights</span> <br />
@@ -130,51 +171,56 @@
     </div>
   </div> -->
 
-  <div #spotter class="row">
-    <div class="container-fluid">
-      <a id="wpf"></a>
-      <p style="padding: 5%">
-        <span class="emphasis">Spotter Project Highlights</span> <br />
-        XML Database <span class="emphasis"> &#8281; </span> Event Driven
-        Programming <span class="emphasis"> &#8281; </span> Collaborative Work
-        Via Github <span class="emphasis"> &#8281; </span> Databinding
-        <span class="emphasis"> &#8281; </span> C# Collections
-        <span class="emphasis"> &#8281; </span> Microsoft .NET Framework
-        <span class="emphasis"> &#8281; </span> Coupling and Cohesion Best
-        Practices <br />
-        <br />
-        Spotter is a Windows Presentation Foundation application written in C#
-        and created in Visual Studio. Spotter is a powerful diet and excercise
-        App to help users manage their calorie count, select a workout type,
-        manage their workout schedule, and motivate them to achieve the body
-        type they desire. The Spotter project proposal can be found
-        <a href="EDProposal.html" target="_blank" style="color: orange">here</a
-        >, and Spotter's Github repository can be found
-        <a
-          href="https://github.com/TaylorShane/Spotter_group"
-          target="_blank"
-          style="color: orange"
-          >here</a
-        >.
-      </p>
-
-      <div class="d-flex m-auto w-50">
-        <carousel [isAnimated]="true">
-          <slide *ngFor="let image of spottertImages; index as i; count as c">
-            <img
-              [src]="image"
-              alt="Spotter Application Screen Shot"
-              class="d-block w-100"
-            />
-          </slide>
-        </carousel>
+    <div class="col-md-6">
+      <div class="card shadow-lg">
+        <div #spotter class="row">
+          <div class="container-fluid">
+            <a id="wpf"></a>
+            <!-- <p style="padding: 5%"> -->
+            <span class="emphasis">{{ spottertInfo.spotterHighlights }}</span>
+            <div
+              class="row d-flex justify-content-center align-content-between"
+            >
+              <p
+                *ngFor="let attribute of spottertInfo.spotterAttributes"
+                class="m-0"
+              >
+                <span class="emphasis">&#8281;</span> &nbsp;
+                {{ attribute }} &nbsp;
+              </p>
+            </div>
+            <p style="padding: 5%">
+              {{ spottertInfo.spotterBlurb }}
+              <a
+                [href]="spottertInfo.spotterRepoLink"
+                target="_blank"
+                style="color: orange"
+                >{{ here }}</a
+              >.
+            </p>
+            <div class="d-flex m-auto w-60">
+              <carousel [isAnimated]="true">
+                <slide
+                  *ngFor="
+                    let image of spottertInfo.spottertImages;
+                    index as i;
+                    count as c
+                  "
+                >
+                  <img
+                    [src]="image"
+                    alt="Spotter Application Screen Shot"
+                    class="d-block w-100"
+                  />
+                </slide>
+              </carousel>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <hr />
-
-  <!-- <div #sweDocs class="row">
+    <!-- <div #sweDocs class="row">
     <div class="container-fluid">
       <a id="documentation"></a>
       <p style="padding: 5%">
@@ -282,6 +328,7 @@
       ></iframe>
     </div>
   </div> -->
+  </div>
 </div>
 
 <!-- TODO: fix image references -->
