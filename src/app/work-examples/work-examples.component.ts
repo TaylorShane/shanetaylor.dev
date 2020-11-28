@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import { faFilm } from '@fortawesome/free-solid-svg-icons';
+import { faGithub, faGooglePlay } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-work-examples',
@@ -9,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class WorkExamplesComponent implements OnInit {
   public readonly slideInterval = 3000;
   public readonly here = 'here';
+  public readonly viewProject = 'View Project';
+  public readonly playstoreDownload = 'Playstore Download';
   public readonly personalRepos = 'https://github.com/TaylorShane';
+  public readonly githubBlurb =
+    'My Github profile with an iOS - Swift app, Oracle SQL Developer database, and other develper example work can be found here.';
+  faGithub = faGithub;
+  faGooglePlay = faGooglePlay;
 
   // filmIcon = faFilm;
 
@@ -26,8 +32,9 @@ export class WorkExamplesComponent implements OnInit {
       '../../assets/img/graphy/ScreenShots/Screenshot_1500149174.png',
     ],
     graphyBlurb:
-      'Graphy  an educational Android App designed for common class-room Chrome tablets that I created during a 10-week internship at Northeastern Illinois University. Selected as the Computer Science expert for a mathematics focused group of students and professors, I worked on a National Science Foundation research grant focusing on Computational Thinking and bringing that thinking to younger students. I solely developed and deployed the educational app Graphy to help pre-service teachers teach the fundamentals of Geometry to middle school students while employing Computational Thinking. The Graphy Github repository can be found',
+      'Graphy  an educational Android App designed for common class-room Chrome tablets that I created during a 10-week internship at Northeastern Illinois University. Selected as the Computer Science expert for a mathematics focused group of students and professors, I worked on a National Science Foundation research grant focusing on Computational Thinking and bringing that thinking to younger students. I solely developed and deployed the educational app Graphy to help pre-service teachers teach the fundamentals of Geometry to middle school students while employing Computational Thinking.',
     graphyAttributes: [
+      'Live in Playstore',
       'Responsive Layout',
       'Responsive design',
       'Compatible With 90+% Android',
@@ -72,7 +79,7 @@ export class WorkExamplesComponent implements OnInit {
       'Coupling and cohesion best practices',
     ],
     spotterBlurb:
-      'Spotter is a Windows Presentation Foundation application written in C# and created in Visual Studio. Spotter is a powerful diet and excercise App to help users manage their calorie count, select a workout type, manage their workout schedule, and motivate them to achieve the body type they desire. The Spotter Github repository can be found',
+      'Spotter is a Windows Presentation Foundation application written in C# and created in Visual Studio. Spotter is a powerful diet and excercise App to help users manage their calorie count, select a workout type, manage their workout schedule, and motivate them to achieve the body type they desire.',
   };
 
   public readonly brewBuddyInfo = {

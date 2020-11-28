@@ -3,21 +3,14 @@
   <h3 class="margin">Example Work</h3>
   <div>
     <p>
-      My Github profile with an iOS - Swift app, Oracle SQL Developer database,
-      and other develper example work can be found
-      <a [href]="personalRepos" target="_blank" style="color: orange">here</a>.
+      {{ githubBlurb }}
     </p>
+    <a [href]="personalRepos" class="btn btn-outline-secondary btn-lg mr-3">
+      <fa-icon [icon]="faGithub"></fa-icon> {{ viewProject }}
+    </a>
   </div>
 
-  <div>
-    <a
-      [href]="graphyInfo.graphyRepoLink"
-      class="btn btn-outline-secondary mr-3"
-    >
-      <i class="fab fa-github"></i> View Project
-    </a>
-    <!-- <fa-icon [icon]="filmIcon"></fa-icon> -->
-  </div>
+  <div></div>
   <div class="row">
     <div class="col-md-6">
       <div class="card shadow-lg">
@@ -27,19 +20,26 @@
             <div>
               <span class="emphasis">Graphy Project Highlights</span>
             </div>
-            <a
-              [href]="graphyInfo.graphyRepoLink"
-              class="btn btn-outline-secondary mr-3"
-            >
-              <i class="fab fa-github"></i> View Project
-            </a>
-            Live in Playstore
-            <a
-              [href]="graphyInfo.graphyPlaystoreLink"
-              target="_blank"
-              style="color: orange"
-              >[download]</a
-            >
+            <div>
+              <a
+                [href]="graphyInfo.graphyPlaystoreLink"
+                class="btn btn-outline-secondary btn-lg mr-3"
+                target="_blank"
+              >
+                <fa-icon [icon]="faGooglePlay"></fa-icon>
+                {{ playstoreDownload }}
+              </a>
+            </div>
+            <div>
+              <a
+                [href]="graphyInfo.graphyRepoLink"
+                class="btn btn-outline-secondary btn-lg mr-3"
+                target="_blank"
+              >
+                <fa-icon [icon]="faGithub"></fa-icon> View Source Code
+              </a>
+            </div>
+
             <div
               class="row d-flex justify-content-center align-content-between"
             >
@@ -50,15 +50,10 @@
                 <span class="emphasis">&#8281;</span> &nbsp;
                 {{ attribute }} &nbsp;
               </p>
+              <p><span class="emphasis">&#8281;</span></p>
             </div>
             <p style="padding: 5%">
               {{ graphyInfo.graphyBlurb }}
-              <a
-                [href]="graphyInfo.graphyRepoLink"
-                target="_blank"
-                style="color: orange"
-                >{{ here }}</a
-              >.
             </p>
             <div class="d-flex m-auto w-60">
               <carousel [isAnimated]="true">
@@ -87,14 +82,18 @@
         <div #thg class="row">
           <div class="container-fluid">
             <a id="android"></a>
-            <span class="emphasis">Trump Haiku Generator</span> <br />
-            Live in Playstore
-            <a
-              [href]="thgInfo.thgPlaystoreLink"
-              target="_blank"
-              style="color: orange"
-              >[download]</a
-            >
+            <span class="emphasis">Trump Haiku Generator</span>
+            <div>
+              <a
+                [href]="thgInfo.thgPlaystoreLink"
+                class="btn btn-outline-secondary btn-lg mr-3"
+                target="_blank"
+              >
+                <fa-icon [icon]="faGooglePlay"></fa-icon>
+                {{ playstoreDownload }}
+              </a>
+            </div>
+
             <div
               class="row d-flex justify-content-center align-content-between"
             >
@@ -102,14 +101,11 @@
                 <span class="emphasis">&#8281;</span> &nbsp;
                 {{ attribute }} &nbsp;
               </p>
+              <p><span class="emphasis">&#8281;</span></p>
             </div>
             <p style="padding: 5%">
               {{ thgInfo.thgBlurb }}
-              <a
-                [href]="thgInfo.thgWebsiteLink"
-                target="_blank"
-                style="color: orange"
-                >THG website</a
+              <a [href]="thgInfo.thgWebsiteLink" target="_blank">THG website</a
               >.
             </p>
             <div class="d-flex">
@@ -153,7 +149,7 @@
         <a
           href="https://github.com/TaylorShane/Taylor_BrewBuddy"
           target="_blank"
-          style="color: orange"
+          
           >here</a
         >.
       </p>
@@ -178,6 +174,15 @@
             <a id="wpf"></a>
             <!-- <p style="padding: 5%"> -->
             <span class="emphasis">{{ spottertInfo.spotterHighlights }}</span>
+            <div>
+              <a
+                [href]="spottertInfo.spotterRepoLink"
+                class="btn btn-outline-secondary btn-lg mr-3"
+                target="_blank"
+              >
+                <fa-icon [icon]="faGithub"></fa-icon> View Source Code
+              </a>
+            </div>
             <div
               class="row d-flex justify-content-center align-content-between"
             >
@@ -188,15 +193,10 @@
                 <span class="emphasis">&#8281;</span> &nbsp;
                 {{ attribute }} &nbsp;
               </p>
+              <p><span class="emphasis">&#8281;</span></p>
             </div>
             <p style="padding: 5%">
               {{ spottertInfo.spotterBlurb }}
-              <a
-                [href]="spottertInfo.spotterRepoLink"
-                target="_blank"
-                style="color: orange"
-                >{{ here }}</a
-              >.
             </p>
             <div class="d-flex m-auto w-60">
               <carousel [isAnimated]="true">
@@ -241,14 +241,14 @@
         understand the necessity of exceptional communication skills and the
         imperative of working within a considered strategy. To that end, feel
         free to peruse my example
-        <a href="/PixelHeroSRS.html" target="_blank" style="color: orange"
+        <a href="/PixelHeroSRS.html" target="_blank" 
           >Analysis and Design Document</a
         >
         and
         <a
           href="http://www.shane-taylor.com/shane-taylor.com/PixelHeroSRS.html"
           target="_blank"
-          style="color: orange"
+          
           >Software Requirements and Specifications</a
         >.
       </p>
