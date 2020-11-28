@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { faGithub, faGooglePlay } from '@fortawesome/free-brands-svg-icons';
 
+import { GithubService } from '../config/github.service';
+
 @Component({
   selector: 'app-work-examples',
   templateUrl: './work-examples.component.html',
@@ -89,9 +91,48 @@ export class WorkExamplesComponent implements OnInit {
       '../../assets/img/brewbuddy/Screenshot_1507672664.png',
     ],
   };
-  constructor() {}
+  constructor(private githubService: GithubService) {}
 
   ngOnInit() {
-    // nothing here
+    this.getGraphyData();
+  }
+
+  getGraphyData() {
+    this.githubService.getGraphyLangData().subscribe(
+      (response) => {
+        console.log('This is the getGraphyLangData response' + response);
+        let stringObj = JSON.stringify(response);
+        console.log(
+          'This is the getGraphyLangData stringified response' + stringObj
+        );
+      },
+      (error) => {
+        console.log('This is the error' + error);
+      }
+    );
+    this.githubService.getGraphyContributors().subscribe(
+      (response) => {
+        console.log('this is the getGraphyContributors response' + response);
+        let stringObj = JSON.stringify(response);
+        console.log(
+          'This is the getGraphyContributors stringified response' + stringObj
+        );
+      },
+      (error) => {
+        console.log('This is the error' + error);
+      }
+    );
+    this.githubService.getGraphyTags().subscribe(
+      (response) => {
+        console.log('this is the getGraphyTags response' + response);
+        let stringObj = JSON.stringify(response);
+        console.log(
+          'This is the getGraphyTags stringified response' + stringObj
+        );
+      },
+      (error) => {
+        console.log('This is the error' + error);
+      }
+    );
   }
 }
