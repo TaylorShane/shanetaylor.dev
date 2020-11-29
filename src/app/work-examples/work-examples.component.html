@@ -5,9 +5,19 @@
     <p>
       {{ githubBlurb }}
     </p>
-    <a [href]="personalRepos" class="btn btn-outline-secondary btn-lg mr-3">
-      <fa-icon [icon]="faGithub"></fa-icon> {{ viewProject }}
-    </a>
+    <div class="p-3">
+      <a [href]="personalRepos" class="btn btn-outline-secondary btn-lg mr-3">
+        <fa-icon [icon]="faGithub"></fa-icon> {{ viewProject }}
+      </a>
+    </div>
+    Charts
+    <app-charts></app-charts>
+    Charts
+    <div *ngFor="let repo of reposData; index as i; count as c">
+      <div>
+        {{ repo }}
+      </div>
+    </div>
   </div>
 
   <div></div>
@@ -20,24 +30,26 @@
             <div>
               <span class="emphasis">Graphy Project Highlights</span>
             </div>
-            <div>
-              <a
-                [href]="graphyInfo.graphyPlaystoreLink"
-                class="btn btn-outline-secondary btn-lg mr-3"
-                target="_blank"
-              >
-                <fa-icon [icon]="faGooglePlay"></fa-icon>
-                {{ playstoreDownload }}
-              </a>
-            </div>
-            <div>
-              <a
-                [href]="graphyInfo.graphyRepoLink"
-                class="btn btn-outline-secondary btn-lg mr-3"
-                target="_blank"
-              >
-                <fa-icon [icon]="faGithub"></fa-icon> View Source Code
-              </a>
+            <div class="p-3">
+              <div>
+                <a
+                  [href]="graphyInfo.graphyPlaystoreLink"
+                  class="btn btn-outline-secondary btn-lg mr-3"
+                  target="_blank"
+                >
+                  <fa-icon [icon]="faGooglePlay"></fa-icon>
+                  {{ playstoreDownload }}
+                </a>
+              </div>
+              <div>
+                <a
+                  [href]="graphyInfo.graphyRepoLink"
+                  class="btn btn-outline-secondary btn-lg mr-3"
+                  target="_blank"
+                >
+                  <fa-icon [icon]="faGithub"></fa-icon> View Source Code
+                </a>
+              </div>
             </div>
 
             <div
@@ -83,17 +95,18 @@
           <div class="container-fluid">
             <a id="android"></a>
             <span class="emphasis">Trump Haiku Generator</span>
-            <div>
-              <a
-                [href]="thgInfo.thgPlaystoreLink"
-                class="btn btn-outline-secondary btn-lg mr-3"
-                target="_blank"
-              >
-                <fa-icon [icon]="faGooglePlay"></fa-icon>
-                {{ playstoreDownload }}
-              </a>
+            <div class="p-3">
+              <div>
+                <a
+                  [href]="thgInfo.thgPlaystoreLink"
+                  class="btn btn-outline-secondary btn-lg mr-3"
+                  target="_blank"
+                >
+                  <fa-icon [icon]="faGooglePlay"></fa-icon>
+                  {{ playstoreDownload }}
+                </a>
+              </div>
             </div>
-
             <div
               class="row d-flex justify-content-center align-content-between"
             >
@@ -166,7 +179,6 @@
       </div>
     </div>
   </div> -->
-
     <div class="col-md-6">
       <div class="card shadow-lg">
         <div #spotter class="row">
@@ -174,14 +186,16 @@
             <a id="wpf"></a>
             <!-- <p style="padding: 5%"> -->
             <span class="emphasis">{{ spottertInfo.spotterHighlights }}</span>
-            <div>
-              <a
-                [href]="spottertInfo.spotterRepoLink"
-                class="btn btn-outline-secondary btn-lg mr-3"
-                target="_blank"
-              >
-                <fa-icon [icon]="faGithub"></fa-icon> View Source Code
-              </a>
+            <div class="p-3">
+              <div>
+                <a
+                  [href]="spottertInfo.spotterRepoLink"
+                  class="btn btn-outline-secondary btn-lg mr-3"
+                  target="_blank"
+                >
+                  <fa-icon [icon]="faGithub"></fa-icon> View Source Code
+                </a>
+              </div>
             </div>
             <div
               class="row d-flex justify-content-center align-content-between"

@@ -10,6 +10,8 @@ import { WorkExamplesComponent } from './work-examples/work-examples.component';
 import { FooterComponent } from './footer/footer.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ChartsComponent } from './shared/charts/charts.component';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 @NgModule({
   declarations: [
@@ -19,12 +21,16 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     WhoComponent,
     WhatComponent,
     WorkExamplesComponent,
+    ChartsComponent,
   ],
   imports: [
     BrowserModule,
     CarouselModule.forRoot(),
     FontAwesomeModule,
     HttpClientModule,
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts'),
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

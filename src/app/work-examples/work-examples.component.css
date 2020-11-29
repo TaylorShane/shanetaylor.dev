@@ -4,3 +4,6 @@ a {
 .btn-lg {
   min-width: 25rem;
 }
+p {
+  margin-bottom: 0px;
+}
