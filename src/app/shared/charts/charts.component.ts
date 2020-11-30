@@ -1,4 +1,11 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { GithubService } from 'src/app/config/github.service';
 
 @Component({
@@ -7,7 +14,8 @@ import { GithubService } from 'src/app/config/github.service';
   styleUrls: ['./charts.component.css'],
 })
 export class ChartsComponent implements OnInit, AfterViewInit {
-  reposData = [''];
+  // @Input() reposData: string[] = [''];
+  repoData = [];
 
   theme: string;
   options = {
@@ -41,78 +49,47 @@ export class ChartsComponent implements OnInit, AfterViewInit {
         type: 'pie',
         radius: [30, 110],
         roseType: 'area',
-        data: [
-          { value: 10, name: 'rose1' },
-          { value: 5, name: 'rose2' },
-          { value: 15, name: 'rose3' },
-          { value: 25, name: 'rose4' },
-          { value: 20, name: 'rose5' },
-          { value: 35, name: 'rose6' },
-          { value: 30, name: 'rose7' },
-          { value: 40, name: 'rose8' },
-        ],
+        data: this.repoData,
       },
     ],
   };
+  reposData: string[] = [];
 
   constructor(private githubService: GithubService) {}
 
   ngOnInit(): void {
-    // console.log(
-    //   'this is the repos data from the charts component : ' + this.reposData
-    // );
     this.getAllReposData();
   }
 
-  ngAfterViewInit(): void {
-    // if (this.reposData != undefined && this.reposData.length > 0) {
-    //   console.log(
-    //     'this is the repos data from the charts component : ' + this.reposData
-    //   );
-    // }
-  }
+  ngAfterViewInit(): void {}
 
   getAllReposData() {
     this.githubService.getAllRepos().subscribe(
       (response) => {
-        response.forEach((repo) => {
-          this.reposData.push(
-            repo.name,
-            repo.description,
-            repo.url,
-            repo.language,
-            'split'
-          );
-        });
+        // Object.assign(this.reposData, response);
+
+        for (const i in response) {
+          if (response[i].hasOwnProperty('name')) {
+            this.reposData[i] = {
+              name: response[i].name,
+              size: response[i].size,
+              description: response[i].description,
+              language: response[i].language,
+              url: response[i].url,
+            };
+            this.repoData.push({
+              value: this.reposData[i].size,
+              name: this.reposData[i].name,
+            });
+          }
+        }
       },
       (error) => {
-        console.log('This is the error' + error);
+        console.log('This is the getAllRepos error' + error);
       },
       () => {
-        this.addReposDataToChart();
+        // this.addReposDataToChart();
       }
     );
-  }
-
-  addReposDataToChart() {
-    for (let index = 0; index < this.reposData.length; index++) {
-      const element = this.reposData[index];
-      this.options.series[index] = {
-        name: this.reposData[index],
-        type: 'pie',
-        radius: [30, 110],
-        roseType: 'area',
-        data: [
-          { value: 10, name: 'rose1' },
-          { value: 5, name: 'rose2' },
-          { value: 15, name: 'rose3' },
-          { value: 25, name: 'rose4' },
-          { value: 20, name: 'rose5' },
-          { value: 35, name: 'rose6' },
-          { value: 30, name: 'rose7' },
-          { value: 40, name: 'rose8' },
-        ],
-      };
-    }
   }
 }

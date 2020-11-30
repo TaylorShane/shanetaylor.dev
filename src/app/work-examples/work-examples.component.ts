@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { faGithub, faGooglePlay } from '@fortawesome/free-brands-svg-icons';
-import { map } from 'rxjs/operators';
 import { GithubService } from '../config/github.service';
 
 @Component({
@@ -9,6 +8,8 @@ import { GithubService } from '../config/github.service';
   styleUrls: ['./work-examples.component.sass'],
 })
 export class WorkExamplesComponent implements OnInit {
+  @Output() newRepoData: EventEmitter<any> = new EventEmitter();
+
   public readonly slideInterval = 3000;
   public readonly here = 'here';
   public readonly viewProject = 'View Project';
@@ -18,7 +19,7 @@ export class WorkExamplesComponent implements OnInit {
     'My Github profile with an iOS - Swift app, Oracle SQL Developer database, and other develper example work can be found here.';
   faGithub = faGithub;
   faGooglePlay = faGooglePlay;
-  reposData = [''];
+  reposData: string[] = [];
 
   // filmIcon = faFilm;
 
@@ -97,74 +98,74 @@ export class WorkExamplesComponent implements OnInit {
   ngOnInit() {
     // this.getSpotterData();
     // this.getSTangularData();
-    this.getAllReposData();
+    // this.getAllReposData();
   }
 
-  // getGraphyData() {
-  //   this.githubService.getGraphyLangData().subscribe(
-  //     (response) => {
-  //       console.log('This is the getGraphyLangData response' + response);
-  //       let stringObj = JSON.stringify(response);
-  //       console.log(
-  //         'This is the getGraphyLangData stringified response' + stringObj
-  //       );
-  //     },
-  //     (error) => {
-  //       console.log('This is the error' + error);
-  //     }
-  //   );
-  //   this.githubService.getGraphyContributors().subscribe(
-  //     (response) => {
-  //       // returns an array
-  //       /**
-  //        * 0:
-  //             author:
-  //             avatar_url: "https://avatars0.githubusercontent.com/u/26348898?v=4"
-  //             events_url: "https://api.github.com/users/TaylorShane/events{/privacy}"
-  //             followers_url: "https://api.github.com/users/TaylorShane/followers"
-  //             following_url: "https://api.github.com/users/TaylorShane/following{/other_user}"
-  //             gists_url: "https://api.github.com/users/TaylorShane/gists{/gist_id}"
-  //             gravatar_id: ""
-  //             html_url: "https://github.com/TaylorShane"
-  //             id: 26348898
-  //             login: "TaylorShane"
-  //             node_id: "MDQ6VXNlcjI2MzQ4ODk4"
-  //             organizations_url: "https://api.github.com/users/TaylorShane/orgs"
-  //             received_events_url: "https://api.github.com/users/TaylorShane/received_events"
-  //             repos_url: "https://api.github.com/users/TaylorShane/repos"
-  //             site_admin: false
-  //             starred_url: "https://api.github.com/users/TaylorShane/starred{/owner}{/repo}"
-  //             subscriptions_url: "https://api.github.com/users/TaylorShane/subscriptions"
-  //             type: "User"
-  //             url: "https://api.github.com/users/TaylorShane"
-  //             __proto__: Object
-  //             total: 52
-  //             weeks:
-  //        */
-  //       response.forEach((user) => {});
-  //       console.log('this is the getGraphyContributors response' + response);
-  //       let stringObj = JSON.stringify(response);
-  //       console.log(
-  //         'This is the getGraphyContributors stringified response' + stringObj
-  //       );
-  //     },
-  //     (error) => {
-  //       console.log('This is the error' + error);
-  //     }
-  //   );
-  //   this.githubService.getGraphyTags().subscribe(
-  //     (response) => {
-  //       console.log('this is the getGraphyTags response' + response);
-  //       let stringObj = JSON.stringify(response);
-  //       console.log(
-  //         'This is the getGraphyTags stringified response' + stringObj
-  //       );
-  //     },
-  //     (error) => {
-  //       console.log('This is the error' + error);
-  //     }
-  //   );
-  // }
+  getGraphyData() {
+    this.githubService.getGraphyLangData().subscribe(
+      (response) => {
+        console.log('This is the getGraphyLangData response' + response);
+        let stringObj = JSON.stringify(response);
+        console.log(
+          'This is the getGraphyLangData stringified response' + stringObj
+        );
+      },
+      (error) => {
+        console.log('This is the error' + error);
+      }
+    );
+    this.githubService.getGraphyContributors().subscribe(
+      (response) => {
+        // returns an array
+        /**
+         * 0:
+              author:
+              avatar_url: "https://avatars0.githubusercontent.com/u/26348898?v=4"
+              events_url: "https://api.github.com/users/TaylorShane/events{/privacy}"
+              followers_url: "https://api.github.com/users/TaylorShane/followers"
+              following_url: "https://api.github.com/users/TaylorShane/following{/other_user}"
+              gists_url: "https://api.github.com/users/TaylorShane/gists{/gist_id}"
+              gravatar_id: ""
+              html_url: "https://github.com/TaylorShane"
+              id: 26348898
+              login: "TaylorShane"
+              node_id: "MDQ6VXNlcjI2MzQ4ODk4"
+              organizations_url: "https://api.github.com/users/TaylorShane/orgs"
+              received_events_url: "https://api.github.com/users/TaylorShane/received_events"
+              repos_url: "https://api.github.com/users/TaylorShane/repos"
+              site_admin: false
+              starred_url: "https://api.github.com/users/TaylorShane/starred{/owner}{/repo}"
+              subscriptions_url: "https://api.github.com/users/TaylorShane/subscriptions"
+              type: "User"
+              url: "https://api.github.com/users/TaylorShane"
+              __proto__: Object
+              total: 52
+              weeks:
+         */
+        response.forEach((user) => {});
+        console.log('this is the getGraphyContributors response' + response);
+        let stringObj = JSON.stringify(response);
+        console.log(
+          'This is the getGraphyContributors stringified response' + stringObj
+        );
+      },
+      (error) => {
+        console.log('This is the error' + error);
+      }
+    );
+    this.githubService.getGraphyTags().subscribe(
+      (response) => {
+        console.log('this is the getGraphyTags response' + response);
+        let stringObj = JSON.stringify(response);
+        console.log(
+          'This is the getGraphyTags stringified response' + stringObj
+        );
+      },
+      (error) => {
+        console.log('This is the error' + error);
+      }
+    );
+  }
 
   getSpotterData() {
     this.githubService.getSpotterLangData().subscribe(
@@ -192,18 +193,6 @@ export class WorkExamplesComponent implements OnInit {
         console.log('This is the error' + error);
       }
     );
-    // this.githubService.getSpotterTags().subscribe(
-    //   (response) => {
-    //     console.log('this is the getSpotterTags response' + response);
-    //     let stringObj = JSON.stringify(response);
-    //     console.log(
-    //       'This is the getSpotterTags stringified response' + stringObj
-    //     );
-    //   },
-    //   (error) => {
-    //     console.log('This is the error' + error);
-    //   }
-    // );
   }
 
   getSTangularData() {
@@ -247,21 +236,27 @@ export class WorkExamplesComponent implements OnInit {
     );
   }
 
-  getAllReposData() {
-    this.githubService.getAllRepos().subscribe(
-      (response) => {
-        response.forEach((repo) => {
-          this.reposData.push(
-            repo.name,
-            repo.description,
-            repo.url,
-            repo.language
-          );
-        });
-      },
-      (error) => {
-        console.log('This is the error' + error);
-      }
-    );
-  }
+  // getAllReposData() {
+  //   this.githubService.getAllRepos().subscribe(
+  //     (response) => {
+  //       // Object.assign(this.reposData, response);
+
+  //       for (let i in response) {
+  //         this.reposData[i] = {
+  //           name: response[i].name,
+  //           description: response[i].description,
+  //           language: response[i].language,
+  //           url: response[i].url,
+  //         };
+  //       }
+  //       this.newRepoData.emit(this.reposData);
+  //     },
+  //     (error) => {
+  //       console.log('This is the error' + error);
+  //     },
+  //     () => {
+  //       this.newRepoData.emit(this.reposData);
+  //     }
+  //   );
+  // }
 }
