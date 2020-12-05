@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { faGithub, faGooglePlay } from '@fortawesome/free-brands-svg-icons';
 import { GithubService } from '../config/github.service';
-
+import { ChartType } from '../shared/models/models';
 @Component({
   selector: 'app-work-examples',
   templateUrl: './work-examples.component.html',
@@ -10,6 +10,11 @@ import { GithubService } from '../config/github.service';
 export class WorkExamplesComponent implements OnInit {
   // @Output() newRepoData: EventEmitter<any> = new EventEmitter();
 
+  chartTypeall = ChartType.allRepos;
+  chartTypeIndividual = ChartType.oneRepo;
+  faGithub = faGithub;
+  faGooglePlay = faGooglePlay;
+  reposData: string[] = [];
   public readonly slideInterval = 3000;
   public readonly here = 'here';
   public readonly viewProject = 'View Project';
@@ -17,12 +22,6 @@ export class WorkExamplesComponent implements OnInit {
   public readonly personalRepos = 'https://github.com/TaylorShane';
   public readonly githubBlurb =
     'My Github profile with an iOS - Swift app, Oracle SQL Developer database, and other develper example work can be found here.';
-  faGithub = faGithub;
-  faGooglePlay = faGooglePlay;
-  reposData: string[] = [];
-
-  // filmIcon = faFilm;
-
   public readonly graphyInfo = {
     graphyPlaystoreLink:
       'https://play.google.com/store/apps/details?id=com.shane_taylor.Graphy',
@@ -96,27 +95,4 @@ export class WorkExamplesComponent implements OnInit {
   constructor(private githubService: GithubService) {}
 
   ngOnInit() {}
-
-  // getAllReposData() {
-  //   this.githubService.getAllRepos().subscribe(
-  //     (response) => {
-  //       for (let i in response) {
-  //         if (i.hasOwnProperty(name)) {
-  //           if (response[i].name !== 'angular2-seed') {
-  //             this.reposData[i] = {
-  //               name: response[i].name,
-  //               description: response[i].description,
-  //               language: response[i].language,
-  //               url: response[i].url,
-  //             };
-  //           }
-  //         }
-  //       }
-  //     },
-  //     (error) => {
-  //       console.log('This is the error' + error);
-  //     },
-  //     () => {}
-  //   );
-  // }
 }

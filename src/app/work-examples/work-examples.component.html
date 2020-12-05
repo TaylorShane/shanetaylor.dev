@@ -10,7 +10,7 @@
         <fa-icon [icon]="faGithub"></fa-icon> {{ viewProject }}
       </a>
     </div>
-    <app-charts></app-charts>
+    <app-charts [chartType]="chartTypeall"></app-charts>
     <div *ngFor="let repo of reposData; index as i; count as c">
       <div>
         {{ repo }}
@@ -82,6 +82,7 @@
                 </slide>
               </carousel>
             </div>
+            <app-charts [chartType]="chartTypeIndividual"></app-charts>
           </div>
         </div>
       </div>
