@@ -10,6 +10,8 @@ import { ChartType, RepoData } from '../models/models';
 export class ChartsComponent implements OnInit, AfterViewInit {
   @Input() chartType: ChartType;
   repoData: RepoData[] = [];
+  // repoLangData: RepoData[] = [];
+  echartsInstance: any;
 
   theme: string;
   options = {
@@ -20,7 +22,7 @@ export class ChartsComponent implements OnInit, AfterViewInit {
     },
     tooltip: {
       trigger: 'item',
-      formatter: function (params) {
+      formatter(params): any {
         return `${params.name}<br />
                 ${params.data.description}
                 <div>Predominant Language: ${params.data.language}</div>
@@ -61,10 +63,38 @@ export class ChartsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.getAllLanguages(this.repoData);
+    if (this.repoData.length > 0) {
+      this.getAllLanguages(this.repoData);
+    }
   }
 
-  getAllReposData() {
+  onChartInit(ec): void {
+    this.echartsInstance = ec;
+    // this.resizeChart();
+  }
+
+  resizeChart(): void {
+    if (this.echartsInstance) {
+      this.echartsInstance.resize();
+    }
+  }
+
+  getIndividualRepoChartOptions(): void {
+    for (const i in this.repoData) {
+      // if (this.repoData[i].hasOwnProperty('name')) {
+      //   this.repoLangData[i] = {
+      //     value: this.repoData[i].value ,
+      //     name: this.repoData[i].name,
+      //     description: this.repoData[i].description || '',
+      //     language: this.repoData[i].language,
+      //     url: this.repoData[i].url,
+      //   };
+      // }
+    }
+    // this.repoData = this.repoLangData;
+  }
+
+  getAllReposData(): void {
     this.githubService.getAllRepos().subscribe(
       (response) => {
         for (const i in response) {
@@ -76,6 +106,7 @@ export class ChartsComponent implements OnInit, AfterViewInit {
                 description: response[i].description || '',
                 language: response[i].language,
                 url: response[i].url,
+                languages: {},
               };
             }
           }
@@ -84,16 +115,20 @@ export class ChartsComponent implements OnInit, AfterViewInit {
       (error) => {
         console.log('This is the getAllRepos error' + error);
       },
-      () => {}
+      () => {
+        if (this.repoData.length > 0) {
+          this.getAllLanguages(this.repoData);
+        }
+      }
     );
   }
 
-  private getAllLanguages(repoName: any): void {
-    repoName.forEach((repo) => {
+  private getAllLanguages(repoData: any): void {
+    repoData.forEach((repo) => {
       this.githubService.getAllLanguagesForGivenRepo(repo.name).subscribe(
         (response) => {
           try {
-            const langsObj = { name: repo, languages: response };
+            const langsObj = { name: repo.name, languages: response };
             this.repoData[repo].languages = langsObj;
           } catch (error) {
             console.log(error);
@@ -102,7 +137,11 @@ export class ChartsComponent implements OnInit, AfterViewInit {
         (error) => {
           console.warn('getAlllanguages error :' + error);
         },
-        () => {}
+        () => {
+          if (this.chartType === ChartType.oneRepo) {
+            this.getIndividualRepoChartOptions();
+          }
+        }
       );
     });
   }

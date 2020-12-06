@@ -4,7 +4,7 @@ export interface RepoData {
   name: string;
   url: string;
   value: number;
-  languages: {};
+  languages?: {};
 }
 
 export enum ChartType {

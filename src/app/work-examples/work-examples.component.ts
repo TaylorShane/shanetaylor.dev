@@ -14,7 +14,6 @@ export class WorkExamplesComponent implements OnInit {
   chartTypeIndividual = ChartType.oneRepo;
   faGithub = faGithub;
   faGooglePlay = faGooglePlay;
-  reposData: string[] = [];
   public readonly slideInterval = 3000;
   public readonly here = 'here';
   public readonly viewProject = 'View Project';
@@ -92,7 +91,7 @@ export class WorkExamplesComponent implements OnInit {
       '../../assets/img/brewbuddy/Screenshot_1507672664.png',
     ],
   };
-  constructor(private githubService: GithubService) {}
+  constructor() {}
 
   ngOnInit() {}
 }

@@ -10,139 +10,135 @@
         <fa-icon [icon]="faGithub"></fa-icon> {{ viewProject }}
       </a>
     </div>
+
     <app-charts [chartType]="chartTypeall"></app-charts>
-    <div *ngFor="let repo of reposData; index as i; count as c">
-      <div>
-        {{ repo }}
-      </div>
-    </div>
-  </div>
 
-  <div></div>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="card shadow-lg">
-        <div #graphy class="row">
-          <div class="container-fluid">
-            <a id="android"></a>
-            <div>
-              <span class="emphasis">Graphy Project Highlights</span>
-            </div>
-            <div class="p-3">
+    <div></div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card shadow-lg">
+          <div #graphy class="row">
+            <div class="container-fluid">
+              <a id="android"></a>
               <div>
-                <a
-                  [href]="graphyInfo.graphyPlaystoreLink"
-                  class="btn btn-outline-secondary btn-lg mr-3"
-                  target="_blank"
-                >
-                  <fa-icon [icon]="faGooglePlay"></fa-icon>
-                  {{ playstoreDownload }}
-                </a>
+                <span class="emphasis">Graphy Project Highlights</span>
               </div>
-              <div>
-                <a
-                  [href]="graphyInfo.graphyRepoLink"
-                  class="btn btn-outline-secondary btn-lg mr-3"
-                  target="_blank"
-                >
-                  <fa-icon [icon]="faGithub"></fa-icon> View Source Code
-                </a>
+              <div class="p-3">
+                <div>
+                  <a
+                    [href]="graphyInfo.graphyPlaystoreLink"
+                    class="btn btn-outline-secondary btn-lg mr-3"
+                    target="_blank"
+                  >
+                    <fa-icon [icon]="faGooglePlay"></fa-icon>
+                    {{ playstoreDownload }}
+                  </a>
+                </div>
+                <div>
+                  <a
+                    [href]="graphyInfo.graphyRepoLink"
+                    class="btn btn-outline-secondary btn-lg mr-3"
+                    target="_blank"
+                  >
+                    <fa-icon [icon]="faGithub"></fa-icon> View Source Code
+                  </a>
+                </div>
               </div>
-            </div>
 
-            <div
-              class="row d-flex justify-content-center align-content-between"
-            >
-              <p
-                *ngFor="let attribute of graphyInfo.graphyAttributes"
-                class="m-0"
+              <div
+                class="row d-flex justify-content-center align-content-between"
               >
-                <span class="emphasis">&#8281;</span> &nbsp;
-                {{ attribute }} &nbsp;
-              </p>
-              <p><span class="emphasis">&#8281;</span></p>
-            </div>
-            <p style="padding: 5%">
-              {{ graphyInfo.graphyBlurb }}
-            </p>
-            <div class="d-flex m-auto w-60">
-              <carousel [isAnimated]="true">
-                <slide
-                  *ngFor="
-                    let image of graphyInfo.graphyImages;
-                    index as i;
-                    count as c
-                  "
+                <p
+                  *ngFor="let attribute of graphyInfo.graphyAttributes"
+                  class="m-0"
                 >
-                  <img
-                    [src]="image"
-                    alt="Graphy Application Screen Shot"
-                    class="d-block w-100"
-                  />
-                </slide>
-              </carousel>
+                  <span class="emphasis">&#8281;</span> &nbsp;
+                  {{ attribute }} &nbsp;
+                </p>
+                <p><span class="emphasis">&#8281;</span></p>
+              </div>
+              <p style="padding: 5%">
+                {{ graphyInfo.graphyBlurb }}
+              </p>
+              <div class="d-flex m-auto w-60">
+                <carousel [isAnimated]="true">
+                  <slide
+                    *ngFor="
+                      let image of graphyInfo.graphyImages;
+                      index as i;
+                      count as c
+                    "
+                  >
+                    <img
+                      [src]="image"
+                      alt="Graphy Application Screen Shot"
+                      class="d-block w-100"
+                    />
+                  </slide>
+                </carousel>
+              </div>
+              <app-charts [chartType]="chartTypeIndividual"></app-charts>
             </div>
-            <app-charts [chartType]="chartTypeIndividual"></app-charts>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="col-md-6">
-      <div class="card shadow-lg">
-        <div #thg class="row">
-          <div class="container-fluid">
-            <a id="android"></a>
-            <span class="emphasis">Trump Haiku Generator</span>
-            <div class="p-3">
-              <div>
-                <a
-                  [href]="thgInfo.thgPlaystoreLink"
-                  class="btn btn-outline-secondary btn-lg mr-3"
-                  target="_blank"
-                >
-                  <fa-icon [icon]="faGooglePlay"></fa-icon>
-                  {{ playstoreDownload }}
-                </a>
+      <div class="col-md-6">
+        <div class="card shadow-lg">
+          <div #thg class="row">
+            <div class="container-fluid">
+              <a id="android"></a>
+              <span class="emphasis">Trump Haiku Generator</span>
+              <div class="p-3">
+                <div>
+                  <a
+                    [href]="thgInfo.thgPlaystoreLink"
+                    class="btn btn-outline-secondary btn-lg mr-3"
+                    target="_blank"
+                  >
+                    <fa-icon [icon]="faGooglePlay"></fa-icon>
+                    {{ playstoreDownload }}
+                  </a>
+                </div>
+              </div>
+              <div
+                class="row d-flex justify-content-center align-content-between"
+              >
+                <p *ngFor="let attribute of thgInfo.thgAttributes" class="m-0">
+                  <span class="emphasis">&#8281;</span> &nbsp;
+                  {{ attribute }} &nbsp;
+                </p>
+                <p><span class="emphasis">&#8281;</span></p>
+              </div>
+              <p style="padding: 5%">
+                {{ thgInfo.thgBlurb }}
+                <a [href]="thgInfo.thgWebsiteLink" target="_blank"
+                  >THG website</a
+                >.
+              </p>
+              <div class="d-flex">
+                <carousel class="w-50 m-auto" [isAnimated]="true">
+                  <slide
+                    *ngFor="
+                      let image of thgInfo.thgImages;
+                      index as i;
+                      count as c
+                    "
+                  >
+                    <img
+                      [src]="image"
+                      alt="THG Application Screen Shot"
+                      class="d-block w-100"
+                    />
+                  </slide>
+                </carousel>
               </div>
             </div>
-            <div
-              class="row d-flex justify-content-center align-content-between"
-            >
-              <p *ngFor="let attribute of thgInfo.thgAttributes" class="m-0">
-                <span class="emphasis">&#8281;</span> &nbsp;
-                {{ attribute }} &nbsp;
-              </p>
-              <p><span class="emphasis">&#8281;</span></p>
-            </div>
-            <p style="padding: 5%">
-              {{ thgInfo.thgBlurb }}
-              <a [href]="thgInfo.thgWebsiteLink" target="_blank">THG website</a
-              >.
-            </p>
-            <div class="d-flex">
-              <carousel class="w-50 m-auto" [isAnimated]="true">
-                <slide
-                  *ngFor="
-                    let image of thgInfo.thgImages;
-                    index as i;
-                    count as c
-                  "
-                >
-                  <img
-                    [src]="image"
-                    alt="THG Application Screen Shot"
-                    class="d-block w-100"
-                  />
-                </slide>
-              </carousel>
-            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- <div #brewbuddy class="row">
+      <!-- <div #brewbuddy class="row">
     <div class="container-fluid">
       <p style="padding: 5%">
         <span class="emphasis">Brew Buddy Project Highlights</span> <br />
@@ -178,62 +174,62 @@
       </div>
     </div>
   </div> -->
-    <div class="col-md-6">
-      <div class="card shadow-lg">
-        <div #spotter class="row">
-          <div class="container-fluid">
-            <a id="wpf"></a>
-            <!-- <p style="padding: 5%"> -->
-            <span class="emphasis">{{ spottertInfo.spotterHighlights }}</span>
-            <div class="p-3">
-              <div>
-                <a
-                  [href]="spottertInfo.spotterRepoLink"
-                  class="btn btn-outline-secondary btn-lg mr-3"
-                  target="_blank"
-                >
-                  <fa-icon [icon]="faGithub"></fa-icon> View Source Code
-                </a>
+      <div class="col-md-6">
+        <div class="card shadow-lg">
+          <div #spotter class="row">
+            <div class="container-fluid">
+              <a id="wpf"></a>
+              <!-- <p style="padding: 5%"> -->
+              <span class="emphasis">{{ spottertInfo.spotterHighlights }}</span>
+              <div class="p-3">
+                <div>
+                  <a
+                    [href]="spottertInfo.spotterRepoLink"
+                    class="btn btn-outline-secondary btn-lg mr-3"
+                    target="_blank"
+                  >
+                    <fa-icon [icon]="faGithub"></fa-icon> View Source Code
+                  </a>
+                </div>
               </div>
-            </div>
-            <div
-              class="row d-flex justify-content-center align-content-between"
-            >
-              <p
-                *ngFor="let attribute of spottertInfo.spotterAttributes"
-                class="m-0"
+              <div
+                class="row d-flex justify-content-center align-content-between"
               >
-                <span class="emphasis">&#8281;</span> &nbsp;
-                {{ attribute }} &nbsp;
-              </p>
-              <p><span class="emphasis">&#8281;</span></p>
-            </div>
-            <p style="padding: 5%">
-              {{ spottertInfo.spotterBlurb }}
-            </p>
-            <div class="d-flex m-auto w-60">
-              <carousel [isAnimated]="true">
-                <slide
-                  *ngFor="
-                    let image of spottertInfo.spottertImages;
-                    index as i;
-                    count as c
-                  "
+                <p
+                  *ngFor="let attribute of spottertInfo.spotterAttributes"
+                  class="m-0"
                 >
-                  <img
-                    [src]="image"
-                    alt="Spotter Application Screen Shot"
-                    class="d-block w-100"
-                  />
-                </slide>
-              </carousel>
+                  <span class="emphasis">&#8281;</span> &nbsp;
+                  {{ attribute }} &nbsp;
+                </p>
+                <p><span class="emphasis">&#8281;</span></p>
+              </div>
+              <p style="padding: 5%">
+                {{ spottertInfo.spotterBlurb }}
+              </p>
+              <div class="d-flex m-auto w-60">
+                <carousel [isAnimated]="true">
+                  <slide
+                    *ngFor="
+                      let image of spottertInfo.spottertImages;
+                      index as i;
+                      count as c
+                    "
+                  >
+                    <img
+                      [src]="image"
+                      alt="Spotter Application Screen Shot"
+                      class="d-block w-100"
+                    />
+                  </slide>
+                </carousel>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- <div #sweDocs class="row">
+      <!-- <div #sweDocs class="row">
     <div class="container-fluid">
       <a id="documentation"></a>
       <p style="padding: 5%">
@@ -341,7 +337,8 @@
       ></iframe>
     </div>
   </div> -->
+    </div>
   </div>
-</div>
 
-<!-- TODO: fix image references -->
+  <!-- TODO: fix image references -->
+</div>
