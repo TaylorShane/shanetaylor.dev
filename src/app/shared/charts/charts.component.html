@@ -7,12 +7,14 @@
   </button>
   <button (click)="theme = 'dark'" nz-button nzType="default">dark</button>
 </div> -->
+
 <div
   echarts
   [options]="options"
   [theme]="theme"
   (chartInit)="onChartInit($event)"
 ></div>
+
 <!-- <div>
   {{ reposData }}
 </div> -->
