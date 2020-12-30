@@ -99,10 +99,10 @@ export interface RepoData {
   name: string;
   url: string;
   value: number;
-  languages: Languages;
+  languages: AllLanguagesForGivenRepo;
 }
 
-export interface Languages {
+export interface AllLanguagesForGivenRepo {
   name: string;
   languages: {};
 }

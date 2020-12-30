@@ -1,16 +1,21 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { GithubService } from 'src/app/config/github.service';
-import { ChartType, Languages, RepoData, Series } from '../models/models';
+import {
+  ChartType,
+  AllLanguagesForGivenRepo,
+  RepoData,
+  Series,
+} from '../models/models';
 
 @Component({
   selector: 'app-charts',
   templateUrl: './charts.component.html',
   styleUrls: ['./charts.component.css'],
 })
-export class ChartsComponent implements OnInit, AfterViewInit {
+export class ChartsComponent implements AfterViewInit, OnInit {
   @Input() chartType: ChartType;
   repoData: RepoData[] = [];
-  repoLangData: Languages[] = [];
+  repoLangData: AllLanguagesForGivenRepo[] = [];
   echartsInstance: any;
 
   theme: string;
@@ -64,9 +69,33 @@ export class ChartsComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {}
 
+  getChartData(): void {
+    if (this.chartType != undefined) {
+      if (this.chartType === ChartType.allRepos && this.repoData.length > 0) {
+        this.options.series[0].data = this.repoData;
+      } else if (
+        this.chartType === ChartType.oneRepo &&
+        this.repoLangData.length > 0
+      ) {
+        let LangsChartData = [];
+        this.repoData.forEach((repo) => {
+          LangsChartData.push({
+            description: repo.name,
+            language: repo.language,
+            name: Object.keys(repo.languages.languages),
+            url: repo.url,
+            value: Object.values(repo.languages.languages),
+          });
+        });
+        this.options.series[0].data = LangsChartData;
+      }
+    }
+  }
+
   onChartInit(ec): void {
     this.echartsInstance = ec;
-    // this.resizeChart();
+    this.getChartData();
+    this.resizeChart();
   }
 
   resizeChart(): void {
@@ -78,37 +107,38 @@ export class ChartsComponent implements OnInit, AfterViewInit {
   getIndividualRepoChartOptions(): void {
     for (const i in this.repoData) {
       for (const j in this.repoData) {
-        if (this.repoData[i].name === this.repoLangData[j].name) {
+        if (this.repoData[i]?.name === this.repoLangData[j]?.name) {
           this.repoData[i].languages = this.repoLangData[j];
           return;
         }
       }
     }
-    this.options.series = [
-      {
-        name: 'FOO area',
-        type: 'pie',
-        radius: [30, 110],
-        roseType: 'area',
-        data: [
-          {
-            description: 'foo',
-            language: 'foo lang',
-            name: 'Foo name',
-            url: 'foo url',
-            value: 300,
-            languages: {
-              name: 'languages name',
-              languages: {
-                java: 230,
-              },
-            },
-          },
-        ],
-      },
-    ];
+    // this.options.series = [
+    //   {
+    //     name: 'FOO area',
+    //     type: 'pie',
+    //     radius: [30, 110],
+    //     roseType: 'area',
+    //     data: [
+    //       {
+    //         description: 'foo',
+    //         language: 'foo lang',
+    //         name: 'Foo name',
+    //         url: 'foo url',
+    //         value: 300,
+    //         languages: {
+    //           name: 'languages name',
+    //           languages: {
+    //             java: 230,
+    //           },
+    //         },
+    //       },
+    //     ],
+    //   },
+    // ];
     console.log(this.options.series);
     // this.repoData = this.repoLangData;
+    this.getChartData();
   }
 
   getAllReposData(): void {
@@ -138,21 +168,18 @@ export class ChartsComponent implements OnInit, AfterViewInit {
       },
       () => {
         if (this.repoData.length > 0) {
-          this.getAllLanguages(this.repoData);
+          this.getAllLanguagesForIndividualRepos(this.repoData);
         }
       }
     );
   }
 
-  private getAllLanguages(repoData: any) {
+  private getAllLanguagesForIndividualRepos(repoData: any) {
     repoData.forEach((repo) => {
       let repoName = repo.name;
       this.githubService.getAllLanguagesForGivenRepo(repo.name).subscribe(
         (response) => {
           try {
-            // langData[repo].languages = response;
-
-            // TODO: change repoLangData to a type
             this.repoLangData.push({ name: repoName, languages: response });
           } catch (error) {
             console.log(error);
@@ -162,19 +189,19 @@ export class ChartsComponent implements OnInit, AfterViewInit {
           console.warn('getAlllanguages error :' + error);
         },
         () => {
-          // TODO: Wait for all repsonse to come back.
+          // TODO: Wait for all repsonse to come back. Promise.all?
           if (this.chartType === ChartType.oneRepo) {
             this.getIndividualRepoChartOptions();
           } else {
-            this.options.series = [
-              {
-                name: 'this area',
-                type: 'pie',
-                radius: [30, 110],
-                roseType: 'area',
-                data: this.repoData,
-              },
-            ];
+            // this.options.series = [
+            //   {
+            //     name: 'this area',
+            //     type: 'pie',
+            //     radius: [30, 110],
+            //     roseType: 'area',
+            //     data: this.repoData,
+            //   },
+            // ];
           }
         }
       );
