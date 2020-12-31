@@ -1,24 +1,18 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { GithubService } from 'src/app/config/github.service';
-import {
-  ChartType,
-  AllLanguagesForGivenRepo,
-  RepoData,
-  Series,
-} from '../models/models';
+import { RepoData } from '../models/models';
 
 @Component({
   selector: 'app-charts',
   templateUrl: './charts.component.html',
   styleUrls: ['./charts.component.css'],
 })
-export class ChartsComponent implements AfterViewInit, OnInit {
-  @Input() chartType: ChartType;
+export class ChartsComponent implements OnInit {
+  @Input() chartName: string;
+  @Input() theme: string;
   repoData: RepoData[] = [];
-  repoLangData: AllLanguagesForGivenRepo[] = [];
   echartsInstance: any;
 
-  theme: string;
   options = {
     title: {
       text: "Shane's Github Stats",
@@ -64,30 +58,15 @@ export class ChartsComponent implements AfterViewInit, OnInit {
   constructor(private githubService: GithubService) {}
 
   ngOnInit(): void {
-    this.getAllReposData();
+    this.getChartData();
   }
 
-  ngAfterViewInit(): void {}
-
   getChartData(): void {
-    if (this.chartType != undefined) {
-      if (this.chartType === ChartType.allRepos && this.repoData.length > 0) {
-        this.options.series[0].data = this.repoData;
-      } else if (
-        this.chartType === ChartType.oneRepo &&
-        this.repoLangData.length > 0
-      ) {
-        let LangsChartData = [];
-        this.repoData.forEach((repo) => {
-          LangsChartData.push({
-            description: repo.name,
-            language: repo.language,
-            name: Object.keys(repo.languages.languages),
-            url: repo.url,
-            value: Object.values(repo.languages.languages),
-          });
-        });
-        this.options.series[0].data = LangsChartData;
+    if (this.chartName != undefined) {
+      if (this.chartName === 'allRepos') {
+        this.getAllReposData();
+      } else if (this.chartName != undefined) {
+        this.getIndividualRepoData(this.chartName);
       }
     }
   }
@@ -104,47 +83,18 @@ export class ChartsComponent implements AfterViewInit, OnInit {
     }
   }
 
-  getIndividualRepoChartOptions(): void {
-    for (const i in this.repoData) {
-      for (const j in this.repoData) {
-        if (this.repoData[i]?.name === this.repoLangData[j]?.name) {
-          this.repoData[i].languages = this.repoLangData[j];
-          return;
-        }
-      }
-    }
-    // this.options.series = [
-    //   {
-    //     name: 'FOO area',
-    //     type: 'pie',
-    //     radius: [30, 110],
-    //     roseType: 'area',
-    //     data: [
-    //       {
-    //         description: 'foo',
-    //         language: 'foo lang',
-    //         name: 'Foo name',
-    //         url: 'foo url',
-    //         value: 300,
-    //         languages: {
-    //           name: 'languages name',
-    //           languages: {
-    //             java: 230,
-    //           },
-    //         },
-    //       },
-    //     ],
-    //   },
-    // ];
-    console.log(this.options.series);
-    // this.repoData = this.repoLangData;
-    this.getChartData();
-  }
-
   getAllReposData(): void {
-    this.githubService.getAllRepos2().subscribe(
+    /**
+     * names
+     * BrewBuddy-Android
+     * BrewBuddy-iOS
+     * Graphy
+     * Modern-Database-Management
+     * shanetaylor
+     * Spotter
+     * */
+    this.githubService.getAllRepos().subscribe(
       (data) => {
-        // let langauges: Languages;
         for (const i in data) {
           if (data[i].hasOwnProperty('name')) {
             if (data[i].name !== '') {
@@ -154,10 +104,6 @@ export class ChartsComponent implements AfterViewInit, OnInit {
                 description: data[i].description || '',
                 language: data[i].language,
                 url: data[i].url,
-                languages: {
-                  name: data[i].name,
-                  languages: {},
-                },
               };
             }
           }
@@ -166,45 +112,70 @@ export class ChartsComponent implements AfterViewInit, OnInit {
       (error) => {
         console.log('This is the getAllRepos error' + error);
       },
-      () => {
-        if (this.repoData.length > 0) {
-          this.getAllLanguagesForIndividualRepos(this.repoData);
-        }
-      }
+      () => {}
     );
   }
 
-  private getAllLanguagesForIndividualRepos(repoData: any) {
-    repoData.forEach((repo) => {
-      let repoName = repo.name;
-      this.githubService.getAllLanguagesForGivenRepo(repo.name).subscribe(
-        (response) => {
-          try {
-            this.repoLangData.push({ name: repoName, languages: response });
-          } catch (error) {
-            console.log(error);
-          }
-        },
-        (error) => {
-          console.warn('getAlllanguages error :' + error);
-        },
-        () => {
-          // TODO: Wait for all repsonse to come back. Promise.all?
-          if (this.chartType === ChartType.oneRepo) {
-            this.getIndividualRepoChartOptions();
-          } else {
-            // this.options.series = [
-            //   {
-            //     name: 'this area',
-            //     type: 'pie',
-            //     radius: [30, 110],
-            //     roseType: 'area',
-            //     data: this.repoData,
-            //   },
-            // ];
-          }
+  private getIndividualRepoData(repoName: string) {
+    this.setChartOptions(repoName);
+    this.githubService
+      .getAllLanguagesForGivenRepo(repoName)
+      .subscribe((data) => {
+        const keys = Object.keys(data);
+        let values = Object.values(data) as number[];
+        let predominantLanguage = Math.max(...values);
+
+        for (let index = 0; index < keys.length; index++) {
+          this.repoData[index] = {
+            value: values[index],
+            name: keys[index],
+            description: repoName,
+            language: keys[values.indexOf(Math.max(...values))],
+            url: 'https://github.com/TaylorShane/' + repoName,
+          };
         }
-      );
-    });
+      });
+  }
+
+  private setChartOptions(repoName: string) {
+    this.options = {
+      title: {
+        text: repoName + ' project languages statistics',
+        subtext: 'languages used and poroportions ',
+        x: 'center',
+      },
+      tooltip: {
+        trigger: 'item',
+        formatter(params): any {
+          return `${params.name}<br />
+                  <div>Predominant Language: ${params.data.language}</div>
+                  (${params.name} is ${params.percent}% of all languages used in this project)`;
+        },
+      },
+      legend: {
+        x: 'center',
+        y: 'bottom',
+        data: [
+          'rose1',
+          'rose2',
+          'rose3',
+          'rose4',
+          'rose5',
+          'rose6',
+          'rose7',
+          'rose8',
+        ],
+      },
+      calculable: true,
+      series: [
+        {
+          name: 'this area',
+          type: 'pie',
+          radius: [30, 110],
+          roseType: 'area',
+          data: this.repoData,
+        },
+      ],
+    };
   }
 }

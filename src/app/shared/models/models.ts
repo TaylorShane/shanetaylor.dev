@@ -99,22 +99,7 @@ export interface RepoData {
   name: string;
   url: string;
   value: number;
-  languages: AllLanguagesForGivenRepo;
 }
-
-export interface AllLanguagesForGivenRepo {
-  name: string;
-  languages: {};
-}
-
-export interface Series {
-  name: string;
-  type: string;
-  radius: number[];
-  roseType: string;
-  data: any[];
-}
-[];
 
 /**
  * export class RepoData {
@@ -128,8 +113,3 @@ export interface Series {
   ) {}
 }
  */
-
-export enum ChartType {
-  allRepos,
-  oneRepo,
-}

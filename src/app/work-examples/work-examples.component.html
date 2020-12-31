@@ -1,7 +1,13 @@
-<div class="container-fluid bg-5 text-center">
-  <a id="work"></a>
-  <h3 class="margin">Example Work</h3>
-  <div>
+<div class="bg-5 container-fluid pl-0 pr-0 pt-0 text-center">
+  <div class="container-fluid bg-4">
+    <a id="work"></a>
+    <h3 class="margin">Example Work</h3>
+    <p class="mb-5">
+      {{ siteBlurb }}
+    </p>
+    <app-charts [chartName]="'shanetaylor'" [theme]="'dark'"></app-charts>
+  </div>
+  <div class="container-fluid">
     <p>
       {{ githubBlurb }}
     </p>
@@ -11,22 +17,22 @@
       </a>
     </div>
 
-    <app-charts [chartType]="chartTypeall"></app-charts>
+    <app-charts [chartName]="'allRepos'" [theme]="'macarons'"></app-charts>
 
-    <div></div>
     <div class="row">
       <div class="col-md-6">
         <div class="card shadow-lg">
+          <!-- content start -->
           <div #graphy class="row">
             <div class="container-fluid">
               <a id="android"></a>
               <div>
-                <span class="emphasis">Graphy Project Highlights</span>
+                <span class="emphasis">{{ graphyInfo.name }}</span>
               </div>
               <div class="p-3">
                 <div>
                   <a
-                    [href]="graphyInfo.graphyPlaystoreLink"
+                    [href]="graphyInfo.playstoreLink"
                     class="btn btn-outline-secondary btn-lg mr-3"
                     target="_blank"
                   >
@@ -36,11 +42,11 @@
                 </div>
                 <div>
                   <a
-                    [href]="graphyInfo.graphyRepoLink"
+                    [href]="graphyInfo.repoLink"
                     class="btn btn-outline-secondary btn-lg mr-3"
                     target="_blank"
                   >
-                    <fa-icon [icon]="faGithub"></fa-icon> View Source Code
+                    <fa-icon [icon]="faGithub"></fa-icon> {{ viewSourceCode }}
                   </a>
                 </div>
               </div>
@@ -48,23 +54,20 @@
               <div
                 class="row d-flex justify-content-center align-content-between"
               >
-                <p
-                  *ngFor="let attribute of graphyInfo.graphyAttributes"
-                  class="m-0"
-                >
+                <p *ngFor="let attribute of graphyInfo.attributes" class="m-0">
                   <span class="emphasis">&#8281;</span> &nbsp;
                   {{ attribute }} &nbsp;
                 </p>
                 <p><span class="emphasis">&#8281;</span></p>
               </div>
               <p style="padding: 5%">
-                {{ graphyInfo.graphyBlurb }}
+                {{ graphyInfo.blurb }}
               </p>
               <div class="d-flex m-auto w-60">
                 <carousel [isAnimated]="true">
                   <slide
                     *ngFor="
-                      let image of graphyInfo.graphyImages;
+                      let image of graphyInfo.images;
                       index as i;
                       count as c
                     "
@@ -78,8 +81,9 @@
                 </carousel>
               </div>
 
-              <app-charts [chartType]="chartTypeIndividual"></app-charts>
+              <app-charts [chartName]="'graphy'" [theme]="'light'"></app-charts>
             </div>
+            <!-- content end -->
           </div>
         </div>
       </div>
@@ -89,11 +93,11 @@
           <div #thg class="row">
             <div class="container-fluid">
               <a id="android"></a>
-              <span class="emphasis">Trump Haiku Generator</span>
+              <span class="emphasis"> {{ thgInfo.name }} </span>
               <div class="p-3">
                 <div>
                   <a
-                    [href]="thgInfo.thgPlaystoreLink"
+                    [href]="thgInfo.playstoreLink"
                     class="btn btn-outline-secondary btn-lg mr-3"
                     target="_blank"
                   >
@@ -105,26 +109,20 @@
               <div
                 class="row d-flex justify-content-center align-content-between"
               >
-                <p *ngFor="let attribute of thgInfo.thgAttributes" class="m-0">
+                <p *ngFor="let attribute of thgInfo.attributes" class="m-0">
                   <span class="emphasis">&#8281;</span> &nbsp;
                   {{ attribute }} &nbsp;
                 </p>
                 <p><span class="emphasis">&#8281;</span></p>
               </div>
               <p style="padding: 5%">
-                {{ thgInfo.thgBlurb }}
-                <a [href]="thgInfo.thgWebsiteLink" target="_blank"
-                  >THG website</a
-                >.
+                {{ thgInfo.blurb }}
+                <a [href]="thgInfo.websiteLink" target="_blank">THG website</a>.
               </p>
               <div class="d-flex">
                 <carousel class="w-50 m-auto" [isAnimated]="true">
                   <slide
-                    *ngFor="
-                      let image of thgInfo.thgImages;
-                      index as i;
-                      count as c
-                    "
+                    *ngFor="let image of thgInfo.images; index as i; count as c"
                   >
                     <img
                       [src]="image"
@@ -134,62 +132,27 @@
                   </slide>
                 </carousel>
               </div>
+              <app-charts [chartName]="'graphy'"></app-charts>
             </div>
           </div>
         </div>
       </div>
-
-      <!-- <div #brewbuddy class="row">
-    <div class="container-fluid">
-      <p style="padding: 5%">
-        <span class="emphasis">Brew Buddy Project Highlights</span> <br />
-        SQLite Database <span class="emphasis"> &#8281;</span> Listviews
-        <span class="emphasis"> &#8281;</span> Adapters
-        <span class="emphasis"> &#8281; </span> Validation Controls
-        <span class="emphasis"> &#8281; </span> Database Versioning
-        <span class="emphasis"> &#8281; </span> Cursors &amp; Cursor Adapters<br />
-        <br />
-        Brewbuddy is an Android Application designed to help the homebrewer brew
-        great beers. Brewbuddy has a database of popular recipes, an ABV
-        calculator, and a bottle calculator so that come bottling day you know
-        exactly how many bottles to sanitize. You can even add your favorite
-        recipes direclty to the home screen for quick access. BrewBuddy's Github
-        repository can be found
-        <a
-          href="https://github.com/TaylorShane/Taylor_BrewBuddy"
-          target="_blank"
-          
-          >here</a
-        >.
-      </p>
-      <div class="d-flex m-auto w-50">
-        <carousel [isAnimated]="true">
-          <slide *ngFor="let image of brewBuddyImages; index as i; count as c">
-            <img
-              [src]="image"
-              alt="BrewBuddy Application Screen Shot"
-              class="d-block w-100"
-            />
-          </slide>
-        </carousel>
-      </div>
     </div>
-  </div> -->
+    <div class="row">
       <div class="col-md-6">
         <div class="card shadow-lg">
           <div #spotter class="row">
             <div class="container-fluid">
               <a id="wpf"></a>
-              <!-- <p style="padding: 5%"> -->
-              <span class="emphasis">{{ spottertInfo.spotterHighlights }}</span>
+              <span class="emphasis">{{ spottertInfo.name }}</span>
               <div class="p-3">
                 <div>
                   <a
-                    [href]="spottertInfo.spotterRepoLink"
+                    [href]="spottertInfo.repoLink"
                     class="btn btn-outline-secondary btn-lg mr-3"
                     target="_blank"
                   >
-                    <fa-icon [icon]="faGithub"></fa-icon> View Source Code
+                    <fa-icon [icon]="faGithub"></fa-icon> {{ viewSourceCode }}
                   </a>
                 </div>
               </div>
@@ -197,7 +160,7 @@
                 class="row d-flex justify-content-center align-content-between"
               >
                 <p
-                  *ngFor="let attribute of spottertInfo.spotterAttributes"
+                  *ngFor="let attribute of spottertInfo.attributes"
                   class="m-0"
                 >
                   <span class="emphasis">&#8281;</span> &nbsp;
@@ -206,13 +169,13 @@
                 <p><span class="emphasis">&#8281;</span></p>
               </div>
               <p style="padding: 5%">
-                {{ spottertInfo.spotterBlurb }}
+                {{ spottertInfo.blurb }}
               </p>
               <div class="d-flex m-auto w-60">
                 <carousel [isAnimated]="true">
                   <slide
                     *ngFor="
-                      let image of spottertInfo.spottertImages;
+                      let image of spottertInfo.images;
                       index as i;
                       count as c
                     "
@@ -225,119 +188,168 @@
                   </slide>
                 </carousel>
               </div>
+              <app-charts [chartName]="'Spotter'" [theme]="'dark'"></app-charts>
             </div>
           </div>
         </div>
       </div>
-
-      <!-- <div #sweDocs class="row">
-    <div class="container-fluid">
-      <a id="documentation"></a>
-      <p style="padding: 5%">
-        <span class="emphasis"
-          >Software Engineering Documentation Project Highlights</span
-        >
-        <br />
-        Thorough Graphical UI Mockups
-        <span class="emphasis"> &#8281; </span> Detailed Input, Output, Actions,
-        Post Conditions, and Validation
-        <span class="emphasis"> &#8281; </span> Easy to Read and Understandable
-        Format <span class="emphasis"> &#8281; </span> Entity Relation Diagrams
-        <span class="emphasis"> &#8281; </span> Flow Charts
-        <span class="emphasis"> &#8281; </span> UML 2.0 Diagrams<br />
-        <br />
-        Trained in the methods of Software Engineering and the life cycle of the
-        software development process, I am Agile and Scrum knowledgeable. I
-        understand the necessity of exceptional communication skills and the
-        imperative of working within a considered strategy. To that end, feel
-        free to peruse my example
-        <a href="/PixelHeroSRS.html" target="_blank" 
-          >Analysis and Design Document</a
-        >
-        and
-        <a
-          href="http://www.shane-taylor.com/shane-taylor.com/PixelHeroSRS.html"
-          target="_blank"
-          
-          >Software Requirements and Specifications</a
-        >.
-      </p>
-      <div
-        id="myCarousel4"
-        class="carousel slide"
-        style="max-width: 300px; margin: auto"
-        data-ride="carousel"
-      >
-        <ol class="carousel-indicators">
-          <li data-target="#myCarousel4" data-slide-to="0" class="active"></li>
-          <li data-target="#myCarousel4" data-slide-to="1"></li>
-        </ol>
-
-        <div class="carousel-inner">
-          <div class="item active">
-            <a
-              href="http://www.shane-taylor.com/shane-taylor.com/PixelHeroADD.html"
-              class="img-responsive"
-              target="_blank"
-            >
-              <img
-                src="../../assets/img/pixelhero/add.png"
-                alt="ADD Cover Sheet"
-            /></a>
+      <div class="col-md-6">
+        <div class="card shadow-lg">
+          <!-- content start -->
+          <div #brewbuddy class="row">
+            <div class="container-fluid">
+              <span class="emphasis">{{ brewBuddyInfo.name }}</span>
+              <div class="p-3">
+                <div>
+                  <a
+                    [href]="brewBuddyInfo.repoLink"
+                    class="btn btn-outline-secondary btn-lg mr-3"
+                    target="_blank"
+                  >
+                    <fa-icon [icon]="faGithub"></fa-icon> {{ viewSourceCode }}
+                  </a>
+                </div>
+              </div>
+              <div
+                class="row d-flex justify-content-center align-content-between"
+              >
+                <p
+                  *ngFor="let attribute of brewBuddyInfo.attributes"
+                  class="m-0"
+                >
+                  <span class="emphasis">&#8281;</span> &nbsp;
+                  {{ attribute }} &nbsp;
+                </p>
+                <p><span class="emphasis">&#8281;</span></p>
+              </div>
+              <p style="padding: 5%">
+                {{ brewBuddyInfo.blurb }}
+              </p>
+              <div class="d-flex m-auto w-50">
+                <carousel [isAnimated]="true">
+                  <slide
+                    *ngFor="
+                      let image of brewBuddyInfo.images;
+                      index as i;
+                      count as c
+                    "
+                  >
+                    <img
+                      [src]="image"
+                      alt="BrewBuddy Application Screen Shot"
+                      class="d-block w-100"
+                    />
+                  </slide>
+                </carousel>
+                <app-charts
+                  [chartName]="'BrewBuddy-Android'"
+                  [theme]="'default'"
+                ></app-charts>
+              </div>
+            </div>
           </div>
-
-          <div class="item">
-            <a
-              href="http://www.shane-taylor.com/shane-taylor.com/PixelHeroSRS.html"
-              class="img-responsive"
-              target="_blank"
-            >
-              <img
-                src="../../assets/img/pixelhero/srs.png"
-                alt="SRS Cover Sheet"
-            /></a>
-          </div>
+          <!-- content end -->
         </div>
-
-        <a class="left carousel-control" href="#myCarousel4" data-slide="prev">
-          <span class="glyphicon glyphicon-chevron-left"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel4" data-slide="next">
-          <span class="glyphicon glyphicon-chevron-right"></span>
-          <span class="sr-only">Next</span>
-        </a>
       </div>
     </div>
-  </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card shadow-lg">
+          <!-- content start -->
+          <div #sweDocs class="row">
+            <div class="container-fluid">
+              <span class="emphasis">{{ sweDocInfo.name }}</span>
+              <div class="p-3">
+                <div>
+                  <a
+                    [href]="sweDocInfo.srsLink"
+                    class="btn btn-outline-secondary btn-lg mr-3"
+                    target="_blank"
+                  >
+                    <fa-icon [icon]="'file-pdf'"></fa-icon>
+                    {{ sweDocInfo.viewSRS }}
+                  </a>
+                  <div>
+                    <a
+                      [href]="sweDocInfo.srsLink"
+                      class="btn btn-outline-secondary btn-lg mr-3"
+                      target="_blank"
+                    >
+                      <fa-icon [icon]="'file-pdf'"></fa-icon>
+                      {{ sweDocInfo.viewADD }}
+                    </a>
+                  </div>
+                </div>
+              </div>
 
-  <hr />
+              <div
+                class="row d-flex justify-content-center align-content-between"
+              >
+                <p *ngFor="let attribute of sweDocInfo.attributes" class="m-0">
+                  <span class="emphasis">&#8281;</span> &nbsp;
+                  {{ attribute }} &nbsp;
+                </p>
+                <p><span class="emphasis">&#8281;</span></p>
+              </div>
+              <p style="padding: 5%">
+                {{ sweDocInfo.blurb }}
+              </p>
+              <div class="d-flex m-auto w-50">
+                <carousel [isAnimated]="true">
+                  <slide
+                    *ngFor="
+                      let image of sweDocInfo.images;
+                      index as i;
+                      count as c
+                    "
+                  >
+                    <img
+                      [src]="image"
+                      alt="Software Documentation Screen Shot"
+                      class="d-block w-100"
+                    />
+                  </slide>
+                </carousel>
+              </div>
+            </div>
+          </div>
 
-  <div #pixelHero class="row">
-    <div class="container-fluid">
-      <a id="php"></a>
-      <p style="padding: 5%">
-        <span class="emphasis">Pixel Hero Project Highlights</span> <br />
-        Cooperatively Created Through Agile Process
-        <span class="emphasis"> &#8281; </span> Functional Multi-Entity MySQL
-        Database <span class="emphasis"> &#8281; </span> Secure Administrative
-        URLs <span class="emphasis"> &#8281; </span> mysqli_connect
-        Authentication <span class="emphasis"> &#8281;</span> Full Stack
-        Functionality <br />
-        <br />
-        Pixel Hero is an example online game hub built with PHP (version 4.5.4)
-        designed to connect gamers with each other and content they care about.
-        Using phpMyAdmin on a MySQL server type, my team created a robust site
-        with a database consisting of multiple entities full of user and
-        administrator specific tools.
-      </p>
-      <iframe
-        style="height: 1000px"
-        class="frame"
-        src="https://www.shanetaylor.dev/Pixel_Hero/index.php"
-      ></iframe>
-    </div>
-  </div> -->
+          <!-- content end -->
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card shadow-lg">
+          <!-- content start -->
+          <div #pixelHero class="row">
+            <div class="container-fluid">
+              <a id="php"></a>
+              <p style="padding: 5%">
+                <span class="emphasis">Pixel Hero Project Highlights</span>
+                <br />
+                Cooperatively Created Through Agile Process
+                <span class="emphasis"> &#8281; </span> Functional Multi-Entity
+                MySQL Database <span class="emphasis"> &#8281; </span> Secure
+                Administrative URLs
+                <span class="emphasis"> &#8281; </span> mysqli_connect
+                Authentication <span class="emphasis"> &#8281;</span> Full Stack
+                Functionality <br />
+                <br />
+                Pixel Hero is an example online game hub built with PHP (version
+                4.5.4) designed to connect gamers with each other and content
+                they care about. Using phpMyAdmin on a MySQL server type, my
+                team created a robust site with a database consisting of
+                multiple entities full of user and administrator specific tools.
+              </p>
+              <iframe
+                style="height: 1000px"
+                class="frame"
+                src="https://www.shanetaylor.dev/Pixel_Hero/index.php"
+              ></iframe>
+            </div>
+          </div>
+          <!-- content end -->
+        </div>
+      </div>
     </div>
   </div>
 
