@@ -12,6 +12,8 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ChartsComponent } from './shared/charts/charts.component';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { NgxEchartsModule } from 'ngx-echarts';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     CarouselModule.forRoot(),
+    CollapseModule.forRoot(),
     FontAwesomeModule,
     HttpClientModule,
     NgxEchartsModule.forRoot({

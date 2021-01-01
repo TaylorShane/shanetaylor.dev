@@ -16,7 +16,7 @@ export class ChartsComponent implements OnInit {
   options = {
     title: {
       text: "Shane's Github Stats",
-      subtext: 'languages and size',
+      subtext: 'Current projects in my Github repository',
       x: 'center',
     },
     tooltip: {

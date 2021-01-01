@@ -20,118 +20,115 @@
     <div class="row">
       <div class="col-md-6">
         <div class="card shadow-lg">
+          <a id="graphy"></a>
           <!-- content start -->
-          <div #graphy class="col">
-            <div class="">
-              <a id="android"></a>
-              <div>
-                <span class="emphasis">{{ graphyInfo.name }}</span>
-              </div>
-              <div class="p-3">
-                <div>
-                  <a
-                    [href]="graphyInfo.playstoreLink"
-                    class="btn btn-outline-secondary btn-lg mr-3"
-                    target="_blank"
-                  >
-                    <fa-icon [icon]="faGooglePlay"></fa-icon>
-                    {{ playstoreDownload }}
-                  </a>
-                </div>
-                <div>
-                  <a
-                    [href]="graphyInfo.repoLink"
-                    class="btn btn-outline-secondary btn-lg mr-3"
-                    target="_blank"
-                  >
-                    <fa-icon [icon]="faGithub"></fa-icon> {{ viewSourceCode }}
-                  </a>
-                </div>
-              </div>
-
-              <div
-                class="row d-flex justify-content-center align-content-between"
-              >
-                <p *ngFor="let attribute of graphyInfo.attributes" class="m-0">
-                  <span class="emphasis">&#8281;</span> &nbsp;
-                  {{ attribute }} &nbsp;
-                </p>
-                <p><span class="emphasis">&#8281;</span></p>
-              </div>
-              <p style="padding: 5%">
-                {{ graphyInfo.blurb }}
-              </p>
-              <div class="d-flex m-auto w-60">
-                <carousel [isAnimated]="true">
-                  <slide
-                    *ngFor="
-                      let image of graphyInfo.images;
-                      index as i;
-                      count as c
-                    "
-                  >
-                    <img
-                      [src]="image"
-                      alt="Graphy Application Screen Shot"
-                      class="d-block w-100"
-                    />
-                  </slide>
-                </carousel>
-              </div>
-
-              <app-charts [chartName]="'graphy'" [theme]="'light'"></app-charts>
+          <div class="col">
+            <a id="android"></a>
+            <div>
+              <span class="emphasis">{{ graphyInfo.name }}</span>
             </div>
-            <!-- content end -->
+            <div class="p-3">
+              <div>
+                <a
+                  [href]="graphyInfo.playstoreLink"
+                  class="btn btn-outline-secondary btn-lg mr-3"
+                  target="_blank"
+                >
+                  <fa-icon [icon]="faGooglePlay"></fa-icon>
+                  {{ playstoreDownload }}
+                </a>
+              </div>
+              <div>
+                <a
+                  [href]="graphyInfo.repoLink"
+                  class="btn btn-outline-secondary btn-lg mr-3"
+                  target="_blank"
+                >
+                  <fa-icon [icon]="faGithub"></fa-icon> {{ viewSourceCode }}
+                </a>
+              </div>
+            </div>
+
+            <div
+              class="row d-flex justify-content-center align-content-between"
+            >
+              <p *ngFor="let attribute of graphyInfo.attributes" class="m-0">
+                <span class="emphasis">&#8281;</span> &nbsp;
+                {{ attribute }} &nbsp;
+              </p>
+              <p><span class="emphasis">&#8281;</span></p>
+            </div>
+            <p style="padding: 5%">
+              {{ graphyInfo.blurb }}
+            </p>
+            <div class="d-flex m-auto w-60">
+              <carousel [isAnimated]="true">
+                <slide
+                  *ngFor="
+                    let image of graphyInfo.images;
+                    index as i;
+                    count as c
+                  "
+                >
+                  <img
+                    [src]="image"
+                    alt="Graphy Application Screen Shot"
+                    class="d-block w-100"
+                  />
+                </slide>
+              </carousel>
+            </div>
+
+            <app-charts [chartName]="'graphy'" [theme]="'light'"></app-charts>
           </div>
+          <!-- content end -->
         </div>
       </div>
 
       <div class="col-md-6">
         <div class="card shadow-lg">
-          <div #thg class="col">
-            <div class="">
-              <a id="android"></a>
-              <span class="emphasis"> {{ thgInfo.name }} </span>
-              <div class="p-3">
-                <div>
-                  <a
-                    [href]="thgInfo.playstoreLink"
-                    class="btn btn-outline-secondary btn-lg mr-3"
-                    target="_blank"
-                  >
-                    <fa-icon [icon]="faGooglePlay"></fa-icon>
-                    {{ playstoreDownload }}
-                  </a>
-                </div>
+          <div id="thg" class="col">
+            <a id="android"></a>
+            <span class="emphasis"> {{ thgInfo.name }} </span>
+            <div class="p-3">
+              <div>
+                <a
+                  [href]="thgInfo.playstoreLink"
+                  class="btn btn-outline-secondary btn-lg mr-3"
+                  target="_blank"
+                >
+                  <fa-icon [icon]="faGooglePlay"></fa-icon>
+                  {{ playstoreDownload }}
+                </a>
               </div>
-              <div
-                class="row d-flex justify-content-center align-content-between"
-              >
-                <p *ngFor="let attribute of thgInfo.attributes" class="m-0">
-                  <span class="emphasis">&#8281;</span> &nbsp;
-                  {{ attribute }} &nbsp;
-                </p>
-                <p><span class="emphasis">&#8281;</span></p>
-              </div>
-              <p style="padding: 5%">
-                {{ thgInfo.blurb }}
-                <a [href]="thgInfo.websiteLink" target="_blank">THG website</a>.
-              </p>
-              <div class="d-flex">
-                <carousel class="w-50 m-auto" [isAnimated]="true">
-                  <slide
-                    *ngFor="let image of thgInfo.images; index as i; count as c"
-                  >
-                    <img
-                      [src]="image"
-                      alt="THG Application Screen Shot"
-                      class="d-block w-100"
-                    />
-                  </slide>
-                </carousel>
-              </div>
-              <app-charts [chartName]="'graphy'"></app-charts>
             </div>
+            <div
+              class="row d-flex justify-content-center align-content-between"
+            >
+              <p *ngFor="let attribute of thgInfo.attributes" class="m-0">
+                <span class="emphasis">&#8281;</span> &nbsp;
+                {{ attribute }} &nbsp;
+              </p>
+              <p><span class="emphasis">&#8281;</span></p>
+            </div>
+            <p style="padding: 5%">
+              {{ thgInfo.blurb }}
+              <a [href]="thgInfo.websiteLink" target="_blank">THG website</a>.
+            </p>
+            <div class="d-flex">
+              <carousel class="w-50 m-auto" [isAnimated]="true">
+                <slide
+                  *ngFor="let image of thgInfo.images; index as i; count as c"
+                >
+                  <img
+                    [src]="image"
+                    alt="THG Application Screen Shot"
+                    class="d-block w-100"
+                  />
+                </slide>
+              </carousel>
+            </div>
+            <app-charts [chartName]="'graphy'"></app-charts>
           </div>
         </div>
       </div>
@@ -139,7 +136,7 @@
     <div class="row">
       <div class="col-md-6">
         <div class="card shadow-lg">
-          <div #spotter class="col">
+          <div id="spotter" class="col">
             <a id="wpf"></a>
             <span class="emphasis">{{ spottertInfo.name }}</span>
             <div class="p-3">
@@ -192,7 +189,7 @@
       <div class="col-md-6">
         <div class="card shadow-lg">
           <!-- content start -->
-          <div #sweDocs class="col">
+          <div id="documentation" class="col">
             <span class="emphasis">{{ sweDocInfo.name }}</span>
             <div class="p-3">
               <div>
@@ -256,7 +253,7 @@
       <div class="col-md-6">
         <div class="card shadow-lg">
           <!-- content start -->
-          <div #brewbuddy class="col">
+          <div id="brewBuddy" class="col">
             <span class="emphasis">{{ brewBuddyInfo.name }}</span>
             <div class="p-3">
               <div>
@@ -315,19 +312,15 @@
       </div>
       <div class="col-md-6">
         <div class="card shadow-lg">
-          <div #brewbuddy class="col">
-            <div class="">
-              Android Chart
-              <app-charts
-                [chartName]="'BrewBuddy-Android'"
-                [theme]="'default'"
-              ></app-charts>
-              iOS Chart
-              <app-charts
-                [chartName]="'BrewBuddy-iOS'"
-                [theme]="'default'"
-              ></app-charts>
-            </div>
+          <div class="col">
+            <app-charts
+              [chartName]="'BrewBuddy-Android'"
+              [theme]="'default'"
+            ></app-charts>
+            <app-charts
+              [chartName]="'BrewBuddy-iOS'"
+              [theme]="'default'"
+            ></app-charts>
           </div>
         </div>
       </div>
@@ -335,7 +328,6 @@
         <div class="card shadow-lg">
            content start 
           <div #pixelHero class="row">
-            <div class="">
               <a id="php"></a>
               <p style="padding: 5%">
                 <span class="emphasis">Pixel Hero Project Highlights</span>
@@ -362,7 +354,6 @@
             </div>
           </div>
            content end 
-        </div>
       </div> -->
     </div>
   </div>
