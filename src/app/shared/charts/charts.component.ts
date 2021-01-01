@@ -85,7 +85,7 @@ export class ChartsComponent implements OnInit {
 
   getAllReposData(): void {
     /**
-     * names
+     * names:
      * BrewBuddy-Android
      * BrewBuddy-iOS
      * Graphy

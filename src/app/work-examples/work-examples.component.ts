@@ -89,7 +89,9 @@ export class WorkExamplesComponent implements OnInit {
 
   public readonly brewBuddyInfo = {
     name: 'BrewBuddy',
-    repoLink: '',
+    repoLinkAndroid:
+      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android',
+    repoLinkiOS: 'https://api.github.com/repos/TaylorShane/BrewBuddy-iOS',
     images: [
       '../../assets/img/brewbuddy/Screenshot_1507672646.png',
       '../../assets/img/brewbuddy/Screenshot_1507672671.png',
@@ -103,7 +105,7 @@ export class WorkExamplesComponent implements OnInit {
       'Cursor Adapters',
     ],
     blurb:
-      'Brewbuddy is an Android Application designed to help the homebrewer brew great beers. Brewbuddy has a database of popular    recipes, an ABV calculator, and a bottle calculator so that come    bottling day you know exactly how many bottles to sanitize. You can even add your favorite recipes direclty to the home screen for quick access.',
+      'Brewbuddy is a mobile application built in both Android and iOS versions. It is designed to help the homebrewer brew great beers. Brewbuddy has a database of popular    recipes, an ABV calculator, and a bottle calculator so that come    bottling day you know exactly how many bottles to sanitize. You can even add your favorite recipes direclty to the home screen for quick access.',
   };
 
   public readonly sweDocInfo = {
@@ -126,6 +128,7 @@ export class WorkExamplesComponent implements OnInit {
     viewSRS: 'Software Requirements and Specifications',
     viewADD: 'Analysis and Design Document',
   };
+
   constructor() {}
 
   ngOnInit() {}

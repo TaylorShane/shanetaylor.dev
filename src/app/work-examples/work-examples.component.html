@@ -16,15 +16,13 @@
         <fa-icon [icon]="faGithub"></fa-icon> {{ viewProject }}
       </a>
     </div>
-
     <app-charts [chartName]="'allRepos'" [theme]="'macarons'"></app-charts>
-
     <div class="row">
       <div class="col-md-6">
         <div class="card shadow-lg">
           <!-- content start -->
-          <div #graphy class="row">
-            <div class="container-fluid">
+          <div #graphy class="col">
+            <div class="">
               <a id="android"></a>
               <div>
                 <span class="emphasis">{{ graphyInfo.name }}</span>
@@ -90,8 +88,8 @@
 
       <div class="col-md-6">
         <div class="card shadow-lg">
-          <div #thg class="row">
-            <div class="container-fluid">
+          <div #thg class="col">
+            <div class="">
               <a id="android"></a>
               <span class="emphasis"> {{ thgInfo.name }} </span>
               <div class="p-3">
@@ -141,113 +139,115 @@
     <div class="row">
       <div class="col-md-6">
         <div class="card shadow-lg">
-          <div #spotter class="row">
-            <div class="container-fluid">
-              <a id="wpf"></a>
-              <span class="emphasis">{{ spottertInfo.name }}</span>
-              <div class="p-3">
-                <div>
-                  <a
-                    [href]="spottertInfo.repoLink"
-                    class="btn btn-outline-secondary btn-lg mr-3"
-                    target="_blank"
-                  >
-                    <fa-icon [icon]="faGithub"></fa-icon> {{ viewSourceCode }}
-                  </a>
-                </div>
-              </div>
-              <div
-                class="row d-flex justify-content-center align-content-between"
-              >
-                <p
-                  *ngFor="let attribute of spottertInfo.attributes"
-                  class="m-0"
+          <div #spotter class="col">
+            <a id="wpf"></a>
+            <span class="emphasis">{{ spottertInfo.name }}</span>
+            <div class="p-3">
+              <div>
+                <a
+                  [href]="spottertInfo.repoLink"
+                  class="btn btn-outline-secondary btn-lg mr-3"
+                  target="_blank"
                 >
-                  <span class="emphasis">&#8281;</span> &nbsp;
-                  {{ attribute }} &nbsp;
-                </p>
-                <p><span class="emphasis">&#8281;</span></p>
+                  <fa-icon [icon]="faGithub"></fa-icon> {{ viewSourceCode }}
+                </a>
               </div>
-              <p style="padding: 5%">
-                {{ spottertInfo.blurb }}
-              </p>
-              <div class="d-flex m-auto w-60">
-                <carousel [isAnimated]="true">
-                  <slide
-                    *ngFor="
-                      let image of spottertInfo.images;
-                      index as i;
-                      count as c
-                    "
-                  >
-                    <img
-                      [src]="image"
-                      alt="Spotter Application Screen Shot"
-                      class="d-block w-100"
-                    />
-                  </slide>
-                </carousel>
-              </div>
-              <app-charts [chartName]="'Spotter'" [theme]="'dark'"></app-charts>
             </div>
+            <div
+              class="row d-flex justify-content-center align-content-between"
+            >
+              <p *ngFor="let attribute of spottertInfo.attributes" class="m-0">
+                <span class="emphasis">&#8281;</span> &nbsp;
+                {{ attribute }} &nbsp;
+              </p>
+              <p><span class="emphasis">&#8281;</span></p>
+            </div>
+            <p style="padding: 5%">
+              {{ spottertInfo.blurb }}
+            </p>
+            <div class="d-flex m-auto w-60">
+              <carousel [isAnimated]="true">
+                <slide
+                  *ngFor="
+                    let image of spottertInfo.images;
+                    index as i;
+                    count as c
+                  "
+                >
+                  <img
+                    [src]="image"
+                    alt="Spotter Application Screen Shot"
+                    class="d-block w-100"
+                  />
+                </slide>
+              </carousel>
+            </div>
+            <app-charts
+              [chartName]="'Spotter'"
+              [theme]="'macarons'"
+            ></app-charts>
           </div>
         </div>
       </div>
       <div class="col-md-6">
         <div class="card shadow-lg">
           <!-- content start -->
-          <div #brewbuddy class="row">
-            <div class="container-fluid">
-              <span class="emphasis">{{ brewBuddyInfo.name }}</span>
-              <div class="p-3">
+          <div #sweDocs class="col">
+            <span class="emphasis">{{ sweDocInfo.name }}</span>
+            <div class="p-3">
+              <div>
+                <a
+                  [href]="sweDocInfo.srsLink"
+                  class="btn btn-outline-secondary btn-lg mr-3"
+                  target="_blank"
+                >
+                  <i class="fas fa-file-pdf"></i>
+                  {{ sweDocInfo.viewSRS }}
+                </a>
                 <div>
                   <a
-                    [href]="brewBuddyInfo.repoLink"
+                    [href]="sweDocInfo.srsLink"
                     class="btn btn-outline-secondary btn-lg mr-3"
                     target="_blank"
                   >
-                    <fa-icon [icon]="faGithub"></fa-icon> {{ viewSourceCode }}
+                    <i class="fas fa-file-pdf"></i>
+                    {{ sweDocInfo.viewADD }}
                   </a>
                 </div>
               </div>
-              <div
-                class="row d-flex justify-content-center align-content-between"
-              >
-                <p
-                  *ngFor="let attribute of brewBuddyInfo.attributes"
-                  class="m-0"
-                >
-                  <span class="emphasis">&#8281;</span> &nbsp;
-                  {{ attribute }} &nbsp;
-                </p>
-                <p><span class="emphasis">&#8281;</span></p>
-              </div>
-              <p style="padding: 5%">
-                {{ brewBuddyInfo.blurb }}
+            </div>
+
+            <div
+              class="row d-flex justify-content-center align-content-between"
+            >
+              <p *ngFor="let attribute of sweDocInfo.attributes" class="m-0">
+                <span class="emphasis">&#8281;</span> &nbsp;
+                {{ attribute }} &nbsp;
               </p>
-              <div class="d-flex m-auto w-50">
-                <carousel [isAnimated]="true">
-                  <slide
-                    *ngFor="
-                      let image of brewBuddyInfo.images;
-                      index as i;
-                      count as c
-                    "
-                  >
-                    <img
-                      [src]="image"
-                      alt="BrewBuddy Application Screen Shot"
-                      class="d-block w-100"
-                    />
-                  </slide>
-                </carousel>
-                <app-charts
-                  [chartName]="'BrewBuddy-Android'"
-                  [theme]="'default'"
-                ></app-charts>
-              </div>
+              <p><span class="emphasis">&#8281;</span></p>
+            </div>
+            <p style="padding: 5%">
+              {{ sweDocInfo.blurb }}
+            </p>
+            <div class="d-flex m-auto w-50">
+              <carousel [isAnimated]="true">
+                <slide
+                  *ngFor="
+                    let image of sweDocInfo.images;
+                    index as i;
+                    count as c
+                  "
+                >
+                  <img
+                    [src]="image"
+                    alt="Software Documentation Screen Shot"
+                    class="d-block w-100"
+                  />
+                </slide>
+              </carousel>
             </div>
           </div>
+
           <!-- content end -->
         </div>
       </div>
@@ -256,72 +256,86 @@
       <div class="col-md-6">
         <div class="card shadow-lg">
           <!-- content start -->
-          <div #sweDocs class="row">
-            <div class="container-fluid">
-              <span class="emphasis">{{ sweDocInfo.name }}</span>
-              <div class="p-3">
-                <div>
-                  <a
-                    [href]="sweDocInfo.srsLink"
-                    class="btn btn-outline-secondary btn-lg mr-3"
-                    target="_blank"
-                  >
-                    <fa-icon [icon]="'file-pdf'"></fa-icon>
-                    {{ sweDocInfo.viewSRS }}
-                  </a>
-                  <div>
-                    <a
-                      [href]="sweDocInfo.srsLink"
-                      class="btn btn-outline-secondary btn-lg mr-3"
-                      target="_blank"
-                    >
-                      <fa-icon [icon]="'file-pdf'"></fa-icon>
-                      {{ sweDocInfo.viewADD }}
-                    </a>
-                  </div>
-                </div>
+          <div #brewbuddy class="col">
+            <span class="emphasis">{{ brewBuddyInfo.name }}</span>
+            <div class="p-3">
+              <div>
+                <a
+                  [href]="brewBuddyInfo.repoLinkAndroid"
+                  class="btn btn-outline-secondary btn-lg mr-3"
+                  target="_blank"
+                >
+                  <fa-icon [icon]="faGithub"></fa-icon> {{ viewSourceCode }}
+                  Android
+                </a>
               </div>
-
-              <div
-                class="row d-flex justify-content-center align-content-between"
-              >
-                <p *ngFor="let attribute of sweDocInfo.attributes" class="m-0">
-                  <span class="emphasis">&#8281;</span> &nbsp;
-                  {{ attribute }} &nbsp;
-                </p>
-                <p><span class="emphasis">&#8281;</span></p>
-              </div>
-              <p style="padding: 5%">
-                {{ sweDocInfo.blurb }}
-              </p>
-              <div class="d-flex m-auto w-50">
-                <carousel [isAnimated]="true">
-                  <slide
-                    *ngFor="
-                      let image of sweDocInfo.images;
-                      index as i;
-                      count as c
-                    "
-                  >
-                    <img
-                      [src]="image"
-                      alt="Software Documentation Screen Shot"
-                      class="d-block w-100"
-                    />
-                  </slide>
-                </carousel>
+              <div>
+                <a
+                  [href]="brewBuddyInfo.repoLinkiOS"
+                  class="btn btn-outline-secondary btn-lg mr-3"
+                  target="_blank"
+                >
+                  <fa-icon [icon]="faGithub"></fa-icon> {{ viewSourceCode }}
+                  iOS
+                </a>
               </div>
             </div>
+            <div
+              class="row d-flex justify-content-center align-content-between"
+            >
+              <p *ngFor="let attribute of brewBuddyInfo.attributes" class="m-0">
+                <span class="emphasis">&#8281;</span> &nbsp;
+                {{ attribute }} &nbsp;
+              </p>
+              <p><span class="emphasis">&#8281;</span></p>
+            </div>
+            <p style="padding: 5%">
+              {{ brewBuddyInfo.blurb }}
+            </p>
+            <div class="d-flex m-auto w-50">
+              <carousel [isAnimated]="true">
+                <slide
+                  *ngFor="
+                    let image of brewBuddyInfo.images;
+                    index as i;
+                    count as c
+                  "
+                >
+                  <img
+                    [src]="image"
+                    alt="BrewBuddy Application Screen Shot"
+                    class="d-block w-100"
+                  />
+                </slide>
+              </carousel>
+            </div>
           </div>
-
           <!-- content end -->
         </div>
       </div>
       <div class="col-md-6">
         <div class="card shadow-lg">
-          <!-- content start -->
+          <div #brewbuddy class="col">
+            <div class="">
+              Android Chart
+              <app-charts
+                [chartName]="'BrewBuddy-Android'"
+                [theme]="'default'"
+              ></app-charts>
+              iOS Chart
+              <app-charts
+                [chartName]="'BrewBuddy-iOS'"
+                [theme]="'default'"
+              ></app-charts>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="col-md-6">
+        <div class="card shadow-lg">
+           content start 
           <div #pixelHero class="row">
-            <div class="container-fluid">
+            <div class="">
               <a id="php"></a>
               <p style="padding: 5%">
                 <span class="emphasis">Pixel Hero Project Highlights</span>
@@ -347,11 +361,9 @@
               ></iframe>
             </div>
           </div>
-          <!-- content end -->
+           content end 
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
-
-  <!-- TODO: fix image references -->
 </div>

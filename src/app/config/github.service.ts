@@ -23,8 +23,4 @@ export class GithubService {
   getAllRepos(): Observable<any> {
     return this.http.get<RepoData>(this.stAllRepos);
   }
-
-  getAllRepos2(): Observable<any> {
-    return this.http.get<any>(this.stAllRepos);
-  }
 }
