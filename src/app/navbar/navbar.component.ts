@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faTemperatureLow } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-navbar',
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
   constructor() {}
 
+  isCollapsed = true;
   navBarContent = {
     name: 'Shane Taylor',
     title: 'Software Developer',
