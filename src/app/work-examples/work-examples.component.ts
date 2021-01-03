@@ -91,7 +91,7 @@ export class WorkExamplesComponent implements OnInit {
   public readonly brewBuddyInfo = {
     name: 'BrewBuddy',
     repoLinkAndroid: 'https://github.com/TaylorShane/BrewBuddy-Android',
-    repoLinkiOS: 'https://api.github.com/repos/TaylorShane/BrewBuddy-iOS',
+    repoLinkiOS: 'https://github.com/TaylorShane/BrewBuddy-iOS',
     images: [
       '../../assets/img/brewbuddy/Screenshot_1507672646.png',
       '../../assets/img/brewbuddy/Screenshot_1507672671.png',
