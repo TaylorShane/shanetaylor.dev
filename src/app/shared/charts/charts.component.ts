@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { GithubService } from 'src/app/config/github.service';
 import { RepoData } from '../models/models';
+import { shareReplay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-charts',
@@ -12,6 +13,8 @@ export class ChartsComponent implements OnInit {
   @Input() theme: string;
   repoData: RepoData[] = [];
   echartsInstance: any;
+  allReposSubscription$: any;
+  singleRepoSubscription$: any;
 
   options = {
     title: {
@@ -58,6 +61,9 @@ export class ChartsComponent implements OnInit {
   constructor(private githubService: GithubService) {}
 
   ngOnInit(): void {
+    this.allReposSubscription$ = this.githubService
+      .getAllRepos()
+      .pipe(shareReplay(1));
     this.getChartData();
   }
 
@@ -84,16 +90,7 @@ export class ChartsComponent implements OnInit {
   }
 
   getAllReposData(): void {
-    /**
-     * names:
-     * BrewBuddy-Android
-     * BrewBuddy-iOS
-     * Graphy
-     * Modern-Database-Management
-     * shanetaylor
-     * Spotter
-     * */
-    this.githubService.getAllRepos().subscribe(
+    this.allReposSubscription$.subscribe(
       (data) => {
         for (const i in data) {
           if (data[i].hasOwnProperty('name')) {
