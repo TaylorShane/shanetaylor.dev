@@ -49,7 +49,8 @@ export class WorkExamplesComponent implements OnInit {
     name: 'Trump Haiku Generator',
     playstoreLink:
       'https://play.google.com/store/apps/details?id=com.shane_taylor.trumphaikugenerator&hl=en',
-    websiteLink: 'http://trumphaikugenerator.com/',
+    websiteLink: 'https://trumphaikugenerator.com/',
+    websiteLinkText: 'THG website',
     images: [
       '../../assets/img/THG/Screenshot_1510861783.png',
       '../../assets/img/THG/Screenshot_1510861989.png',
@@ -84,13 +85,12 @@ export class WorkExamplesComponent implements OnInit {
       'Coupling and cohesion best practices',
     ],
     blurb:
-      'Spotter is a Windows Presentation Foundation application written in C# and created in Visual Studio. Spotter is a powerful diet and excercise App to help users manage their calorie count, select a workout type, manage their workout schedule, and motivate them to achieve the body type they desire.',
+      'Spotter is a Windows Presentation Foundation application written in C# and created in Visual Studio. Spotter is a diet and exercise App to help users manage their calorie count, select a workout type, manage their workout schedule, and motivate them to achieve the body type they desire.',
   };
 
   public readonly brewBuddyInfo = {
     name: 'BrewBuddy',
-    repoLinkAndroid:
-      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android',
+    repoLinkAndroid: 'https://github.com/TaylorShane/BrewBuddy-Android',
     repoLinkiOS: 'https://api.github.com/repos/TaylorShane/BrewBuddy-iOS',
     images: [
       '../../assets/img/brewbuddy/Screenshot_1507672646.png',

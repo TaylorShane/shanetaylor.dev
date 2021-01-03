@@ -113,7 +113,10 @@
             </div>
             <p style="padding: 5%">
               {{ thgInfo.blurb }}
-              <a [href]="thgInfo.websiteLink" target="_blank">THG website</a>.
+              <a [href]="thgInfo.websiteLink" target="_blank">{{
+                thgInfo.websiteLinkText
+              }}</a
+              >.
             </p>
             <div class="d-flex">
               <carousel class="w-50 m-auto" [isAnimated]="true">
@@ -312,12 +315,16 @@
       </div>
       <div class="col-md-6">
         <div class="card shadow-lg">
-          <div class="col">
+          <div class="d-flex">
             <app-charts
+              style="width: 100%"
               [chartName]="'BrewBuddy-Android'"
               [theme]="'default'"
             ></app-charts>
+          </div>
+          <div class="d-flex">
             <app-charts
+              style="width: 100%"
               [chartName]="'BrewBuddy-iOS'"
               [theme]="'default'"
             ></app-charts>
