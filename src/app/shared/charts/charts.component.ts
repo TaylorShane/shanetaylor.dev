@@ -72,7 +72,7 @@ export class ChartsComponent implements OnInit {
       if (this.chartName === 'allRepos') {
         this.getAllReposData();
       } else if (this.chartName != undefined) {
-        this.getIndividualRepoData(this.chartName);
+        // this.getIndividualRepoData(this.chartName);
       }
     }
   }
@@ -113,14 +113,14 @@ export class ChartsComponent implements OnInit {
     );
   }
 
+  /**
   private getIndividualRepoData(repoName: string) {
-    this.setChartOptions(repoName);
+    // this.setChartOptions(repoName);
     this.githubService
       .getAllLanguagesForGivenRepo(repoName)
       .subscribe((data) => {
         const keys = Object.keys(data);
         let values = Object.values(data) as number[];
-        let predominantLanguage = Math.max(...values);
 
         for (let index = 0; index < keys.length; index++) {
           this.repoData[index] = {
@@ -133,7 +133,9 @@ export class ChartsComponent implements OnInit {
         }
       });
   }
+  */
 
+  /**
   private setChartOptions(repoName: string) {
     this.options = {
       title: {
@@ -175,4 +177,5 @@ export class ChartsComponent implements OnInit {
       ],
     };
   }
+   */
 }

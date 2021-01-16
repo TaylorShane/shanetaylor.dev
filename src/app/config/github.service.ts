@@ -11,6 +11,7 @@ export class GithubService {
   // gitHub endpoints
   // https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#list-repository-languages
 
+  // https://api.github.com/orgs/TaylorShane/projects
   private readonly baseUrl = 'https://api.github.com/repos/TaylorShane/';
   private readonly stAllRepos =
     'https://api.github.com/users/TaylorShane/repos';

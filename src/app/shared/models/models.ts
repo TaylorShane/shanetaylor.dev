@@ -98,7 +98,7 @@ export interface RepoData {
   language: string;
   name: string;
   url: string;
-  value: number;
+  size: number;
 }
 
 /**

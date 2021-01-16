@@ -48,6 +48,17 @@
                 </a>
               </div>
             </div>
+            <!-- TODO: bind lang data
+              <div class="row m-auto">
+              <div class="d-flex mx-auto">
+                <i
+                  role="img"
+                  class="fas fa-code notranslate align-self-center"
+                ></i>
+                &nbsp;
+                <label>Language: Java</label>
+              </div>
+            </div> -->
 
             <div
               class="row d-flex justify-content-center align-content-between"
@@ -58,11 +69,12 @@
               </p>
               <p><span class="emphasis">&#8281;</span></p>
             </div>
+
             <p style="padding: 5%">
               {{ graphyInfo.blurb }}
             </p>
             <div class="d-flex m-auto w-60">
-              <carousel class="m-auto" [isAnimated]="true">
+              <carousel class="m-auto pb-5" [isAnimated]="true">
                 <slide
                   *ngFor="
                     let image of graphyInfo.images;
@@ -78,8 +90,7 @@
                 </slide>
               </carousel>
             </div>
-
-            <app-charts [chartName]="'graphy'" [theme]="'light'"></app-charts>
+            <!-- <app-charts [chartName]="'graphy'" [theme]="'light'"></app-charts> -->
           </div>
           <!-- content end -->
         </div>
@@ -119,7 +130,7 @@
               >.
             </p>
             <div class="d-flex">
-              <carousel class="w-50 m-auto" [isAnimated]="true">
+              <carousel class="w-50 m-auto pb-5" [isAnimated]="true">
                 <slide
                   *ngFor="let image of thgInfo.images; index as i; count as c"
                 >
@@ -131,7 +142,7 @@
                 </slide>
               </carousel>
             </div>
-            <app-charts [chartName]="'graphy'"></app-charts>
+            <!-- <app-charts [chartName]="'graphy'"></app-charts> -->
           </div>
         </div>
       </div>
@@ -166,7 +177,7 @@
               {{ spottertInfo.blurb }}
             </p>
             <div class="d-flex m-auto w-60">
-              <carousel class="m-auto" [isAnimated]="true">
+              <carousel class="m-auto pb-5" [isAnimated]="true">
                 <slide
                   *ngFor="
                     let image of spottertInfo.images;
@@ -182,10 +193,10 @@
                 </slide>
               </carousel>
             </div>
-            <app-charts
+            <!-- <app-charts
               [chartName]="'Spotter'"
               [theme]="'macarons'"
-            ></app-charts>
+            ></app-charts> -->
           </div>
         </div>
       </div>
@@ -230,7 +241,7 @@
               {{ sweDocInfo.blurb }}
             </p>
             <div class="d-flex m-auto w-50">
-              <carousel class="m-auto" [isAnimated]="true">
+              <carousel class="m-auto pb-5" [isAnimated]="true">
                 <slide
                   *ngFor="
                     let image of sweDocInfo.images;
@@ -293,7 +304,7 @@
               {{ brewBuddyInfo.blurb }}
             </p>
             <div class="d-flex m-auto w-50">
-              <carousel class="m-auto" [isAnimated]="true">
+              <carousel class="m-auto pb-5" [isAnimated]="true">
                 <slide
                   *ngFor="
                     let image of brewBuddyInfo.images;
@@ -313,22 +324,22 @@
           <!-- content end -->
         </div>
       </div>
-      <div class="col-md-6">
-        <div class="card shadow-lg">
-          <div class="d-flex">
+      <div class="col-md-6 d-flex w-100">
+        <div class="card shadow-lg w-100">
+          <!-- <div class="my-auto">
             <app-charts
               style="width: 100%"
               [chartName]="'BrewBuddy-Android'"
               [theme]="'default'"
             ></app-charts>
           </div>
-          <div class="d-flex">
+          <div class="my-auto">
             <app-charts
               style="width: 100%"
               [chartName]="'BrewBuddy-iOS'"
               [theme]="'default'"
             ></app-charts>
-          </div>
+          </div> -->
         </div>
       </div>
       <!-- <div class="col-md-6">

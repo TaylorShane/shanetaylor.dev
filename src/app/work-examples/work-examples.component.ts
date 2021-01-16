@@ -1,6 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { faGithub, faGooglePlay } from '@fortawesome/free-brands-svg-icons';
 import { GithubService } from '../config/github.service';
+import { RepoData } from '../shared/models/models';
 @Component({
   selector: 'app-work-examples',
   templateUrl: './work-examples.component.html',
@@ -129,7 +130,41 @@ export class WorkExamplesComponent implements OnInit {
     viewADD: 'Analysis and Design Document',
   };
 
-  constructor() {}
+  repoData: RepoData[] = [];
+  repoNames = [
+    'shanetaylor',
+    'graphy',
+    'Spotter',
+    'BrewBuddy-Android',
+    'BrewBuddy-iOS',
+  ];
 
-  ngOnInit() {}
+  constructor(private githubService: GithubService) {}
+
+  ngOnInit() {
+    this.repoNames.forEach((repoName) => {
+      this.getIndividualRepoData(repoName);
+    });
+  }
+
+  private getIndividualRepoData(repoName: string) {
+    // this.setChartOptions(repoName);
+    this.githubService
+      .getAllLanguagesForGivenRepo(repoName)
+      .subscribe((data) => {
+        const keys = Object.keys(data);
+        let values = Object.values(data) as number[];
+
+        for (let index = 0; index < keys.length; index++) {
+          this.repoData[index] = {
+            size: values[index],
+            name: keys[index],
+            description: repoName,
+            language: keys[values.indexOf(Math.max(...values))],
+            url: 'https://github.com/TaylorShane/' + repoName,
+          };
+        }
+        console.log('repoData : ', this.repoData);
+      });
+  }
 }
