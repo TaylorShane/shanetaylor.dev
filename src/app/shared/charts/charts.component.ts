@@ -35,16 +35,6 @@ export class ChartsComponent implements OnInit {
     legend: {
       x: 'center',
       y: 'bottom',
-      data: [
-        'rose1',
-        'rose2',
-        'rose3',
-        'rose4',
-        'rose5',
-        'rose6',
-        'rose7',
-        'rose8',
-      ],
     },
     calculable: true,
     series: [
@@ -71,15 +61,14 @@ export class ChartsComponent implements OnInit {
     if (this.chartName != undefined) {
       if (this.chartName === 'allRepos') {
         this.getAllReposData();
-      } else if (this.chartName != undefined) {
-        // this.getIndividualRepoData(this.chartName);
+      } else if (this.chartName === 'shanetaylor') {
+        this.getIndividualRepoData(this.chartName);
       }
     }
   }
 
   onChartInit(ec): void {
     this.echartsInstance = ec;
-    this.getChartData();
     this.resizeChart();
   }
 
@@ -92,30 +81,20 @@ export class ChartsComponent implements OnInit {
   getAllReposData(): void {
     this.allReposSubscription$.subscribe(
       (data) => {
-        for (const i in data) {
-          if (data[i].hasOwnProperty('name')) {
-            if (data[i].name !== '') {
-              this.repoData[i] = {
-                value: data[i].size,
-                name: data[i].name,
-                description: data[i].description || '',
-                language: data[i].language,
-                url: data[i].url,
-              };
-            }
-          }
-        }
+        data.forEach((repo) => {
+          let element = new RepoData(repo);
+          this.repoData.push(element);
+        });
       },
       (error) => {
-        console.log('This is the getAllRepos error' + error);
+        console.log('Unable to getAllRepos()' + error);
       },
       () => {}
     );
   }
 
-  /**
   private getIndividualRepoData(repoName: string) {
-    // this.setChartOptions(repoName);
+    this.setChartOptions(repoName);
     this.githubService
       .getAllLanguagesForGivenRepo(repoName)
       .subscribe((data) => {
@@ -133,20 +112,18 @@ export class ChartsComponent implements OnInit {
         }
       });
   }
-  */
 
-  /**
   private setChartOptions(repoName: string) {
     this.options = {
       title: {
-        text: repoName + ' project languages statistics',
+        text: repoName + '.dev project languages statistics',
         subtext: 'languages used and poroportions ',
         x: 'center',
       },
       tooltip: {
         trigger: 'item',
         formatter(params): any {
-          return `${params.name}<br />
+          return `${params.name}'<br />
                   <div>Predominant Language: ${params.data.language}</div>
                   (${params.name} is ${params.percent}% of all languages used in this project)`;
         },
@@ -154,16 +131,6 @@ export class ChartsComponent implements OnInit {
       legend: {
         x: 'center',
         y: 'bottom',
-        data: [
-          'rose1',
-          'rose2',
-          'rose3',
-          'rose4',
-          'rose5',
-          'rose6',
-          'rose7',
-          'rose8',
-        ],
       },
       calculable: true,
       series: [
@@ -177,5 +144,4 @@ export class ChartsComponent implements OnInit {
       ],
     };
   }
-   */
 }

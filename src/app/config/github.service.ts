@@ -10,18 +10,20 @@ import { shareReplay } from 'rxjs/operators';
 export class GithubService {
   // gitHub endpoints
   // https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#list-repository-languages
-
   // https://api.github.com/orgs/TaylorShane/projects
   private readonly baseUrl = 'https://api.github.com/repos/TaylorShane/';
   private readonly stAllRepos =
     'https://api.github.com/users/TaylorShane/repos';
-  public httpCallCount = 0;
   private readonly _getContent = new Map<string, Observable<any>>();
+  private readonly options: any = {
+    headers: { 'User-Agent': 'request' },
+    json: true,
+  };
 
   constructor(private http: HttpClient) {}
 
   getAllRepos(): Observable<any> {
-    return this.http.get<RepoData>(this.stAllRepos);
+    return this.http.get<RepoData>(this.stAllRepos, this.options);
   }
 
   getAllLanguagesForGivenRepo(repoName: string): Observable<any> {

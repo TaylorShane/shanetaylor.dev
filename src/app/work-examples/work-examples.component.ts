@@ -5,7 +5,7 @@ import { RepoData } from '../shared/models/models';
 @Component({
   selector: 'app-work-examples',
   templateUrl: './work-examples.component.html',
-  styleUrls: ['./work-examples.component.sass'],
+  styleUrls: ['./work-examples.component.css'],
 })
 export class WorkExamplesComponent implements OnInit {
   // @Output() newRepoData: EventEmitter<any> = new EventEmitter();
@@ -157,14 +157,13 @@ export class WorkExamplesComponent implements OnInit {
 
         for (let index = 0; index < keys.length; index++) {
           this.repoData[index] = {
-            size: values[index],
+            value: values[index],
             name: keys[index],
             description: repoName,
             language: keys[values.indexOf(Math.max(...values))],
             url: 'https://github.com/TaylorShane/' + repoName,
           };
         }
-        console.log('repoData : ', this.repoData);
       });
   }
 }
