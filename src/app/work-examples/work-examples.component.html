@@ -48,17 +48,17 @@
                 </a>
               </div>
             </div>
-            <!-- TODO: bind lang data
-              <div class="row m-auto">
+
+            <div class="row m-auto">
               <div class="d-flex mx-auto">
                 <i
                   role="img"
                   class="fas fa-code notranslate align-self-center"
                 ></i>
                 &nbsp;
-                <label>Language: Java</label>
+                <label>Language: {{ graphyLangData?.repo?.lang[0] }}</label>
               </div>
-            </div> -->
+            </div>
 
             <div
               class="row d-flex justify-content-center align-content-between"
@@ -113,6 +113,18 @@
                 </a>
               </div>
             </div>
+
+            <div class="row m-auto">
+              <div class="d-flex mx-auto">
+                <i
+                  role="img"
+                  class="fas fa-code notranslate align-self-center"
+                ></i>
+                &nbsp;
+                <label>Language: {{ graphyLangData?.repo?.lang[0] }}</label>
+              </div>
+            </div>
+
             <div
               class="row d-flex justify-content-center align-content-between"
             >
@@ -164,6 +176,18 @@
                 </a>
               </div>
             </div>
+
+            <div class="row m-auto">
+              <div class="d-flex mx-auto">
+                <i
+                  role="img"
+                  class="fas fa-code notranslate align-self-center"
+                ></i>
+                &nbsp;
+                <label>Language: {{ spotterLangData?.repo?.lang[0] }}</label>
+              </div>
+            </div>
+
             <div
               class="row d-flex justify-content-center align-content-between"
             >
@@ -277,8 +301,21 @@
                   target="_blank"
                 >
                   <fa-icon [icon]="faGithub"></fa-icon> {{ viewSourceCode }}
-                  Android
+                  {{ brewBuddyInfo.android }}
                 </a>
+              </div>
+              <div class="row m-auto">
+                <div class="d-flex mx-auto">
+                  <i
+                    role="img"
+                    class="fas fa-code notranslate align-self-center"
+                  ></i>
+                  &nbsp;
+                  <label
+                    >Language:
+                    {{ brewbuddyAndroindLangData?.repo?.lang[0] }}</label
+                  >
+                </div>
               </div>
               <div>
                 <a
@@ -287,10 +324,23 @@
                   target="_blank"
                 >
                   <fa-icon [icon]="faGithub"></fa-icon> {{ viewSourceCode }}
-                  iOS
+                  {{ brewBuddyInfo.ios }}
                 </a>
               </div>
             </div>
+            <div class="row m-auto">
+              <div class="d-flex mx-auto">
+                <i
+                  role="img"
+                  class="fas fa-code notranslate align-self-center"
+                ></i>
+                &nbsp;
+                <label
+                  >Language: {{ brewbuddyIosLangData?.repo?.lang[0] }}</label
+                >
+              </div>
+            </div>
+
             <div
               class="row d-flex justify-content-center align-content-between"
             >

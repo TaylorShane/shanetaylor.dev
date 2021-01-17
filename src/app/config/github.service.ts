@@ -16,7 +16,7 @@ export class GithubService {
     'https://api.github.com/users/TaylorShane/repos';
   private readonly _getContent = new Map<string, Observable<any>>();
   private readonly options: any = {
-    headers: { 'User-Agent': 'request' },
+    // headers: { 'User-Agent': 'request' },
     json: true,
   };
 

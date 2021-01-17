@@ -13,10 +13,16 @@ export class RepoData {
   }
 }
 export class Languages {
-  lang: string;
-  size: number;
-  constructor(languageResponse: any) {
-    this.lang = languageResponse.lang;
-    this.size = languageResponse.size;
+  repo: {
+    name: string;
+    lang: string[];
+    size: number[];
+  };
+  constructor(name, languageResponse: any) {
+    this.repo = {
+      name: name,
+      lang: Object.keys(languageResponse),
+      size: Object.values(languageResponse),
+    };
   }
 }

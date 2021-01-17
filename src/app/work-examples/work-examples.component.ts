@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faGithub, faGooglePlay } from '@fortawesome/free-brands-svg-icons';
 import { GithubService } from '../config/github.service';
-import { RepoData } from '../shared/models/models';
+import { Languages } from '../shared/models/models';
 @Component({
   selector: 'app-work-examples',
   templateUrl: './work-examples.component.html',
@@ -90,6 +90,8 @@ export class WorkExamplesComponent implements OnInit {
 
   public readonly brewBuddyInfo = {
     name: 'BrewBuddy',
+    android: 'Android',
+    ios: 'iOS',
     repoLinkAndroid: 'https://github.com/TaylorShane/BrewBuddy-Android',
     repoLinkiOS: 'https://github.com/TaylorShane/BrewBuddy-iOS',
     images: [
@@ -129,7 +131,11 @@ export class WorkExamplesComponent implements OnInit {
     viewADD: 'Analysis and Design Document',
   };
 
-  repoData: RepoData[] = [];
+  shanetaylorLangData: Languages;
+  graphyLangData: Languages;
+  spotterLangData: Languages;
+  brewbuddyAndroindLangData: Languages;
+  brewbuddyIosLangData: Languages;
   repoNames = [
     'shanetaylor',
     'graphy',
@@ -147,21 +153,33 @@ export class WorkExamplesComponent implements OnInit {
   }
 
   private getIndividualRepoData(repoName: string) {
-    this.githubService
-      .getAllLanguagesForGivenRepo(repoName)
-      .subscribe((data) => {
-        const keys = Object.keys(data);
-        let values = Object.values(data) as number[];
+    this.githubService.getAllLanguagesForGivenRepo(repoName).subscribe(
+      (data) => {
+        let repoLangauges = new Languages(repoName, data);
+        switch (repoName) {
+          case 'shanetaylor':
+            this.shanetaylorLangData = repoLangauges;
+            break;
+          case 'graphy':
+            this.graphyLangData = repoLangauges;
+            break;
+          case 'Spotter':
+            this.spotterLangData = repoLangauges;
+            break;
+          case 'BrewBuddy-Android':
+            this.brewbuddyAndroindLangData = repoLangauges;
+            break;
+          case 'BrewBuddy-iOS':
+            this.brewbuddyIosLangData = repoLangauges;
+            break;
 
-        for (let index = 0; index < keys.length; index++) {
-          this.repoData[index] = {
-            value: values[index],
-            name: keys[index],
-            description: repoName,
-            language: keys[values.indexOf(Math.max(...values))],
-            url: 'https://github.com/TaylorShane/' + repoName,
-          };
+          default:
+            break;
         }
-      });
+      },
+      (error) => {
+        console.log('Unable to getAllLanguagesForGivenRepo()' + error);
+      }
+    );
   }
 }
