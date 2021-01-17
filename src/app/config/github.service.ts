@@ -14,7 +14,7 @@ export class GithubService {
   private readonly baseUrl = 'https://api.github.com/repos/TaylorShane/';
   private readonly stAllRepos =
     'https://api.github.com/users/TaylorShane/repos';
-  private readonly _getContent = new Map<string, Observable<any>>();
+  private readonly getContent = new Map<string, Observable<any>>();
   private readonly options: any = {
     // headers: { 'User-Agent': 'request' },
     json: true,
@@ -28,14 +28,14 @@ export class GithubService {
 
   getAllLanguagesForGivenRepo(repoName: string): Observable<any> {
     const cacheKey = `${repoName}`;
-    if (!this._getContent.get(cacheKey)) {
-      this._getContent.set(
+    if (!this.getContent.get(cacheKey)) {
+      this.getContent.set(
         cacheKey,
         this.http
           .get(this.baseUrl + repoName + '/languages')
           .pipe(shareReplay(1))
       );
     }
-    return this._getContent.get(cacheKey);
+    return this.getContent.get(cacheKey);
   }
 }

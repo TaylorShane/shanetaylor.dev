@@ -18,7 +18,7 @@ export class ChartsComponent implements OnInit {
 
   options = {
     title: {
-      text: "Shane's Github Stats",
+      text: 'My Github Projects',
       subtext: 'Current projects in my Github repository',
       x: 'center',
     },
@@ -39,7 +39,6 @@ export class ChartsComponent implements OnInit {
     calculable: true,
     series: [
       {
-        name: 'this area',
         type: 'pie',
         radius: [30, 110],
         roseType: 'area',
@@ -58,7 +57,7 @@ export class ChartsComponent implements OnInit {
   }
 
   getChartData(): void {
-    if (this.chartName != undefined) {
+    if (this.chartName !== undefined) {
       if (this.chartName === 'allRepos') {
         this.getAllReposData();
       } else if (this.chartName === 'shanetaylor') {
@@ -82,7 +81,7 @@ export class ChartsComponent implements OnInit {
     this.allReposSubscription$.subscribe(
       (data) => {
         data.forEach((repo) => {
-          let element = new RepoData(repo);
+          const element = new RepoData(repo);
           this.repoData.push(element);
         });
       },
@@ -93,13 +92,13 @@ export class ChartsComponent implements OnInit {
     );
   }
 
-  private getSTdevChartData(repoName: string) {
+  private getSTdevChartData(repoName: string): void {
     this.setChartOptions(repoName);
     this.githubService
       .getAllLanguagesForGivenRepo(repoName)
       .subscribe((data) => {
         const keys = Object.keys(data);
-        let values = Object.values(data) as number[];
+        const values = Object.values(data) as number[];
 
         for (let index = 0; index < keys.length; index++) {
           this.repoData[index] = {
@@ -113,7 +112,7 @@ export class ChartsComponent implements OnInit {
       });
   }
 
-  private setChartOptions(repoName: string) {
+  private setChartOptions(repoName: string): void {
     this.options = {
       title: {
         text: repoName + '.dev project languages statistics',
@@ -135,7 +134,6 @@ export class ChartsComponent implements OnInit {
       calculable: true,
       series: [
         {
-          name: 'this area',
           type: 'pie',
           radius: [30, 110],
           roseType: 'area',

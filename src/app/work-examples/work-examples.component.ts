@@ -11,7 +11,7 @@ export class WorkExamplesComponent implements OnInit {
   faGithub = faGithub;
   faGooglePlay = faGooglePlay;
   public readonly siteBlurb =
-    "This website was created with Visual Studio Code using Angular 11 and various third party libraries such as ngx-bootstrap, ngx-echarts, and fontawesome. I've created a service in this site that gets my repository data from Github and then I use that data to create the below charts. For   example, here's a chart that shows the various languages used to create this site and their porportions.";
+    "This website was created with Visual Studio Code using Angular 11 and various third party libraries such as ngx-bootstrap, ngx-echarts, and fontawesome. I've created a service in this site that gets my repository data from Github and then I use that data to create the below charts. For example, here's a chart that shows the various languages used to create this site and their porportions.";
   public readonly exampleWork = 'Excample Work';
   public readonly slideInterval = 3000;
   public readonly here = 'here';
@@ -146,16 +146,16 @@ export class WorkExamplesComponent implements OnInit {
 
   constructor(private githubService: GithubService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.repoNames.forEach((repoName) => {
       this.getIndividualRepoData(repoName);
     });
   }
 
-  private getIndividualRepoData(repoName: string) {
+  private getIndividualRepoData(repoName: string): void {
     this.githubService.getAllLanguagesForGivenRepo(repoName).subscribe(
       (data) => {
-        let repoLangauges = new Languages(repoName, data);
+        const repoLangauges = new Languages(repoName, data);
         switch (repoName) {
           case 'shanetaylor':
             this.shanetaylorLangData = repoLangauges;
