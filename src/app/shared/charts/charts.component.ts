@@ -6,7 +6,7 @@ import { shareReplay } from 'rxjs/operators';
 @Component({
   selector: 'app-charts',
   templateUrl: './charts.component.html',
-  styleUrls: ['./charts.component.css'],
+  styleUrls: ['./charts.component.scss'],
 })
 export class ChartsComponent implements OnInit {
   @Input() chartName: string;
@@ -62,7 +62,7 @@ export class ChartsComponent implements OnInit {
       if (this.chartName === 'allRepos') {
         this.getAllReposData();
       } else if (this.chartName === 'shanetaylor') {
-        this.getIndividualRepoData(this.chartName);
+        this.getSTdevChartData(this.chartName);
       }
     }
   }
@@ -93,7 +93,7 @@ export class ChartsComponent implements OnInit {
     );
   }
 
-  private getIndividualRepoData(repoName: string) {
+  private getSTdevChartData(repoName: string) {
     this.setChartOptions(repoName);
     this.githubService
       .getAllLanguagesForGivenRepo(repoName)

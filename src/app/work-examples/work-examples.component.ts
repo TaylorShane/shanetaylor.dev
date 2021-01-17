@@ -5,10 +5,9 @@ import { RepoData } from '../shared/models/models';
 @Component({
   selector: 'app-work-examples',
   templateUrl: './work-examples.component.html',
-  styleUrls: ['./work-examples.component.css'],
+  styleUrls: ['./work-examples.component.scss'],
 })
 export class WorkExamplesComponent implements OnInit {
-  // @Output() newRepoData: EventEmitter<any> = new EventEmitter();
   faGithub = faGithub;
   faGooglePlay = faGooglePlay;
   public readonly siteBlurb =
@@ -148,7 +147,6 @@ export class WorkExamplesComponent implements OnInit {
   }
 
   private getIndividualRepoData(repoName: string) {
-    // this.setChartOptions(repoName);
     this.githubService
       .getAllLanguagesForGivenRepo(repoName)
       .subscribe((data) => {

@@ -124,5 +124,10 @@
       }
     }
   },
-  "defaultProject": "shanetaylor"
+  "defaultProject": "shanetaylor",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
