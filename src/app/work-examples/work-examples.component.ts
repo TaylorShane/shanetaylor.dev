@@ -180,7 +180,7 @@ export class WorkExamplesComponent implements OnInit {
         }
       },
       (error) => {
-        console.log('Unable to getAllLanguagesForGivenRepo()' + error);
+        console.warn('Unable to getAllLanguagesForGivenRepo()' + error);
       }
     );
   }

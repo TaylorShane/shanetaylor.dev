@@ -1,67 +1,74 @@
-<div class="d-flex align-items-center">
+<div class="d-flex align-items-center container-fluid px-5">
   <div class="card shadow-lg">
-    <div class="col">
-      <a id="android"></a>
-      <div>
-        <span class="emphasis">{{ exampleData.name }}</span>
+    <a id="android"></a>
+    <div>
+      <span class="emphasis">{{ exampleData.name }}</span>
+    </div>
+    <ng-container *ngIf="exampleData.playstoreLink != undefined">
+      <div class="p-3">
+        <a
+          [href]="exampleData.playstoreLink"
+          class="btn btn-outline-secondary btn-lg mr-3"
+          target="_blank"
+        >
+          <fa-icon [icon]="faGooglePlay"></fa-icon>
+          {{ playstoreDownload }}
+        </a>
       </div>
-      <ng-container *ngIf="exampleData.playstoreLink != undefined">
-        <div class="p-3">
-          <a
-            [href]="exampleData.playstoreLink"
-            class="btn btn-outline-secondary btn-lg mr-3"
-            target="_blank"
-          >
-            <fa-icon [icon]="faGooglePlay"></fa-icon>
-            {{ playstoreDownload }}
-          </a>
-        </div>
-      </ng-container>
-      <ng-container *ngIf="exampleData.repoLink != undefined">
-        <div class="p-3">
-          <a
-            [href]="exampleData.repoLink"
-            class="btn btn-outline-secondary btn-lg mr-3"
-            target="_blank"
-          >
-            <fa-icon [icon]="faGithub"></fa-icon>
-            {{ viewSourceCode }}
-          </a>
-        </div>
-      </ng-container>
+    </ng-container>
+    <ng-container *ngIf="exampleData.repoLink != undefined">
+      <div class="p-3">
+        <a
+          [href]="exampleData.repoLink"
+          class="btn btn-outline-secondary btn-lg mr-3"
+          target="_blank"
+        >
+          <fa-icon [icon]="faGithub"></fa-icon>
+          {{ viewSourceCode }}
+        </a>
+      </div>
+    </ng-container>
 
-      <div class="row m-auto">
-        <div class="d-flex mx-auto">
+    <div class="row m-auto">
+      <div class="d-flex mx-auto">
+        <ng-container *ngIf="langData">
           <i role="img" class="fas fa-code notranslate align-self-center"></i>
           &nbsp;
-          <label>Language: {{ langData?.repo?.lang[0] }}</label>
-        </div>
-      </div>
+          <label>Language: {{ langData?.lang[0] }}</label>
+        </ng-container>
 
-      <div class="row d-flex justify-content-center align-content-between">
-        <p *ngFor="let attribute of exampleData.attributes" class="m-0">
-          <span class="emphasis">&#8281;</span> &nbsp; {{ attribute }}
+        <!-- TODO: fix this to work more dynamically with multiple values -->
+        <!-- <ng-container *ngIf="languages?.length > 0"> -->
+        <!-- <ng-template *ngFor="let lang of languages">
+          <i role="img" class="fas fa-code notranslate align-self-center"></i>
           &nbsp;
-        </p>
-        <p><span class="emphasis">&#8281;</span></p>
+          <label>Language: {{ lang }}</label>
+        </ng-template> -->
+        <!-- </ng-container> -->
       </div>
+    </div>
 
-      <p style="padding: 5%">
-        {{ exampleData.blurb }}
+    <div class="row d-flex justify-content-center align-content-between">
+      <p *ngFor="let attribute of exampleData.attributes" class="m-0">
+        <span class="emphasis">&#8281;</span> &nbsp; {{ attribute }}
+        &nbsp;
       </p>
-      <div class="d-flex m-auto w-60">
-        <carousel class="m-auto pb-5" [isAnimated]="true">
-          <slide
-            *ngFor="let image of exampleData.images; index as i; count as c"
-          >
-            <img
-              [src]="image"
-              alt="Application Screen Shot"
-              class="d-block w-100"
-            />
-          </slide>
-        </carousel>
-      </div>
+      <p><span class="emphasis">&#8281;</span></p>
+    </div>
+
+    <p style="padding: 5%">
+      {{ exampleData.blurb }}
+    </p>
+    <div class="d-flex m-auto w-60">
+      <carousel class="m-auto pb-5" [isAnimated]="true">
+        <slide *ngFor="let image of exampleData.images; index as i; count as c">
+          <img
+            [src]="image"
+            alt="Application Screen Shot"
+            class="d-block w-100"
+          />
+        </slide>
+      </carousel>
     </div>
   </div>
 </div>

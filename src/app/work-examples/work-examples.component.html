@@ -16,7 +16,7 @@
         <fa-icon [icon]="faGithub"></fa-icon> {{ viewProject }}
       </a>
     </div>
-    <div class="pt-5 container-fluid">
+    <div class="container-fluid">
       <app-charts
         class="pb-5"
         [chartName]="'allRepos'"
@@ -26,18 +26,21 @@
     <div class="d-flex flex-wrap">
       <app-example
         class="example-placement m-auto"
-        id="android"
+        id="thg"
         [exampleData]="thgInfo"
+        [langData]="graphyLangData"
       ></app-example>
       <app-example
         class="example-placement m-auto"
         id="graphy"
         [exampleData]="graphyInfo"
+        [langData]="graphyLangData"
       ></app-example>
       <app-example
         class="example-placement m-auto"
         id="spotter"
         [exampleData]="spottertInfo"
+        [langData]="spotterLangData"
       ></app-example>
       <app-example
         class="example-placement m-auto"
@@ -48,6 +51,7 @@
         class="example-placement m-auto"
         id="brewBuddy"
         [exampleData]="brewBuddyInfo"
+        [langData]="brewbuddyAndroindLangData"
       ></app-example>
 
       <!-- <div class="col-md-6 d-flex align-items-center">
