@@ -7,3 +7,9 @@ a {
 p {
   margin-bottom: 0px;
 }
+.example-placement {
+  max-width: 48vw;
+  min-width: 45vw;
+  flex: 1 1 auto;
+  align-self: center;
+}

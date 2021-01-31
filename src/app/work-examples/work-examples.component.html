@@ -23,46 +23,34 @@
         [theme]="'dark-bold'"
       ></app-charts>
     </div>
-    <div class="row">
-      <div class="col-md-6 d-flex align-items-center">
-        <div class="card shadow-lg">
-          <a id="graphy"></a>
-          <app-example [exampleData]="graphyInfo"></app-example>
-        </div>
-      </div>
-      <div class="col-md-6 d-flex align-items-center">
-        <div class="card shadow-lg">
-          <div id="thg" class="col">
-            <a id="android"></a>
-            <app-example [exampleData]="thgInfo"></app-example>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6 d-flex align-items-center">
-          <div class="card shadow-lg">
-            <app-example
-              id="spotter"
-              [exampleData]="spottertInfo"
-            ></app-example>
-          </div>
-        </div>
-        <div class="col-md-6 d-flex align-items-center">
-          <div class="card shadow-lg">
-            <app-example [exampleData]="sweDocInfo"></app-example>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6 d-flex align-items-center">
-          <div class="card shadow-lg">
-            <app-example [exampleData]="brewBuddyInfo"></app-example>
-          </div>
-        </div>
-        <div class="col-md-6 d-flex w-100">
-          <div class="card shadow-lg w-100"></div>
-        </div>
-        <!-- <div class="col-md-6 d-flex align-items-center">
+    <div class="d-flex flex-wrap">
+      <app-example
+        class="example-placement m-auto"
+        id="android"
+        [exampleData]="thgInfo"
+      ></app-example>
+      <app-example
+        class="example-placement m-auto"
+        id="graphy"
+        [exampleData]="graphyInfo"
+      ></app-example>
+      <app-example
+        class="example-placement m-auto"
+        id="spotter"
+        [exampleData]="spottertInfo"
+      ></app-example>
+      <app-example
+        class="example-placement m-auto"
+        id="documentation"
+        [exampleData]="sweDocInfo"
+      ></app-example>
+      <app-example
+        class="example-placement m-auto"
+        id="brewBuddy"
+        [exampleData]="brewBuddyInfo"
+      ></app-example>
+
+      <!-- <div class="col-md-6 d-flex align-items-center">
         <div class="card shadow-lg">
            content start 
           <div #pixelHero class="row">
@@ -93,7 +81,6 @@
           </div>
            content end 
       </div> -->
-      </div>
     </div>
   </div>
 </div>
