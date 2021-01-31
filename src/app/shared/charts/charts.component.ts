@@ -115,7 +115,7 @@ export class ChartsComponent implements OnInit {
   private setChartOptions(repoName: string): void {
     this.options = {
       title: {
-        text: repoName + '.dev project languages statistics',
+        text: repoName + '.dev project stats',
         subtext: 'languages used and poroportions ',
         x: 'center',
       },

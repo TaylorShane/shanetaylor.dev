@@ -14,6 +14,7 @@ import { ChartsComponent } from './shared/charts/charts.component';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ExampleComponent } from './work-examples/example/example.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     WhatComponent,
     WorkExamplesComponent,
     ChartsComponent,
+    ExampleComponent,
   ],
   imports: [
     BrowserModule,

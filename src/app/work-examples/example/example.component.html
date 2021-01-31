@@ -1,0 +1,62 @@
+<div class="col">
+  <a id="android"></a>
+  <div>
+    <span class="emphasis">{{ exampleData.name }}</span>
+  </div>
+  <ng-container *ngIf="exampleData.playstoreLink != undefined">
+    <div class="p-3">
+      <a
+        [href]="exampleData.playstoreLink"
+        class="btn btn-outline-secondary btn-lg mr-3"
+        target="_blank"
+      >
+        <fa-icon [icon]="faGooglePlay"></fa-icon>
+        {{ playstoreDownload }}
+      </a>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="exampleData.repoLink != undefined">
+    <div class="p-3">
+      <a
+        [href]="exampleData.repoLink"
+        class="btn btn-outline-secondary btn-lg mr-3"
+        target="_blank"
+      >
+        <fa-icon [icon]="faGithub"></fa-icon>
+        {{ viewSourceCode }}
+      </a>
+    </div>
+  </ng-container>
+
+  <div class="row m-auto">
+    <div class="d-flex mx-auto">
+      <i role="img" class="fas fa-code notranslate align-self-center"></i>
+      &nbsp;
+      <label>Language: {{ langData?.repo?.lang[0] }}</label>
+    </div>
+  </div>
+
+  <div class="row d-flex justify-content-center align-content-between">
+    <p *ngFor="let attribute of exampleData.attributes" class="m-0">
+      <span class="emphasis">&#8281;</span> &nbsp; {{ attribute }}
+      &nbsp;
+    </p>
+    <p><span class="emphasis">&#8281;</span></p>
+  </div>
+
+  <p style="padding: 5%">
+    {{ exampleData.blurb }}
+  </p>
+  <div class="d-flex m-auto w-60">
+    <carousel class="m-auto pb-5" [isAnimated]="true">
+      <slide *ngFor="let image of exampleData.images; index as i; count as c">
+        <img
+          [src]="image"
+          alt="Application Screen Shot"
+          class="d-block w-100"
+        />
+      </slide>
+    </carousel>
+  </div>
+  <!-- <app-charts [chartName]="'graphy'" [theme]="'light'"></app-charts> -->
+</div>
