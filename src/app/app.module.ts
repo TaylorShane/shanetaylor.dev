@@ -15,6 +15,8 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ExampleComponent } from './work-examples/example/example.component';
+import { GraphyPrivacyComponent } from './app-specific/graphy/privacy/graphy-privacy.component';
+import { TermsComponent } from './app-specific/graphy/terms/terms/terms.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { ExampleComponent } from './work-examples/example/example.component';
     WorkExamplesComponent,
     ChartsComponent,
     ExampleComponent,
+    GraphyPrivacyComponent,
+    TermsComponent,
   ],
   imports: [
     BrowserModule,
