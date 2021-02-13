@@ -1,4 +1,4 @@
-<div class="bg-5 container-fluid pl-0 pr-0 pt-0 text-center">
+<div class="bg-5 pl-0 pr-0 pt-0 text-center">
   <div class="container-fluid bg-4">
     <a id="work"></a>
     <h3 class="margin">Example Work</h3>
@@ -7,12 +7,12 @@
     </p>
     <app-charts [chartName]="'shanetaylor'" [theme]="'dark'"></app-charts>
   </div>
-  <div class="container-fluid">
+  <div class="container-fluid pb-0">
     <p>
       {{ githubBlurb }}
     </p>
     <div class="p-3">
-      <a [href]="personalRepos" class="btn btn-outline-secondary btn-lg mr-3">
+      <a [href]="personalRepos" class="btn btn-outline-secondary min-btn-width">
         <fa-icon [icon]="faGithub"></fa-icon> {{ viewProject }}
       </a>
     </div>

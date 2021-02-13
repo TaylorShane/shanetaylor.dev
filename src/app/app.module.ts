@@ -20,6 +20,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MainComponent } from './main/main.component';
 import { ThgPrivacyTermsComponent } from './app-specific/thg/privacy-terms/thg-privacy-terms.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     GraphyPrivacyTermsComponent,
     MainComponent,
     ThgPrivacyTermsComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

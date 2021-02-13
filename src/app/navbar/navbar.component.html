@@ -1,9 +1,10 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light">
-  <a role="button" class="navbar-brand" href="#">
+  <a role="button" class="navbar-brand d-flex flex-wrap" href="#">
     {{ navBarContent.name }}
     <span size="2" style="letter-spacing: 0px">{{ navBarContent.title }}</span>
   </a>
   <button
+    class="navbar-toggler"
     (click)="isCollapsed = !isCollapsed"
     class="navbar-toggler ml-auto"
     type="button"
