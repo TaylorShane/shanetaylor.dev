@@ -16,22 +16,5 @@ export class AppComponent implements OnInit {
     this.route.url.subscribe((route) => {
       this.currentRoute = route;
     });
-
-    // Parent:  about
-    // this.route.parent.url.subscribe((url) => console.log(url[0].path));
-
-    // Current Path:  company
-    this.route.url.subscribe((url) => {
-      console.log('this.route.url[0].path', url[0].path);
-      console.log('this.route.url', url);
-    });
-
-    // Data:  { title: 'Company' }
-    this.route.data.subscribe((data) => {
-      console.log('this.route.data', data);
-    });
-
-    // Siblings
-    console.log('this.router.config', this.router.config);
   }
 }
