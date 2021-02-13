@@ -1,20 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TermsComponent } from './terms.component';
+import { GraphyTermsComponent } from './graphy-terms.component';
 
 describe('TermsComponent', () => {
-  let component: TermsComponent;
-  let fixture: ComponentFixture<TermsComponent>;
+  let component: GraphyTermsComponent;
+  let fixture: ComponentFixture<GraphyTermsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TermsComponent ]
-    })
-    .compileComponents();
+      declarations: [GraphyTermsComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TermsComponent);
+    fixture = TestBed.createComponent(GraphyTermsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
