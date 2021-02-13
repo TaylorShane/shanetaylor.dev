@@ -19,6 +19,7 @@ import { GraphyPrivacyTermsComponent } from './app-specific/graphy/privacy-terms
 import { AppRoutingModule } from './app-routing.module';
 import { MainComponent } from './main/main.component';
 import { ThgPrivacyTermsComponent } from './app-specific/thg/privacy-terms/thg-privacy-terms.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,7 @@ import { ThgPrivacyTermsComponent } from './app-specific/thg/privacy-terms/thg-p
     }),
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
