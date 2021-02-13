@@ -19,6 +19,8 @@ import { GraphyPrivacyComponent } from './app-specific/graphy/privacy/graphy-pri
 import { GraphyTermsComponent } from './app-specific/graphy/terms/graphy-terms.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MainComponent } from './main/main.component';
+import { ThgPrivacyComponent } from './app-specific/thg/privacy/thg-privacy.component';
+import { ThgTermsComponent } from './app-specific/thg/terms/thg-terms.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { MainComponent } from './main/main.component';
     GraphyPrivacyComponent,
     GraphyTermsComponent,
     MainComponent,
+    ThgPrivacyComponent,
+    ThgTermsComponent,
   ],
   imports: [
     BrowserModule,
