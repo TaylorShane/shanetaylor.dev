@@ -17,6 +17,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ExampleComponent } from './work-examples/example/example.component';
 import { GraphyPrivacyComponent } from './app-specific/graphy/privacy/graphy-privacy.component';
 import { GraphyTermsComponent } from './app-specific/graphy/terms/graphy-terms.component';
+import { AppRoutingModule } from './app-routing.module';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { GraphyTermsComponent } from './app-specific/graphy/terms/graphy-terms.c
     ExampleComponent,
     GraphyPrivacyComponent,
     GraphyTermsComponent,
+    MainComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +44,7 @@ import { GraphyTermsComponent } from './app-specific/graphy/terms/graphy-terms.c
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts'),
     }),
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
