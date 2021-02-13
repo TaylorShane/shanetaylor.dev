@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
+import { ActivatedRoute, UrlSegment } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,7 @@ export class AppComponent implements OnInit {
   title = 'Shane Taylor';
   currentRoute: UrlSegment[];
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.route.url.subscribe((route) => {
