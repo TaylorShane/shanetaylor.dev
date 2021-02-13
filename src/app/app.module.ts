@@ -15,12 +15,10 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ExampleComponent } from './work-examples/example/example.component';
-import { GraphyPrivacyComponent } from './app-specific/graphy/privacy/graphy-privacy.component';
-import { GraphyTermsComponent } from './app-specific/graphy/terms/graphy-terms.component';
+import { GraphyPrivacyTermsComponent } from './app-specific/graphy/privacy-terms/graphy-privacy-terms.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MainComponent } from './main/main.component';
-import { ThgPrivacyComponent } from './app-specific/thg/privacy/thg-privacy.component';
-import { ThgTermsComponent } from './app-specific/thg/terms/thg-terms.component';
+import { ThgPrivacyTermsComponent } from './app-specific/thg/privacy-terms/thg-privacy-terms.component';
 
 @NgModule({
   declarations: [
@@ -32,11 +30,9 @@ import { ThgTermsComponent } from './app-specific/thg/terms/thg-terms.component'
     WorkExamplesComponent,
     ChartsComponent,
     ExampleComponent,
-    GraphyPrivacyComponent,
-    GraphyTermsComponent,
+    GraphyPrivacyTermsComponent,
     MainComponent,
-    ThgPrivacyComponent,
-    ThgTermsComponent,
+    ThgPrivacyTermsComponent,
   ],
   imports: [
     BrowserModule,
