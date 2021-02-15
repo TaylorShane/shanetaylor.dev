@@ -29,7 +29,7 @@ export class WorkExamplesComponent implements OnInit {
       'Compatible With 90+% Android',
       'Randomly generated puzzles',
     ],
-    'Graphy  an educational Android App designed for common class-room Chrome tablets that I created during a 10-week internship at Northeastern Illinois University. Selected as the Computer Science expert for a mathematics focused group of students and professors, I worked on a National Science Foundation research grant focusing on Computational Thinking and bringing that thinking to younger students. I solely developed and deployed the educational app Graphy to help pre-service teachers teach the fundamentals of Geometry to middle school students while employing Computational Thinking.',
+    'Graphy is an educational Android App designed for common class-room Chrome tablets that I created during a 10-week internship at Northeastern Illinois University. Selected as the Computer Science expert for a mathematics focused group of students and professors, I worked on a National Science Foundation research grant focusing on Computational Thinking and bringing that thinking to younger students. I solely developed and deployed the educational app Graphy to help pre-service teachers teach the fundamentals of Geometry to middle school students while employing Computational Thinking.',
     [
       '../../assets/img/graphy/ScreenShots/Screenshot_1500145891.png',
       '../../assets/img/graphy/ScreenShots/Screenshot_1500145896.png',
