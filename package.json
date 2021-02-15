@@ -29,7 +29,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "bootstrap": "^4.6.0",
     "echarts": "^4.9.0",
-    "jquery": "1.9.1",
+    "jquery": "3.5.0",
     "ngx-bootstrap": "^6.2.0",
     "ngx-echarts": "^5.2.1",
     "popper.js": "^1.16.1",
