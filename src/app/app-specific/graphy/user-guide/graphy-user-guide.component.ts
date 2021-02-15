@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-user-guide',
-  templateUrl: './user-guide.component.html',
+  selector: 'app-graphy-user-guide',
+  templateUrl: './graphy-user-guide.component.html',
 })
 export class GraphyUserGuideComponent implements OnInit {
   constructor() {}

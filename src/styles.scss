@@ -4,6 +4,16 @@ body {
   color: #f5f6f7;
 }
 
+a {
+  color: #ffa500;
+  :hover {
+    color: #ff0707;
+  }
+}
+a:hover {
+  color: #ff5707;
+}
+
 p {
   font-size: 16px;
 }

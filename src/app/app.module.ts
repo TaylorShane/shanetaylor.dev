@@ -21,7 +21,7 @@ import { MainComponent } from './main/main.component';
 import { ThgPrivacyTermsComponent } from './app-specific/thg/privacy-terms/thg-privacy-terms.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
-import { GraphyUserGuideComponent } from './app-specific/graphy/user-guide/user-guide.component';
+import { GraphyUserGuideComponent } from './app-specific/graphy/user-guide/graphy-user-guide.component';
 
 @NgModule({
   declarations: [
