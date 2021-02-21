@@ -125,7 +125,7 @@ export class WorkExamplesComponent implements OnInit {
 
   public readonly sweDocInfo: ProjectData = new ProjectData(
     [
-      'UML flow diagrams',
+      'UML Flow Diagrams',
       'Entity Relation Diagrams',
       'Detailed Input, Output, Actions, Post Conditions, and Validation',
       'Database Versioning',
@@ -146,17 +146,39 @@ export class WorkExamplesComponent implements OnInit {
     ]
   );
 
+  public readonly mdbmInfo: ProjectData = new ProjectData(
+    [
+      '3NF Relational Model',
+      'Stored Procedures',
+      'Functions',
+      'Packages',
+      'Triggers',
+    ],
+    'Example complex relational database with Oracle SQL Developer with a script to create the database objects. Which includes the tables and primary/foreign key constraints on those tables, indexes, sequences, views, and PL/SQL stored procedures, functions, packages, and triggers. Also a 3NF relational model, business rules, a data dictionary, ER diagram, and a general description.',
+    [
+      '../../assets/img/mdbm/mdbm-data-dictionary.png',
+      '../../assets/img/mdbm/mdbm-er-diagram.png',
+    ],
+    'SQL Database',
+    undefined,
+    'https://github.com/TaylorShane/Modern-Database-Management',
+    undefined,
+    undefined
+  );
+
   shanetaylorLangData: Languages;
   graphyLangData: Languages;
   spotterLangData: Languages;
   brewbuddyAndroindLangData: Languages;
   brewbuddyIosLangData: Languages;
+  mdbmLangData: Languages;
   repoNames = [
     'shanetaylor',
     'graphy',
     'Spotter',
     'BrewBuddy-Android',
     'BrewBuddy-iOS',
+    'Modern-Database-Management',
   ];
 
   constructor(private githubService: GithubService) {}
@@ -186,6 +208,9 @@ export class WorkExamplesComponent implements OnInit {
             break;
           case 'BrewBuddy-iOS':
             this.brewbuddyIosLangData = repoLangauges;
+            break;
+          case 'Modern-Database-Management':
+            this.mdbmLangData = repoLangauges;
             break;
 
           default:
