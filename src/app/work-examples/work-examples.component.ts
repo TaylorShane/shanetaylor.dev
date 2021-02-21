@@ -2,6 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { faGithub, faGooglePlay } from '@fortawesome/free-brands-svg-icons';
 import { GithubService } from '../config/github.service';
 import { Languages, ProjectData } from '../shared/models/models';
+
+// import 'echarts/theme/fresh-cut.js';
+// import 'echarts/theme/inspired.js';
+// import 'echarts/theme/mint.js';
+// import 'echarts/theme/red.js';
+// import 'echarts/theme/royal.js';
+// import 'echarts/theme/shine.js';
+// import 'echarts/theme/dark-blue.js';
+import 'echarts/theme/dark-bold.js';
+import 'echarts/theme/dark-digerati.js';
+import 'echarts/theme/dark-fresh-cut.js';
+import 'echarts/theme/dark-mushroom.js';
+import 'echarts/lib/theme/dark.js';
 @Component({
   selector: 'app-work-examples',
   templateUrl: './work-examples.component.html',

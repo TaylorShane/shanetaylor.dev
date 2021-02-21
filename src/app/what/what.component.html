@@ -1,30 +1,26 @@
 <a id="what"></a>
-<div class="container-fluid bg-5 text-center">
-  <h3 class="margin">What Am I?</h3>
-  <p>
-    I am a self-motivated and seasoned e-commerce professional with nearly 20
-    years of managerial experience and leadership skills transitioning to a
-    developer role where I can create impactful and smart solutions as a
-    Software Developer.
-  </p>
-  <p>
-    I've earned a Bachelor of Science Cum Laude in Computer Science from
-    Northeastern Illinois University and I am a registered Android Developer.
-    <br />
-    Check out my educational app
-    <span size="5">
-      <a [href]="graphyLink" target="_blank" style="color: orange"
-        >Graphy</a
-      ></span
-    >, created with help from a National Science Foundation <br />
-    grant to help middle school kids learn geometry in a fun and interactive
-    way.
-  </p>
-  <p>
-    I also have a
-    <a [href]="networkCert" target="_blank" style="color: orange">
-      Network Pro certification</a
-    >
-    with TestOut.
-  </p>
+<div class="container-fluid bg-5">
+  <div class="col-10 mx-auto">
+    <h3 class="margin">What Am I?</h3>
+    <p>
+      {{ whatBlurb.current }}
+    </p>
+    <p>
+      {{ whatBlurb.android }}
+      <br />
+      {{ whatBlurb.graphy.a }}
+      <span size="5">
+        <a [href]="graphyLink" target="_blank" style="color: orange">{{
+          whatBlurb.graphy.graphy
+        }}</a></span
+      >{{ whatBlurb.graphy.b }}
+    </p>
+    <p>
+      {{ whatBlurb.testOut.a }}
+      <a [href]="networkCert" target="_blank" style="color: orange">
+        {{ whatBlurb.testOut.b }}</a
+      >
+      {{ whatBlurb.testOut.c }}
+    </p>
+  </div>
 </div>
