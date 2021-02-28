@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-what',
   templateUrl: './what.component.html',
   styleUrls: ['./what.component.scss'],
 })
-export class WhatComponent implements OnInit {
+export class WhatComponent {
+  /*eslint-disable */
   networkCert =
     '../../assets/docs/Shane_Taylor_TestOut_Network_Pro_Certification.pdf';
   graphyLink =
@@ -28,7 +29,5 @@ export class WhatComponent implements OnInit {
       c: 'with TestOut.',
     },
   };
-  constructor() {}
-
-  ngOnInit(): void {}
+  /*eslint-disable */
 }

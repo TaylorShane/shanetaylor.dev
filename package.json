@@ -1,6 +1,17 @@
 {
   "name": "shanetaylor",
   "version": "3.0.0",
+  "eslintConfig": {
+    "rules": {
+      "quotes": [
+        2,
+        "single",
+        {
+          "avoidEscape": true
+        }
+      ]
+    }
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -40,11 +51,22 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1102.1",
+    "@angular-eslint/builder": "1.2.0",
+    "@angular-eslint/eslint-plugin": "1.2.0",
+    "@angular-eslint/eslint-plugin-template": "1.2.0",
+    "@angular-eslint/schematics": "1.2.0",
+    "@angular-eslint/template-parser": "1.2.0",
     "@angular/cli": "~11.2.1",
     "@angular/compiler-cli": "~11.2.1",
     "@types/jasmine": "~3.6.4",
     "@types/node": "^14.14.31",
+    "@typescript-eslint/eslint-plugin": "4.15.2",
+    "@typescript-eslint/parser": "4.15.2",
     "codelyzer": "^6.0.0",
+    "eslint": "^7.6.0",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-jsdoc": "32.2.0",
+    "eslint-plugin-prefer-arrow": "1.2.3",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "^6.0.0",
     "karma": "~6.1.1",

@@ -12,6 +12,7 @@ export class GithubService {
   // gitHub endpoints
   // https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#list-repository-languages
   // https://api.github.com/orgs/TaylorShane/projects
+  /*eslint-disable */
   backupData = {
     archive_url:
       'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/{archive_format}{/ref}',
@@ -145,6 +146,7 @@ export class GithubService {
     watchers: 0,
     watchers_count: 0,
   };
+  /*eslint-disable */
   private readonly baseUrl = 'https://api.github.com/repos/TaylorShane/';
   private readonly stAllRepos =
     'https://api.github.com/users/TaylorShane/repos';

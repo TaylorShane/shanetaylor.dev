@@ -18,9 +18,9 @@ export class Languages {
   size: number[];
 
   constructor(name, languageResponse: any) {
-    (this.name = name),
-      (this.lang = Object.keys(languageResponse)),
-      (this.size = Object.values(languageResponse));
+    this.name = name;
+    this.lang = Object.keys(languageResponse);
+    this.size = Object.values(languageResponse);
   }
 }
 

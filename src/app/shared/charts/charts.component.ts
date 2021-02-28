@@ -24,6 +24,7 @@ export class ChartsComponent implements OnInit {
     },
     tooltip: {
       trigger: 'item',
+      /*eslint-disable */
       formatter(params): any {
         return `${params.name}<br />
                 ${params.data.description}
@@ -31,6 +32,7 @@ export class ChartsComponent implements OnInit {
                 <div> Project size in bytes: ${params.data.value}</div>
                 (${params.percent}% of all projects)`;
       },
+      /*eslint-disable */
     },
     legend: {
       x: 'center',

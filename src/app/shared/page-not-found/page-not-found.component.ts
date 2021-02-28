@@ -6,6 +6,7 @@ import { Component, HostBinding, OnInit } from '@angular/core';
   styleUrls: ['./page-not-found.component.scss'],
 })
 export class PageNotFoundComponent implements OnInit {
+  /*eslint-disable */
   listOfQuotes: string[] = [
     "Everybody does have a book in them, but in most cases that's where it should stay. -CHRISTOPHER HITCHENS",
     'Human decency is not derived from religion. It precedes it. -CHRISTOPHER HITCHENS',
@@ -19,15 +20,16 @@ export class PageNotFoundComponent implements OnInit {
     'It is not hardness of heart or evil passions that drive certain individuals to atheism, but rather a scrupulous intellectual honesty. -STEVE ALLEN',
     "I'm an atheist, and that's it. I believe there's nothing we can know except that we should be kind to each other and do what we can for other people. -KATHARINE HEPBURN",
     'The legitimate powers of government extend to only such acts as are injurious to others. But it does me no injury for my neighbor to say that there are twenty gods, or no God. -THOMAS JEFFERSON',
-    'You don\'t have to be brave or a saint, a martyr, or even very smart to be an atheist. All you have to be able to say is "I don\'t know". -PENN JILLETTE',
+    "You don't have to be brave or a saint, a martyr, or even very smart to be an atheist. All you have to be able to say is 'I don't know'. -PENN JILLETTE",
     'Atheism is a non-prophet organization. -GEORGE CARLIN',
   ];
+  /*eslint-disable */
   quote: string;
 
   @HostBinding('class.flexFullHeight')
   ngOnInit(): void {
-    for (let i = 0; i < this.listOfQuotes.length; i++) {
-      let randomIndex = Math.floor(Math.random() * this.listOfQuotes.length);
+    for (const aQuote of this.listOfQuotes) {
+      const randomIndex = Math.floor(Math.random() * this.listOfQuotes.length);
       this.quote = this.listOfQuotes[randomIndex];
     }
   }

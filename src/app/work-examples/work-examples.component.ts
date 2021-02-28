@@ -23,6 +23,7 @@ import 'echarts/lib/theme/dark.js';
 export class WorkExamplesComponent implements OnInit {
   faGithub = faGithub;
   faGooglePlay = faGooglePlay;
+  /*eslint-disable */
   public readonly siteBlurb =
     "This website was created with Visual Studio Code using Angular 11 and various third-party libraries such as ngx-bootstrap, ngx-echarts, and fontawesome. I've created a service in this site that gets my repository data from Github and then I use that data to create the below charts. For example, here's a chart that shows the various languages used to create this site and their proportions.";
   public readonly exampleWork = 'Excample Work';
@@ -165,6 +166,7 @@ export class WorkExamplesComponent implements OnInit {
     undefined,
     undefined
   );
+  /*eslint-disable */
 
   shanetaylorLangData: Languages;
   graphyLangData: Languages;

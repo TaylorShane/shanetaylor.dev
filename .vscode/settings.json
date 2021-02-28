@@ -1,4 +1,6 @@
 {
     "prettier.singleQuote": true,
-    "typescript.preferences.quoteStyle": "single"
+    "typescript.preferences.quoteStyle": "single",
+    "eslint.format.enable": true,
+    "eslint.workingDirectories": [{ "mode": "auto" }],
 }
