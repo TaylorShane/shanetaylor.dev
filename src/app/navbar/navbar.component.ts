@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
   isCollapsed = true;
   navBarContent = {
     name: 'Shane Taylor',
@@ -21,6 +21,4 @@ export class NavbarComponent implements OnInit {
       brewBuddy: 'BrewBuddy',
     },
   };
-
-  ngOnInit(): void {}
 }

@@ -55,6 +55,7 @@ export class WorkExamplesComponent implements OnInit {
     'Graphy',
     'https://play.google.com/store/apps/details?id=com.shane_taylor.Graphy',
     'https://github.com/TaylorShane/NEIU2017SummerInternship',
+    undefined,
     undefined
   );
 
@@ -73,7 +74,8 @@ export class WorkExamplesComponent implements OnInit {
     'Trump Haiku Generator',
     'https://play.google.com/store/apps/details?id=com.shane_taylor.trumphaikugenerator&hl=en',
     undefined,
-    'https://trumphaikugenerator.com/'
+    'https://trumphaikugenerator.com/',
+    undefined
   );
 
   public readonly spottertInfo: ProjectData = new ProjectData(
@@ -96,6 +98,7 @@ export class WorkExamplesComponent implements OnInit {
     'Spotter',
     undefined,
     'https://github.com/TaylorShane/Spotter_group',
+    undefined,
     undefined
   );
 
@@ -115,14 +118,16 @@ export class WorkExamplesComponent implements OnInit {
     ],
     'BrewBuddy',
     undefined,
-    'https://github.com/TaylorShane/BrewBuddy-Android'
+    'https://github.com/TaylorShane/BrewBuddy-Android',
+    undefined,
+    undefined
   );
-  data = {
-    android: 'Android',
-    ios: 'iOS',
-    repoLinkAndroid: 'https://github.com/TaylorShane/BrewBuddy-Android',
-    repoLinkiOS: 'https://github.com/TaylorShane/BrewBuddy-iOS',
-  };
+  // data = {
+  //   android: 'Android',
+  //   ios: 'iOS',
+  //   repoLinkAndroid: 'https://github.com/TaylorShane/BrewBuddy-Android',
+  //   repoLinkiOS: 'https://github.com/TaylorShane/BrewBuddy-iOS',
+  // };
 
   public readonly sweDocInfo: ProjectData = new ProjectData(
     [

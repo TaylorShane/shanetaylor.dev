@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { faGithub, faGooglePlay } from '@fortawesome/free-brands-svg-icons';
+import { faLink } from '@fortawesome/free-solid-svg-icons';
 import { Languages, ProjectData } from 'src/app/shared/models/models';
 
 @Component({
@@ -16,8 +17,10 @@ export class ExampleComponent implements OnInit {
   // }
   faGithub = faGithub;
   faGooglePlay = faGooglePlay;
+  falink = faLink;
   public readonly viewSourceCode = 'View Source Code';
   public readonly playstoreDownload = 'Playstore Download';
+  public readonly websiteLink = 'Website Link';
   // public languages: string[] = [];
 
   constructor() {}

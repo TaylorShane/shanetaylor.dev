@@ -13,3 +13,11 @@ a {
   flex: 1 1 auto;
   align-self: center;
 }
+
+.anchor-offset {
+  display: block;
+  position: relative;
+  top: -150px;
+  visibility: hidden;
+  border: 2px solid red;
+}
