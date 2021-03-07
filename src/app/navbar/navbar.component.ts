@@ -17,7 +17,7 @@ export class NavbarComponent {
       graphy: 'Graphy',
       thg: 'Trump Haiku Generator',
       spotter: 'Spotter',
-      documentation: 'Development Documentation',
+      documentation: 'Documentation',
       brewBuddy: 'BrewBuddy',
     },
   };

@@ -19,7 +19,11 @@
       </p>
     </div>
     <div class="p-3 text-center pb-5">
-      <a [href]="personalRepos" class="btn btn-outline-secondary min-btn-width">
+      <a
+        rel="noopener noreferrer"
+        [href]="personalRepos"
+        class="btn btn-outline-secondary min-btn-width"
+      >
         <fa-icon [icon]="faGithub"></fa-icon> {{ viewProject }}
       </a>
     </div>
