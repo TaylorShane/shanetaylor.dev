@@ -51,7 +51,7 @@ import { GraphyUserGuideComponent } from './app-specific/graphy/user-guide/graph
     }),
     AppRoutingModule,
   ],
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
