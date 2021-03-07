@@ -1,0 +1,3 @@
+User-Agent: *
+Disallow: /assets/
+Sitemap: www.shanetaylor.dev
