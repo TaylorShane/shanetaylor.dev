@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./who.component.scss'],
 })
 export class WhoComponent implements OnInit {
-  profileImage = '../../assets/img/profile_image.jpg';
+  profileImage = '../../assets/img/profile_image.webp';
   whoBlurb =
     'I am an Angular and mobile focused front-end software developer and travel enthusiast.';
 
