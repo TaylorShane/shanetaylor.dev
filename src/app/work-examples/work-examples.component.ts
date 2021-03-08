@@ -81,11 +81,12 @@ export class WorkExamplesComponent implements OnInit {
   public readonly spottertInfo: ProjectData = new ProjectData(
     [
       'XML database',
-      'Event driven programming',
+      'Event driven',
       'Databinding',
       'C# collections',
-      'Microsoft .NET framework',
-      'Coupling and cohesion best practices',
+      '.NET framework',
+      'Low coupling',
+      'High cohesion',
     ],
     'Spotter is a Windows Presentation Foundation application written in C# and created in Visual Studio. Spotter is a diet and exercise App to help users manage their calorie count, select a workout type, manage their workout schedule, and motivate them to achieve the body type they desire.',
     [

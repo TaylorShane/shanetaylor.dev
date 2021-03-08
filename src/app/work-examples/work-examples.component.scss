@@ -8,12 +8,15 @@ p {
 a {
   color: #ffa500;
 }
+.app-example-container {
+  flex: 1 1 auto;
+  max-width: 470px;
+}
 .example-placement {
-  max-width: 800px;
+  max-width: 600px;
   flex: 1 1 auto;
   align-self: center;
 }
-
 .anchor-offset {
   display: block;
   position: relative;
