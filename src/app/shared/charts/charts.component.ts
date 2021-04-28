@@ -23,14 +23,19 @@ export class ChartsComponent implements OnInit {
       x: 'center',
     },
     tooltip: {
+      confine: true,
       trigger: 'item',
       /*eslint-disable */
       formatter(params): any {
-        return `${params.name}<br />
-                ${params.data.description}
-                <div>Predominant Language: ${params.data.language}</div>
-                <div> Project size in bytes: ${params.data.value}</div>
-                (${params.percent}% of all projects)`;
+        return params.data.language == null
+          ? `<div>${params.name}</div>
+        <div class="text-wrap">${params.data.description}</div>
+        <div> Project size in bytes: ${params.data.value}</div>`
+          : `<div>${params.name}</div>
+        <div class="text-wrap">${params.data.description}</div>
+        <div>Predominant Language: ${params.data.language}</div>
+        <div> Project size in bytes: ${params.data.value}</div>
+        <div>(${params.percent}% of all projects)</div>`;
       },
       /*eslint-disable */
     },
@@ -122,11 +127,11 @@ export class ChartsComponent implements OnInit {
         x: 'center',
       },
       tooltip: {
+        confine: true,
         trigger: 'item',
         formatter(params): any {
-          return `${params.name}'<br />
-                  <div>Predominant Language: ${params.data.language}</div>
-                  (${params.name} is ${params.percent}% of all languages used in this project)`;
+          return `${params.name}<br />
+                  ${params.percent}% of all languages used in this project`;
         },
       },
       legend: {
