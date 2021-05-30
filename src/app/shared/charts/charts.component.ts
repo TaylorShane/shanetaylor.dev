@@ -87,6 +87,7 @@ export class ChartsComponent implements OnInit {
   getAllReposData(): void {
     this.allReposSubscription$.subscribe(
       (data) => {
+        data = data.filter((repo) => repo.name !== 'TaylorShane');
         data.forEach((repo) => {
           const element = new RepoData(repo);
           this.repoData.push(element);
