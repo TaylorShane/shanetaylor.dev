@@ -104,16 +104,16 @@ export class ChartsComponent implements OnInit {
     this.setChartOptions(repoName);
     this.githubService
       .getAllLanguagesForGivenRepo(repoName)
-      .subscribe((data) => {
-        const keys = Object.keys(data);
-        const values = Object.values(data) as number[];
+      .subscribe((langData) => {
+        // const keys = Object.keys(data);
+        // const values = Object.values(data) as number[];
 
-        for (let index = 0; index < keys.length; index++) {
+        for (let index = 0; index < langData.lang.length; index++) {
           this.repoData[index] = {
-            value: values[index],
-            name: keys[index],
+            value: langData.size[index],
+            name: langData.lang[index],
             description: repoName,
-            language: keys[values.indexOf(Math.max(...values))],
+            language: langData.lang[index],
             url: 'https://github.com/TaylorShane/' + repoName,
           };
         }

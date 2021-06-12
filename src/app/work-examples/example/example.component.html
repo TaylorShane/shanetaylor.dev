@@ -45,11 +45,13 @@
 
     <div class="row m-auto">
       <div class="d-flex mx-auto flex-column">
-        <ng-container *ngIf="langData">
+        <ng-container
+          *ngIf="exampleData.languageData && exampleData.languageData != null"
+        >
           <div>
             <i role="img" class="fas fa-code notranslate align-self-center"></i>
             &nbsp;
-            <label>Language: {{ langData?.lang[0] }}</label>
+            <label>Language: {{ exampleData.languageData.lang[0] }}</label>
           </div>
           <ng-container *ngIf="exampleData.name === 'BrewBuddy'">
             <div>
@@ -75,11 +77,19 @@
     </div>
 
     <div class="row d-flex justify-content-center align-content-between">
-      <p *ngFor="let attribute of exampleData.attributes" class="m-0">
-        <span class="emphasis">&#8281;</span> &nbsp; {{ attribute }}
-        &nbsp;
+      <p
+        *ngFor="let attribute of exampleData.attributes; first as isFirst"
+        class="m-0 w-auto"
+      >
+        <ng-container *ngIf="isFirst">
+          <span class="emphasis"></span> {{ attribute }}
+        </ng-container>
+        <ng-container *ngIf="!isFirst">
+          <span *ngIf="!isFirst" class="emphasis">&#8281;</span> &nbsp;
+          {{ attribute }}
+          &nbsp;
+        </ng-container>
       </p>
-      <p><span class="emphasis">&#8281;</span></p>
     </div>
 
     <p style="padding: 5%">

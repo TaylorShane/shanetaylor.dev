@@ -10,10 +10,10 @@ a {
 }
 .app-example-container {
   flex: 1 1 auto;
-  max-width: 470px;
+  min-width: 30vw;
+  max-width: 49vw;
 }
 .example-placement {
-  max-width: 600px;
   flex: 1 1 auto;
   align-self: center;
 }
@@ -22,5 +22,4 @@ a {
   position: relative;
   top: -150px;
   visibility: hidden;
-  border: 2px solid red;
 }
