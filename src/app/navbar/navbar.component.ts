@@ -1,4 +1,5 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
+import { NavLinks } from '../shared/models/models';
 
 @Component({
   selector: 'app-navbar',
@@ -7,18 +8,38 @@ import { Component, HostBinding, OnInit } from '@angular/core';
 })
 export class NavbarComponent {
   isCollapsed = true;
+  relativeLinks: NavLinks[] = [
+    {
+      name: 'Graphy',
+      link: '/#main#Graphy',
+    },
+    {
+      name: 'Trump Haiku Generator',
+      link: '/#main#Trump Haiku Generator',
+    },
+    {
+      name: 'Spotter',
+      link: '/#main#Spotter',
+    },
+    {
+      name: 'Brew Buddy',
+      link: '/#main#BrewBuddy',
+    },
+    {
+      name: 'Documentation',
+      link: '/#main#Software Engineering Documentation',
+    },
+    {
+      name: 'SQL Database',
+      link: '/#main#SQL Database',
+    },
+  ];
   navBarContent = {
     name: 'Shane Taylor',
     title: 'Software Developer',
     who: 'Who',
     what: 'What',
-    projects: {
-      samplesText: 'Project Samples',
-      graphy: 'Graphy',
-      thg: 'Trump Haiku Generator',
-      spotter: 'Spotter',
-      documentation: 'Documentation',
-      brewBuddy: 'BrewBuddy',
-    },
+    samplesText: 'Project Samples',
+    projects: this.relativeLinks,
   };
 }

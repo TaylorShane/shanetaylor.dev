@@ -46,34 +46,16 @@
           aria-haspopup="true"
           aria-expanded="false"
         >
-          {{ navBarContent.projects.samplesText }}
+          {{ navBarContent.samplesText }}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <ul style="list-style: none" class="px-2 text-right">
+          <ul
+            style="list-style: none"
+            class="px-2 text-right"
+            *ngFor="let example of relativeLinks"
+          >
             <li>
-              <a role="button" href="/#main#graphy">{{
-                navBarContent.projects.graphy
-              }}</a>
-            </li>
-            <li>
-              <a role="button" href="/#main#thg">{{
-                navBarContent.projects.thg
-              }}</a>
-            </li>
-            <li>
-              <a role="button" href="/#main#spotter">{{
-                navBarContent.projects.spotter
-              }}</a>
-            </li>
-            <li>
-              <a role="button" href="/#main#documentation">{{
-                navBarContent.projects.documentation
-              }}</a>
-            </li>
-            <li>
-              <a role="button" href="/#main#brewBuddy">{{
-                navBarContent.projects.brewBuddy
-              }}</a>
+              <a role="button" [href]="example.link">{{ example.name }}</a>
             </li>
           </ul>
         </div>
@@ -81,5 +63,3 @@
     </ul>
   </div>
 </nav>
-
-<!--  -->
