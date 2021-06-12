@@ -26,7 +26,7 @@
   "dependencies": {
     "@angular-eslint/schematics": "^12.1.0",
     "@angular/animations": "~12.0.2",
-    "@angular/common": "~12.0.2",
+    "@angular/common": "12.0.4",
     "@angular/compiler": "~12.0.2",
     "@angular/core": "~12.0.2",
     "@angular/forms": "~12.0.2",
@@ -48,7 +48,7 @@
     "popper.js": "^1.16.1",
     "postcss": "8.3.0",
     "resize-observer-polyfill": "^1.5.1",
-    "rxjs": "7.1.0",
+    "rxjs": "^6.5.3",
     "tslib": "^2.1.0",
     "zone.js": "~0.11.4"
   },
@@ -79,6 +79,6 @@
     "protractor": "~7.0.0",
     "ts-node": "10.0.0",
     "tslint": "~6.1.0",
-    "typescript": "^4.2.4"
+    "typescript": "~4.2.3"
   }
 }
