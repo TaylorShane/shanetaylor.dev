@@ -249,9 +249,9 @@ export class GithubService {
     attributes: [
       'UML Flow Diagrams',
       'Entity Relation Diagrams',
-      'Detailed Input, Output, Actions, Post Conditions, and Validation',
-      'Database Versioning',
-      'Cursor Adapters',
+      'Detailed Actions',
+      'Post Conditions',
+      'Validation',
     ],
     blurb:
       'Trained in the methods of Software Engineering and the life cycle of the software development process, I am Agile and Scrum knowledgeable. I understand the necessity of exceptional communication skills and the importance of working your plan and planning your work.',

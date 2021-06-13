@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { GithubService } from 'src/app/config/github.service';
 import { RepoData } from '../models/models';
 import { shareReplay } from 'rxjs/operators';
@@ -17,6 +17,16 @@ export class ChartsComponent implements OnInit {
   singleRepoSubscription$: any;
 
   options = {
+    scale: true,
+    scaleSize: 100,
+    responsive: true,
+    maintainAspectRatio: true,
+    grid: {
+      left: 100,
+      top: 10,
+      right: 100,
+      bottom: 100,
+    },
     title: {
       text: 'My Github Projects',
       subtext: 'Current projects in my Github repository',
@@ -80,7 +90,7 @@ export class ChartsComponent implements OnInit {
 
   resizeChart(): void {
     if (this.echartsInstance) {
-      this.echartsInstance.resize();
+      this.echartsInstance.resize({ width: 'auto', height: 'auto' });
     }
   }
 
@@ -122,6 +132,16 @@ export class ChartsComponent implements OnInit {
 
   private setChartOptions(repoName: string): void {
     this.options = {
+      scale: true,
+      scaleSize: 200,
+      responsive: true,
+      maintainAspectRatio: false,
+      grid: {
+        left: 0,
+        top: 0,
+        right: 0,
+        bottom: 0,
+      },
       title: {
         text: repoName + '.dev project stats',
         subtext: 'languages used and poroportions ',

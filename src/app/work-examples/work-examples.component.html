@@ -1,34 +1,40 @@
 <div class="bg-5 pl-0 pr-0 pt-0">
-  <div class="container-fluid bg-4">
-    <div class="col-10 mx-auto">
-      <div id="work"></div>
-      <h3 class="mb-3 text-left">Example Work</h3>
-      <p class="mb-5">
-        {{ siteBlurb }}
-      </p>
+  <div class="pt-0 container-fluid bg-4">
+    <div id="example-work-container" class="container-fluid">
+      <div id="work" class="col-lg-7 mx-auto">
+        <h3 class="mb-3 text-left">Example Work</h3>
+        <p class="mb-5">
+          {{ siteBlurb }}
+        </p>
+      </div>
       <app-charts
+        #stDevChart
+        id="st-dev-chart"
         [chartName]="'shanetaylor'"
         [theme]="'dark-fresh-cut'"
       ></app-charts>
     </div>
-  </div>
-  <div class="container-fluid pb-0">
-    <div class="col-10 mx-auto">
-      <p>
+    <div id="allrepo-chart-container" class="container-fluid">
+      <p class="col-lg-7 mx-auto">
         {{ githubBlurb }}
       </p>
+      <div class="p-3 text-center pb-5">
+        <a
+          rel="noopener noreferrer"
+          [href]="personalRepos"
+          class="btn btn-outline-secondary min-btn-width"
+        >
+          <fa-icon [icon]="faGithub"></fa-icon> {{ viewProject }}
+        </a>
+      </div>
+      <app-charts
+        #allRepoChart
+        id="allrepo-chart"
+        [chartName]="'allRepos'"
+        [theme]="'dark-fresh-cut'"
+      ></app-charts>
     </div>
-    <div class="p-3 text-center pb-5">
-      <a
-        rel="noopener noreferrer"
-        [href]="personalRepos"
-        class="btn btn-outline-secondary min-btn-width"
-      >
-        <fa-icon [icon]="faGithub"></fa-icon> {{ viewProject }}
-      </a>
-    </div>
-    <app-charts [chartName]="'allRepos'" [theme]="'dark-bold'"></app-charts>
-    <div class="d-flex flex-wrap pt-5 justify-content-around">
+    <div class="d-flex flex-wrap pt-5 bg-5 justify-content-around">
       <ng-container *ngFor="let example of projects$ | async">
         <div class="d-flex flex-column flex-grow-1 app-example-container">
           <div id="{{ example.name }}" class="anchor-offset"></div>
@@ -38,37 +44,6 @@
           ></app-example>
         </div>
       </ng-container>
-      <!-- <div class="col-md-6 d-flex align-items-center">
-        <div class="card shadow-lg">
-           content start 
-          <div #pixelHero class="row">
-              <div id="php"></div>
-              <p style="padding: 5%">
-                <span class="emphasis">Pixel Hero Project Highlights</span>
-                <br />
-                Cooperatively Created Through Agile Process
-                <span class="emphasis"> &#8281; </span> Functional Multi-Entity
-                MySQL Database <span class="emphasis"> &#8281; </span> Secure
-                Administrative URLs
-                <span class="emphasis"> &#8281; </span> mysqli_connect
-                Authentication <span class="emphasis"> &#8281;</span> Full Stack
-                Functionality <br />
-                <br />
-                Pixel Hero is an example online game hub built with PHP (version
-                4.5.4) designed to connect gamers with each other and content
-                they care about. Using phpMyAdmin on a MySQL server type, my
-                team created a robust site with a database consisting of
-                multiple entities full of user and administrator specific tools.
-              </p>
-              <iframe
-                style="height: 1000px"
-                class="frame"
-                src="https://www.shanetaylor.dev/Pixel_Hero/index.php"
-              ></iframe>
-            </div>
-          </div>
-           content end 
-      </div> -->
     </div>
   </div>
 </div>
