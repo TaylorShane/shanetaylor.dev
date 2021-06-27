@@ -43,6 +43,7 @@
     "@popperjs/core": "^2.9.2",
     "bootstrap": "5.0.2",
     "echarts": "^5.0.2",
+    "glob-parent": "^6.0.0",
     "ngx-bootstrap": "^6.2.0",
     "ngx-echarts": "7.0.1",
     "popper.js": "^1.16.1",
