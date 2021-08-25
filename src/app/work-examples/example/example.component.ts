@@ -1,6 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { faGithub, faGooglePlay } from '@fortawesome/free-brands-svg-icons';
-import { faLink } from '@fortawesome/free-solid-svg-icons';
 import { ProjectData } from 'src/app/shared/models/models';
 
 @Component({
@@ -11,12 +9,11 @@ import { ProjectData } from 'src/app/shared/models/models';
 export class ExampleComponent {
   @Input() exampleData: ProjectData;
 
-  faGithub = faGithub;
-  faGooglePlay = faGooglePlay;
-  falink = faLink;
   public readonly viewSourceCode = 'View Source Code';
   public readonly playstoreDownload = 'Playstore Download';
   public readonly websiteLink = 'Website Link';
+  public readonly privacyPolicy = 'Privacy Policy Link';
+  public readonly userGuide = 'User Guide Link';
 
   constructor() {}
 }

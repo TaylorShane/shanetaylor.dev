@@ -40,6 +40,6 @@ export class WorkExamplesComponent {
   projects$: Observable<ProjectData[]>;
 
   constructor(private githubService: GithubService) {
-    this.projects$ = this.githubService.getProjectData();
+    this.projects$ = this.githubService.projectData$;
   }
 }

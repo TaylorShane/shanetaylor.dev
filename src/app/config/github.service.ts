@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { Languages, ProjectData, RepoData } from '../shared/models/models';
-import { catchError } from 'rxjs/operators';
+import { catchError, shareReplay } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 @Injectable({
@@ -177,6 +177,8 @@ export class GithubService {
     playstoreLink:
       'https://play.google.com/store/apps/details?id=com.shane_taylor.Graphy',
     repoLink: 'https://github.com/TaylorShane/NEIU2017SummerInternship',
+    userGuideLink: 'https://www.shanetaylor.dev/#/graphy-user-guide',
+    privacyLink: 'https://www.shanetaylor.dev/#/graphy-privacy-terms',
   };
 
   public readonly thgInfo: ProjectData = {
@@ -198,6 +200,7 @@ export class GithubService {
       'https://play.google.com/store/apps/details?id=com.shane_taylor.trumphaikugenerator&hl=en',
 
     websiteLink: 'https://trumphaikugenerator.com/',
+    privacyLink: 'https://www.trumphaikugenerator.com/#/privacy-terms',
   };
 
   public readonly spottertInfo: ProjectData = {
@@ -303,26 +306,28 @@ export class GithubService {
     this.mdbmInfo,
   ];
 
-  constructor(private http: HttpClient) {}
+  projectData$: Observable<ProjectData[]>;
 
-  getProjectData(): Observable<ProjectData[]> {
-    return new Observable<ProjectData[]>((observer) => {
+  constructor(private http: HttpClient) {
+    this.projectData$ = new Observable<ProjectData[]>((observer) => {
       this.projects.forEach((project) => {
         if (project.id) {
-          return this.getAllLanguagesForGivenRepo(project.id).subscribe({
-            error: (err) =>
-              observer.error(
-                new Error('Failed to get all langs for a given repo')
-              ),
-            next: (repoLang) => {
-              const projectNeedingLangData = this.projects.find(
-                (projectMissingLang) => projectMissingLang.id === project.id
-              );
-              projectNeedingLangData.languageData = repoLang;
-              observer.next(this.projects);
-            },
-            complete: () => {},
-          });
+          return this.getAllLanguagesForGivenRepo(project.id)
+            .pipe(shareReplay(1))
+            .subscribe({
+              error: (err) =>
+                observer.error(
+                  new Error('Failed to get all langs for a given repo')
+                ),
+              next: (repoLang) => {
+                const projectNeedingLangData = this.projects.find(
+                  (projectMissingLang) => projectMissingLang.id === project.id
+                );
+                projectNeedingLangData.languageData = repoLang;
+                observer.next(this.projects);
+              },
+              complete: () => {},
+            });
         }
       });
     });

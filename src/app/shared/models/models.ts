@@ -52,4 +52,6 @@ export class ProjectData {
   repoLink?: string;
   websiteLink?: string;
   docLinks?: string[];
+  userGuideLink?: string;
+  privacyLink?: string;
 }
