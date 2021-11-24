@@ -177,8 +177,8 @@ export class GithubService {
     playstoreLink:
       'https://play.google.com/store/apps/details?id=com.shane_taylor.Graphy',
     repoLink: 'https://github.com/TaylorShane/NEIU2017SummerInternship',
-    userGuideLink: 'https://www.shanetaylor.dev/#/graphy-user-guide',
-    privacyLink: 'https://www.shanetaylor.dev/#/graphy-privacy-terms',
+    userGuideLink: '/#/graphy-user-guide',
+    privacyLink: '/#/graphy-privacy-terms',
   };
 
   public readonly thgInfo: ProjectData = {
