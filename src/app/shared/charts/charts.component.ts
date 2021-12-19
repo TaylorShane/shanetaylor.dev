@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { GithubService } from 'src/app/config/github.service';
+import { GithubService } from 'src/app/services/github.service';
 import { RepoData } from '../models/models';
 import { shareReplay } from 'rxjs/operators';
 
@@ -57,7 +57,7 @@ export class ChartsComponent implements OnInit {
     series: [
       {
         type: 'pie',
-        radius: [30, 110],
+        radius: [20, 110],
         roseType: 'area',
         data: this.repoData,
       },
@@ -163,7 +163,7 @@ export class ChartsComponent implements OnInit {
       series: [
         {
           type: 'pie',
-          radius: [30, 110],
+          radius: [20, 110],
           roseType: 'area',
           data: this.repoData,
         },

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { faGithub, faGooglePlay } from '@fortawesome/free-brands-svg-icons';
-import { GithubService } from '../config/github.service';
+import { GithubService } from '../services/github.service';
 import { ProjectData } from '../shared/models/models';
 
 // import 'echarts/theme/fresh-cut.js';
