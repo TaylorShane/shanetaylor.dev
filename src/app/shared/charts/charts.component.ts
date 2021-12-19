@@ -3,7 +3,7 @@ import { shareReplay, takeUntil } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
 import { GithubService } from 'src/app/services/github.service';
 import { RepoData } from '../models/models';
-import { EChartsOption } from 'echarts';
+import { shareReplay } from 'rxjs/operators';
 
 @Component({
   selector: 'st-charts',
@@ -18,7 +18,7 @@ export class ChartsComponent implements OnInit, OnDestroy {
   singleRepoSubscription$: any;
   screenWidth = '100%';
 
-  options: EChartsOption = {
+  options = {
     scale: true,
     // scaleSize: 200,
     responsive: true,
@@ -37,7 +37,7 @@ export class ChartsComponent implements OnInit, OnDestroy {
       textBaseline: 'bottom',
       text: 'Github Projects',
       subtext: 'Current projects in my Github repository',
-      bottom: 0,
+      x: 'center',
     },
     tooltip: {
       confine: true,
@@ -57,19 +57,17 @@ export class ChartsComponent implements OnInit, OnDestroy {
       /*eslint-disable */
     },
     legend: {
-      orient: 'vertical',
-      right: 0,
-      mainType: 'legend',
-      show: true,
-      align: 'right',
+      x: 'center',
+      y: 'bottom',
     },
     calculable: true,
     series: [
       {
         type: 'pie',
-        radius: this.screenWidth,
+        radius: [20, 110],
         roseType: 'area',
         data: this.repoData,
+        labelLayout: { draggable: true },
       },
     ],
   };
@@ -159,33 +157,43 @@ export class ChartsComponent implements OnInit, OnDestroy {
   }
 
   private setChartOptions(repoName: string): void {
-    let stDevChartOptions = this.options;
-
-    stDevChartOptions.title = {
-      text: repoName + '.dev',
-      subtext: 'languages used and proportions ',
-      textStyle: {
-        color: '#1abc9c',
+    this.options = {
+      scale: true,
+      scaleSize: 200,
+      responsive: true,
+      maintainAspectRatio: false,
+      grid: {
+        left: 0,
+        top: 0,
+        right: 0,
+        bottom: 0,
       },
-      textVerticalAlign: 'middle',
-      textBaseline: 'bottom',
-      bottom: 0,
+      title: {
+        text: repoName + '.dev project stats',
+        subtext: 'languages used and poroportions ',
+        x: 'center',
+      },
+      tooltip: {
+        confine: true,
+        trigger: 'item',
+        formatter(params): any {
+          return `${params.name}<br />
+                  ${params.percent}% of all languages used in this project`;
+        },
+      },
+      legend: {
+        x: 'center',
+        y: 'bottom',
+      },
+      calculable: true,
+      series: [
+        {
+          type: 'pie',
+          radius: [20, 110],
+          roseType: 'area',
+          data: this.repoData,
+        },
+      ],
     };
-    stDevChartOptions.tooltip = {
-      confine: true,
-      trigger: 'item',
-      formatter(params): any {
-        return `${params.name}<br />
-                ${params.percent}% of all languages used in this project`;
-      },
-    };
-    stDevChartOptions.series = [
-      {
-        type: 'pie',
-        radius: this.screenWidth,
-        roseType: 'area',
-        data: this.repoData,
-      },
-    ];
   }
 }
