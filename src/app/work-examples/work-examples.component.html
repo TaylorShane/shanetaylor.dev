@@ -1,47 +1,43 @@
 <div class="bg-5 pe-0 py-0">
   <div class="pt-0 container-fluid bg-4">
-    <div id="example-work-container" class="container-fluid">
-      <div id="work" class="col-lg-7 mx-auto">
+    <div id="example-work-container"
+         class="container-fluid">
+      <div id="work"
+           class="col-lg-7 mx-auto">
         <h3 class="mb-3 text-start">Example Work</h3>
         <p class="mb-5">
           {{ siteBlurb }}
         </p>
       </div>
-      <app-charts
-        #stDevChart
-        id="st-dev-chart"
-        [chartName]="'shanetaylor'"
-        [theme]="'dark-fresh-cut'"
-      ></app-charts>
+      <st-charts #stDevChart
+                 id="st-dev-chart"
+                 [chartName]="'shanetaylor'"
+                 [theme]="'dark-fresh-cut'"></st-charts>
     </div>
-    <div id="allrepo-chart-container" class="container-fluid">
+    <div id="allrepo-chart-container"
+         class="container-fluid">
       <p class="col-lg-7 mx-auto">
         {{ githubBlurb }}
       </p>
       <div class="p-3 text-center pb-5">
-        <a
-          rel="noopener noreferrer"
-          [href]="personalRepos"
-          class="btn btn-outline-secondary min-btn-width"
-        >
+        <a rel="noopener noreferrer"
+           [href]="personalRepos"
+           class="btn btn-outline-secondary min-btn-width">
           <fa-icon [icon]="faGithub"></fa-icon> {{ viewProject }}
         </a>
       </div>
-      <app-charts
-        #allRepoChart
-        id="allrepo-chart"
-        [chartName]="'allRepos'"
-        [theme]="'dark-fresh-cut'"
-      ></app-charts>
+      <st-charts #allRepoChart
+                 id="allrepo-chart"
+                 [chartName]="'allRepos'"
+                 [theme]="'dark-fresh-cut'"></st-charts>
     </div>
     <div class="d-flex flex-wrap pt-5 bg-5 justify-content-around">
       <ng-container *ngFor="let example of projects$ | async">
-        <div class="d-flex flex-column flex-grow-1 app-example-container">
-          <div id="{{ example.name }}" class="anchor-offset"></div>
-          <app-example
-            class="example-placement m-auto"
-            [exampleData]="example"
-          ></app-example>
+        <div class="d-flex flex-column flex-grow-1 st-example-container">
+          <div id="{{ example.name }}"
+               class="anchor-offset"></div>
+          <st-example class="example-placement m-auto"
+                      [exampleData]="example"></st-example>
         </div>
       </ng-container>
     </div>

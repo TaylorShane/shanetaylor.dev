@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, UrlSegment } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
+  selector: 'st-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })

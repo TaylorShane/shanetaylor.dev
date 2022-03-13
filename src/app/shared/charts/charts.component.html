@@ -1,9 +1,7 @@
 <ng-container *ngIf="repoData.length > 0">
-  <div
-    class="w-100"
-    echarts
-    [options]="options"
-    [theme]="theme"
-    (chartInit)="onChartInit($event)"
-  ></div>
+  <div class="w-100"
+       echarts
+       [options]="options"
+       [theme]="theme"
+       (chartInit)="onChartInit($event)"></div>
 </ng-container>

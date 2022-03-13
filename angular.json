@@ -5,10 +5,14 @@
   "projects": {
     "shanetaylor": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "st",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -98,7 +102,8 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"],
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -116,10 +121,5 @@
       }
     }
   },
-  "defaultProject": "shanetaylor",
-  "schematics": {
-    "@schematics/angular:component": {
-      "style": "scss"
-    }
-  }
+  "defaultProject": "shanetaylor"
 }

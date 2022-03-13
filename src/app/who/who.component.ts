@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-who',
+  selector: 'st-who',
   templateUrl: './who.component.html',
   styleUrls: ['./who.component.scss'],
 })
