@@ -4,7 +4,7 @@ import { RepoData } from '../models/models';
 import { shareReplay } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-charts',
+  selector: 'st-charts',
   templateUrl: './charts.component.html',
   styleUrls: ['./charts.component.scss'],
 })

@@ -5,12 +5,10 @@
     </div>
     <ng-container *ngIf="exampleData.playstoreLink !== undefined">
       <div class="text-center">
-        <a
-          rel="noopener noreferrer"
-          [href]="exampleData.playstoreLink"
-          class="btn btn-outline-secondary min-btn-width r"
-          target="_blank"
-        >
+        <a rel="noopener noreferrer"
+           [href]="exampleData.playstoreLink"
+           class="btn btn-outline-secondary min-btn-width r"
+           target="_blank">
           <i class="fab fa-google-play"></i>
           {{ playstoreDownload }}
         </a>
@@ -18,12 +16,10 @@
     </ng-container>
     <ng-container *ngIf="exampleData.websiteLink !== undefined">
       <div class="text-center">
-        <a
-          rel="noopener noreferrer"
-          [href]="exampleData.websiteLink"
-          class="btn btn-outline-secondary min-btn-width r"
-          target="_blank"
-        >
+        <a rel="noopener noreferrer"
+           [href]="exampleData.websiteLink"
+           class="btn btn-outline-secondary min-btn-width r"
+           target="_blank">
           <i class="fas fa-link"></i>
           {{ websiteLink }}
         </a>
@@ -31,12 +27,10 @@
     </ng-container>
     <ng-container *ngIf="exampleData.repoLink !== undefined">
       <div class="text-center">
-        <a
-          rel="noopener noreferrer"
-          [href]="exampleData.repoLink"
-          class="btn btn-outline-secondary min-btn-width"
-          target="_blank"
-        >
+        <a rel="noopener noreferrer"
+           [href]="exampleData.repoLink"
+           class="btn btn-outline-secondary min-btn-width"
+           target="_blank">
           <i class="fab fa-github"></i>
           {{ viewSourceCode }}
         </a>
@@ -45,12 +39,10 @@
 
     <ng-container *ngIf="exampleData.userGuideLink !== undefined">
       <div class="text-center">
-        <a
-          rel="noopener noreferrer"
-          [href]="exampleData.userGuideLink"
-          class="btn btn-outline-secondary min-btn-width"
-          target="_self"
-        >
+        <a rel="noopener noreferrer"
+           [href]="exampleData.userGuideLink"
+           class="btn btn-outline-secondary min-btn-width"
+           target="_self">
           <i class="fas fa-link"></i>
           {{ userGuide }}
         </a>
@@ -59,12 +51,10 @@
 
     <ng-container *ngIf="exampleData.privacyLink !== undefined">
       <div class="text-center">
-        <a
-          rel="noopener noreferrer"
-          [href]="exampleData.privacyLink"
-          class="btn btn-outline-secondary min-btn-width"
-          target="_self"
-        >
+        <a rel="noopener noreferrer"
+           [href]="exampleData.privacyLink"
+           class="btn btn-outline-secondary min-btn-width"
+           target="_self">
           <i class="fas fa-link"></i>
           {{ privacyPolicy }}
         </a>
@@ -73,37 +63,29 @@
 
     <div class="row m-auto">
       <div class="d-flex mx-auto flex-column">
-        <ng-container
-          *ngIf="exampleData.languageData && exampleData.languageData !== null"
-        >
+        <ng-container *ngIf="exampleData.languageData && exampleData.languageData !== null">
           <div>
             <ng-container [ngSwitch]="exampleData.languageData.lang[0]">
-              <i
-                *ngSwitchCase="'Java'"
-                role="img"
-                class="fab fa-java notranslate align-self-center"
-              ></i>
+              <i *ngSwitchCase="'Java'"
+                 role="img"
+                 class="fab fa-java notranslate align-self-center"></i>
               <!-- TODO: this doesn't exist yet -->
               <!-- <i
                 *ngSwitchCase="'C#'"
                 role="img"
                 class="fas fa-csharp notranslate align-self-center"
               ></i> -->
-              <i
-                *ngSwitchDefault
-                role="img"
-                class="fas fa-code notranslate align-self-center"
-              ></i>
+              <i *ngSwitchDefault
+                 role="img"
+                 class="fas fa-code notranslate align-self-center"></i>
               &nbsp;
             </ng-container>
             <label>Language: {{ exampleData.languageData.lang[0] }}</label>
           </div>
           <ng-container *ngIf="exampleData.name === 'BrewBuddy'">
             <div>
-              <i
-                role="img"
-                class="fab fa-swift notranslate align-self-center"
-              ></i>
+              <i role="img"
+                 class="fab fa-swift notranslate align-self-center"></i>
               &nbsp;
               <label>Language: Swift</label>
             </div>
@@ -122,15 +104,14 @@
     </div>
 
     <div class="row d-flex justify-content-center align-content-between">
-      <p
-        *ngFor="let attribute of exampleData.attributes; first as isFirst"
-        class="m-0 w-auto"
-      >
+      <p *ngFor="let attribute of exampleData.attributes; first as isFirst"
+         class="m-0 w-auto">
         <ng-container *ngIf="isFirst">
           <span class="emphasis"></span> {{ attribute }}
         </ng-container>
         <ng-container *ngIf="!isFirst">
-          <span *ngIf="!isFirst" class="emphasis">&#8281;</span> &nbsp;
+          <span *ngIf="!isFirst"
+                class="emphasis">&#8281;</span> &nbsp;
           {{ attribute }}
           &nbsp;
         </ng-container>
@@ -141,13 +122,12 @@
       {{ exampleData.blurb }}
     </p>
     <div class="d-flex m-auto w-60">
-      <carousel class="m-auto" [isAnimated]="true">
+      <carousel class="m-auto"
+                [isAnimated]="true">
         <slide *ngFor="let image of exampleData.images; index as i; count as c">
-          <img
-            [src]="image"
-            alt="Application Screen Shot"
-            class="d-block w-100"
-          />
+          <img [src]="image"
+               alt="Application Screen Shot"
+               class="d-block w-100" />
         </slide>
       </carousel>
     </div>

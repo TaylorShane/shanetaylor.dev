@@ -2,7 +2,7 @@ import { Component, HostBinding, OnInit } from '@angular/core';
 import { NavLinks } from '../shared/models/models';
 
 @Component({
-  selector: 'app-navbar',
+  selector: 'st-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })

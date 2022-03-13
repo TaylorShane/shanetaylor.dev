@@ -17,7 +17,7 @@ import 'echarts/theme/dark-mushroom.js';
 import 'echarts/lib/theme/dark.js';
 import { Observable } from 'rxjs';
 @Component({
-  selector: 'app-work-examples',
+  selector: 'st-work-examples',
   templateUrl: './work-examples.component.html',
   styleUrls: ['./work-examples.component.scss'],
 })
