@@ -1948,65 +1948,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fortawesome/angular-fontawesome@npm:0.10.1":
-  version: 0.10.1
-  resolution: "@fortawesome/angular-fontawesome@npm:0.10.1"
-  dependencies:
-    tslib: ^2.3.1
-  peerDependencies:
-    "@fortawesome/fontawesome-svg-core": ~1.2.27 || ~1.3.0-beta2
-  checksum: 36196031a90275d5684df95165264dea3b26fa4d766e32faf0c1e750acb15b8fd74cded5ed3ce67bc6a44dcc01eb4915498167da50f563a4377b628c388df62a
-  languageName: node
-  linkType: hard
-
-"@fortawesome/fontawesome-common-types@npm:^0.2.36":
-  version: 0.2.36
-  resolution: "@fortawesome/fontawesome-common-types@npm:0.2.36"
-  checksum: d604ac51da0b1597127fde70c64157b70ead6af7f2643ab7dfca268ef99d4ed0b4cc823afba206362422a622e389828408bec573df802bf4f02b118d0fa18dc8
-  languageName: node
-  linkType: hard
-
-"@fortawesome/fontawesome-common-types@npm:^0.3.0":
-  version: 0.3.0
-  resolution: "@fortawesome/fontawesome-common-types@npm:0.3.0"
-  checksum: f08280e2e6c7df5cf2c80c88092828b367bb824ec21a6ba0e5d290ebf86038de166622152c8845a0aeaeff70bd54df7af17f1ef26dea7b832fdebdcc37412c37
-  languageName: node
-  linkType: hard
-
-"@fortawesome/fontawesome-free@npm:^5.15.4":
-  version: 5.15.4
-  resolution: "@fortawesome/fontawesome-free@npm:5.15.4"
-  checksum: 32281c3df4075290d9a96dfc22f72fadb3da7055d4117e48d34046b8c98032a55fa260ae351b0af5d6f6fb57a2f5d79a4abe52af456da35195f7cb7dda27b4a2
-  languageName: node
-  linkType: hard
-
-"@fortawesome/fontawesome-svg-core@npm:^1.2.36":
-  version: 1.3.0
-  resolution: "@fortawesome/fontawesome-svg-core@npm:1.3.0"
-  dependencies:
-    "@fortawesome/fontawesome-common-types": ^0.3.0
-  checksum: 78be521be3aac56cf81695c5f3fefda8a0e0dcbd37cd734f09b74a3657dd9c073cb86c5adf60a4904e584936fe9a63ee913d932c03105092bd8c44bb92f3aad6
-  languageName: node
-  linkType: hard
-
-"@fortawesome/free-brands-svg-icons@npm:^5.15.4":
-  version: 5.15.4
-  resolution: "@fortawesome/free-brands-svg-icons@npm:5.15.4"
-  dependencies:
-    "@fortawesome/fontawesome-common-types": ^0.2.36
-  checksum: 06e38132fbdf04d8677cf6e47e73cd566f68256f542d68d354e26f5ca7536c714b56f5f3dc6c670065b888ee08bc913bb4f213ab08225faf955d893a6a86ed02
-  languageName: node
-  linkType: hard
-
-"@fortawesome/free-solid-svg-icons@npm:^5.15.4":
-  version: 5.15.4
-  resolution: "@fortawesome/free-solid-svg-icons@npm:5.15.4"
-  dependencies:
-    "@fortawesome/fontawesome-common-types": ^0.2.36
-  checksum: eb037b703827ee37af3387a964afc7a190ff42a674ef46f4a6c295b634a38e849741eca78306b6423eaf3062d6ab1e7372aac5be2aec06f0fd9e8bd8110efcf9
-  languageName: node
-  linkType: hard
-
 "@gar/promisify@npm:^1.0.1":
   version: 1.1.3
   resolution: "@gar/promisify@npm:1.1.3"
@@ -10111,11 +10052,6 @@ __metadata:
     "@angular/platform-browser": ~13.1.1
     "@angular/platform-browser-dynamic": ~13.1.1
     "@angular/router": ~13.1.1
-    "@fortawesome/angular-fontawesome": 0.10.1
-    "@fortawesome/fontawesome-free": ^5.15.4
-    "@fortawesome/fontawesome-svg-core": ^1.2.36
-    "@fortawesome/free-brands-svg-icons": ^5.15.4
-    "@fortawesome/free-solid-svg-icons": ^5.15.4
     "@juggle/resize-observer": ^3.3.1
     "@popperjs/core": ^2.11.0
     "@types/jasmine": 3.10.3
