@@ -9,7 +9,6 @@ import { WhatComponent } from './what/what.component';
 import { WorkExamplesComponent } from './work-examples/work-examples.component';
 import { FooterComponent } from './footer/footer.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ChartsComponent } from './shared/charts/charts.component';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
@@ -42,7 +41,6 @@ import { GraphyUserGuideComponent } from './app-specific/graphy/user-guide/graph
     BrowserAnimationsModule,
     CarouselModule.forRoot(),
     CollapseModule.forRoot(),
-    FontAwesomeModule,
     HttpClientModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts'),
