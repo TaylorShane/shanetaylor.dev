@@ -1,4 +1,4 @@
-<div class="d-flex align-items-center container-fluid pt-5">
+<div class="d-flex">
   <div class="card shadow-lg">
     <div class="text-center">
       <span class="emphasis">{{ exampleData.name }}</span>
@@ -103,7 +103,7 @@
       </div>
     </div>
 
-    <div class="row d-flex justify-content-center align-content-between">
+    <div class="row d-flex justify-content-center ">
       <p *ngFor="let attribute of exampleData.attributes; first as isFirst"
          class="m-0 w-auto">
         <ng-container *ngIf="isFirst">
@@ -121,7 +121,7 @@
     <p style="padding: 5%">
       {{ exampleData.blurb }}
     </p>
-    <div class="d-flex m-auto w-60">
+    <div class="d-flex m-auto">
       <carousel class="m-auto"
                 [isAnimated]="true">
         <slide *ngFor="let image of exampleData.images; index as i; count as c">
