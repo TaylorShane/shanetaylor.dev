@@ -46,6 +46,7 @@ export class ProjectData {
   attributes: string[];
   blurb: string;
   images: string[];
+  portrait: boolean;
   name: string;
   languageData?: Languages;
   playstoreLink?: string;

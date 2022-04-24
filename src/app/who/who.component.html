@@ -1,11 +1,13 @@
 <div id="who"></div>
 <div class="container-fluid bg-1 text-center">
-  <h3 class="mb-3">Who Am I?</h3>
-  <img [src]="profileImage"
-       class="img-fluid rounded-circle mb-3 max-image-size"
-       style="display: inline"
-       alt="Profile image" />
-  <h3>
-    {{ whoBlurb }}
-  </h3>
+  <div class="mx-auto col-lg-7 col-sm-1">
+    <h3 class="mb-3">Who Am I?</h3>
+    <img [src]="profileImage"
+         class="img-fluid rounded-circle mb-3 max-image-size"
+         style="display: inline"
+         alt="Profile image" />
+    <h3>
+      {{ whoBlurb }}
+    </h3>
+  </div>
 </div>

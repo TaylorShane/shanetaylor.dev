@@ -1,5 +1,5 @@
-<div class="d-flex">
-  <div class="card shadow-lg">
+<div class="d-flex flex-container">
+  <div>
     <div class="text-center">
       <span class="emphasis">{{ exampleData.name }}</span>
     </div>
@@ -61,7 +61,7 @@
       </div>
     </ng-container>
 
-    <div class="row m-auto">
+    <div class="d-flex m-auto">
       <div class="d-flex mx-auto flex-column">
         <ng-container *ngIf="exampleData.languageData && exampleData.languageData !== null">
           <div>
@@ -118,11 +118,12 @@
       </p>
     </div>
 
-    <p style="padding: 5%">
+    <p class="p-3">
       {{ exampleData.blurb }}
     </p>
-    <div class="d-flex m-auto">
-      <carousel class="m-auto"
+    <div class="d-flex"
+         [ngClass]="exampleData.portrait ? 'w-75 m-auto' : 'w-100 m-auto' ">
+      <carousel class="d-flex m-auto"
                 [isAnimated]="true">
         <slide *ngFor="let image of exampleData.images; index as i; count as c">
           <img [src]="image"
