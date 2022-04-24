@@ -172,6 +172,7 @@ export class GithubService implements OnDestroy {
       '../../assets/img/graphy/ScreenShots/Screenshot_1500149162.webp',
       '../../assets/img/graphy/ScreenShots/Screenshot_1500149174.webp',
     ],
+    portrait: false,
     name: 'Graphy',
     languageData: this.graphyLangData,
     playstoreLink:
@@ -194,6 +195,7 @@ export class GithubService implements OnDestroy {
       '../../assets/img/THG/Screenshot_1510861989.webp',
       '../../assets/img/THG/Screenshot_1510861997.webp',
     ],
+    portrait: true,
     name: 'Trump Haiku Generator',
 
     playstoreLink:
@@ -223,6 +225,7 @@ export class GithubService implements OnDestroy {
       '../../assets/img/spotter/meal_calories_total.webp',
       '../../assets/img/spotter/user_profile.webp',
     ],
+    portrait: false,
     name: 'Spotter',
     languageData: this.spotterLangData,
     repoLink: 'https://github.com/TaylorShane/Spotter_group',
@@ -244,6 +247,7 @@ export class GithubService implements OnDestroy {
       '../../assets/img/brewbuddy/Screenshot_1507672671.webp',
       '../../assets/img/brewbuddy/Screenshot_1507672664.webp',
     ],
+    portrait: true,
     name: 'BrewBuddy',
     repoLink: 'https://github.com/TaylorShane/BrewBuddy-Android',
   };
@@ -262,6 +266,7 @@ export class GithubService implements OnDestroy {
       '../../assets/img/pixelhero/add.webp',
       '../../assets/img/pixelhero/srs.webp',
     ],
+    portrait: true,
     name: 'Software Engineering Documentation',
     docLinks: [
       'http://www.shane-taylor.com/shane-taylor.com/PixelHeroSRS.html',
@@ -284,6 +289,7 @@ export class GithubService implements OnDestroy {
       '../../assets/img/mdbm/mdbm-data-dictionary.webp',
       '../../assets/img/mdbm/mdbm-er-diagram.webp',
     ],
+    portrait: false,
     name: 'SQL Database',
     languageData: this.mdbmLangData,
     repoLink: 'https://github.com/TaylorShane/Modern-Database-Management',
