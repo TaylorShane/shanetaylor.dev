@@ -35,7 +35,7 @@ export class NavLinks {
  * @member blurb  short description
  * @member images string resource location
  * @member name name used for link and displayed in HTML
- * @member languageData langauges used gathered from github
+ * @member languageData languages used gathered from github
  * @member playstoreLink link to app in playstore
  * @member repoLink link to github repo
  * @member websiteLink link to project site

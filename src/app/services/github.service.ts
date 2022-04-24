@@ -1,14 +1,14 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Injectable, OnDestroy } from '@angular/core';
+import { HttpClient, HttpErrorResponse, HttpEvent } from '@angular/common/http';
+import { Observable, Subject, throwError } from 'rxjs';
 import { Languages, ProjectData, RepoData } from '../shared/models/models';
-import { catchError, shareReplay } from 'rxjs/operators';
+import { catchError, takeUntil } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class GithubService {
+export class GithubService implements OnDestroy {
   // gitHub endpoints
   // https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#list-repository-languages
   // https://api.github.com/orgs/TaylorShane/projects
@@ -150,7 +150,7 @@ export class GithubService {
   shanetaylorLangData: Languages = undefined;
   graphyLangData: Languages = undefined;
   spotterLangData: Languages = undefined;
-  brewbuddyAndroindLangData: Languages = undefined;
+  brewbuddyAndroidLangData: Languages = undefined;
   brewbuddyIosLangData: Languages = undefined;
   mdbmLangData: Languages = undefined;
   public readonly graphyInfo: ProjectData = {
@@ -203,12 +203,12 @@ export class GithubService {
     privacyLink: 'https://www.trumphaikugenerator.com/#/privacy-terms',
   };
 
-  public readonly spottertInfo: ProjectData = {
+  public readonly spotterInfo: ProjectData = {
     id: 'Spotter',
     attributes: [
       'XML database',
       'Event driven',
-      'Databinding',
+      'Data binding',
       'C# collections',
       '.NET framework',
       'Low coupling',
@@ -238,7 +238,7 @@ export class GithubService {
       'Cursor Adapters',
     ],
     blurb:
-      'Brewbuddy is a mobile application built in both Android and iOS versions. It is designed to help the homebrewer brew great beers. Brewbuddy has a database of popular    recipes, an ABV calculator, and a bottle calculator so that come    bottling day you know exactly how many bottles to sanitize. You can even add your favorite recipes direclty to the home screen for quick access.',
+      'Brewbuddy is a mobile application built in both Android and iOS versions. It is designed to help the home brewer brew great beers. Brewbuddy has a database of popular    recipes, an ABV calculator, and a bottle calculator so that come    bottling day you know exactly how many bottles to sanitize. You can even add your favorite recipes directly to the home screen for quick access.',
     images: [
       '../../assets/img/brewbuddy/Screenshot_1507672646.webp',
       '../../assets/img/brewbuddy/Screenshot_1507672671.webp',
@@ -296,11 +296,12 @@ export class GithubService {
     // headers: { 'User-Agent': 'request' },
     json: true,
   };
+  private readonly destroy$ = new Subject<void>();
 
   projects: ProjectData[] = [
     this.graphyInfo,
     this.thgInfo,
-    this.spottertInfo,
+    this.spotterInfo,
     this.brewBuddyInfo,
     this.sweDocInfo,
     this.mdbmInfo,
@@ -313,7 +314,7 @@ export class GithubService {
       this.projects.forEach((project) => {
         if (project.id) {
           return this.getAllLanguagesForGivenRepo(project.id)
-            .pipe(shareReplay(1))
+            .pipe(takeUntil(this.destroy$))
             .subscribe({
               error: (err) =>
                 observer.error(
@@ -333,11 +334,27 @@ export class GithubService {
     });
   }
 
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
   // TODO: refactor
-  getAllRepos(): Observable<RepoData> {
-    return this.http
-      .get<RepoData>(this.stAllRepos, this.options)
-      .pipe(catchError(this.handleError));
+  getAllRepos(): Observable<RepoData[]> {
+    let allRepoData: RepoData[] = [];
+    return new Observable<RepoData[]>((observer) => {
+      this.http
+        .get(this.stAllRepos, this.options)
+        .pipe(takeUntil(this.destroy$))
+        .subscribe({
+          error: (err) => {
+            this.handleError(err);
+          },
+          next: (resp: any) => {
+            observer.next(resp);
+          },
+        });
+    });
   }
 
   getAllLanguagesForGivenRepo(repoName: string): Observable<Languages> {
@@ -347,14 +364,17 @@ export class GithubService {
       size: [],
     };
     return new Observable<Languages>((observer) => {
-      this.http.get(this.baseUrl + repoName + '/languages').subscribe({
-        error: (err) => observer.error(new Error(err)),
-        next: (response) => {
-          langs.lang = Object.keys(response);
-          langs.size = Object.values(response);
-          observer.next(langs);
-        },
-      });
+      this.http
+        .get(this.baseUrl + repoName + '/languages')
+        .pipe(takeUntil(this.destroy$))
+        .subscribe({
+          error: (err) => observer.error(new Error(err)),
+          next: (response) => {
+            langs.lang = Object.keys(response);
+            langs.size = Object.values(response);
+            observer.next(langs);
+          },
+        });
     });
   }
 

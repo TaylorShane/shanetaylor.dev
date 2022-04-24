@@ -1,18 +1,19 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { GithubService } from 'src/app/services/github.service';
 import { RepoData } from '../models/models';
-import { shareReplay } from 'rxjs/operators';
+import { shareReplay, takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'st-charts',
   templateUrl: './charts.component.html',
   styleUrls: ['./charts.component.scss'],
 })
-export class ChartsComponent implements OnInit {
+export class ChartsComponent implements OnInit, OnDestroy {
   @Input() chartName: string;
   @Input() theme: string;
   repoData: RepoData[] = [];
-  echartsInstance: any;
+  eChartsInstance: any;
   allReposSubscription$: any;
   singleRepoSubscription$: any;
 
@@ -64,7 +65,14 @@ export class ChartsComponent implements OnInit {
     ],
   };
 
+  private readonly destroy$ = new Subject<void>();
+
   constructor(private githubService: GithubService) {}
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
   ngOnInit(): void {
     this.allReposSubscription$ = this.githubService
@@ -84,18 +92,18 @@ export class ChartsComponent implements OnInit {
   }
 
   onChartInit(ec): void {
-    this.echartsInstance = ec;
+    this.eChartsInstance = ec;
     this.resizeChart();
   }
 
   resizeChart(): void {
-    if (this.echartsInstance) {
-      this.echartsInstance.resize({ width: 'auto', height: 'auto' });
+    if (this.eChartsInstance) {
+      this.eChartsInstance.resize({ width: 'auto', height: 'auto' });
     }
   }
 
   getAllReposData(): void {
-    this.allReposSubscription$.subscribe(
+    this.allReposSubscription$.pipe(takeUntil(this.destroy$)).subscribe(
       (data) => {
         data = data.filter((repo) => repo.name !== 'TaylorShane');
         data.forEach((repo) => {
@@ -115,9 +123,6 @@ export class ChartsComponent implements OnInit {
     this.githubService
       .getAllLanguagesForGivenRepo(repoName)
       .subscribe((langData) => {
-        // const keys = Object.keys(data);
-        // const values = Object.values(data) as number[];
-
         for (let index = 0; index < langData.lang.length; index++) {
           this.repoData[index] = {
             value: langData.size[index],
@@ -144,7 +149,7 @@ export class ChartsComponent implements OnInit {
       },
       title: {
         text: repoName + '.dev project stats',
-        subtext: 'languages used and poroportions ',
+        subtext: 'languages used and proportions ',
         x: 'center',
       },
       tooltip: {
