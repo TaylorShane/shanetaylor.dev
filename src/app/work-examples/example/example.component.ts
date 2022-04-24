@@ -14,6 +14,4 @@ export class ExampleComponent {
   public readonly websiteLink = 'Website Link';
   public readonly privacyPolicy = 'Privacy Policy Link';
   public readonly userGuide = 'User Guide Link';
-
-  constructor() {}
 }
