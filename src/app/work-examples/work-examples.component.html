@@ -1,10 +1,10 @@
-<div class="d-flex bg-4">
+<div class="d-flex flex-column bg-4 overflow-hidden">
+  <div class="bg-4 text-center display-6">Example Work</div>
   <div class="d-flex flex-wrap mx-auto ">
     <div id="example-work-container"
-         class="container-fluid">
+         class="d-flex p-2 mx-auto flex-column align-self-center col-sm-1 col-lg-5 col-xl-5">
       <div id="work"
            class="mx-auto col-lg-7 col-sm-1">
-        <h3 class="mb-3 text-start">Example Work</h3>
         <p class="mb-5">
           {{ siteBlurb }}
         </p>
@@ -15,7 +15,7 @@
                  [theme]="'dark-fresh-cut'"></st-charts>
     </div>
     <div id="allrepo-chart-container"
-         class="container-fluid">
+         class="d-flex p-2 mx-auto flex-column align-self-center col-sm-1 col-lg-5 col-xl-5">
       <p class="mx-auto col-lg-7 col-sm-1">
         {{ githubBlurb }}
       </p>
@@ -37,7 +37,7 @@
         <div class="d-flex col-sm-1 col-lg-5">
           <div id="{{ example.name }}"
                class="anchor-offset"></div>
-          <st-example class="example-placement m-auto"
+          <st-example class="pt-4"
                       [exampleData]="example"></st-example>
         </div>
       </ng-container>
