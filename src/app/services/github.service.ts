@@ -353,11 +353,11 @@ export class GithubService implements OnDestroy {
           size: [63114],
         };
         break;
-      case 'Spotter':
+      case 'graphy':
         return {
-          name: 'Spotter',
-          lang: ['C#'],
-          size: [63114],
+          name: 'graphy',
+          lang: ['Java'],
+          size: [60392],
         };
         break;
 
@@ -372,8 +372,8 @@ export class GithubService implements OnDestroy {
       case 'shanetaylor':
         return {
           name: 'shanetaylor',
-          lang: ['HTML', 'JavaScript', 'SCSS', 'TypeScript'],
-          size: [30793, 1919, 2193, 47658],
+          lang: ['TypeScript', 'HTML', 'SCSS', 'JavaScript'],
+          size: [44567, 30793, 2193, 1919],
         };
         break;
       default:

@@ -9,7 +9,7 @@ export class RepoData {
     this.language = repoResponse.language;
     this.name = repoResponse.name;
     this.url = repoResponse.url;
-    this.value = repoResponse.size;
+    this.value = repoResponse.size || repoResponse.value;
   }
 }
 export class Languages {
