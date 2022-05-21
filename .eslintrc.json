@@ -1,8 +1,12 @@
 {
   "root": true,
   "ignorePatterns": [
-    "projects/**/*"
+    "dist", 
+    "coverage"
   ],
+  "parserOptions": {
+    "ecmaVersion": 2020
+  },
   "overrides": [
     {
       "files": [
