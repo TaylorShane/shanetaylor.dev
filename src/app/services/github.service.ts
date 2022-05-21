@@ -13,139 +13,75 @@ export class GithubService implements OnDestroy {
   // https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#list-repository-languages
   // https://api.github.com/orgs/TaylorShane/projects
   /*eslint-disable */
-  backupData = {
-    archive_url:
-      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/{archive_format}{/ref}',
-    archived: false,
-    assignees_url:
-      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/assignees{/user}',
-    blobs_url:
-      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/git/blobs{/sha}',
-    branches_url:
-      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/branches{/branch}',
-    clone_url: 'https://github.com/TaylorShane/BrewBuddy-Android.git',
-    collaborators_url:
-      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/collaborators{/collaborator}',
-    comments_url:
-      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/comments{/number}',
-    commits_url:
-      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/commits{/sha}',
-    compare_url:
-      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/compare/{base}...{head}',
-    contents_url:
-      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/contents/{+path}',
-    contributors_url:
-      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/contributors',
-    created_at: '2017-05-21T21:58:51Z',
-    default_branch: 'master',
-    deployments_url:
-      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/deployments',
-    description: 'Android App for home brewing recipes and calculations',
-    disabled: false,
-    downloads_url:
-      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/downloads',
-    events_url:
-      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/events',
-    fork: false,
-    forks: 0,
-    forks_count: 0,
-    forks_url:
-      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/forks',
-    full_name: 'TaylorShane/BrewBuddy-Android',
-    git_commits_url:
-      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/git/commits{/sha}',
-    git_refs_url:
-      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/git/refs{/sha}',
-    git_tags_url:
-      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/git/tags{/sha}',
-    git_url: 'git://github.com/TaylorShane/BrewBuddy-Android.git',
-    has_downloads: true,
-    has_issues: true,
-    has_pages: false,
-    has_projects: true,
-    has_wiki: true,
-    homepage: '',
-    hooks_url:
-      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/hooks',
-    html_url: 'https://github.com/TaylorShane/BrewBuddy-Android',
-    id: 91990149,
-    issue_comment_url:
-      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/issues/comments{/number}',
-    issue_events_url:
-      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/issues/events{/number}',
-    issues_url:
-      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/issues{/number}',
-    keys_url:
-      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/keys{/key_id}',
-    labels_url:
-      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/labels{/name}',
-    language: 'Java',
-    languages_url:
-      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/languages',
-    license: null,
-    merges_url:
-      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/merges',
-    milestones_url:
-      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/milestones{/number}',
-    mirror_url: null,
-    name: 'BrewBuddy-Android',
-    node_id: 'MDEwOlJlcG9zaXRvcnk5MTk5MDE0OQ==',
-    notifications_url:
-      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/notifications{?since,all,participating}',
-    open_issues: 0,
-    open_issues_count: 0,
-    owner: {
-      avatar_url: 'https://avatars0.githubusercontent.com/u/26348898?v=4',
-      events_url: 'https://api.github.com/users/TaylorShane/events{/privacy}',
-      followers_url: 'https://api.github.com/users/TaylorShane/followers',
-      following_url:
-        'https://api.github.com/users/TaylorShane/following{/other_user}',
-      gists_url: 'https://api.github.com/users/TaylorShane/gists{/gist_id}',
-      gravatar_id: '',
-      html_url: 'https://github.com/TaylorShane',
-      id: 26348898,
-      login: 'TaylorShane',
-      node_id: 'MDQ6VXNlcjI2MzQ4ODk4',
-      organizations_url: 'https://api.github.com/users/TaylorShane/orgs',
-      received_events_url:
-        'https://api.github.com/users/TaylorShane/received_events',
-      repos_url: 'https://api.github.com/users/TaylorShane/repos',
-      site_admin: false,
-      starred_url:
-        'https://api.github.com/users/TaylorShane/starred{/owner}{/repo}',
-      subscriptions_url:
-        'https://api.github.com/users/TaylorShane/subscriptions',
-      type: 'User',
-      url: 'https://api.github.com/users/TaylorShane',
+  backupData = [
+    {
+      description: 'Android App for home brewing recipes and calculations',
+      language: 'Java',
+      name: 'BrewBuddy-Android',
+      url: 'https://api.github.com/repos/TaylorShane/BrewBuddy-Android',
+      value: 17960,
     },
-    private: false,
-    pulls_url:
-      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/pulls{/number}',
-    pushed_at: '2017-05-21T21:59:30Z',
-    releases_url:
-      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/releases{/id}',
-    size: 17960,
-    ssh_url: 'git@github.com:TaylorShane/BrewBuddy-Android.git',
-    stargazers_count: 0,
-    stargazers_url:
-      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/stargazers',
-    statuses_url:
-      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/statuses/{sha}',
-    subscribers_url:
-      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/subscribers',
-    subscription_url:
-      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/subscription',
-    svn_url: 'https://github.com/TaylorShane/BrewBuddy-Android',
-    tags_url: 'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/tags',
-    teams_url:
-      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/teams',
-    trees_url:
-      'https://api.github.com/repos/TaylorShane/BrewBuddy-Android/git/trees{/sha}',
-    updated_at: '2020-12-02T00:50:25Z',
-    url: 'https://api.github.com/repos/TaylorShane/BrewBuddy-Android',
-    watchers: 0,
-    watchers_count: 0,
-  };
+    {
+      description: 'iOS app for home brewing recipes and calculations',
+      language: 'Swift',
+      name: 'BrewBuddy-iOS',
+      url: 'https://api.github.com/repos/TaylorShane/BrewBuddy-iOS',
+      value: 15522,
+    },
+    {
+      description:
+        'Web application to serve club content on displays throughout the club',
+      language: 'TypeScript',
+      name: 'ColYCBillboard.com',
+      url: 'https://api.github.com/repos/TaylorShane/ColYCBillboard.com',
+      value: 100774,
+    },
+    {
+      description:
+        'Educational Android app created to help middle school students learn geometry.',
+      language: 'Java',
+      name: 'Graphy',
+      url: 'https://api.github.com/repos/TaylorShane/Graphy',
+      value: 8925,
+    },
+    {
+      description: 'A 3NF relational database.',
+      language: 'PLSQL',
+      name: 'Modern-Database-Management',
+      url: 'https://api.github.com/repos/TaylorShane/Modern-Database-Management',
+      value: 381,
+    },
+    {
+      description: 'Userspace Raspberry Pi PWM library for WS281X LEDs',
+      language: 'C',
+      name: 'rpi_ws281x',
+      url: 'https://api.github.com/repos/TaylorShane/rpi_ws281x',
+      value: 408,
+    },
+    {
+      description: 'Angular Developer profile website',
+      language: 'TypeScript',
+      name: 'shanetaylor.dev',
+      url: 'https://api.github.com/repos/TaylorShane/shanetaylor.dev',
+      value: 245413,
+    },
+    {
+      description:
+        'A WPF C# app that tracks caloric intake and exercise management.',
+      language: 'C#',
+      name: 'Spotter',
+      url: 'https://api.github.com/repos/TaylorShane/Spotter',
+      value: 20706,
+    },
+    {
+      description: 'Config files for my GitHub profile.',
+      language: null,
+      name: 'TaylorShane',
+      url: 'https://api.github.com/repos/TaylorShane/TaylorShane',
+      value: 2,
+    },
+  ];
+
   /*eslint-disable */
   shanetaylorLangData: Languages = undefined;
   graphyLangData: Languages = undefined;
@@ -354,7 +290,11 @@ export class GithubService implements OnDestroy {
         .pipe(takeUntil(this.destroy$))
         .subscribe({
           error: (err) => {
-            this.handleError(err);
+            if (err.status === 403) {
+              observer.next(this.backupData);
+            } else {
+              this.handleError(err);
+            }
           },
           next: (resp: any) => {
             observer.next(resp);
@@ -374,7 +314,13 @@ export class GithubService implements OnDestroy {
         .get(this.baseUrl + repoName + '/languages')
         .pipe(takeUntil(this.destroy$))
         .subscribe({
-          error: (err) => observer.error(new Error(err)),
+          error: (err) => {
+            if (err.status === 403) {
+              observer.next(this.getBackupLangData(repoName));
+            } else {
+              observer.error(new Error(err));
+            }
+          },
           next: (response) => {
             langs.lang = Object.keys(response);
             langs.size = Object.values(response);
@@ -385,22 +331,53 @@ export class GithubService implements OnDestroy {
   }
 
   private handleError(error: HttpErrorResponse): Observable<any> {
-    if (error.error instanceof ErrorEvent) {
-      // A client-side or network error occurred. Handle it accordingly.
-      console.error(
-        'A client-side or network error occurred:',
-        error.error.message
-      );
-    } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong.
-      if (error.status === 403) {
-        return of(this.backupData);
-      }
-    }
     // Return an observable with a user-facing error message.
     return throwError(
       () => new Error('Something bad happened; please try again later.')
     );
+  }
+
+  getBackupLangData(repo: string): Languages {
+    switch (repo) {
+      case 'Modern-Database-Management':
+        return {
+          name: 'Modern-Database-Management',
+          lang: ['PLSQL'],
+          size: [13155],
+        };
+        break;
+      case 'Spotter':
+        return {
+          name: 'Spotter',
+          lang: ['C#'],
+          size: [63114],
+        };
+        break;
+      case 'Spotter':
+        return {
+          name: 'Spotter',
+          lang: ['C#'],
+          size: [63114],
+        };
+        break;
+
+      case 'BrewBuddy-Android':
+        return {
+          name: 'BrewBuddy-Android',
+          lang: ['Java'],
+          size: [21838],
+        };
+        break;
+
+      case 'shanetaylor':
+        return {
+          name: 'shanetaylor',
+          lang: ['HTML', 'JavaScript', 'SCSS', 'TypeScript'],
+          size: [30793, 1919, 2193, 47658],
+        };
+        break;
+      default:
+        break;
+    }
   }
 }
