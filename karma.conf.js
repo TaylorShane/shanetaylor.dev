@@ -5,7 +5,7 @@ process.env.CHROME_BIN = require("puppeteer").executablePath();
 module.exports = function (config) {
   config.set({
     basePath: "",
-    frameworks: ["jasmine", "@angular-devkit/build-angular"],
+    frameworks: ["mocha", "chai", "jasmine", "@angular-devkit/build-angular"],
     plugins: [
       require("karma-jasmine"),
       require("karma-chrome-launcher"),
@@ -26,14 +26,14 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_DEBUG,
     autoWatch: true,
-    browsers: ["Chrome", "ChromeHeadless", "ChromeHeadlessCI"],
+    browsers: ["ChromeHeadless", "ChromeHeadlessCI"],
     customLaunchers: {
       ChromeHeadlessCI: {
         base: "ChromeHeadless",
         flags: ["--no-sandbox"],
       },
     },
-    singleRun: false,
+    // singleRun: false,
     restartOnFileChange: true,
   });
 };
