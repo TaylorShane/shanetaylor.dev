@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GithubService } from '../services/github.service';
 import { ProjectData } from '../shared/models/models';
 
@@ -20,7 +20,7 @@ import { Observable } from 'rxjs';
   templateUrl: './work-examples.component.html',
   styleUrls: ['./work-examples.component.scss'],
 })
-export class WorkExamplesComponent {
+export class WorkExamplesComponent implements OnInit {
   /*eslint-disable */
   public readonly siteBlurb =
     "This website was created with Visual Studio Code using Angular 11 and various third-party libraries such as ngx-bootstrap, ngx-echarts, and fontawesome. I've created a service in this site that gets my repository data from Github and then I use that data to create the below charts. For example, here's a chart that shows the various languages used to create this site and their proportions.";
@@ -38,5 +38,10 @@ export class WorkExamplesComponent {
 
   constructor(private githubService: GithubService) {
     this.projects$ = this.githubService.projectData$;
+  }
+  ngOnInit(): void {
+    this.projects$.subscribe((data) => {
+      console.log('project data', data);
+    });
   }
 }
