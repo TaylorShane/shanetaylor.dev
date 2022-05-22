@@ -1,12 +1,12 @@
 <div class="d-flex flex-container">
   <div>
     <div class="text-center">
-      <span class="emphasis">{{ exampleData.name }}</span>
+      <span class="emphasis">{{ exampleData?.name }}</span>
     </div>
-    <ng-container *ngIf="exampleData.playstoreLink !== undefined">
+    <ng-container *ngIf="exampleData?.playstoreLink !== undefined">
       <div class="text-center">
         <a rel="noopener noreferrer"
-           [href]="exampleData.playstoreLink"
+           [href]="exampleData?.playstoreLink"
            class="btn btn-outline-secondary min-btn-width r"
            target="_blank">
           <i class="fab fa-google-play"></i>
@@ -14,10 +14,10 @@
         </a>
       </div>
     </ng-container>
-    <ng-container *ngIf="exampleData.websiteLink !== undefined">
+    <ng-container *ngIf="exampleData?.websiteLink !== undefined">
       <div class="text-center">
         <a rel="noopener noreferrer"
-           [href]="exampleData.websiteLink"
+           [href]="exampleData?.websiteLink"
            class="btn btn-outline-secondary min-btn-width r"
            target="_blank">
           <i class="fas fa-link"></i>
@@ -25,10 +25,10 @@
         </a>
       </div>
     </ng-container>
-    <ng-container *ngIf="exampleData.repoLink !== undefined">
+    <ng-container *ngIf="exampleData?.repoLink !== undefined">
       <div class="text-center">
         <a rel="noopener noreferrer"
-           [href]="exampleData.repoLink"
+           [href]="exampleData?.repoLink"
            class="btn btn-outline-secondary min-btn-width"
            target="_blank">
           <i class="fab fa-github"></i>
@@ -37,10 +37,10 @@
       </div>
     </ng-container>
 
-    <ng-container *ngIf="exampleData.userGuideLink !== undefined">
+    <ng-container *ngIf="exampleData?.userGuideLink !== undefined">
       <div class="text-center">
         <a rel="noopener noreferrer"
-           [href]="exampleData.userGuideLink"
+           [href]="exampleData?.userGuideLink"
            class="btn btn-outline-secondary min-btn-width"
            target="_self">
           <i class="fas fa-link"></i>
@@ -49,10 +49,10 @@
       </div>
     </ng-container>
 
-    <ng-container *ngIf="exampleData.privacyLink !== undefined">
+    <ng-container *ngIf="exampleData?.privacyLink !== undefined">
       <div class="text-center">
         <a rel="noopener noreferrer"
-           [href]="exampleData.privacyLink"
+           [href]="exampleData?.privacyLink"
            class="btn btn-outline-secondary min-btn-width"
            target="_self">
           <i class="fas fa-link"></i>
@@ -63,9 +63,9 @@
 
     <div class="d-flex m-auto">
       <div class="d-flex mx-auto flex-column">
-        <ng-container *ngIf="exampleData.languageData && exampleData.languageData !== null">
+        <ng-container *ngIf="exampleData?.languageData && exampleData?.languageData !== null">
           <div>
-            <ng-container [ngSwitch]="exampleData.languageData.lang[0]">
+            <ng-container [ngSwitch]="exampleData?.languageData.lang[0]">
               <i *ngSwitchCase="'Java'"
                  role="img"
                  class="fab fa-java notranslate align-self-center"></i>
@@ -80,9 +80,9 @@
                  class="fas fa-code notranslate align-self-center"></i>
               &nbsp;
             </ng-container>
-            <label>Language: {{ exampleData.languageData.lang[0] }}</label>
+            <label>Language: {{ exampleData?.languageData.lang[0] }}</label>
           </div>
-          <ng-container *ngIf="exampleData.name === 'BrewBuddy'">
+          <ng-container *ngIf="exampleData?.name === 'BrewBuddy'">
             <div>
               <i role="img"
                  class="fab fa-swift notranslate align-self-center"></i>
@@ -104,7 +104,7 @@
     </div>
 
     <div class="row d-flex justify-content-center ">
-      <p *ngFor="let attribute of exampleData.attributes; first as isFirst"
+      <p *ngFor="let attribute of exampleData?.attributes; first as isFirst"
          class="m-0 w-auto">
         <ng-container *ngIf="isFirst">
           <span class="emphasis"></span> {{ attribute }}
@@ -119,13 +119,13 @@
     </div>
 
     <p class="p-3">
-      {{ exampleData.blurb }}
+      {{ exampleData?.blurb }}
     </p>
     <div class="d-flex"
-         [ngClass]="exampleData.portrait ? 'w-75 m-auto' : 'w-100 m-auto' ">
+         [ngClass]="exampleData?.portrait ? 'w-75 m-auto' : 'w-100 m-auto' ">
       <carousel class="d-flex m-auto"
                 [isAnimated]="true">
-        <slide *ngFor="let image of exampleData.images; index as i; count as c">
+        <slide *ngFor="let image of exampleData?.images; index as i; count as c">
           <img [src]="image"
                alt="Application Screen Shot"
                class="d-block w-100" />
