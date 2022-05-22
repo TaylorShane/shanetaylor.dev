@@ -16,6 +16,13 @@ describe('ExampleComponent', () => {
     fixture = TestBed.createComponent(ExampleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    component.exampleData = {
+      attributes: ['foo attribute'],
+      blurb: 'foo blurb',
+      images: ['foo-location'],
+      portrait: false,
+      name: 'foo name',
+    };
   });
 
   it('should create', () => {
