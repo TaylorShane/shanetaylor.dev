@@ -1,6 +1,9 @@
 {
   "name": "shanetaylor",
   "version": "3.2.0",
+  "eslintIgnore": [
+    "test.ts"
+  ],
   "eslintConfig": {
     "rules": {
       "quotes": [
