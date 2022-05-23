@@ -23,7 +23,7 @@
     "clean": "rimraf dist",
     "test": "ng test",
     "test:coverage": "ng test --code-coverage",
-    "test-headless": "ng test --watch=false --browsers=ChromeHeadless",
+    "test:headless": "ng test --watch=false --browsers=ChromeHeadlessCI",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
