@@ -3,6 +3,7 @@ import { GithubService } from 'src/app/services/github.service';
 import { RepoData } from '../models/models';
 import { shareReplay, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'st-charts',
@@ -14,7 +15,7 @@ export class ChartsComponent implements OnInit, OnDestroy {
   @Input() theme: string;
   repoData: RepoData[] = [];
   eChartsInstance: any;
-  allReposSubscription$: any;
+  allReposSubscription$: Observable<RepoData[]>;
   singleRepoSubscription$: any;
 
   options = {
@@ -75,6 +76,7 @@ export class ChartsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    console.log('chartName', this.chartName);
     this.allReposSubscription$ = this.githubService
       .getAllRepos()
       .pipe(shareReplay(1));
