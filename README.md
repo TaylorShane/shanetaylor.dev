@@ -1,3 +1,5 @@
+![example workflow](https://github.com/TaylorShane/shanetaylor.dev/actions/workflows/node.js.yml/badge.svg)
+
 # ShaneTaylor.dev
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.1.
