@@ -1,4 +1,4 @@
-![example workflow](https://github.com/TaylorShane/shanetaylor.dev/actions/workflows/node.js.yml/badge.svg)
+[![example workflow](https://github.com/TaylorShane/shanetaylor.dev/actions/workflows/node.js.yml/badge.svg)](https://github.com/TaylorShane/shanetaylor.dev/actions/workflows/node.js.yml)
 
 # ShaneTaylor.dev
 
