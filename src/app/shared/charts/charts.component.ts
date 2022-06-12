@@ -76,7 +76,6 @@ export class ChartsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    console.log('chartName', this.chartName);
     this.allReposSubscription$ = this.githubService
       .getAllRepos()
       .pipe(shareReplay(1));
