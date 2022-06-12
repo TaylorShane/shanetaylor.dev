@@ -37,6 +37,13 @@ export class GithubService implements OnDestroy {
       value: 100774,
     },
     {
+      description: 'Weather app for ColYC screens',
+      language: 'TypeScript',
+      name: 'ColYCWeather.com',
+      url: 'https://api.github.com/repos/TaylorShane/ColYCWeather.com',
+      value: 777,
+    },
+    {
       description:
         'Educational Android app created to help middle school students learn geometry.',
       language: 'Java',
