@@ -1,18 +1,20 @@
+@import '../../../variables.scss';
+
 .min-btn-width {
   min-width: 50%;
   margin: 0.5rem;
 }
 a {
-  color: #ffa500;
+  color: $orange-color;
 }
 a:hover {
-  color: #ffa500;
+  color: $orange-color;
 }
 a:visited {
-  color: #ffa500;
+  color: $orange-color;
 }
 a:focus {
-  color: #ffa500;
+  color: $orange-color;
 }
 p {
   margin-bottom: 0px;
