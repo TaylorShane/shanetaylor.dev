@@ -1,3 +1,5 @@
+@import '../../variables.scss';
+
 .min-btn-width {
   width: 100%;
   max-width: 340px;
@@ -6,7 +8,7 @@ p {
   margin-bottom: 0px;
 }
 a {
-  color: #ffa500;
+  color: $orange-color;
 }
 .app-example-container {
   flex: 1 1 auto;
