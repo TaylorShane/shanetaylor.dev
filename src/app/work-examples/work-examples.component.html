@@ -2,42 +2,37 @@
   <div class="bg-4 text-center display-6">Example Work</div>
   <div class="d-flex flex-wrap mx-auto ">
     <div id="example-work-container"
-         class="d-flex p-2 mx-auto flex-column align-self-center col-sm-7 col-lg-5 col-xl-5">
-      <div id="work"
-           class="mx-auto col-lg-7 col-sm-7">
-        <p class="mb-5">
+         class="d-flex p-2 mx-auto flex-column align-self-center">
+      <div id="work"></div>
+      <div class="mx-auto col-lg-7 col-sm-7">
+        <p>
           {{ siteBlurb }}
         </p>
       </div>
       <st-charts #stDevChart
+                 class="py-5"
                  id="st-dev-chart"
                  [chartName]="'shanetaylor'"
                  [theme]="'dark-fresh-cut'"></st-charts>
-    </div>
-    <div id="allrepo-chart-container"
-         class="d-flex p-2 mx-auto flex-column align-self-center col-sm-7 col-lg-5 col-xl-5">
-      <p class="mx-auto col-lg-7 col-sm-7">
-        {{ githubBlurb }}
-      </p>
-      <div class="p-3 text-center pb-5">
-        <a rel="noopener noreferrer"
-           [href]="personalRepos"
-           class="btn btn-outline-secondary min-btn-width">
-          <i class="fab fa-github"></i> {{ viewProject }}
-        </a>
+      <div class="mx-auto col-lg-7 col-sm-7">
+        <p>
+          {{ githubBlurb }}
+        </p>
+
       </div>
       <st-charts #allRepoChart
+                 class="py-5"
                  id="allrepo-chart"
                  [chartName]="'allRepos'"
                  [theme]="'dark-fresh-cut'"></st-charts>
+      <!-- </div> -->
     </div>
-
     <div class="d-flex flex-wrap bg-5 justify-content-around">
       <ng-container *ngFor="let example of projects$ | async">
         <div class="d-flex col-8 col-sm-7 col-md-6 col-lg-4 col-xl-4 justify-content-center">
           <div id="{{ example.name }}"
                class="anchor-offset"></div>
-          <st-example class="py-4 my-auto"
+          <st-example class="py-4 px-2 my-auto"
                       [exampleData]="example"></st-example>
         </div>
       </ng-container>

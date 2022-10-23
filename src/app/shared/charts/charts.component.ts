@@ -1,9 +1,9 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { shareReplay, takeUntil } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
 import { GithubService } from 'src/app/services/github.service';
 import { RepoData } from '../models/models';
-import { shareReplay, takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
-import { Observable } from 'rxjs';
+import { EChartsOption } from 'echarts';
 
 @Component({
   selector: 'st-charts',
@@ -17,10 +17,11 @@ export class ChartsComponent implements OnInit, OnDestroy {
   eChartsInstance: any;
   allReposSubscription$: Observable<RepoData[]>;
   singleRepoSubscription$: any;
+  screenWidth = '100%';
 
-  options = {
+  options: EChartsOption = {
     scale: true,
-    scaleSize: 100,
+    // scaleSize: 200,
     responsive: true,
     maintainAspectRatio: true,
     grid: {
@@ -30,9 +31,14 @@ export class ChartsComponent implements OnInit, OnDestroy {
       bottom: 100,
     },
     title: {
-      text: 'My Github Projects',
+      textStyle: {
+        color: '#1abc9c',
+      },
+      textVerticalAlign: 'middle',
+      textBaseline: 'bottom',
+      text: 'Github Projects',
       subtext: 'Current projects in my Github repository',
-      x: 'center',
+      bottom: 0,
     },
     tooltip: {
       confine: true,
@@ -52,14 +58,17 @@ export class ChartsComponent implements OnInit, OnDestroy {
       /*eslint-disable */
     },
     legend: {
-      x: 'center',
-      y: 'bottom',
+      orient: 'vertical',
+      right: 0,
+      mainType: 'legend',
+      show: true,
+      align: 'right',
     },
     calculable: true,
     series: [
       {
         type: 'pie',
-        radius: [20, 110],
+        radius: this.screenWidth,
         roseType: 'area',
         data: this.repoData,
       },
@@ -76,6 +85,25 @@ export class ChartsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    if (window.innerWidth < 560) {
+      this.screenWidth = '50%';
+      this.options.series = [
+        {
+          type: 'pie',
+          radius: this.screenWidth,
+          roseType: 'area',
+          data: this.repoData,
+        },
+      ];
+      this.options.legend = {
+        orient: 'horizontal',
+        mainType: 'legend',
+        show: true,
+        align: 'auto',
+      };
+      this.resizeChart();
+    }
+    console.warn('screenWidth', this.screenWidth, window.innerWidth);
     this.allReposSubscription$ = this.githubService
       .getAllRepos()
       .pipe(shareReplay(1));
@@ -137,43 +165,33 @@ export class ChartsComponent implements OnInit, OnDestroy {
   }
 
   private setChartOptions(repoName: string): void {
-    this.options = {
-      scale: true,
-      scaleSize: 200,
-      responsive: true,
-      maintainAspectRatio: false,
-      grid: {
-        left: 0,
-        top: 0,
-        right: 0,
-        bottom: 0,
+    let stDevChartOptions = this.options;
+
+    stDevChartOptions.title = {
+      text: repoName + '.dev',
+      subtext: 'languages used and proportions ',
+      textStyle: {
+        color: '#1abc9c',
       },
-      title: {
-        text: repoName + '.dev project stats',
-        subtext: 'languages used and proportions ',
-        x: 'center',
-      },
-      tooltip: {
-        confine: true,
-        trigger: 'item',
-        formatter(params): any {
-          return `${params.name}<br />
-                  ${params.percent}% of all languages used in this project`;
-        },
-      },
-      legend: {
-        x: 'center',
-        y: 'bottom',
-      },
-      calculable: true,
-      series: [
-        {
-          type: 'pie',
-          radius: [20, 110],
-          roseType: 'area',
-          data: this.repoData,
-        },
-      ],
+      textVerticalAlign: 'middle',
+      textBaseline: 'bottom',
+      bottom: 0,
     };
+    stDevChartOptions.tooltip = {
+      confine: true,
+      trigger: 'item',
+      formatter(params): any {
+        return `${params.name}<br />
+                ${params.percent}% of all languages used in this project`;
+      },
+    };
+    stDevChartOptions.series = [
+      {
+        type: 'pie',
+        radius: this.screenWidth,
+        roseType: 'area',
+        data: this.repoData,
+      },
+    ];
   }
 }
