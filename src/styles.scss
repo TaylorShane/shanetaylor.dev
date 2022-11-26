@@ -4,15 +4,16 @@ body {
   color: $off-white-color;
   font: 20px Montserrat, sans-serif;
   line-height: 1.8;
+  background-color: #1abc9c;
+}
+
+a:hover {
+  color: $orange-color;
 }
 
 a {
   color: $orange-color;
   text-decoration: none;
-
-  :hover {
-    color: $orange-color;
-  }
 
   :visited {
     color: $orange-color;

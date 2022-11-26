@@ -57,10 +57,7 @@
       ],
       "extends": [
         "plugin:@angular-eslint/template/recommended"
-      ],
-      "rules": {
-        "hex-notation": "uppercase"
-      }
+      ]
     }
   ]
 }
