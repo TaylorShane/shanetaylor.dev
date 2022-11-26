@@ -67,7 +67,7 @@ For a new release
 - commit
 - `git push --follow-tags`
 
-  For a new tag:
+For a new tag:
 
 - `git tag <tagname> -a`
 - `git push origin --tags`
