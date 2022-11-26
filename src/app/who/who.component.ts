@@ -7,6 +7,5 @@ import { Component } from '@angular/core';
 })
 export class WhoComponent {
   profileImage = '../../assets/img/profile_image.webp';
-  whoBlurb =
-    'I am an Angular and mobile focused front-end software developer and travel enthusiast.';
+  whoBlurb = 'I am an Angular and mobile focused front-end software developer and travel enthusiast.';
 }

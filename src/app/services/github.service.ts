@@ -29,8 +29,7 @@ export class GithubService implements OnDestroy {
       value: 15522,
     },
     {
-      description:
-        'Web application to serve club content on displays throughout the club',
+      description: 'Web application to serve club content on displays throughout the club',
       language: 'TypeScript',
       name: 'ColYCBillboard.com',
       url: 'https://api.github.com/repos/TaylorShane/ColYCBillboard.com',
@@ -44,8 +43,7 @@ export class GithubService implements OnDestroy {
       value: 777,
     },
     {
-      description:
-        'Educational Android app created to help middle school students learn geometry.',
+      description: 'Educational Android app created to help middle school students learn geometry.',
       language: 'Java',
       name: 'Graphy',
       url: 'https://api.github.com/repos/TaylorShane/Graphy',
@@ -73,8 +71,7 @@ export class GithubService implements OnDestroy {
       value: 245413,
     },
     {
-      description:
-        'A WPF C# app that tracks caloric intake and exercise management.',
+      description: 'A WPF C# app that tracks caloric intake and exercise management.',
       language: 'C#',
       name: 'Spotter',
       url: 'https://api.github.com/repos/TaylorShane/Spotter',
@@ -118,19 +115,14 @@ export class GithubService implements OnDestroy {
     portrait: false,
     name: 'Graphy',
     languageData: this.graphyLangData,
-    playstoreLink:
-      'https://play.google.com/store/apps/details?id=com.shane_taylor.Graphy',
+    playstoreLink: 'https://play.google.com/store/apps/details?id=com.shane_taylor.Graphy',
     repoLink: 'https://github.com/TaylorShane/NEIU2017SummerInternship',
     userGuideLink: '/#/graphy-user-guide',
     privacyLink: '/#/graphy-privacy-terms',
   };
 
   public readonly thgInfo: ProjectData = {
-    attributes: [
-      'Twitter API integration to curate haiku',
-      'Responsive design',
-      'Compatible With 90+% Android',
-    ],
+    attributes: ['Twitter API integration to curate haiku', 'Responsive design', 'Compatible With 90+% Android'],
     blurb:
       'Trump Haiku Generator creates beautiful and inspirational haiku using words taken directly from the presidents typed and spoken words. Two flavors of haiku are offered. The random button creates a haiku using three random sentences that Donald Trump has spoken. The real displays a haiku that Donald Trump has spoken fully and word for word.',
     images: [
@@ -141,8 +133,7 @@ export class GithubService implements OnDestroy {
     portrait: true,
     name: 'Trump Haiku Generator',
 
-    playstoreLink:
-      'https://play.google.com/store/apps/details?id=com.shane_taylor.trumphaikugenerator&hl=en',
+    playstoreLink: 'https://play.google.com/store/apps/details?id=com.shane_taylor.trumphaikugenerator&hl=en',
 
     websiteLink: 'https://trumphaikugenerator.com/',
     privacyLink: 'https://www.trumphaikugenerator.com/#/privacy-terms',
@@ -176,13 +167,7 @@ export class GithubService implements OnDestroy {
 
   public readonly brewBuddyInfo: ProjectData = {
     id: 'BrewBuddy-Android',
-    attributes: [
-      'SQLite Database',
-      'Listviews',
-      'Adapters',
-      'Database Versioning',
-      'Cursor Adapters',
-    ],
+    attributes: ['SQLite Database', 'Listviews', 'Adapters', 'Database Versioning', 'Cursor Adapters'],
     blurb:
       'Brewbuddy is a mobile application built in both Android and iOS versions. It is designed to help the home brewer brew great beers. Brewbuddy has a database of popular    recipes, an ABV calculator, and a bottle calculator so that come    bottling day you know exactly how many bottles to sanitize. You can even add your favorite recipes directly to the home screen for quick access.',
     images: [
@@ -196,19 +181,10 @@ export class GithubService implements OnDestroy {
   };
 
   public readonly sweDocInfo: ProjectData = {
-    attributes: [
-      'UML Flow Diagrams',
-      'Entity Relation Diagrams',
-      'Detailed Actions',
-      'Post Conditions',
-      'Validation',
-    ],
+    attributes: ['UML Flow Diagrams', 'Entity Relation Diagrams', 'Detailed Actions', 'Post Conditions', 'Validation'],
     blurb:
       'Trained in the methods of Software Engineering and the life cycle of the software development process, I am Agile and Scrum knowledgeable. I understand the necessity of exceptional communication skills and the importance of working your plan and planning your work.',
-    images: [
-      '../../assets/img/pixelhero/add.webp',
-      '../../assets/img/pixelhero/srs.webp',
-    ],
+    images: ['../../assets/img/pixelhero/add.webp', '../../assets/img/pixelhero/srs.webp'],
     portrait: true,
     name: 'Software Engineering Documentation',
     docLinks: [
@@ -219,19 +195,10 @@ export class GithubService implements OnDestroy {
 
   public readonly mdbmInfo: ProjectData = {
     id: 'Modern-Database-Management',
-    attributes: [
-      '3NF Relational Model',
-      'Stored Procedures',
-      'Functions',
-      'Packages',
-      'Triggers',
-    ],
+    attributes: ['3NF Relational Model', 'Stored Procedures', 'Functions', 'Packages', 'Triggers'],
     blurb:
       'Example complex relational database with Oracle SQL Developer with a script to create the database objects. Which includes the tables and primary/foreign key constraints on those tables, indexes, sequences, views, and PL/SQL stored procedures, functions, packages, and triggers. Also a 3NF relational model, business rules, a data dictionary, ER diagram, and a general description.',
-    images: [
-      '../../assets/img/mdbm/mdbm-data-dictionary.webp',
-      '../../assets/img/mdbm/mdbm-er-diagram.webp',
-    ],
+    images: ['../../assets/img/mdbm/mdbm-data-dictionary.webp', '../../assets/img/mdbm/mdbm-er-diagram.webp'],
     portrait: false,
     name: 'SQL Database',
     languageData: this.mdbmLangData,
@@ -239,8 +206,7 @@ export class GithubService implements OnDestroy {
   };
   /*eslint-disable */
   private readonly baseUrl = 'https://api.github.com/repos/TaylorShane/';
-  private readonly stAllRepos =
-    'https://api.github.com/users/TaylorShane/repos';
+  private readonly stAllRepos = 'https://api.github.com/users/TaylorShane/repos';
   private readonly options: any = {
     // headers: { 'User-Agent': 'request' },
     json: true,
@@ -265,10 +231,7 @@ export class GithubService implements OnDestroy {
           return this.getAllLanguagesForGivenRepo(project.id)
             .pipe(takeUntil(this.destroy$))
             .subscribe({
-              error: (err) =>
-                observer.error(
-                  new Error('Failed to get all langs for a given repo')
-                ),
+              error: (err) => observer.error(new Error('Failed to get all langs for a given repo')),
               next: (repoLang) => {
                 const projectNeedingLangData = this.projects.find(
                   (projectMissingLang) => projectMissingLang.id === project.id
@@ -339,9 +302,7 @@ export class GithubService implements OnDestroy {
 
   private handleError(error: HttpErrorResponse): Observable<any> {
     // Return an observable with a user-facing error message.
-    return throwError(
-      () => new Error('Something bad happened; please try again later.')
-    );
+    return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
   getBackupLangData(repo: string): Languages {

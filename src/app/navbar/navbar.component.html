@@ -1,53 +1,46 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light px-3">
   <div class="d-flex flex-column">
-    <a class="navbar-brand d-flex flex-wrap"
-       href="#">
+    <a class="navbar-brand d-flex flex-wrap" href="#">
       {{ navBarContent.name }}
     </a>
-    <span class="text-black-50"
-          size="2"
-          style="letter-spacing: 0px">{{
-      navBarContent.title
-      }}</span>
+    <span class="text-black-50" size="2" style="letter-spacing: 0px">{{ navBarContent.title }}</span>
   </div>
-  <button class="navbar-toggler me-2"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation">
+  <button
+    class="navbar-toggler me-2"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse justify-content-end me-2"
-       id="navbarSupportedContent">
+  <div class="collapse navbar-collapse justify-content-end me-2" id="navbarSupportedContent">
     <ul class="navbar-nav mb-2 mb-lg-0">
       <li class="nav-item">
-        <a class="nav-link active"
-           aria-current="page"
-           href="/#main#who">{{ navBarContent.who }} <span class="sr-only">(current)</span></a>
+        <a class="nav-link active" aria-current="page" href="/#main#who"
+          >{{ navBarContent.who }} <span class="sr-only">(current)</span></a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link"
-           href="/#main#what">{{ navBarContent.what }}</a>
+        <a class="nav-link" href="/#main#what">{{ navBarContent.what }}</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle"
-           href="#"
-           id="navbarDropdown"
-           role="button"
-           data-bs-toggle="dropdown"
-           aria-expanded="false">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbarDropdown"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
           {{ navBarContent.samplesText }}
         </a>
-        <div class="dropdown-menu"
-             aria-labelledby="navbarDropdownMenuLink">
-          <ul style="list-style: none"
-              class="px-2 text-end"
-              *ngFor="let example of relativeLinks">
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <ul style="list-style: none" class="px-2 text-end" *ngFor="let example of relativeLinks">
             <li>
-              <a role="button"
-                 [href]="example.link">{{ example.name }}</a>
+              <a role="button" [href]="example.link">{{ example.name }}</a>
             </li>
           </ul>
         </div>

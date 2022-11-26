@@ -3,14 +3,11 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'st-what',
   templateUrl: './what.component.html',
-  styleUrls: ['./what.component.scss'],
 })
 export class WhatComponent {
   /*eslint-disable */
-  networkCert =
-    '../../assets/docs/Shane_Taylor_TestOut_Network_Pro_Certification.pdf';
-  graphyLink =
-    'https://play.google.com/store/apps/details?id=com.shane_taylor.Graphy';
+  networkCert = '../../assets/docs/Shane_Taylor_TestOut_Network_Pro_Certification.pdf';
+  graphyLink = 'https://play.google.com/store/apps/details?id=com.shane_taylor.Graphy';
 
   whatBlurb = {
     current:
