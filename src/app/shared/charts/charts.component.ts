@@ -102,7 +102,6 @@ export class ChartsComponent implements OnInit, OnDestroy {
       };
       this.resizeChart();
     }
-    console.warn('screenWidth', this.screenWidth, window.innerWidth);
     this.allReposSubscription$ = this.githubService.getAllRepos().pipe(shareReplay(1));
     this.getChartData();
   }
