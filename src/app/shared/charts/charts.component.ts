@@ -8,7 +8,6 @@ import { EChartsOption } from 'echarts';
 @Component({
   selector: 'st-charts',
   templateUrl: './charts.component.html',
-  styleUrls: ['./charts.component.scss'],
 })
 export class ChartsComponent implements OnInit, OnDestroy {
   @Input() chartName: string;
@@ -104,9 +103,7 @@ export class ChartsComponent implements OnInit, OnDestroy {
       this.resizeChart();
     }
     console.warn('screenWidth', this.screenWidth, window.innerWidth);
-    this.allReposSubscription$ = this.githubService
-      .getAllRepos()
-      .pipe(shareReplay(1));
+    this.allReposSubscription$ = this.githubService.getAllRepos().pipe(shareReplay(1));
     this.getChartData();
   }
 
@@ -149,19 +146,17 @@ export class ChartsComponent implements OnInit, OnDestroy {
 
   private getSTdevChartData(repoName: string): void {
     this.setChartOptions(repoName);
-    this.githubService
-      .getAllLanguagesForGivenRepo(repoName)
-      .subscribe((langData) => {
-        for (let index = 0; index < langData.lang.length; index++) {
-          this.repoData[index] = {
-            value: langData.size[index],
-            name: langData.lang[index],
-            description: repoName,
-            language: langData.lang[index],
-            url: 'https://github.com/TaylorShane/' + repoName,
-          };
-        }
-      });
+    this.githubService.getAllLanguagesForGivenRepo(repoName).subscribe((langData) => {
+      for (let index = 0; index < langData.lang.length; index++) {
+        this.repoData[index] = {
+          value: langData.size[index],
+          name: langData.lang[index],
+          description: repoName,
+          language: langData.lang[index],
+          url: 'https://github.com/TaylorShane/' + repoName,
+        };
+      }
+    });
   }
 
   private setChartOptions(repoName: string): void {
