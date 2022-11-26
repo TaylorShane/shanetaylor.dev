@@ -1,31 +1,38 @@
-@import '../../../variables.scss';
+@import '../../../variables';
 
 .min-btn-width {
-  min-width: 50%;
   margin: 0.5rem;
+  min-width: 50%;
 }
+
 a {
   color: $orange-color;
+
+  :hover {
+    color: $orange-color;
+  }
+
+  :visited {
+    color: $orange-color;
+  }
+
+  :focus {
+    color: $orange-color;
+  }
 }
-a:hover {
-  color: $orange-color;
-}
-a:visited {
-  color: $orange-color;
-}
-a:focus {
-  color: $orange-color;
-}
+
 p {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
+
 .carousel-indicators {
-  width: 100% !important;
   margin-left: auto !important;
   margin-right: auto !important;
+  width: 100% !important;
 }
+
 ol {
-  width: 100% !important;
   margin-left: auto !important;
   margin-right: auto !important;
+  width: 100% !important;
 }

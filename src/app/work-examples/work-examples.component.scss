@@ -1,24 +1,29 @@
-@import '../../variables.scss';
+@import '../../variables';
 
 .min-btn-width {
-  width: 100%;
   max-width: 340px;
+  width: 100%;
 }
+
 p {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
+
 a {
   color: $orange-color;
 }
+
 .app-example-container {
   flex: 1 1 auto;
-  min-width: 300px;
   max-width: 49vw;
+  min-width: 300px;
 }
+
 .example-placement {
-  flex: 1 1 auto;
   align-self: center;
+  flex: 1 1 auto;
 }
+
 .anchor-offset {
   display: block;
   position: relative;
