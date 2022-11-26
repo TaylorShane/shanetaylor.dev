@@ -1,8 +1,17 @@
-[![example workflow](https://github.com/TaylorShane/shanetaylor.dev/actions/workflows/node.js.yml/badge.svg)](https://github.com/TaylorShane/shanetaylor.dev/actions/workflows/node.js.yml)
-
+[![pipeline](https://github.com/TaylorShane/shanetaylor.dev/actions/workflows/node.js.yml/badge.svg)](https://github.com/TaylorShane/shanetaylor.dev/actions/workflows/node.js.yml)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 # ShaneTaylor.dev
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.1.
+
+## Creating a new release
+For a new release
+- `yarn version <patch | minor | major>`
+- commit
+- git push --follow-tags
+For a new tag:
+- `git tag <tagname> -a`
+- `git push origin --tags`
 
 ## Development server
 
