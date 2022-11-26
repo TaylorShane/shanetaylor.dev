@@ -17,5 +17,6 @@
       "dom"
     ],
     "useDefineForClassFields": false
-  }
+  },
+  "angularCompilerOptions": { "strictTemplates": true }
 }
