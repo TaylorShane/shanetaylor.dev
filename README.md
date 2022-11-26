@@ -53,7 +53,6 @@ We use Prettier for formatting and linting of our files to maintain consistency 
 It is recommended that you use VSCode along with the following plugins, for the best developer experience and avoid reformats happening when running pre commit hooks:
 
 - [Angular Language Service](https://marketplace.visualstudio.com/items?itemName=Angular.ng-template)
-- [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify) - for HTML formatting only
 - [Code Metrics](https://marketplace.visualstudio.com/items?itemName=kisstkondoros.vscode-codemetrics)
 - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 - [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
