@@ -54,7 +54,6 @@ It is recommended that you use VSCode along with the following plugins, for the 
 
 - [Angular Language Service](https://marketplace.visualstudio.com/items?itemName=Angular.ng-template)
 - [Code Metrics](https://marketplace.visualstudio.com/items?itemName=kisstkondoros.vscode-codemetrics)
-- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 - [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
 - [Todo Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree)
 
