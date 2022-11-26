@@ -4,6 +4,15 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.1.
 
+## Creating a new release
+For a new release
+- `yarn version <patch | minor | major>`
+- commit
+- git push --follow-tags
+For a new tag:
+- `git tag <tagname> -a`
+- `git push origin --tags`
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
