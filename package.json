@@ -1,20 +1,6 @@
 {
   "name": "shanetaylor",
   "version": "5.0.0",
-  "eslintIgnore": [
-    "test.ts"
-  ],
-  "eslintConfig": {
-    "rules": {
-      "quotes": [
-        2,
-        "single",
-        {
-          "avoidEscape": true
-        }
-      ]
-    }
-  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
