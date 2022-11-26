@@ -65,8 +65,10 @@ For a new release
 
 - `yarn version <patch | minor | major>`
 - commit
-- git push --follow-tags
+- `git push --follow-tags`
+
   For a new tag:
+
 - `git tag <tagname> -a`
 - `git push origin --tags`
 
