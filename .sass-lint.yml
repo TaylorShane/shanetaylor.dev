@@ -1,0 +1,17 @@
+options:
+  # merge default rules
+  merge-default-rules: true
+
+files:
+  include: 'src/**/*.scss'
+
+rules:
+  leading-zero: 0 # readability / alignment
+  hex-length: 
+    - 1
+    -
+      style: long
+  hex-notation:
+    - 1
+    -
+      style: uppercase # readability / compatibility

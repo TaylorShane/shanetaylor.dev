@@ -1,83 +1,109 @@
 @import 'variables';
 
 body {
+  color: $off-white-color;
   font: 20px Montserrat, sans-serif;
   line-height: 1.8;
-  color: $off-white-color;
 }
+
 a {
   color: $orange-color;
   text-decoration: none;
+
+  :hover {
+    color: $orange-color;
+  }
+
+  :visited {
+    color: $orange-color;
+  }
+
+  :focus {
+    color: $orange-color;
+  }
 }
-a:hover {
-  color: $orange-color;
-}
-a:visited {
-  color: $orange-color;
-}
-a:focus {
-  color: $orange-color;
-}
+
 p {
   font-size: 16px;
 }
+
 .margin {
   margin-bottom: 45px;
 }
+
 .card {
   background-color: unset;
 }
+
 hr {
-  margin: 0px;
+  margin: 0;
 }
+
 .emphasis {
-  size: 5;
-  font-size: larger;
   color: $teal-color;
+  font-size: larger;
+  size: 5;
 }
+
 .bg-1 {
   background-color: $teal-color;
   color: $white-color;
 }
+
 .bg-2 {
   background-color: $grey-1-color;
   color: $white-color;
 }
+
 .bg-3 {
   background-color: $white-color;
   color: $grey-2-color;
 }
+
 .bg-4 {
   background-color: $dark-grey-color;
   color: $white-color;
 }
+
 .bg-5 {
   background-color: $black-color;
   color: $white-color;
 }
+
 .container-fluid {
-  padding-top: 70px;
   padding-bottom: 70px;
+  padding-top: 70px;
 }
+
 .navbar {
-  padding-top: 15px;
-  padding-bottom: 15px;
   border: 0;
   border-radius: 0;
-  margin-bottom: 0;
   font-size: 12px;
   letter-spacing: 5px;
+  margin-bottom: 0;
+  padding-bottom: 15px;
+  padding-top: 15px;
+
+  li {
+    :hover {
+      color: $teal-color !important;
+    }
+  }
+
+  a {
+    :hover {
+      color: $teal-color !important;
+    }
+  }
 }
-.navbar-nav li a:hover {
-  color: $teal-color !important;
-}
+
 .frame {
-  display: block;
-  width: 100vw;
-  height: 100vh;
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
   border: 0 none;
   box-sizing: border-box;
+  display: block;
+  height: 100vh;
+  margin: 0;
+  max-width: 100%;
+  padding: 0;
+  width: 100vw;
 }
