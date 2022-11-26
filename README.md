@@ -64,9 +64,11 @@ It is recommended that you use VSCode along with the following plugins, for the 
 For a new release
 
 - `yarn version <patch | minor | major>`
-- commit
-- git push --follow-tags
-  For a new tag:
+- commit changes
+- `git push --follow-tags`
+
+For a new tag:
+
 - `git tag <tagname> -a`
 - `git push origin --tags`
 
