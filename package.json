@@ -95,7 +95,7 @@
       "yarn eslint",
       "yarn eclint"
     ],
-    "**/*.{scss}": [
+    "**/*.scss": [
       "yarn sass-lint"
     ]
   },
