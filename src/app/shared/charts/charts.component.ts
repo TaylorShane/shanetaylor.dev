@@ -3,7 +3,7 @@ import { shareReplay, takeUntil } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
 import { GithubService } from 'src/app/services/github.service';
 import { RepoData } from '../models/models';
-import { shareReplay } from 'rxjs/operators';
+import { EChartsOption } from 'echarts';
 
 @Component({
   selector: 'st-charts',
@@ -18,7 +18,7 @@ export class ChartsComponent implements OnInit, OnDestroy {
   singleRepoSubscription$: any;
   screenWidth = '100%';
 
-  options = {
+  options: EChartsOption = {
     scale: true,
     // scaleSize: 200,
     responsive: true,
@@ -29,6 +29,16 @@ export class ChartsComponent implements OnInit, OnDestroy {
       right: 100,
       bottom: 100,
     },
+    xAxis: [
+      {
+        type: 'category',
+      },
+    ],
+    yAxis: [
+      {
+        type: 'value',
+      },
+    ],
     title: {
       textStyle: {
         color: '#1abc9c',
@@ -37,35 +47,36 @@ export class ChartsComponent implements OnInit, OnDestroy {
       textBaseline: 'bottom',
       text: 'Github Projects',
       subtext: 'Current projects in my Github repository',
-      x: 'center',
     },
     tooltip: {
       confine: true,
-      trigger: 'item',
+      trigger: 'axis',
+      axisPointer: {
+        type: 'shadow', // 'line' | 'shadow'
+      },
       /*eslint-disable */
       formatter(params): any {
-        return params.data.language == null
-          ? `<div>${params.name}</div>
-        <div class="text-wrap">${params.data.description}</div>
-        <div> Project size in bytes: ${params.data.value}</div>`
-          : `<div>${params.name}</div>
-        <div class="text-wrap">${params.data.description}</div>
-        <div>Predominant Language: ${params.data.language}</div>
-        <div> Project size in bytes: ${params.data.value}</div>
-        <div>(${params.percent}% of all projects)</div>`;
+        return params[0].data.language == null
+          ? `<div>${params[0].name}</div>
+        <div class="text-wrap">${params[0].data.description}</div>
+        <div> Project size in bytes: ${params[0].data.value}</div>`
+          : `<div>${params[0].name}</div>
+        <div class="text-wrap">${params[0].data.description}</div>
+        <div>Predominant Language: ${params[0].data.language}</div>
+        <div> Project size in bytes: ${params[0].data.value}</div>
+        <div>(${params[0].percent}% of all projects)</div>`;
       },
       /*eslint-disable */
     },
     legend: {
-      x: 'center',
-      y: 'bottom',
+      orient: 'horizontal',
+      align: 'auto',
     },
     calculable: true,
     series: [
       {
-        type: 'pie',
-        radius: [20, 110],
-        roseType: 'area',
+        type: 'bar',
+        // coordinateSystem: 'cartesian2d',
         data: this.repoData,
         labelLayout: { draggable: true },
       },
@@ -84,20 +95,19 @@ export class ChartsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     if (window.innerWidth < 560) {
       this.screenWidth = '50%';
-      this.options.series = [
-        {
-          type: 'pie',
-          radius: this.screenWidth,
-          roseType: 'area',
-          data: this.repoData,
-        },
-      ];
-      this.options.legend = {
-        orient: 'horizontal',
-        mainType: 'legend',
-        show: true,
-        align: 'auto',
-      };
+      // this.options.series = [
+      //   {
+      //     type: 'bar',
+      //     // coordinateSystem: 'cartesian2d',
+      //     data: this.repoData,
+      //   },
+      // ];
+      // this.options.legend = {
+      //   orient: 'horizontal',
+      //   mainType: 'legend',
+      //   show: true,
+      //   align: 'auto',
+      // };
       this.resizeChart();
     }
     this.allReposSubscription$ = this.githubService.getAllRepos().pipe(shareReplay(1));
@@ -158,39 +168,58 @@ export class ChartsComponent implements OnInit, OnDestroy {
 
   private setChartOptions(repoName: string): void {
     this.options = {
-      scale: true,
-      scaleSize: 200,
+      // scale: true,
+      // scaleSize: 200,
       responsive: true,
-      maintainAspectRatio: false,
+      // maintainAspectRatio: true,
       grid: {
         left: 0,
         top: 0,
         right: 0,
         bottom: 0,
       },
+      xAxis: [
+        {
+          type: 'category',
+        },
+      ],
+      yAxis: [
+        {
+          type: 'value',
+        },
+      ],
       title: {
         text: repoName + '.dev project stats',
-        subtext: 'languages used and poroportions ',
-        x: 'center',
+        subtext: 'languages used and proportions ',
+        textAlign: 'center',
+        textBaseline: 'middle',
       },
       tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'shadow', // 'line' | 'shadow'
+        },
         confine: true,
-        trigger: 'item',
         formatter(params): any {
-          return `${params.name}<br />
-                  ${params.percent}% of all languages used in this project`;
+          return `${params[0].name}<br />
+                  ${params[0].percent}% of all languages used in this project`;
         },
       },
       legend: {
-        x: 'center',
-        y: 'bottom',
+        orient: 'horizontal',
+        align: 'auto',
+        borderRadius: 0,
+        selectedMode: 'multiple',
+        selectorPosition: 'auto',
+        tooltip: {
+          triggerOn: 'mousemove',
+        },
       },
       calculable: true,
       series: [
         {
-          type: 'pie',
-          radius: [20, 110],
-          roseType: 'area',
+          type: 'bar',
+          // coordinateSystem: 'cartesian2d',
           data: this.repoData,
         },
       ],
