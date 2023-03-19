@@ -6,7 +6,7 @@ import { catchError, takeUntil } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class GithubService implements OnDestroy {
   // gitHub endpoints
@@ -19,71 +19,71 @@ export class GithubService implements OnDestroy {
       language: 'Java',
       name: 'BrewBuddy-Android',
       url: 'https://api.github.com/repos/TaylorShane/BrewBuddy-Android',
-      value: 17960,
+      value: 17960
     },
     {
       description: 'iOS app for home brewing recipes and calculations',
       language: 'Swift',
       name: 'BrewBuddy-iOS',
       url: 'https://api.github.com/repos/TaylorShane/BrewBuddy-iOS',
-      value: 15522,
+      value: 15522
     },
     {
       description: 'Web application to serve club content on displays throughout the club',
       language: 'TypeScript',
       name: 'ColYCBillboard.com',
       url: 'https://api.github.com/repos/TaylorShane/ColYCBillboard.com',
-      value: 100774,
+      value: 100774
     },
     {
       description: 'Weather app for ColYC screens',
       language: 'TypeScript',
       name: 'ColYCWeather.com',
       url: 'https://api.github.com/repos/TaylorShane/ColYCWeather.com',
-      value: 777,
+      value: 777
     },
     {
       description: 'Educational Android app created to help middle school students learn geometry.',
       language: 'Java',
       name: 'Graphy',
       url: 'https://api.github.com/repos/TaylorShane/Graphy',
-      value: 8925,
+      value: 8925
     },
     {
       description: 'A 3NF relational database.',
       language: 'PLSQL',
       name: 'Modern-Database-Management',
       url: 'https://api.github.com/repos/TaylorShane/Modern-Database-Management',
-      value: 381,
+      value: 381
     },
     {
       description: 'Userspace Raspberry Pi PWM library for WS281X LEDs',
       language: 'C',
       name: 'rpi_ws281x',
       url: 'https://api.github.com/repos/TaylorShane/rpi_ws281x',
-      value: 408,
+      value: 408
     },
     {
       description: 'Angular Developer profile website',
       language: 'TypeScript',
       name: 'shanetaylor.dev',
       url: 'https://api.github.com/repos/TaylorShane/shanetaylor.dev',
-      value: 245413,
+      value: 245413
     },
     {
       description: 'A WPF C# app that tracks caloric intake and exercise management.',
       language: 'C#',
       name: 'Spotter',
       url: 'https://api.github.com/repos/TaylorShane/Spotter',
-      value: 20706,
+      value: 20706
     },
     {
       description: 'Config files for my GitHub profile.',
       language: null,
       name: 'TaylorShane',
       url: 'https://api.github.com/repos/TaylorShane/TaylorShane',
-      value: 2,
-    },
+      value: 2
+    }
   ];
 
   /*eslint-disable */
@@ -100,7 +100,7 @@ export class GithubService implements OnDestroy {
       'Responsive Layout',
       'Responsive design',
       'Compatible With 90+% Android',
-      'Randomly generated puzzles',
+      'Randomly generated puzzles'
     ],
     blurb:
       'Graphy is an educational Android App designed for common class-room Chrome tablets that I created during a 10-week internship at Northeastern Illinois University. Selected as the Computer Science expert for a mathematics focused group of students and professors, I worked on a National Science Foundation research grant focusing on Computational Thinking and bringing that thinking to younger students. I solely developed and deployed the educational app Graphy to help pre-service teachers teach the fundamentals of Geometry to middle school students while employing Computational Thinking.',
@@ -110,7 +110,7 @@ export class GithubService implements OnDestroy {
       '../../assets/img/graphy/ScreenShots/Screenshot_1500145900.webp',
       '../../assets/img/graphy/ScreenShots/Screenshot_1500145905.webp',
       '../../assets/img/graphy/ScreenShots/Screenshot_1500149162.webp',
-      '../../assets/img/graphy/ScreenShots/Screenshot_1500149174.webp',
+      '../../assets/img/graphy/ScreenShots/Screenshot_1500149174.webp'
     ],
     portrait: false,
     name: 'Graphy',
@@ -118,7 +118,7 @@ export class GithubService implements OnDestroy {
     playstoreLink: 'https://play.google.com/store/apps/details?id=com.shane_taylor.Graphy',
     repoLink: 'https://github.com/TaylorShane/NEIU2017SummerInternship',
     userGuideLink: '/#/graphy-user-guide',
-    privacyLink: '/#/graphy-privacy-terms',
+    privacyLink: '/#/graphy-privacy-terms'
   };
 
   public readonly thgInfo: ProjectData = {
@@ -128,7 +128,7 @@ export class GithubService implements OnDestroy {
     images: [
       '../../assets/img/THG/Screenshot_1510861783.webp',
       '../../assets/img/THG/Screenshot_1510861989.webp',
-      '../../assets/img/THG/Screenshot_1510861997.webp',
+      '../../assets/img/THG/Screenshot_1510861997.webp'
     ],
     portrait: true,
     name: 'Trump Haiku Generator',
@@ -136,7 +136,7 @@ export class GithubService implements OnDestroy {
     playstoreLink: 'https://play.google.com/store/apps/details?id=com.shane_taylor.trumphaikugenerator&hl=en',
 
     websiteLink: 'https://trumphaikugenerator.com/',
-    privacyLink: 'https://www.trumphaikugenerator.com/#/privacy-terms',
+    privacyLink: 'https://www.trumphaikugenerator.com/#/privacy-terms'
   };
 
   public readonly spotterInfo: ProjectData = {
@@ -148,7 +148,7 @@ export class GithubService implements OnDestroy {
       'C# collections',
       '.NET framework',
       'Low coupling',
-      'High cohesion',
+      'High cohesion'
     ],
     blurb:
       'Spotter is a Windows Presentation Foundation application written in C# and created in Visual Studio. Spotter is a diet and exercise App to help users manage their calorie count, select a workout type, manage their workout schedule, and motivate them to achieve the body type they desire.',
@@ -157,12 +157,12 @@ export class GithubService implements OnDestroy {
       '../../assets/img/spotter/signin.webp',
       '../../assets/img/spotter/registration.webp',
       '../../assets/img/spotter/meal_calories_total.webp',
-      '../../assets/img/spotter/user_profile.webp',
+      '../../assets/img/spotter/user_profile.webp'
     ],
     portrait: false,
     name: 'Spotter',
     languageData: this.spotterLangData,
-    repoLink: 'https://github.com/TaylorShane/Spotter_group',
+    repoLink: 'https://github.com/TaylorShane/Spotter_group'
   };
 
   public readonly brewBuddyInfo: ProjectData = {
@@ -173,11 +173,11 @@ export class GithubService implements OnDestroy {
     images: [
       '../../assets/img/brewbuddy/Screenshot_1507672646.webp',
       '../../assets/img/brewbuddy/Screenshot_1507672671.webp',
-      '../../assets/img/brewbuddy/Screenshot_1507672664.webp',
+      '../../assets/img/brewbuddy/Screenshot_1507672664.webp'
     ],
     portrait: true,
     name: 'BrewBuddy',
-    repoLink: 'https://github.com/TaylorShane/BrewBuddy-Android',
+    repoLink: 'https://github.com/TaylorShane/BrewBuddy-Android'
   };
 
   public readonly sweDocInfo: ProjectData = {
@@ -189,8 +189,8 @@ export class GithubService implements OnDestroy {
     name: 'Software Engineering Documentation',
     docLinks: [
       'http://www.shane-taylor.com/shane-taylor.com/PixelHeroSRS.html',
-      'http://www.shane-taylor.com/shane-taylor.com/PixelHeroADD.html',
-    ],
+      'http://www.shane-taylor.com/shane-taylor.com/PixelHeroADD.html'
+    ]
   };
 
   public readonly mdbmInfo: ProjectData = {
@@ -202,14 +202,14 @@ export class GithubService implements OnDestroy {
     portrait: false,
     name: 'SQL Database',
     languageData: this.mdbmLangData,
-    repoLink: 'https://github.com/TaylorShane/Modern-Database-Management',
+    repoLink: 'https://github.com/TaylorShane/Modern-Database-Management'
   };
   /*eslint-disable */
   private readonly baseUrl = 'https://api.github.com/repos/TaylorShane/';
   private readonly stAllRepos = 'https://api.github.com/users/TaylorShane/repos';
   private readonly options: any = {
     // headers: { 'User-Agent': 'request' },
-    json: true,
+    json: true
   };
   private readonly destroy$ = new Subject<void>();
 
@@ -219,7 +219,7 @@ export class GithubService implements OnDestroy {
     this.spotterInfo,
     this.brewBuddyInfo,
     this.sweDocInfo,
-    this.mdbmInfo,
+    this.mdbmInfo
   ];
 
   projectData$: Observable<ProjectData[]>;
@@ -239,7 +239,7 @@ export class GithubService implements OnDestroy {
                 projectNeedingLangData.languageData = repoLang;
                 observer.next(this.projects);
               },
-              complete: () => {},
+              complete: () => {}
             });
         }
       });
@@ -268,7 +268,7 @@ export class GithubService implements OnDestroy {
           },
           next: (resp: any) => {
             observer.next(resp);
-          },
+          }
         });
     });
   }
@@ -277,7 +277,7 @@ export class GithubService implements OnDestroy {
     let langs: Languages = {
       name: repoName,
       lang: [],
-      size: [],
+      size: []
     };
     return new Observable<Languages>((observer) => {
       this.http
@@ -295,7 +295,7 @@ export class GithubService implements OnDestroy {
             langs.lang = Object.keys(response);
             langs.size = Object.values(response);
             observer.next(langs);
-          },
+          }
         });
     });
   }
@@ -311,21 +311,21 @@ export class GithubService implements OnDestroy {
         return {
           name: 'Modern-Database-Management',
           lang: ['PLSQL'],
-          size: [13155],
+          size: [13155]
         };
         break;
       case 'Spotter':
         return {
           name: 'Spotter',
           lang: ['C#'],
-          size: [63114],
+          size: [63114]
         };
         break;
       case 'graphy':
         return {
           name: 'graphy',
           lang: ['Java'],
-          size: [60392],
+          size: [60392]
         };
         break;
 
@@ -333,7 +333,7 @@ export class GithubService implements OnDestroy {
         return {
           name: 'BrewBuddy-Android',
           lang: ['Java'],
-          size: [21838],
+          size: [21838]
         };
         break;
 
@@ -341,7 +341,7 @@ export class GithubService implements OnDestroy {
         return {
           name: 'shanetaylor',
           lang: ['TypeScript', 'HTML', 'SCSS', 'JavaScript'],
-          size: [44567, 30793, 2193, 1919],
+          size: [44567, 30793, 2193, 1919]
         };
         break;
       default:

@@ -34,7 +34,7 @@ import { GraphyUserGuideComponent } from './app-specific/graphy/user-guide/graph
     GraphyPrivacyTermsComponent,
     MainComponent,
     PageNotFoundComponent,
-    GraphyUserGuideComponent,
+    GraphyUserGuideComponent
   ],
   imports: [
     BrowserModule,
@@ -43,11 +43,11 @@ import { GraphyUserGuideComponent } from './app-specific/graphy/user-guide/graph
     CollapseModule.forRoot(),
     HttpClientModule,
     NgxEchartsModule.forRoot({
-      echarts: () => import('echarts'),
+      echarts: () => import('echarts')
     }),
-    AppRoutingModule,
+    AppRoutingModule
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

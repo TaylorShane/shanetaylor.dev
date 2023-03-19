@@ -1,7 +1,9 @@
 <div class="d-flex flex-column bg-4 overflow-hidden pt-5">
   <div class="bg-4 text-center display-6">Example Work</div>
   <div class="d-flex flex-wrap mx-auto">
-    <div id="example-work-container" class="d-flex p-2 mx-auto flex-column align-self-center">
+    <div
+      id="example-work-container"
+      class="d-flex p-2 mx-auto flex-column align-self-center">
       <div id="work"></div>
       <div class="mx-auto col-lg-7 col-sm-7">
         <p>
@@ -13,8 +15,7 @@
         class="py-5"
         id="st-dev-chart"
         [chartName]="'shanetaylor'"
-        [theme]="'dark-fresh-cut'"
-      ></st-charts>
+        [theme]="'dark-fresh-cut'"></st-charts>
       <div class="mx-auto col-lg-7 col-sm-7">
         <p>
           {{ githubBlurb }}
@@ -25,14 +26,17 @@
         class="py-5"
         id="allrepo-chart"
         [chartName]="'allRepos'"
-        [theme]="'dark-fresh-cut'"
-      ></st-charts>
+        [theme]="'dark-fresh-cut'"></st-charts>
     </div>
     <div class="d-flex flex-wrap bg-5 justify-content-around">
       <ng-container *ngFor="let example of projects$ | async">
         <div class="d-flex col-8 col-sm-7 col-md-6 col-lg-4 col-xl-4 justify-content-center">
-          <div id="{{ example.name }}" class="anchor-offset"></div>
-          <st-example class="py-4 px-2 my-auto" [exampleData]="example"></st-example>
+          <div
+            id="{{ example.name }}"
+            class="anchor-offset"></div>
+          <st-example
+            class="py-4 px-2 my-auto"
+            [exampleData]="example"></st-example>
         </div>
       </ng-container>
     </div>

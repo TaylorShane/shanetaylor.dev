@@ -13,7 +13,7 @@ describe('WorkExamplesComponent', () => {
       declarations: [WorkExamplesComponent],
       imports: [HttpClientTestingModule],
       providers: [WorkExamplesComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
   });
 

@@ -7,7 +7,7 @@ import { EChartsOption } from 'echarts';
 
 @Component({
   selector: 'st-charts',
-  templateUrl: './charts.component.html',
+  templateUrl: './charts.component.html'
 })
 export class ChartsComponent implements OnInit, OnDestroy {
   @Input() chartName: string;
@@ -27,17 +27,17 @@ export class ChartsComponent implements OnInit, OnDestroy {
       left: 100,
       top: 10,
       right: 100,
-      bottom: 100,
+      bottom: 100
     },
     title: {
       textStyle: {
-        color: '#1abc9c',
+        color: '#1abc9c'
       },
       textVerticalAlign: 'middle',
       textBaseline: 'bottom',
       text: 'Github Projects',
       subtext: 'Current projects in my Github repository',
-      bottom: 0,
+      bottom: 0
     },
     tooltip: {
       confine: true,
@@ -53,7 +53,7 @@ export class ChartsComponent implements OnInit, OnDestroy {
         <div>Predominant Language: ${params.data.language}</div>
         <div> Project size in bytes: ${params.data.value}</div>
         <div>(${params.percent}% of all projects)</div>`;
-      },
+      }
       /*eslint-disable */
     },
     legend: {
@@ -61,7 +61,7 @@ export class ChartsComponent implements OnInit, OnDestroy {
       right: 0,
       mainType: 'legend',
       show: true,
-      align: 'right',
+      align: 'right'
     },
     calculable: true,
     series: [
@@ -69,9 +69,9 @@ export class ChartsComponent implements OnInit, OnDestroy {
         type: 'pie',
         radius: this.screenWidth,
         roseType: 'area',
-        data: this.repoData,
-      },
-    ],
+        data: this.repoData
+      }
+    ]
   };
 
   private readonly destroy$ = new Subject<void>();
@@ -91,14 +91,14 @@ export class ChartsComponent implements OnInit, OnDestroy {
           type: 'pie',
           radius: this.screenWidth,
           roseType: 'area',
-          data: this.repoData,
-        },
+          data: this.repoData
+        }
       ];
       this.options.legend = {
         orient: 'horizontal',
         mainType: 'legend',
         show: true,
-        align: 'auto',
+        align: 'auto'
       };
       this.resizeChart();
     }
@@ -152,7 +152,7 @@ export class ChartsComponent implements OnInit, OnDestroy {
           name: langData.lang[index],
           description: repoName,
           language: langData.lang[index],
-          url: 'https://github.com/TaylorShane/' + repoName,
+          url: 'https://github.com/TaylorShane/' + repoName
         };
       }
     });
@@ -165,11 +165,11 @@ export class ChartsComponent implements OnInit, OnDestroy {
       text: repoName + '.dev',
       subtext: 'languages used and proportions ',
       textStyle: {
-        color: '#1abc9c',
+        color: '#1abc9c'
       },
       textVerticalAlign: 'middle',
       textBaseline: 'bottom',
-      bottom: 0,
+      bottom: 0
     };
     stDevChartOptions.tooltip = {
       confine: true,
@@ -177,15 +177,15 @@ export class ChartsComponent implements OnInit, OnDestroy {
       formatter(params): any {
         return `${params.name}<br />
                 ${params.percent}% of all languages used in this project`;
-      },
+      }
     };
     stDevChartOptions.series = [
       {
         type: 'pie',
         radius: this.screenWidth,
         roseType: 'area',
-        data: this.repoData,
-      },
+        data: this.repoData
+      }
     ];
   }
 }

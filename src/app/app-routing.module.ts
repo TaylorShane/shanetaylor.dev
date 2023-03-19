@@ -10,16 +10,16 @@ const routes: Routes = [
   { path: 'graphy-privacy-terms', component: GraphyPrivacyTermsComponent },
   { path: 'graphy-user-guide', component: GraphyUserGuideComponent },
   { path: '', redirectTo: '/main', pathMatch: 'full' },
-  { path: '**', component: PageNotFoundComponent },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 const routerOptions: ExtraOptions = {
   useHash: false,
-  anchorScrolling: 'enabled',
+  anchorScrolling: 'enabled'
 };
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, routerOptions)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {}
