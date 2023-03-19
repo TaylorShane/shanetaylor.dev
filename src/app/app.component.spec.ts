@@ -9,7 +9,7 @@ describe('AppComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [AppComponent],
       imports: [RouterTestingModule, HttpClientTestingModule],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
   });
 

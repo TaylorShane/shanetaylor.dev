@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'st-what',
-  templateUrl: './what.component.html',
+  templateUrl: './what.component.html'
 })
 export class WhatComponent {
   /*eslint-disable */
@@ -17,13 +17,13 @@ export class WhatComponent {
     graphy: {
       a: 'Check out my educational app',
       graphy: 'Graphy, ',
-      b: 'created with help from a National Science Foundation grant to help middle school kids learn geometry in a fun and interactive way.',
+      b: 'created with help from a National Science Foundation grant to help middle school kids learn geometry in a fun and interactive way.'
     },
     testOut: {
       a: 'I also have a',
       b: 'Network Pro certification',
-      c: 'with TestOut.',
-    },
+      c: 'with TestOut.'
+    }
   };
   /*eslint-disable */
 }

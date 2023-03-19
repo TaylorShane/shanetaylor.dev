@@ -8,7 +8,7 @@ describe('githubService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [GithubService],
+      providers: [GithubService]
     });
     service = TestBed.inject(GithubService);
   });

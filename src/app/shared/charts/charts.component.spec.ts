@@ -13,7 +13,7 @@ describe('ChartsComponent', () => {
       declarations: [ChartsComponent],
       imports: [HttpClientTestingModule],
       providers: [ChartsComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
   });
 

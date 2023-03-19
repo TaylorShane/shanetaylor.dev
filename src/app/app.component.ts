@@ -4,7 +4,7 @@ import { ActivatedRoute, UrlSegment } from '@angular/router';
 @Component({
   selector: 'st-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
   title = 'Shane Taylor';

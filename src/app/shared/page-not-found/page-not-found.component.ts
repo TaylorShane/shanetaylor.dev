@@ -3,7 +3,7 @@ import { Component, HostBinding, OnInit } from '@angular/core';
 @Component({
   selector: 'st-page-not-found',
   templateUrl: './page-not-found.component.html',
-  styleUrls: ['./page-not-found.component.scss'],
+  styleUrls: ['./page-not-found.component.scss']
 })
 export class PageNotFoundComponent implements OnInit {
   /*eslint-disable */
@@ -21,7 +21,7 @@ export class PageNotFoundComponent implements OnInit {
     "\"I'm an atheist, and that's it. I believe there's nothing we can know except that we should be kind to each other and do what we can for other people.\" -KATHARINE HEPBURN",
     '"The legitimate powers of government extend to only such acts as are injurious to others. But it does me no injury for my neighbor to say that there are twenty gods, or no God." -THOMAS JEFFERSON',
     "\"You don't have to be brave or a saint, a martyr, or even very smart to be an atheist. All you have to be able to say is 'I don't know'.\" -PENN JILLETTE",
-    '"Atheism is a non-prophet organization." -GEORGE CARLIN',
+    '"Atheism is a non-prophet organization." -GEORGE CARLIN'
   ];
   /*eslint-disable */
   quote: string;

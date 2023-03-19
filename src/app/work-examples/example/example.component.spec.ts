@@ -10,7 +10,7 @@ describe('ExampleComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ExampleComponent],
-      imports: [CarouselModule],
+      imports: [CarouselModule]
     }).compileComponents();
   });
 
@@ -23,7 +23,7 @@ describe('ExampleComponent', () => {
       blurb: 'foo blurb',
       images: ['foo-location'],
       portrait: false,
-      name: 'foo name',
+      name: 'foo name'
     };
   });
 

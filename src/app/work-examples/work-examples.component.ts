@@ -18,7 +18,7 @@ import { ProjectData } from '../shared/models/models';
 @Component({
   selector: 'st-work-examples',
   templateUrl: './work-examples.component.html',
-  styleUrls: ['./work-examples.component.scss'],
+  styleUrls: ['./work-examples.component.scss']
 })
 export class WorkExamplesComponent {
   /*eslint-disable */
