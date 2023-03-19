@@ -4,3 +4,8 @@ docs/*
 *.yml
 dist/*
 e2e/*
+*.webp
+*.pdf
+*.ico
+*.txt
+*.gitkeep
