@@ -1,7 +1,8 @@
 {
   "root": true,
   "ignorePatterns": [
-    "dist", 
+    "**/*.html",
+    "dist",
     "coverage"
   ],
   "parserOptions": {
@@ -9,19 +10,24 @@
   },
   "overrides": [
     {
+      "parser": "@typescript-eslint/parser",
+      "plugins": [
+        "@angular-eslint",
+        "@typescript-eslint",
+        "eslint-plugin-import",
+        "eslint-plugin-jsdoc",
+        "eslint-plugin-prefer-arrow"
+      ],
       "files": [
         "*.ts"
       ],
       "parserOptions": {
         "project": [
-          "tsconfig.json",
-          "e2e/tsconfig.json"
+          "tsconfig.json"
         ],
         "createDefaultProgram": true
       },
       "extends": [
-        "plugin:@angular-eslint/ng-cli-compat",
-        "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
@@ -50,14 +56,6 @@
           }
         ]
       }
-    },
-    {
-      "files": [
-        "*.html"
-      ],
-      "extends": [
-        "plugin:@angular-eslint/template/recommended"
-      ]
     }
   ]
 }
