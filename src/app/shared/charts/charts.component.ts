@@ -14,13 +14,12 @@ export class ChartsComponent implements OnInit, OnDestroy {
   @Input() theme: string;
   repoData: RepoData[] = [];
   eChartsInstance: any;
-  allReposSubscription$: Observable<RepoData[]>;
   singleRepoSubscription$: any;
   screenWidth = '100%';
 
   options: EChartsOption = {
     scale: true,
-    // scaleSize: 200,
+    // scaleSize: 50,
     responsive: true,
     maintainAspectRatio: true,
     grid: {
@@ -102,7 +101,6 @@ export class ChartsComponent implements OnInit, OnDestroy {
       };
       this.resizeChart();
     }
-    this.allReposSubscription$ = this.githubService.getAllRepos().pipe(shareReplay(1));
     this.getChartData();
   }
 
@@ -128,34 +126,44 @@ export class ChartsComponent implements OnInit, OnDestroy {
   }
 
   getAllReposData(): void {
-    this.allReposSubscription$.pipe(takeUntil(this.destroy$)).subscribe(
-      (data) => {
-        data = data.filter((repo) => repo.name !== 'TaylorShane');
-        data.forEach((repo) => {
-          const element = new RepoData(repo);
-          this.repoData.push(element);
-        });
-      },
-      (error) => {
-        console.log('Unable to getAllRepos()' + error);
-      },
-      () => {}
-    );
+    this.githubService
+      .getAllRepos()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (data) => {
+          data = data.filter((repo) => repo.name !== 'TaylorShane');
+          data.forEach((repo) => {
+            const element = new RepoData(repo);
+            this.repoData.push(element);
+          });
+        },
+        error: (error) => {
+          console.error('Unable to get all repo data ' + error);
+        }
+      });
   }
 
   private getSTdevChartData(repoName: string): void {
     this.setChartOptions(repoName);
-    this.githubService.getAllLanguagesForGivenRepo(repoName).subscribe((langData) => {
-      for (let index = 0; index < langData.lang.length; index++) {
-        this.repoData[index] = {
-          value: langData.size[index],
-          name: langData.lang[index],
-          description: repoName,
-          language: langData.lang[index],
-          url: 'https://github.com/TaylorShane/' + repoName
-        };
-      }
-    });
+    this.githubService
+      .getAllLanguagesForGivenRepo(repoName)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (langData) => {
+          for (let index = 0; index < langData.lang.length; index++) {
+            this.repoData[index] = {
+              value: langData.size[index],
+              name: langData.lang[index],
+              description: repoName,
+              language: langData.lang[index],
+              url: 'https://github.com/TaylorShane/' + repoName
+            };
+          }
+        },
+        error: (error) => {
+          console.error('Unable to get stdev chart data ' + error);
+        }
+      });
   }
 
   private setChartOptions(repoName: string): void {
