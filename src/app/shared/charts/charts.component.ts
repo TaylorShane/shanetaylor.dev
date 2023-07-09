@@ -127,7 +127,7 @@ export class ChartsComponent implements OnInit, OnDestroy {
 
   getAllReposData(): void {
     this.githubService
-      .getAllRepos()
+      .getDataForAllRepos()
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data) => {

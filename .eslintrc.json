@@ -1,6 +1,10 @@
 {
   "root": true,
-  "ignorePatterns": ["**/*.html", "dist", "coverage"],
+  "ignorePatterns": [
+    "**/*.html",
+    "dist",
+    "coverage"
+  ],
   "parserOptions": {
     "ecmaVersion": 2020
   },
@@ -14,13 +18,25 @@
         "eslint-plugin-jsdoc",
         "eslint-plugin-prefer-arrow"
       ],
-      "files": ["*.ts"],
+      "files": [
+        "*.ts"
+      ],
       "parserOptions": {
-        "project": ["tsconfig.json"],
+        "project": [
+          "tsconfig.json"
+        ],
         "createDefaultProgram": true
       },
-      "extends": ["plugin:@angular-eslint/template/process-inline-templates"],
+      "extends": [
+        "plugin:@angular-eslint/template/process-inline-templates"
+      ],
       "rules": {
+        "@typescript-eslint/no-unused-expressions": [
+          "error",
+          {
+            "allowTernary": true
+          }
+        ],
         "@typescript-eslint/quotes": [
           "error",
           "single",
