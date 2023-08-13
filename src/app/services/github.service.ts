@@ -1,8 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, Subject, throwError } from 'rxjs';
+import { Observable, Subject, takeUntil, throwError } from 'rxjs';
 import { Languages, ProjectData, RepoData } from '../shared/models/models';
-import { takeUntil } from 'rxjs/operators';
 import { allRepoBackupData, getBackupLangData } from './github-backup-data';
 import { graphyInfo, thgInfo, spotterInfo, brewBuddyInfo, sweDocInfo, mdbmInfo } from './repo-static-data';
 
