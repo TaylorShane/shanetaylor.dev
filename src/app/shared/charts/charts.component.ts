@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { shareReplay, takeUntil } from 'rxjs/operators';
-import { Observable, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 import { GithubService } from 'src/app/services/github.service';
 import { RepoData } from '../models/models';
 import { EChartsOption } from 'echarts';

@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, Subject, takeUntil, throwError } from 'rxjs';
 import { Languages, ProjectData, RepoData } from '../shared/models/models';
 import { allRepoBackupData, getBackupLangData } from './github-backup-data';
-import { graphyInfo, thgInfo, spotterInfo, brewBuddyInfo, sweDocInfo, mdbmInfo } from './repo-static-data';
+import { brewBuddyInfo, graphyInfo, mdbmInfo, spotterInfo, sweDocInfo, thgInfo } from './repo-static-data';
 
 @Injectable({
   providedIn: 'root'
