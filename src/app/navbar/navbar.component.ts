@@ -1,4 +1,4 @@
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavLinks } from '../shared/models/models';
 
 @Component({
