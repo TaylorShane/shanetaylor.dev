@@ -1,107 +1,86 @@
-import { Injectable, OnDestroy } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, Subject, takeUntil, throwError } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, catchError, forkJoin, map, of, retry, throwError } from 'rxjs';
 import { Languages, ProjectData, RepoData } from '../shared/models/models';
 import { allRepoBackupData, getBackupLangData } from './github-backup-data';
-import { brewBuddyInfo, graphyInfo, mdbmInfo, spotterInfo, sweDocInfo, thgInfo } from './repo-static-data';
+import { brewBuddyInfo, graphyInfo, mdbmInfo, spotterInfo, thgInfo } from './repo-static-data';
 
 @Injectable({
   providedIn: 'root'
 })
-export class GithubService implements OnDestroy {
+export class GithubService {
   // gitHub endpoints
   // https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#list-repository-languages
   // https://api.github.com/orgs/TaylorShane/projects
 
   private readonly baseUrl = 'https://api.github.com/repos/TaylorShane/';
   private readonly stAllRepos = 'https://api.github.com/users/TaylorShane/repos';
-  private readonly options: any = {
-    // headers: { 'User-Agent': 'request' },
-    json: true
-  };
-  private readonly destroy$ = new Subject<void>();
 
-  projects: ProjectData[] = [graphyInfo, thgInfo, spotterInfo, brewBuddyInfo, sweDocInfo, mdbmInfo];
+  projects: ProjectData[] = [graphyInfo, thgInfo, spotterInfo, brewBuddyInfo, mdbmInfo];
 
-  projectData$: Observable<ProjectData[]>;
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) {
-    this.projectData$ = new Observable<ProjectData[]>((observer) => {
-      this.projects.forEach((project) => {
-        if (project.id) {
-          return this.getAllLanguagesForGivenRepo(project.id)
-            .pipe(takeUntil(this.destroy$))
-            .subscribe({
-              error: (err) => observer.error(new Error('Failed to get all langs for a given repo')),
-              next: (repoLang) => {
-                const projectNeedingLangData = this.projects.find(
-                  (projectMissingLang) => projectMissingLang.id === project.id
-                );
-                projectNeedingLangData.languageData = repoLang;
-                observer.next(this.projects);
-              },
-              complete: () => {}
-            });
-        }
-      });
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
-
-  // TODO: refactor
-  getDataForAllRepos(): Observable<RepoData[]> {
-    return new Observable<RepoData[]>((observer) => {
-      this.http
-        .get(this.stAllRepos, this.options)
-        .pipe(takeUntil(this.destroy$))
-        .subscribe({
-          error: (err) => {
-            if (err.status === 403) {
-              observer.next(allRepoBackupData);
-            } else {
-              this.handleError(err);
+  getProjectData(): Observable<ProjectData[]> {
+    const observables: Observable<ProjectData>[] = this.projects.map((project) => {
+      if (project.id) {
+        return this.getAllLanguagesForGivenRepo(project.id).pipe(
+          catchError((err) => {
+            console.error('Failed to get all langs for a given repo', err);
+            return throwError(() => new Error('Failed to fetch repo lang data.'));
+          }),
+          map((repoLang) => {
+            const projectNeedingLangData = this.projects.find(
+              (projectMissingLang) => projectMissingLang.id === project.id
+            );
+            if (projectNeedingLangData) {
+              projectNeedingLangData.languageData = repoLang;
             }
-          },
-          next: (resp: any) => {
-            observer.next(resp);
-          }
-        });
+            return projectNeedingLangData;
+          })
+        );
+      } else {
+        return of(null);
+      }
     });
+
+    return forkJoin(observables).pipe(
+      map(() =>
+        this.projects.filter((project) => {
+          return project !== null;
+        })
+      )
+    );
+  }
+
+  getDataForAllRepos(): Observable<RepoData[]> {
+    return this.http.get<RepoData[]>(this.stAllRepos).pipe(
+      retry(2),
+      catchError((error) => {
+        if (error.status === 403) {
+          console.log('Received 403. Retrying...');
+          return of(allRepoBackupData);
+        } else {
+          console.error('An error occurred while fetching repo data:', error);
+          return throwError(() => new Error('Failed to fetch repo data.'));
+        }
+      })
+    );
   }
 
   getAllLanguagesForGivenRepo(repoName: string): Observable<Languages> {
-    let langs: Languages = {
-      name: repoName,
-      lang: [],
-      size: []
-    };
-    return new Observable<Languages>((observer) => {
-      this.http
-        .get(this.baseUrl + repoName + '/languages')
-        .pipe(takeUntil(this.destroy$))
-        .subscribe({
-          error: (err) => {
-            if (err.status === 403) {
-              observer.next(getBackupLangData(repoName));
-            } else {
-              observer.error(new Error(err));
-            }
-          },
-          next: (response) => {
-            langs.lang = Object.keys(response);
-            langs.size = Object.values(response);
-            observer.next(langs);
-          }
-        });
-    });
-  }
-
-  private handleError(error: HttpErrorResponse): Observable<any> {
-    // Return an observable with a user-facing error message.
-    return throwError(() => new Error('Something bad happened; please try again later.'));
+    return this.http.get(this.baseUrl + repoName + '/languages').pipe(
+      map((response) => ({
+        name: repoName,
+        lang: Object.keys(response),
+        size: Object.values(response)
+      })),
+      catchError((error) => {
+        if (error.status === 403) {
+          return of(getBackupLangData(repoName));
+        } else {
+          return throwError(() => new Error('Failed to get languages for repo ' + repoName));
+        }
+      })
+    );
   }
 }
