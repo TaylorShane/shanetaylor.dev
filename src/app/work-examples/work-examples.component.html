@@ -14,8 +14,7 @@
         #stDevChart
         class="py-5"
         id="st-dev-chart"
-        [chartName]="'shanetaylor'"
-        [theme]="'dark-fresh-cut'"></st-charts>
+        [chartName]="'shanetaylor'"></st-charts>
       <div class="mx-auto col-lg-7 col-sm-7">
         <p>
           {{ githubBlurb }}
@@ -25,8 +24,7 @@
         #allRepoChart
         class="py-5"
         id="allrepo-chart"
-        [chartName]="'allRepos'"
-        [theme]="'dark-fresh-cut'"></st-charts>
+        [chartName]="'allRepos'"></st-charts>
     </div>
     <div class="d-flex flex-wrap bg-5 justify-content-around">
       <ng-container *ngFor="let example of projects$ | async">

@@ -1,9 +1,11 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, ViewChild, viewChild } from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { GithubService } from 'src/app/services/github.service';
 import { RepoData } from '../models/models';
-import { EChartsOption } from 'echarts';
+import * as echarts from 'echarts';
+
+type EChartsOption = echarts.EChartsOption;
 
 @Component({
   selector: 'st-charts',
@@ -18,6 +20,29 @@ export class ChartsComponent implements OnInit, OnDestroy {
   screenWidth = '100%';
 
   options: EChartsOption = {
+    backgroundColor: '#333333',
+    color: [
+      '#1abc9c',
+      '#2ecc71',
+      '#3498db',
+      '#9b59b6',
+      '#e67e22',
+      '#b21ab4',
+      '#6f0099',
+      '#2a2073',
+      '#0b5ea8',
+      '#17aecc',
+      '#b3b3ff',
+      '#eb99ff',
+      '#fae6ff',
+      '#a866c1',
+      '#011f4b',
+      '#03396c',
+      '#005b96',
+      '#6497b1',
+      '#b3cde0',
+      '#4f76a8'
+    ],
     scale: true,
     // scaleSize: 50,
     responsive: true,
