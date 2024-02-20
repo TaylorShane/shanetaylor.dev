@@ -27,9 +27,9 @@
         ],
         "createDefaultProgram": true
       },
-      "extends": [
-        "plugin:@angular-eslint/template/process-inline-templates"
-      ],
+      // "extends": [
+      //   "plugin:@angular-eslint/template/process-inline-templates"
+      // ],
       "rules": {
         "@typescript-eslint/no-unused-expressions": [
           "error",
