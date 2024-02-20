@@ -15,6 +15,7 @@ import { ProjectData } from '../shared/models/models';
 // import 'echarts/theme/dark-digerati.js';
 // import 'echarts/theme/dark-mushroom.js';
 // import 'echarts/lib/theme/dark.js';
+
 @Component({
   selector: 'st-work-examples',
   templateUrl: './work-examples.component.html',

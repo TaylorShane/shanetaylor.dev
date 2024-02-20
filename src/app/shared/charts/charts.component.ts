@@ -56,19 +56,30 @@ export class ChartsComponent implements OnInit, OnDestroy {
       /*eslint-disable */
     },
     legend: {
+      align: 'right',
+      mainType: 'legend',
       orient: 'vertical',
       right: 0,
-      mainType: 'legend',
+      selectorLabel: {
+        show: true,
+        color: '#FFFFFF',
+        backgroundColor: 'transparent'
+      },
       show: true,
-      align: 'right'
+      type: 'scroll'
     },
     calculable: true,
     series: [
       {
-        type: 'pie',
+        data: this.repoData,
         radius: this.screenWidth,
         roseType: 'area',
-        data: this.repoData
+        type: 'pie',
+        label: {
+          show: true,
+          color: '#FFFFFF',
+          backgroundColor: 'transparent'
+        }
       }
     ]
   };
@@ -114,7 +125,7 @@ export class ChartsComponent implements OnInit, OnDestroy {
     }
   }
 
-  onChartInit(ec): void {
+  onChartInit(ec: any): void {
     this.eChartsInstance = ec;
     this.resizeChart();
   }
@@ -187,13 +198,5 @@ export class ChartsComponent implements OnInit, OnDestroy {
                 ${params.percent}% of all languages used in this project`;
       }
     };
-    stDevChartOptions.series = [
-      {
-        type: 'pie',
-        radius: this.screenWidth,
-        roseType: 'area',
-        data: this.repoData
-      }
-    ];
   }
 }
