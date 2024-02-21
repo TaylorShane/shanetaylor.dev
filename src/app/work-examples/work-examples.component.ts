@@ -11,17 +11,9 @@ import { ProjectData } from '../shared/models/models';
 export class WorkExamplesComponent {
   /*eslint-disable */
   public readonly siteBlurb =
-    "This website was created with Visual Studio Code using Angular 11 and various third-party libraries such as ngx-bootstrap, ngx-echarts, and fontawesome. I've created a service in this site that gets my repository data from Github and then I use that data to create the below charts. For example, here's a chart that shows the various languages used to create this site and their proportions.";
-  public readonly exampleWork = 'Example Work';
-  public readonly slideInterval = 3000;
-  public readonly here = 'here';
-  public readonly viewProject = 'View Project';
-  public readonly viewSourceCode = 'View Source Code';
-  public readonly playstoreDownload = 'Playstore Download';
-  public readonly personalRepos = 'https://github.com/TaylorShane';
-  public readonly githubBlurb =
-    'My Github profile with an iOS - Swift app, Oracle SQL Developer database, and other developer example work can be found here.';
-  /*eslint-disable */
+    "This web app runs on the latest version of Angular and various third-party libraries. I've created a service that retrieves data from Github about my repositories and then feed that data into the charts below. For example, here's a chart that shows the various languages used to create this website.";
+  public readonly githubBlurb = "Here's a graph that represents the various repositories in my Github profile.";
+  /*eslint-enable */
   projects$: Observable<ProjectData[]>;
 
   constructor(private githubService: GithubService) {

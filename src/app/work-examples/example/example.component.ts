@@ -8,10 +8,4 @@ import { ProjectData } from 'src/app/shared/models/models';
 })
 export class ExampleComponent {
   @Input() exampleData: ProjectData;
-
-  public readonly viewSourceCode = 'View Source Code';
-  public readonly playstoreDownload = 'Playstore Download';
-  public readonly websiteLink = 'Website Link';
-  public readonly privacyPolicy = 'Privacy Policy Link';
-  public readonly userGuide = 'User Guide Link';
 }

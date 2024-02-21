@@ -26,16 +26,14 @@
         id="allrepo-chart"
         [chartName]="'allRepos'"></st-charts>
     </div>
-    <div class="d-flex flex-wrap bg-5 justify-content-around">
+    <div class="d-flex flex-wrap bg-5 justify-content-around p-10">
       <ng-container *ngFor="let example of projects$ | async">
-        <div class="d-flex col-8 col-sm-7 col-md-6 col-lg-4 col-xl-4 justify-content-center">
-          <div
-            id="{{ example.name }}"
-            class="anchor-offset"></div>
-          <st-example
-            class="py-4 px-2 my-auto"
-            [exampleData]="example"></st-example>
-        </div>
+        <!-- TODO: add 'read more' expander as needed -->
+        <st-example
+          class="d-inline-block card-columns"
+          style="max-height: 600px"
+          [exampleData]="example">
+        </st-example>
       </ng-container>
     </div>
   </div>

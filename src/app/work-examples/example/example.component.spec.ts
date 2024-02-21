@@ -21,8 +21,7 @@ describe('ExampleComponent', () => {
     component.exampleData = {
       attributes: ['foo attribute'],
       blurb: 'foo blurb',
-      images: ['foo-location'],
-      portrait: false,
+      image: 'foo-location',
       name: 'foo name'
     };
   });

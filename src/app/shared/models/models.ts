@@ -45,14 +45,10 @@ export class ProjectData {
   id?: string;
   attributes: string[];
   blurb: string;
-  images: string[];
-  portrait: boolean;
+  image: string;
   name: string;
   languageData?: Languages;
   playstoreLink?: string;
   repoLink?: string;
   websiteLink?: string;
-  docLinks?: string[];
-  userGuideLink?: string;
-  privacyLink?: string;
 }

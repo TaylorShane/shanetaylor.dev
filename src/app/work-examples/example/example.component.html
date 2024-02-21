@@ -1,5 +1,42 @@
-<div class="d-flex flex-container">
-  <div>
+<div
+  id="{{ exampleData.name }}"
+  class="anchor-offset"></div>
+<div
+  class="card bg-dark text-white"
+  style="width: 18rem">
+  <img
+    class="card-img-top"
+    src="{{ exampleData?.image }}"
+    alt="Card image cap" />
+  <div class="card-body">
+    <h5 class="card-title">{{ exampleData.name }}</h5>
+    <h6 class="text-danger card-subtitle mb-2 text-muted">Card subtitle</h6>
+    <p class="card-text">
+      {{ exampleData?.blurb }}
+    </p>
+    <a
+      *ngIf="exampleData?.playstoreLink"
+      href="exampleData?.playstoreLink"
+      class="card-link">
+      <i class="fab fa-google-play"></i>
+    </a>
+    <a
+      *ngIf="exampleData?.websiteLink"
+      href="exampleData?.websiteLink"
+      class="card-link">
+      <i class="fas fa-link"></i>
+    </a>
+    <a
+      *ngIf="exampleData?.repoLink"
+      href="exampleData?.repoLink"
+      class="card-link">
+      <i class="fab fa-github"></i>
+    </a>
+  </div>
+</div>
+
+<!-- <div class="d-flex flex-container border border-danger">
+  <div class="card">
     <div class="text-center">
       <span class="emphasis">{{ exampleData?.name }}</span>
     </div>
@@ -8,7 +45,7 @@
         <a
           rel="noopener noreferrer"
           [href]="exampleData?.playstoreLink"
-          class="btn btn-outline-secondary min-btn-width"
+          class="btn btn"
           target="_blank">
           <i class="fab fa-google-play"></i>
           {{ playstoreDownload }}
@@ -75,12 +112,6 @@
                 *ngSwitchCase="'Java'"
                 role="img"
                 class="fab fa-java notranslate align-self-center"></i>
-              <!-- TODO: this doesn't exist yet -->
-              <!-- <i
-                *ngSwitchCase="'C#'"
-                role="img"
-                class="fas fa-csharp notranslate align-self-center"
-              ></i> -->
               <i
                 *ngSwitchDefault
                 role="img"
@@ -99,15 +130,6 @@
             </div>
           </ng-container>
         </ng-container>
-
-        <!-- TODO: fix this to work more dynamically with multiple values -->
-        <!-- <ng-container *ngIf="languages?.length > 0"> -->
-        <!-- <ng-template *ngFor="let lang of languages">
-          <i role="img" class="fas fa-code notranslate align-self-center"></i>
-          &nbsp;
-          <label>Language: {{ lang }}</label>
-        </ng-template> -->
-        <!-- </ng-container> -->
       </div>
     </div>
 
@@ -147,4 +169,4 @@
       </carousel>
     </div>
   </div>
-</div>
+</div> -->

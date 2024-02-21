@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, Subject, takeUntil, throwError } from 'rxjs';
 import { Languages, ProjectData, RepoData } from '../shared/models/models';
 import { allRepoBackupData, getBackupLangData } from './github-backup-data';
-import { brewBuddyInfo, graphyInfo, mdbmInfo, spotterInfo, sweDocInfo, thgInfo } from './repo-static-data';
+import { brewBuddyInfo, graphyInfo, mdbmInfo, spotterInfo, thgInfo } from './repo-static-data';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +21,7 @@ export class GithubService implements OnDestroy {
   };
   private readonly destroy$ = new Subject<void>();
 
-  projects: ProjectData[] = [graphyInfo, thgInfo, spotterInfo, brewBuddyInfo, sweDocInfo, mdbmInfo];
+  projects: ProjectData[] = [graphyInfo, thgInfo, spotterInfo, brewBuddyInfo, mdbmInfo];
 
   projectData$: Observable<ProjectData[]>;
 
