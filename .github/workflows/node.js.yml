@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-
+    name: Run Unit Tests
     runs-on: ubuntu-latest
 
     strategy:
@@ -28,8 +28,3 @@ jobs:
         cache: 'yarn'
     - run: yarn
     - run: yarn test:headless
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
