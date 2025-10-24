@@ -28,3 +28,8 @@ jobs:
         cache: 'yarn'
     - run: yarn
     - run: yarn test:headless
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
