@@ -94,19 +94,6 @@ export const brewBuddyInfo: ProjectData = {
   repoLink: 'https://github.com/TaylorShane/BrewBuddy-Android'
 };
 
-export const sweDocInfo: ProjectData = {
-  attributes: ['UML Flow Diagrams', 'Entity Relation Diagrams', 'Detailed Actions', 'Post Conditions', 'Validation'],
-  blurb:
-    'Trained in the methods of Software Engineering and the life cycle of the software development process, I am Agile and Scrum knowledgeable. I understand the necessity of exceptional communication skills and the importance of working your plan and planning your work.',
-  images: ['../../assets/img/pixelhero/add.webp', '../../assets/img/pixelhero/srs.webp'],
-  portrait: true,
-  name: 'Software Engineering Documentation',
-  docLinks: [
-    'http://www.shane-taylor.com/shane-taylor.com/PixelHeroSRS.html',
-    'http://www.shane-taylor.com/shane-taylor.com/PixelHeroADD.html'
-  ]
-};
-
 export const mdbmInfo: ProjectData = {
   id: 'Modern-Database-Management',
   attributes: ['3NF Relational Model', 'Stored Procedures', 'Functions', 'Packages', 'Triggers'],
