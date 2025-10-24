@@ -20,7 +20,7 @@ Where type is required and must be one of the following:
 'build' 'chore' 'deploy' 'docs' 'feat' 'fix' 'perf' 'refactor' 'revert' 'test'
 ```
 
-Subject is mandatory and is a succinct description of the change and CANNOT contain numbers.
+Subject is mandatory and is a succinct description of the change.
 
 The scope, body, and footer are optional and CAN contain numbers.
 
