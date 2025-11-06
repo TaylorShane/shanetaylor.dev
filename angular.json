@@ -15,23 +15,23 @@
       "prefix": "st",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/shanetaylor",
+            "outputPath": {
+              "base": "dist/shanetaylor"
+            },
             "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": ["src/polyfills.ts"],
             "tsConfig": "tsconfig.app.json",
             "assets": ["src/favicon.ico", "src/assets", "src/robots.txt"],
             "styles": ["./node_modules/bootstrap/dist/css/bootstrap.min.css", "src/styles.scss"],
             "scripts": ["./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"],
-            "vendorChunk": true,
             "extractLicenses": false,
-            "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
             "namedChunks": true,
-            "allowedCommonJsDependencies": ["echarts"]
+            "allowedCommonJsDependencies": ["echarts"],
+            "browser": "src/main.ts"
           },
           "configurations": {
             "production": {
@@ -46,7 +46,6 @@
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
-              "buildOptimizer": true,
               "deleteOutputPath": true,
               "budgets": [
                 {

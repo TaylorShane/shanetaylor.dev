@@ -2,7 +2,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { NgxEchartsModule } from 'ngx-echarts';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
@@ -37,18 +37,20 @@ import { GraphyUserGuideComponent } from './app-specific/graphy/user-guide/graph
     PageNotFoundComponent,
     GraphyUserGuideComponent
   ],
+  bootstrap: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     CarouselModule.forRoot(),
     CollapseModule.forRoot(),
-    HttpClientModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts')
     }),
     AppRoutingModule
   ],
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    provideHttpClient(withInterceptorsFromDi())
+  ]
 })
 export class AppModule {}
