@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit, ViewChild, viewChild, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, input } from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { GithubService } from 'src/app/services/github.service';
@@ -17,8 +17,8 @@ type EChartsOption = echarts.EChartsOption;
 export class ChartsComponent implements OnInit, OnDestroy {
   private githubService = inject(GithubService);
 
-  @Input() chartName: string;
-  @Input() theme: string;
+  readonly chartName = input<string>(undefined);
+  readonly theme = input<string>(undefined);
   repoData: RepoData[] = [];
   eChartsInstance: any;
   singleRepoSubscription$: any;
@@ -144,11 +144,12 @@ export class ChartsComponent implements OnInit, OnDestroy {
   }
 
   getChartData(): void {
-    if (this.chartName !== undefined) {
-      if (this.chartName === 'allRepos') {
+    const chartName = this.chartName();
+    if (chartName !== undefined) {
+      if (chartName === 'allRepos') {
         this.getAllReposData();
-      } else if (this.chartName === 'shanetaylor') {
-        this.getSTdevChartData(this.chartName);
+      } else if (chartName === 'shanetaylor') {
+        this.getSTdevChartData(chartName);
       }
     }
   }
