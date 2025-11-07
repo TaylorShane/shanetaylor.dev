@@ -2,9 +2,10 @@ import { Component, Input } from '@angular/core';
 import { ProjectData } from 'src/app/shared/models/models';
 
 @Component({
-  selector: 'st-example',
-  templateUrl: './example.component.html',
-  styleUrls: ['./example.component.scss']
+    selector: 'st-example',
+    templateUrl: './example.component.html',
+    styleUrls: ['./example.component.scss'],
+    standalone: false
 })
 export class ExampleComponent {
   @Input() exampleData: ProjectData;

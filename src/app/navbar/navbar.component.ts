@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { NavLinks } from '../shared/models/models';
 
 @Component({
-  selector: 'st-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+    selector: 'st-navbar',
+    templateUrl: './navbar.component.html',
+    styleUrls: ['./navbar.component.scss'],
+    standalone: false
 })
 export class NavbarComponent {
   isCollapsed = true;

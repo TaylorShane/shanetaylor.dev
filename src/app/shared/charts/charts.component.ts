@@ -8,8 +8,9 @@ import * as echarts from 'echarts';
 type EChartsOption = echarts.EChartsOption;
 
 @Component({
-  selector: 'st-charts',
-  templateUrl: './charts.component.html'
+    selector: 'st-charts',
+    templateUrl: './charts.component.html',
+    standalone: false
 })
 export class ChartsComponent implements OnInit, OnDestroy {
   @Input() chartName: string;

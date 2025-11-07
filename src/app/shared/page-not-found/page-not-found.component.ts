@@ -3,7 +3,8 @@ import { Component, HostBinding, OnInit } from '@angular/core';
 @Component({
   selector: 'st-page-not-found',
   templateUrl: './page-not-found.component.html',
-  styleUrls: ['./page-not-found.component.scss']
+  styleUrls: ['./page-not-found.component.scss'],
+  standalone: false
 })
 export class PageNotFoundComponent implements OnInit {
   /*eslint-disable */
@@ -26,7 +27,7 @@ export class PageNotFoundComponent implements OnInit {
   /*eslint-disable */
   quote: string;
 
-  @HostBinding('class.flexFullHeight')
+  @HostBinding('class.flex-full-height')
   ngOnInit(): void {
     for (const aQuote of this.listOfQuotes) {
       const randomIndex = Math.floor(Math.random() * this.listOfQuotes.length);

@@ -24,8 +24,11 @@
     "commitlint": "commitlint --from=origin/master",
     "e2e": "ng e2e",
     "eclint": "eclint check src/*/*",
-    "lint": "ng lint && sass lint",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "prettier:check": "prettier --config .prettierrc --check \"src/**/*.{ts,sass,html}\"",
+    "lint:sass": "stylelint **.scss",
+    "lint:editorconfig": "eclint check src/**",
+    "lint:all": "npm run lint && npm run lint:sass && npm run lint:editorconfig",
     "prepare": "husky install",
     "release": "npm version patch && standard-version && git push --follow-tags",
     "sass-lint": "sass-lint --config .sass-lint.yml --verbose",
@@ -35,33 +38,35 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~18.2.14",
-    "@angular/common": "18.2.14",
-    "@angular/compiler": "~18.2.14",
-    "@angular/core": "~18.2.14",
-    "@angular/forms": "~18.2.14",
-    "@angular/localize": "^18.2.14",
-    "@angular/platform-browser": "~18.2.14",
-    "@angular/platform-browser-dynamic": "~18.2.14",
-    "@angular/router": "~18.2.14",
+    "@angular/animations": "~19.2.15",
+    "@angular/common": "19.2.15",
+    "@angular/compiler": "~19.2.15",
+    "@angular/core": "~19.2.15",
+    "@angular/forms": "~19.2.15",
+    "@angular/localize": "^19.2.15",
+    "@angular/platform-browser": "~19.2.15",
+    "@angular/platform-browser-dynamic": "~19.2.15",
+    "@angular/router": "~19.2.15",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.2",
     "echarts": "^5.5.0",
-    "ngx-bootstrap": "^18.1.3",
-    "ngx-echarts": "^18.0.0",
+    "ngx-bootstrap": "^19.0.2",
+    "ngx-echarts": "^19.0.0",
     "rxjs": "^7.8.1",
+    "stylelint": "^16.25.0",
+    "stylelint-config-sass-guidelines": "^12.1.0",
     "tslib": "^2.6.2",
-    "zone.js": "^0.14.4"
+    "zone.js": "^0.15.1"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "18.2.21",
+    "@angular-devkit/build-angular": "19.2.19",
     "@angular-eslint/builder": "20.5.1",
     "@angular-eslint/eslint-plugin": "^20.5.1",
     "@angular-eslint/eslint-plugin-template": "^20.5.1",
     "@angular-eslint/schematics": "20.5.1",
     "@angular-eslint/template-parser": "20.5.1",
-    "@angular/cli": "18.2.21",
-    "@angular/compiler-cli": "~18.2.14",
+    "@angular/cli": "19.2.19",
+    "@angular/compiler-cli": "~19.2.15",
     "@commitlint/cli": "^18.6.1",
     "@commitlint/config-conventional": "^18.6.2",
     "@types/jasmine": "5.1.4",
@@ -95,11 +100,11 @@
   },
   "lint-staged": {
     "**/*.{html,ts}": [
-      "npm run eslint",
-      "npm run eclint"
+      "npm run lint",
+      "npm run lint:editorconfig"
     ],
     "**/*.scss": [
-      "npm run sass-lint"
+      "npm run lint:sass"
     ]
   },
   "husky": {
@@ -109,4 +114,3 @@
     }
   }
 }
-

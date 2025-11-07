@@ -1,0 +1,13 @@
+extends:
+  - stylelint-config-sass-guidelines
+ignoreFiles:
+  - dist/**
+rules:
+  declaration-no-important: [true, { severity: "warning" }]
+  max-nesting-depth: null
+  selector-no-qualifying-type: null
+  selector-max-compound-selectors: null
+  scss/at-extend-no-missing-placeholder: null
+  selector-pseudo-element-no-unknown:
+    - true
+    - ignorePseudoElements: [ng-deep]

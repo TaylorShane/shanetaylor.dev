@@ -4,9 +4,10 @@ import { GithubService } from '../services/github.service';
 import { ProjectData } from '../shared/models/models';
 
 @Component({
-  selector: 'st-work-examples',
-  templateUrl: './work-examples.component.html',
-  styleUrls: ['./work-examples.component.scss']
+    selector: 'st-work-examples',
+    templateUrl: './work-examples.component.html',
+    styleUrls: ['./work-examples.component.scss'],
+    standalone: false
 })
 export class WorkExamplesComponent {
   /*eslint-disable */
