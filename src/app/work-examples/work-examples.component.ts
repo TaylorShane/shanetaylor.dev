@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { GithubService } from '../services/github.service';
 import { ProjectData } from '../shared/models/models';
@@ -13,6 +13,8 @@ import { ExampleComponent } from './example/example.component';
   imports: [ChartsComponent, ExampleComponent, AsyncPipe]
 })
 export class WorkExamplesComponent {
+  private githubService = inject(GithubService);
+
   /*eslint-disable */
   public readonly siteBlurb =
     "This website was created with Visual Studio Code using Angular 11 and various third-party libraries such as ngx-bootstrap, ngx-echarts, and fontawesome. I've created a service in this site that gets my repository data from Github and then I use that data to create the below charts. For example, here's a chart that shows the various languages used to create this site and their proportions.";
@@ -28,7 +30,7 @@ export class WorkExamplesComponent {
   /*eslint-disable */
   projects$: Observable<ProjectData[]>;
 
-  constructor(private githubService: GithubService) {
+  constructor() {
     this.projects$ = this.githubService.projectData$;
   }
 }

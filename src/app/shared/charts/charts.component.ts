@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit, ViewChild, viewChild } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, ViewChild, viewChild, inject } from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { GithubService } from 'src/app/services/github.service';
@@ -15,6 +15,8 @@ type EChartsOption = echarts.EChartsOption;
   imports: [NgxEchartsDirective]
 })
 export class ChartsComponent implements OnInit, OnDestroy {
+  private githubService = inject(GithubService);
+
   @Input() chartName: string;
   @Input() theme: string;
   repoData: RepoData[] = [];
@@ -113,8 +115,6 @@ export class ChartsComponent implements OnInit, OnDestroy {
   };
 
   private readonly destroy$ = new Subject<void>();
-
-  constructor(private githubService: GithubService) {}
 
   ngOnDestroy(): void {
     this.destroy$.next();

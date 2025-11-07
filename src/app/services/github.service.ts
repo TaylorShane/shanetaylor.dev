@@ -1,4 +1,4 @@
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable, OnDestroy, inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, Subject, takeUntil, throwError } from 'rxjs';
 import { Languages, ProjectData, RepoData } from '../shared/models/models';
@@ -9,6 +9,8 @@ import { brewBuddyInfo, graphyInfo, mdbmInfo, spotterInfo, sweDocInfo, thgInfo }
   providedIn: 'root'
 })
 export class GithubService implements OnDestroy {
+  private http = inject(HttpClient);
+
   // gitHub endpoints
   // https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#list-repository-languages
   // https://api.github.com/orgs/TaylorShane/projects
@@ -25,7 +27,7 @@ export class GithubService implements OnDestroy {
 
   projectData$: Observable<ProjectData[]>;
 
-  constructor(private http: HttpClient) {
+  constructor() {
     this.projectData$ = new Observable<ProjectData[]>((observer) => {
       this.projects.forEach((project) => {
         if (project.id) {
@@ -39,8 +41,7 @@ export class GithubService implements OnDestroy {
                 );
                 projectNeedingLangData.languageData = repoLang;
                 observer.next(this.projects);
-              },
-              complete: () => {}
+              }
             });
         }
       });
