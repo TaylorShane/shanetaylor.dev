@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { WhoComponent } from '../who/who.component';
-import { WhatComponent } from '../what/what.component';
-import { WorkExamplesComponent } from '../work-examples/work-examples.component';
 import { FooterComponent } from '../footer/footer.component';
+import { WhatComponent } from '../what/what.component';
+import { WhoComponent } from '../who/who.component';
+import { WorkExamplesComponent } from '../work-examples/work-examples.component';
 
 @Component({
   selector: 'st-main',

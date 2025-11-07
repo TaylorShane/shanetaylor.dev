@@ -1,7 +1,7 @@
-import { Component, Input } from '@angular/core';
-import { ProjectData } from 'src/app/shared/models/models';
 import { NgClass } from '@angular/common';
+import { Component, Input } from '@angular/core';
 import { CarouselComponent, SlideComponent } from 'ngx-bootstrap/carousel';
+import { ProjectData } from 'src/app/shared/models/models';
 
 @Component({
   selector: 'st-example',

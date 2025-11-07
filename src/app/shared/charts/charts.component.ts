@@ -1,11 +1,10 @@
 import { Component, OnDestroy, OnInit, inject, input } from '@angular/core';
-import { takeUntil } from 'rxjs/operators';
+import * as echarts from 'echarts';
+import { NgxEchartsDirective } from 'ngx-echarts';
 import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { GithubService } from 'src/app/services/github.service';
 import { RepoData } from '../models/models';
-import * as echarts from 'echarts';
-
-import { NgxEchartsDirective } from 'ngx-echarts';
 
 type EChartsOption = echarts.EChartsOption;
 

@@ -1,9 +1,9 @@
+import { AsyncPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { GithubService } from '../services/github.service';
-import { ProjectData } from '../shared/models/models';
 import { ChartsComponent } from '../shared/charts/charts.component';
-import { AsyncPipe } from '@angular/common';
+import { ProjectData } from '../shared/models/models';
 import { ExampleComponent } from './example/example.component';
 
 @Component({
