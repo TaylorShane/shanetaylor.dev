@@ -27,4 +27,13 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm install
-    - run: npm run test:headless
+    - name: Lint TypeScript files
+      run: eslint "{src,apps,libs,test}/**/*.ts"
+    - name: Check Prettier formatting
+      run: npm run prettier:check
+    - name: Lint SCSS files
+      run: npm run lint:sass
+    - name: Check EditorConfig
+      run: npm run lint:editorconfig
+    - name: Run unit tests
+      run: npm run test:headless
