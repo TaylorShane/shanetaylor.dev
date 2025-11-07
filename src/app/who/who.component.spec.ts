@@ -8,8 +8,8 @@ describe('WhoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [WhoComponent]
-}).compileComponents();
+      imports: [WhoComponent]
+    }).compileComponents();
   });
 
   beforeEach(() => {

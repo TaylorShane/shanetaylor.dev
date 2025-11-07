@@ -4,15 +4,15 @@ import { Subject } from 'rxjs';
 import { GithubService } from 'src/app/services/github.service';
 import { RepoData } from '../models/models';
 import * as echarts from 'echarts';
-import { NgIf } from '@angular/common';
+
 import { NgxEchartsDirective } from 'ngx-echarts';
 
 type EChartsOption = echarts.EChartsOption;
 
 @Component({
-    selector: 'st-charts',
-    templateUrl: './charts.component.html',
-    imports: [NgIf, NgxEchartsDirective]
+  selector: 'st-charts',
+  templateUrl: './charts.component.html',
+  imports: [NgxEchartsDirective]
 })
 export class ChartsComponent implements OnInit, OnDestroy {
   @Input() chartName: string;

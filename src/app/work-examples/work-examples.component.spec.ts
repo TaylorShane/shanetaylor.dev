@@ -11,10 +11,10 @@ describe('WorkExamplesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [WorkExamplesComponent],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    providers: [WorkExamplesComponent, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
-}).compileComponents();
+      imports: [WorkExamplesComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      providers: [WorkExamplesComponent, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+    }).compileComponents();
   });
 
   beforeEach(() => {

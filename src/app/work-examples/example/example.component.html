@@ -3,7 +3,7 @@
     <div class="text-center">
       <span class="emphasis">{{ exampleData?.name }}</span>
     </div>
-    <ng-container *ngIf="exampleData?.playstoreLink !== undefined">
+    @if (exampleData?.playstoreLink !== undefined) {
       <div class="text-center">
         <a
           rel="noopener noreferrer"
@@ -14,8 +14,8 @@
           {{ playstoreDownload }}
         </a>
       </div>
-    </ng-container>
-    <ng-container *ngIf="exampleData?.websiteLink !== undefined">
+    }
+    @if (exampleData?.websiteLink !== undefined) {
       <div class="text-center">
         <a
           rel="noopener noreferrer"
@@ -26,8 +26,8 @@
           {{ websiteLink }}
         </a>
       </div>
-    </ng-container>
-    <ng-container *ngIf="exampleData?.repoLink !== undefined">
+    }
+    @if (exampleData?.repoLink !== undefined) {
       <div class="text-center">
         <a
           rel="noopener noreferrer"
@@ -38,9 +38,9 @@
           {{ viewSourceCode }}
         </a>
       </div>
-    </ng-container>
+    }
 
-    <ng-container *ngIf="exampleData?.userGuideLink !== undefined">
+    @if (exampleData?.userGuideLink !== undefined) {
       <div class="text-center">
         <a
           rel="noopener noreferrer"
@@ -51,9 +51,9 @@
           {{ userGuide }}
         </a>
       </div>
-    </ng-container>
+    }
 
-    <ng-container *ngIf="exampleData?.privacyLink !== undefined">
+    @if (exampleData?.privacyLink !== undefined) {
       <div class="text-center">
         <a
           rel="noopener noreferrer"
@@ -64,32 +64,34 @@
           {{ privacyPolicy }}
         </a>
       </div>
-    </ng-container>
+    }
 
     <div class="d-flex m-auto">
       <div class="d-flex mx-auto flex-column">
-        <ng-container *ngIf="exampleData?.languageData && exampleData?.languageData !== null">
+        @if (exampleData?.languageData && exampleData?.languageData !== null) {
           <div>
-            <ng-container [ngSwitch]="exampleData?.languageData.lang[0]">
-              <i
-                *ngSwitchCase="'Java'"
-                role="img"
-                class="fab fa-java notranslate align-self-center"></i>
+            @switch (exampleData?.languageData.lang[0]) {
+              @case ('Java') {
+                <i
+                  role="img"
+                  class="fab fa-java notranslate align-self-center"></i>
+              }
               <!-- TODO: this doesn't exist yet -->
               <!-- <i
-                *ngSwitchCase="'C#'"
-                role="img"
-                class="fas fa-csharp notranslate align-self-center"
-              ></i> -->
-              <i
-                *ngSwitchDefault
-                role="img"
-                class="fas fa-code notranslate align-self-center"></i>
+              *ngSwitchCase="'C#'"
+              role="img"
+              class="fas fa-csharp notranslate align-self-center"
+            ></i> -->
+              @default {
+                <i
+                  role="img"
+                  class="fas fa-code notranslate align-self-center"></i>
+              }
               &nbsp;
-            </ng-container>
+            }
             <label>Language: {{ exampleData?.languageData.lang[0] }}</label>
           </div>
-          <ng-container *ngIf="exampleData?.name === 'BrewBuddy'">
+          @if (exampleData?.name === 'BrewBuddy') {
             <div>
               <i
                 role="img"
@@ -97,36 +99,36 @@
               &nbsp;
               <label>Language: Swift</label>
             </div>
-          </ng-container>
-        </ng-container>
+          }
+        }
 
         <!-- TODO: fix this to work more dynamically with multiple values -->
         <!-- <ng-container *ngIf="languages?.length > 0"> -->
         <!-- <ng-template *ngFor="let lang of languages">
-          <i role="img" class="fas fa-code notranslate align-self-center"></i>
-          &nbsp;
-          <label>Language: {{ lang }}</label>
-        </ng-template> -->
+      <i role="img" class="fas fa-code notranslate align-self-center"></i>
+      &nbsp;
+      <label>Language: {{ lang }}</label>
+    </ng-template> -->
         <!-- </ng-container> -->
       </div>
     </div>
 
     <div class="row d-flex justify-content-center">
-      <p
-        *ngFor="let attribute of exampleData?.attributes; first as isFirst"
-        class="m-0 w-auto">
-        <ng-container *ngIf="isFirst"> <span class="emphasis"></span> {{ attribute }} </ng-container>
-        <ng-container *ngIf="!isFirst">
-          <span
-            *ngIf="!isFirst"
-            class="emphasis"
-            >&#8281;</span
-          >
-          &nbsp;
-          {{ attribute }}
-          &nbsp;
-        </ng-container>
-      </p>
+      @for (attribute of exampleData?.attributes; track attribute; let isFirst = $first) {
+        <p class="m-0 w-auto">
+          @if (isFirst) {
+            <span class="emphasis"></span> {{ attribute }}
+          }
+          @if (!isFirst) {
+            @if (!isFirst) {
+              <span class="emphasis">&#8281;</span>
+            }
+            &nbsp;
+            {{ attribute }}
+            &nbsp;
+          }
+        </p>
+      }
     </div>
 
     <p class="p-3">
@@ -138,12 +140,14 @@
       <carousel
         class="d-flex m-auto"
         [isAnimated]="true">
-        <slide *ngFor="let image of exampleData?.images; index as i; count as c">
-          <img
-            [src]="image"
-            alt="Application Screen Shot"
-            class="d-block w-100" />
-        </slide>
+        @for (image of exampleData?.images; track image; let i = $index; let c = $count) {
+          <slide>
+            <img
+              [src]="image"
+              alt="Application Screen Shot"
+              class="d-block w-100" />
+          </slide>
+        }
       </carousel>
     </div>
   </div>

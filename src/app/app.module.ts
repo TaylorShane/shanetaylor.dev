@@ -23,32 +23,32 @@ import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.co
 import { GraphyUserGuideComponent } from './app-specific/graphy/user-guide/graphy-user-guide.component';
 
 @NgModule({
-    declarations: [AppComponent],
-    bootstrap: [AppComponent],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        CarouselModule.forRoot(),
-        CollapseModule.forRoot(),
-        NgxEchartsModule.forRoot({
-            echarts: () => import('echarts')
-        }),
-        AppRoutingModule,
-        FooterComponent,
-        NavbarComponent,
-        WhoComponent,
-        WhatComponent,
-        WorkExamplesComponent,
-        ChartsComponent,
-        ExampleComponent,
-        GraphyPrivacyTermsComponent,
-        MainComponent,
-        PageNotFoundComponent,
-        GraphyUserGuideComponent
-    ],
-    providers: [
-        { provide: LocationStrategy, useClass: HashLocationStrategy },
-        provideHttpClient(withInterceptorsFromDi())
-    ]
+  declarations: [AppComponent],
+  bootstrap: [AppComponent],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    CarouselModule.forRoot(),
+    CollapseModule.forRoot(),
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts')
+    }),
+    AppRoutingModule,
+    FooterComponent,
+    NavbarComponent,
+    WhoComponent,
+    WhatComponent,
+    WorkExamplesComponent,
+    ChartsComponent,
+    ExampleComponent,
+    GraphyPrivacyTermsComponent,
+    MainComponent,
+    PageNotFoundComponent,
+    GraphyUserGuideComponent
+  ],
+  providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    provideHttpClient(withInterceptorsFromDi())
+  ]
 })
 export class AppModule {}

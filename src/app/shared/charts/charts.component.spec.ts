@@ -11,10 +11,10 @@ describe('ChartsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [ChartsComponent],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    providers: [ChartsComponent, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
-}).compileComponents();
+      imports: [ChartsComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      providers: [ChartsComponent, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+    }).compileComponents();
   });
 
   beforeEach(() => {

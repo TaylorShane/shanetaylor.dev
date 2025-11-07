@@ -1,13 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { ProjectData } from 'src/app/shared/models/models';
-import { NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault, NgFor, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { CarouselComponent, SlideComponent } from 'ngx-bootstrap/carousel';
 
 @Component({
-    selector: 'st-example',
-    templateUrl: './example.component.html',
-    styleUrls: ['./example.component.scss'],
-    imports: [NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault, NgFor, NgClass, CarouselComponent, SlideComponent]
+  selector: 'st-example',
+  templateUrl: './example.component.html',
+  styleUrls: ['./example.component.scss'],
+  imports: [NgClass, CarouselComponent, SlideComponent]
 })
 export class ExampleComponent {
   @Input() exampleData: ProjectData;

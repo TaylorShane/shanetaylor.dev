@@ -1,4 +1,4 @@
-<ng-container *ngIf="repoData.length > 0">
+@if (repoData.length > 0) {
   <div
     class="w-100 chart-container-size"
     echarts
@@ -6,4 +6,4 @@
     [options]="options"
     [theme]="'dark'"
     (chartInit)="onChartInit($event)"></div>
-</ng-container>
+}
