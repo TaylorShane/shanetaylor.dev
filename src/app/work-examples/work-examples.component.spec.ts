@@ -1,4 +1,5 @@
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
@@ -10,10 +11,9 @@ describe('WorkExamplesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [WorkExamplesComponent],
-      imports: [HttpClientTestingModule],
-      providers: [WorkExamplesComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      imports: [WorkExamplesComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      providers: [WorkExamplesComponent, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
     }).compileComponents();
   });
 

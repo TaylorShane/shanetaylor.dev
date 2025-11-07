@@ -1,4 +1,5 @@
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
@@ -10,10 +11,9 @@ describe('ChartsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ChartsComponent],
-      imports: [HttpClientTestingModule],
-      providers: [ChartsComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      imports: [ChartsComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      providers: [ChartsComponent, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
     }).compileComponents();
   });
 

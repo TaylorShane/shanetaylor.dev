@@ -1,30 +1,39 @@
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 
-import { NgxEchartsModule } from 'ngx-echarts';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { NgxEchartsModule } from 'ngx-echarts';
 
-import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { WhoComponent } from './who/who.component';
-import { WhatComponent } from './what/what.component';
-import { WorkExamplesComponent } from './work-examples/work-examples.component';
-import { FooterComponent } from './footer/footer.component';
-import { ChartsComponent } from './shared/charts/charts.component';
-import { ExampleComponent } from './work-examples/example/example.component';
-import { GraphyPrivacyTermsComponent } from './app-specific/graphy/privacy-terms/graphy-privacy-terms.component';
 import { AppRoutingModule } from './app-routing.module';
-import { MainComponent } from './main/main.component';
-import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
+import { GraphyPrivacyTermsComponent } from './app-specific/graphy/privacy-terms/graphy-privacy-terms.component';
 import { GraphyUserGuideComponent } from './app-specific/graphy/user-guide/graphy-user-guide.component';
+import { AppComponent } from './app.component';
+import { FooterComponent } from './footer/footer.component';
+import { MainComponent } from './main/main.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { ChartsComponent } from './shared/charts/charts.component';
+import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
+import { WhatComponent } from './what/what.component';
+import { WhoComponent } from './who/who.component';
+import { ExampleComponent } from './work-examples/example/example.component';
+import { WorkExamplesComponent } from './work-examples/work-examples.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
+  declarations: [AppComponent],
+  bootstrap: [AppComponent],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    CarouselModule.forRoot(),
+    CollapseModule.forRoot(),
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts')
+    }),
+    AppRoutingModule,
     FooterComponent,
     NavbarComponent,
     WhoComponent,
@@ -37,18 +46,9 @@ import { GraphyUserGuideComponent } from './app-specific/graphy/user-guide/graph
     PageNotFoundComponent,
     GraphyUserGuideComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    CarouselModule.forRoot(),
-    CollapseModule.forRoot(),
-    HttpClientModule,
-    NgxEchartsModule.forRoot({
-      echarts: () => import('echarts')
-    }),
-    AppRoutingModule
-  ],
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    provideHttpClient(withInterceptorsFromDi())
+  ]
 })
 export class AppModule {}

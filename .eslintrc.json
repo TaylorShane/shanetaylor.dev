@@ -1,13 +1,10 @@
 {
   "root": true,
-  "ignorePatterns": [
-    "**/*.html",
-    "dist",
-    "coverage"
-  ],
+  "ignorePatterns": ["**/*.html", "dist", "coverage"],
   "parserOptions": {
     "ecmaVersion": 2020
   },
+  "extends": ["prettier"],
   "overrides": [
     {
       "parser": "@typescript-eslint/parser",
@@ -18,13 +15,9 @@
         "eslint-plugin-jsdoc",
         "eslint-plugin-prefer-arrow"
       ],
-      "files": [
-        "*.ts"
-      ],
+      "files": ["*.ts"],
       "parserOptions": {
-        "project": [
-          "tsconfig.json"
-        ],
+        "project": ["tsconfig.json"],
         "createDefaultProgram": true
       },
       "rules": {
@@ -56,6 +49,16 @@
             "type": "attribute",
             "prefix": "st",
             "style": "camelCase"
+          }
+        ],
+        "import/order": [
+          "error",
+          {
+            "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
+            "alphabetize": {
+              "order": "asc",
+              "caseInsensitive": true
+            }
           }
         ]
       }

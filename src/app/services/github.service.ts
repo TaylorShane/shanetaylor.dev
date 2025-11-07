@@ -1,5 +1,5 @@
-import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Injectable, OnDestroy, inject } from '@angular/core';
 import { Observable, Subject, takeUntil, throwError } from 'rxjs';
 import { Languages, ProjectData, RepoData } from '../shared/models/models';
 import { allRepoBackupData, getBackupLangData } from './github-backup-data';
@@ -9,6 +9,8 @@ import { brewBuddyInfo, graphyInfo, mdbmInfo, spotterInfo, sweDocInfo, thgInfo }
   providedIn: 'root'
 })
 export class GithubService implements OnDestroy {
+  private http = inject(HttpClient);
+
   // gitHub endpoints
   // https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#list-repository-languages
   // https://api.github.com/orgs/TaylorShane/projects
@@ -16,7 +18,6 @@ export class GithubService implements OnDestroy {
   private readonly baseUrl = 'https://api.github.com/repos/TaylorShane/';
   private readonly stAllRepos = 'https://api.github.com/users/TaylorShane/repos';
   private readonly options: any = {
-    // headers: { 'User-Agent': 'request' },
     json: true
   };
   private readonly destroy$ = new Subject<void>();
@@ -25,22 +26,21 @@ export class GithubService implements OnDestroy {
 
   projectData$: Observable<ProjectData[]>;
 
-  constructor(private http: HttpClient) {
+  constructor() {
     this.projectData$ = new Observable<ProjectData[]>((observer) => {
       this.projects.forEach((project) => {
         if (project.id) {
           return this.getAllLanguagesForGivenRepo(project.id)
             .pipe(takeUntil(this.destroy$))
             .subscribe({
-              error: (err) => observer.error(new Error('Failed to get all langs for a given repo')),
+              error: () => observer.error(new Error('Failed to get all langs for a given repo')),
               next: (repoLang) => {
                 const projectNeedingLangData = this.projects.find(
                   (projectMissingLang) => projectMissingLang.id === project.id
                 );
                 projectNeedingLangData.languageData = repoLang;
                 observer.next(this.projects);
-              },
-              complete: () => {}
+              }
             });
         }
       });
@@ -101,7 +101,6 @@ export class GithubService implements OnDestroy {
   }
 
   private handleError(error: HttpErrorResponse): Observable<any> {
-    // Return an observable with a user-facing error message.
-    return throwError(() => new Error('Something bad happened; please try again later.'));
+    return throwError(() => new Error('Error status: ' + error.status + ' please try again later.'));
   }
 }

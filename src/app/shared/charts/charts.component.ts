@@ -1,19 +1,23 @@
-import { Component, Input, OnDestroy, OnInit, ViewChild, viewChild } from '@angular/core';
-import { takeUntil } from 'rxjs/operators';
+import { Component, OnDestroy, OnInit, inject, input } from '@angular/core';
+import * as echarts from 'echarts';
+import { NgxEchartsDirective } from 'ngx-echarts';
 import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { GithubService } from 'src/app/services/github.service';
 import { RepoData } from '../models/models';
-import * as echarts from 'echarts';
 
 type EChartsOption = echarts.EChartsOption;
 
 @Component({
   selector: 'st-charts',
-  templateUrl: './charts.component.html'
+  templateUrl: './charts.component.html',
+  imports: [NgxEchartsDirective]
 })
 export class ChartsComponent implements OnInit, OnDestroy {
-  @Input() chartName: string;
-  @Input() theme: string;
+  private githubService = inject(GithubService);
+
+  readonly chartName = input<string>(undefined);
+  readonly theme = input<string>(undefined);
   repoData: RepoData[] = [];
   eChartsInstance: any;
   singleRepoSubscription$: any;
@@ -66,7 +70,7 @@ export class ChartsComponent implements OnInit, OnDestroy {
     tooltip: {
       confine: true,
       trigger: 'item',
-      /*eslint-disable */
+
       formatter(params): any {
         return params.data.language == null
           ? `<div>${params.name}</div>
@@ -78,7 +82,6 @@ export class ChartsComponent implements OnInit, OnDestroy {
         <div> Project size in bytes: ${params.data.value}</div>
         <div>(${params.percent}% of all projects)</div>`;
       }
-      /*eslint-disable */
     },
     legend: {
       align: 'right',
@@ -111,8 +114,6 @@ export class ChartsComponent implements OnInit, OnDestroy {
 
   private readonly destroy$ = new Subject<void>();
 
-  constructor(private githubService: GithubService) {}
-
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
@@ -141,11 +142,12 @@ export class ChartsComponent implements OnInit, OnDestroy {
   }
 
   getChartData(): void {
-    if (this.chartName !== undefined) {
-      if (this.chartName === 'allRepos') {
+    const chartName = this.chartName();
+    if (chartName !== undefined) {
+      if (chartName === 'allRepos') {
         this.getAllReposData();
-      } else if (this.chartName === 'shanetaylor') {
-        this.getSTdevChartData(this.chartName);
+      } else if (chartName === 'shanetaylor') {
+        this.getSTdevChartData(chartName);
       }
     }
   }

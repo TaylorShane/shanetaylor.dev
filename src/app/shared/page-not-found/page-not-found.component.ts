@@ -6,7 +6,6 @@ import { Component, HostBinding, OnInit } from '@angular/core';
   styleUrls: ['./page-not-found.component.scss']
 })
 export class PageNotFoundComponent implements OnInit {
-  /*eslint-disable */
   listOfQuotes: string[] = [
     '"Everybody does have a book in them, but in most cases that\'s where it should stay." -CHRISTOPHER HITCHENS',
     '"Human decency is not derived from religion. It precedes it." -CHRISTOPHER HITCHENS',
@@ -23,10 +22,10 @@ export class PageNotFoundComponent implements OnInit {
     "\"You don't have to be brave or a saint, a martyr, or even very smart to be an atheist. All you have to be able to say is 'I don't know'.\" -PENN JILLETTE",
     '"Atheism is a non-prophet organization." -GEORGE CARLIN'
   ];
-  /*eslint-disable */
+
   quote: string;
 
-  @HostBinding('class.flexFullHeight')
+  @HostBinding('class.flex-full-height')
   ngOnInit(): void {
     for (const aQuote of this.listOfQuotes) {
       const randomIndex = Math.floor(Math.random() * this.listOfQuotes.length);

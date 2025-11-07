@@ -54,18 +54,19 @@
         <div
           class="dropdown-menu"
           aria-labelledby="navbarDropdownMenuLink">
-          <ul
-            style="list-style: none"
-            class="px-2 text-end"
-            *ngFor="let example of relativeLinks">
-            <li>
-              <a
-                role="button"
-                [href]="example.link"
-                >{{ example.name }}</a
-              >
-            </li>
-          </ul>
+          @for (example of relativeLinks; track example) {
+            <ul
+              style="list-style: none"
+              class="px-2 text-end">
+              <li>
+                <a
+                  role="button"
+                  [href]="example.link"
+                  >{{ example.name }}</a
+                >
+              </li>
+            </ul>
+          }
         </div>
       </li>
     </ul>

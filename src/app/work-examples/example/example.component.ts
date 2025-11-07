@@ -1,10 +1,13 @@
+import { NgClass } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { CarouselComponent, SlideComponent } from 'ngx-bootstrap/carousel';
 import { ProjectData } from 'src/app/shared/models/models';
 
 @Component({
   selector: 'st-example',
   templateUrl: './example.component.html',
-  styleUrls: ['./example.component.scss']
+  styleUrls: ['./example.component.scss'],
+  imports: [NgClass, CarouselComponent, SlideComponent]
 })
 export class ExampleComponent {
   @Input() exampleData: ProjectData;

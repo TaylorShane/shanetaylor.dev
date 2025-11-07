@@ -27,7 +27,7 @@
         [chartName]="'allRepos'"></st-charts>
     </div>
     <div class="d-flex flex-wrap bg-5 justify-content-around">
-      <ng-container *ngFor="let example of projects$ | async">
+      @for (example of projects$ | async; track example) {
         <div class="d-flex col-8 col-sm-7 col-md-6 col-lg-4 col-xl-4 justify-content-center">
           <div
             id="{{ example.name }}"
@@ -36,7 +36,7 @@
             class="py-4 px-2 my-auto"
             [exampleData]="example"></st-example>
         </div>
-      </ng-container>
+      }
     </div>
   </div>
 </div>
