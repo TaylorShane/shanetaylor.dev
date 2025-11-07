@@ -18,7 +18,6 @@ export class GithubService implements OnDestroy {
   private readonly baseUrl = 'https://api.github.com/repos/TaylorShane/';
   private readonly stAllRepos = 'https://api.github.com/users/TaylorShane/repos';
   private readonly options: any = {
-    // headers: { 'User-Agent': 'request' },
     json: true
   };
   private readonly destroy$ = new Subject<void>();
@@ -34,7 +33,7 @@ export class GithubService implements OnDestroy {
           return this.getAllLanguagesForGivenRepo(project.id)
             .pipe(takeUntil(this.destroy$))
             .subscribe({
-              error: (err) => observer.error(new Error('Failed to get all langs for a given repo')),
+              error: () => observer.error(new Error('Failed to get all langs for a given repo')),
               next: (repoLang) => {
                 const projectNeedingLangData = this.projects.find(
                   (projectMissingLang) => projectMissingLang.id === project.id
@@ -102,7 +101,6 @@ export class GithubService implements OnDestroy {
   }
 
   private handleError(error: HttpErrorResponse): Observable<any> {
-    // Return an observable with a user-facing error message.
-    return throwError(() => new Error('Something bad happened; please try again later.'));
+    return throwError(() => new Error('Error status: ' + error.status + ' please try again later.'));
   }
 }
