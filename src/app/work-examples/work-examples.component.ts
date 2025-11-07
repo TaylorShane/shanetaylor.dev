@@ -2,12 +2,15 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { GithubService } from '../services/github.service';
 import { ProjectData } from '../shared/models/models';
+import { ChartsComponent } from '../shared/charts/charts.component';
+import { NgFor, AsyncPipe } from '@angular/common';
+import { ExampleComponent } from './example/example.component';
 
 @Component({
     selector: 'st-work-examples',
     templateUrl: './work-examples.component.html',
     styleUrls: ['./work-examples.component.scss'],
-    standalone: false
+    imports: [ChartsComponent, NgFor, ExampleComponent, AsyncPipe]
 })
 export class WorkExamplesComponent {
   /*eslint-disable */

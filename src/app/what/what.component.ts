@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'st-what',
-    templateUrl: './what.component.html',
-    standalone: false
+    templateUrl: './what.component.html'
 })
 export class WhatComponent {
   /*eslint-disable */

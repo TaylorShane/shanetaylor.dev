@@ -9,9 +9,8 @@ describe('ExampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ExampleComponent],
-      imports: [CarouselModule]
-    }).compileComponents();
+    imports: [CarouselModule, ExampleComponent]
+}).compileComponents();
   });
 
   beforeEach(() => {

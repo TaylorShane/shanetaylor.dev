@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { NavLinks } from '../shared/models/models';
+import { NgFor } from '@angular/common';
 
 @Component({
     selector: 'st-navbar',
     templateUrl: './navbar.component.html',
     styleUrls: ['./navbar.component.scss'],
-    standalone: false
+    imports: [NgFor]
 })
 export class NavbarComponent {
   isCollapsed = true;
