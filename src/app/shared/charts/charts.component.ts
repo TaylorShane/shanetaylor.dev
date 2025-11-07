@@ -70,7 +70,7 @@ export class ChartsComponent implements OnInit, OnDestroy {
     tooltip: {
       confine: true,
       trigger: 'item',
-      /*eslint-disable */
+
       formatter(params): any {
         return params.data.language == null
           ? `<div>${params.name}</div>
@@ -82,7 +82,6 @@ export class ChartsComponent implements OnInit, OnDestroy {
         <div> Project size in bytes: ${params.data.value}</div>
         <div>(${params.percent}% of all projects)</div>`;
       }
-      /*eslint-disable */
     },
     legend: {
       align: 'right',

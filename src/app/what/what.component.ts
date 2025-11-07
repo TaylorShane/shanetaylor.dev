@@ -5,7 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './what.component.html'
 })
 export class WhatComponent {
-  /*eslint-disable */
   networkCert = '../../assets/docs/Shane_Taylor_TestOut_Network_Pro_Certification.pdf';
   graphyLink = 'https://play.google.com/store/apps/details?id=com.shane_taylor.Graphy';
 
@@ -25,5 +24,4 @@ export class WhatComponent {
       c: 'with TestOut.'
     }
   };
-  /*eslint-disable */
 }
