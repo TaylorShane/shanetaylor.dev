@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.0.1](https://github.com/TaylorShane/shanetaylor.dev/compare/v6.0.0...v6.0.1) (2025-11-10)
+
+
+### Features
+
+* code coverage badge ([d649439](https://github.com/TaylorShane/shanetaylor.dev/commit/d649439f32884a1488cc13f62a0aa69fb057e2c5))
+
+
+### Bug Fixes
+
+* chart instantiate ([c433a0c](https://github.com/TaylorShane/shanetaylor.dev/commit/c433a0c4799c0b58daabcf3265187027d9ca9bc0))
+
 ## [5.1.0](https://github.com/TaylorShane/shanetaylor.dev/compare/v5.0.0...v5.1.0) (2022-11-26)
 
 ### Features
