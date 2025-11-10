@@ -32,8 +32,7 @@
     "prepare": "husky install",
     "release": "npm version patch && standard-version && git push --follow-tags",
     "sass-lint": "sass-lint --config .sass-lint.yml --verbose",
-    "test": "ng test",
-    "test:coverage": "ng test --code-coverage",
+    "test": "ng test --code-coverage",
     "test:headless": "ng test --watch=false --browsers=ChromeHeadlessCI"
   },
   "private": true,

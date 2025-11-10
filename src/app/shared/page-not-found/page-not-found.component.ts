@@ -27,9 +27,7 @@ export class PageNotFoundComponent implements OnInit {
 
   @HostBinding('class.flex-full-height')
   ngOnInit(): void {
-    for (const aQuote of this.listOfQuotes) {
-      const randomIndex = Math.floor(Math.random() * this.listOfQuotes.length);
-      this.quote = this.listOfQuotes[randomIndex];
-    }
+    const randomIndex = Math.floor(Math.random() * this.listOfQuotes.length);
+    this.quote = this.listOfQuotes[randomIndex];
   }
 }

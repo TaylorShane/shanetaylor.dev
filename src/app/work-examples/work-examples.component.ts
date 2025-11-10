@@ -30,6 +30,6 @@ export class WorkExamplesComponent {
   projects$: Observable<ProjectData[]>;
 
   constructor() {
-    this.projects$ = this.githubService.projectData$;
+    this.projects$ = this.githubService.projects$;
   }
 }
