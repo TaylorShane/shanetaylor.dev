@@ -2,6 +2,7 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NGX_ECHARTS_CONFIG } from 'ngx-echarts';
 
 import { WorkExamplesComponent } from './work-examples.component';
 
@@ -13,7 +14,12 @@ describe('WorkExamplesComponent', () => {
     await TestBed.configureTestingModule({
       imports: [WorkExamplesComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      providers: [WorkExamplesComponent, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+      providers: [
+        WorkExamplesComponent,
+        { provide: NGX_ECHARTS_CONFIG, useValue: {} },
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting()
+      ]
     }).compileComponents();
   });
 

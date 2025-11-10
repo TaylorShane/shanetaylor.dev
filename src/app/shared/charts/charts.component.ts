@@ -25,75 +25,119 @@ export class ChartsComponent implements OnInit, OnDestroy {
   loading = false;
   error: string | null = null;
 
-  private readonly chartColors = [
-    '#1abc9c',
-    '#2ecc71',
-    '#3498db',
-    '#9b59b6',
-    '#e67e22',
-    '#b21ab4',
-    '#6f0099',
-    '#2a2073',
-    '#0b5ea8',
-    '#17aecc',
-    '#b3b3ff',
-    '#eb99ff',
-    '#fae6ff',
-    '#a866c1',
-    '#011f4b',
-    '#03396c',
-    '#005b96',
-    '#6497b1',
-    '#b3cde0',
-    '#4f76a8'
-  ];
-
-  get options(): EChartsOption {
-    const isSmallScreen = typeof window !== 'undefined' && window.innerWidth < 560;
-    const chartName = this.chartName();
-
-    return {
-      backgroundColor: '#333333',
-      color: this.chartColors,
-      responsive: true,
-      grid: {
-        left: isSmallScreen ? 50 : 100,
-        top: 10,
-        right: isSmallScreen ? 50 : 100,
-        bottom: 100
+  options: EChartsOption = {
+    backgroundColor: '#333333',
+    color: [
+      '#1abc9c',
+      '#2ecc71',
+      '#3498db',
+      '#9b59b6',
+      '#e67e22',
+      '#b21ab4',
+      '#6f0099',
+      '#2a2073',
+      '#0b5ea8',
+      '#17aecc',
+      '#b3b3ff',
+      '#eb99ff',
+      '#fae6ff',
+      '#a866c1',
+      '#011f4b',
+      '#03396c',
+      '#005b96',
+      '#6497b1',
+      '#b3cde0',
+      '#4f76a8'
+    ],
+    responsive: true,
+    grid: {
+      left: 100,
+      top: 10,
+      right: 100,
+      bottom: 100
+    },
+    title: {
+      textStyle: { color: '#1abc9c' },
+      textVerticalAlign: 'middle',
+      textBaseline: 'bottom',
+      bottom: 0,
+      text: 'Github Projects',
+      subtext: 'Current projects in my Github repository'
+    },
+    tooltip: {
+      confine: true,
+      trigger: 'item'
+    },
+    legend: {
+      align: 'right',
+      orient: 'vertical',
+      right: 0,
+      selectorLabel: {
+        show: true,
+        color: '#FFFFFF',
+        backgroundColor: 'transparent'
       },
-      title: this.getTitleConfig(chartName),
-      tooltip: this.getTooltipConfig(chartName),
-      legend: this.getLegendConfig(isSmallScreen),
-      series: [
+      show: true,
+      type: 'scroll'
+    },
+    series: [
+      {
+        data: this.repoData,
+        radius: '100%',
+        roseType: 'area',
+        type: 'pie',
+        label: {
+          show: true,
+          color: '#FFFFFF',
+          backgroundColor: 'transparent'
+        }
+      }
+    ]
+  };
+
+  ngOnInit(): void {
+    if (typeof window !== 'undefined' && window.innerWidth < 560) {
+      this.options.series = [
         {
-          data: this.repoData,
-          radius: isSmallScreen ? '50%' : '100%',
-          roseType: 'area',
           type: 'pie',
+          radius: '50%',
+          roseType: 'area',
+          data: this.repoData,
           label: {
             show: true,
             color: '#FFFFFF',
             backgroundColor: 'transparent'
           }
         }
-      ]
-    };
-  }
-
-  ngOnInit(): void {
+      ];
+      this.options.legend = {
+        orient: 'horizontal',
+        show: true,
+        align: 'auto',
+        selectorLabel: {
+          show: true,
+          color: '#FFFFFF',
+          backgroundColor: 'transparent'
+        }
+      };
+      this.options.grid = {
+        left: 50,
+        top: 10,
+        right: 50,
+        bottom: 100
+      };
+    }
     this.loadChartData();
   }
 
   ngOnDestroy(): void {
+    this.disposeChart();
     this.destroy$.next();
     this.destroy$.complete();
-    this.disposeChart();
   }
 
   onChartInit(chartInstance: any): void {
     this.eChartsInstance = chartInstance;
-    this.resizeChart();
   }
 
   resizeChart(): void {
@@ -109,6 +153,7 @@ export class ChartsComponent implements OnInit, OnDestroy {
       return;
     }
 
+    this.repoData = [];
     this.loading = true;
     this.error = null;
 
@@ -123,6 +168,19 @@ export class ChartsComponent implements OnInit, OnDestroy {
   }
 
   private loadAllRepositories(): void {
+    this.options.tooltip = {
+      confine: true,
+      trigger: 'item',
+      formatter: (params: any): string => {
+        const languageInfo = params.data.language ? `<div>Predominant Language: ${params.data.language}</div>` : '';
+        return `<div><strong>${params.name}</strong></div>
+                <div class="text-wrap">${params.data.description}</div>
+                ${languageInfo}
+                <div>Project size in bytes: ${params.data.value?.toLocaleString() || 'N/A'}</div>
+                <div>(${params.percent}% of all projects)</div>`;
+      }
+    };
+
     this.githubService
       .getAllRepositories()
       .pipe(
@@ -132,6 +190,10 @@ export class ChartsComponent implements OnInit, OnDestroy {
       .subscribe({
         next: (data: RepoData[]) => {
           this.repoData = data.filter((repo) => repo.name !== 'TaylorShane');
+          this.options.series[0].data = this.repoData;
+          if (this.eChartsInstance) {
+            this.eChartsInstance.setOption(this.options);
+          }
         },
         error: (error) => {
           console.error('Error loading repository data:', error);
@@ -141,6 +203,7 @@ export class ChartsComponent implements OnInit, OnDestroy {
   }
 
   private loadLanguageData(repoName: string): void {
+    this.setChartOptionsForRepo(repoName);
     this.githubService
       .getLanguagesForRepo(repoName)
       .pipe(
@@ -156,6 +219,10 @@ export class ChartsComponent implements OnInit, OnDestroy {
             language: language,
             url: `https://github.com/TaylorShane/${repoName}`
           }));
+          this.options.series[0].data = this.repoData;
+          if (this.eChartsInstance) {
+            this.eChartsInstance.setOption(this.options);
+          }
         },
         error: (error) => {
           console.error('Error loading language data:', error);
@@ -164,83 +231,22 @@ export class ChartsComponent implements OnInit, OnDestroy {
       });
   }
 
-  private getTitleConfig(chartName?: string): any {
-    const baseConfig = {
+  private setChartOptionsForRepo(repoName: string): void {
+    this.options.title = {
+      text: `${repoName}.dev`,
+      subtext: 'Languages used and proportions',
       textStyle: { color: '#1abc9c' },
       textVerticalAlign: 'middle',
       textBaseline: 'bottom',
       bottom: 0
     };
-
-    if (chartName === 'shanetaylor') {
-      return {
-        ...baseConfig,
-        text: `${chartName}.dev`,
-        subtext: 'Languages used and proportions'
-      };
-    }
-
-    return {
-      ...baseConfig,
-      text: 'Github Projects',
-      subtext: 'Current projects in my Github repository'
-    };
-  }
-
-  private getTooltipConfig(chartName?: string): any {
-    const baseConfig = {
+    this.options.tooltip = {
       confine: true,
-      trigger: 'item'
-    };
-
-    if (chartName === 'shanetaylor') {
-      return {
-        ...baseConfig,
-        formatter: (params: any): string => {
-          return `${params.name}<br />
-                  ${params.percent}% of all languages used in this project`;
-        }
-      };
-    }
-
-    return {
-      ...baseConfig,
+      trigger: 'item',
       formatter: (params: any): string => {
-        const languageInfo = params.data.language ? `<div>Predominant Language: ${params.data.language}</div>` : '';
-
-        return `<div><strong>${params.name}</strong></div>
-                <div class="text-wrap">${params.data.description}</div>
-                ${languageInfo}
-                <div>Project size in bytes: ${params.data.value?.toLocaleString() || 'N/A'}</div>
-                <div>(${params.percent}% of all projects)</div>`;
+        return `${params.name}<br />
+                ${params.percent}% of all languages used in this project`;
       }
-    };
-  }
-
-  private getLegendConfig(isSmallScreen: boolean): any {
-    const baseConfig = {
-      selectorLabel: {
-        show: true,
-        color: '#FFFFFF',
-        backgroundColor: 'transparent'
-      },
-      show: true
-    };
-
-    if (isSmallScreen) {
-      return {
-        ...baseConfig,
-        orient: 'horizontal',
-        align: 'auto'
-      };
-    }
-
-    return {
-      ...baseConfig,
-      align: 'right',
-      orient: 'vertical',
-      right: 0,
-      type: 'scroll'
     };
   }
 

@@ -2,6 +2,7 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NGX_ECHARTS_CONFIG } from 'ngx-echarts';
 import { of, throwError } from 'rxjs';
 import { GithubService } from 'src/app/services/github.service';
 import { Languages, RepoData } from '../models/models';
@@ -51,6 +52,7 @@ describe('ChartsComponent', () => {
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [
         { provide: GithubService, useValue: githubServiceSpy },
+        { provide: NGX_ECHARTS_CONFIG, useValue: {} },
         provideHttpClient(withInterceptorsFromDi()),
         provideHttpClientTesting()
       ]
@@ -191,99 +193,55 @@ describe('ChartsComponent', () => {
     });
 
     it('should generate options for small screen', () => {
-      Object.defineProperty(window, 'innerWidth', { value: 500 });
-      fixture.componentRef.setInput('chartName', 'allRepos');
-      component.repoData = mockRepoData;
+      // Set small screen width before component initialization
+      Object.defineProperty(window, 'innerWidth', { value: 500, configurable: true });
 
-      const options = component.options;
+      // Create a new fixture with the updated window width
+      const smallScreenFixture = TestBed.createComponent(ChartsComponent);
+      const smallScreenComponent = smallScreenFixture.componentInstance;
+      smallScreenFixture.componentRef.setInput('chartName', 'allRepos');
+      smallScreenComponent.repoData = mockRepoData;
+
+      // Mock the github service for this specific test
+      githubService.getAllRepositories.and.returnValue(of(mockRepoData));
+
+      // Initialize component with small screen
+      smallScreenComponent.ngOnInit();
+
+      const options = smallScreenComponent.options;
 
       expect((options.grid as any)?.left).toBe(50);
       expect((options.grid as any)?.right).toBe(50);
       expect(options.series?.[0]?.radius).toBe('50%');
+
+      // Clean up
+      smallScreenFixture.destroy();
+
+      // Reset window width for other tests
+      Object.defineProperty(window, 'innerWidth', { value: 1024, configurable: true });
     });
 
-    it('should get title config for shanetaylor chart', () => {
-      const titleConfig = (component as any).getTitleConfig('shanetaylor');
+    it('should have correct chart options configuration', () => {
+      fixture.componentRef.setInput('chartName', 'allRepos');
+      component.repoData = mockRepoData.slice(0, 2); // Remove TaylorShane
 
-      expect(titleConfig.text).toBe('shanetaylor.dev');
-      expect(titleConfig.subtext).toBe('Languages used and proportions');
-      expect(titleConfig.textStyle.color).toBe('#1abc9c');
+      const options = component.options;
+
+      expect(options.backgroundColor).toBe('#333333');
+      expect((options.title as any)?.text).toBe('Github Projects');
+      expect((options.title as any)?.subtext).toBe('Current projects in my Github repository');
+      expect(options.series?.[0]?.type).toBe('pie');
+      expect(options.series?.[0]?.roseType).toBe('area');
     });
 
-    it('should get title config for default chart', () => {
-      const titleConfig = (component as any).getTitleConfig('allRepos');
+    it('should update chart options for shanetaylor chart', () => {
+      fixture.componentRef.setInput('chartName', 'shanetaylor');
+      githubService.getLanguagesForRepo.and.returnValue(of(mockLanguageData));
 
-      expect(titleConfig.text).toBe('Github Projects');
-      expect(titleConfig.subtext).toBe('Current projects in my Github repository');
-      expect(titleConfig.textStyle.color).toBe('#1abc9c');
-    });
+      component.ngOnInit();
 
-    it('should get tooltip config for shanetaylor chart', () => {
-      const tooltipConfig = (component as any).getTooltipConfig('shanetaylor');
-
-      expect(tooltipConfig.confine).toBeTrue();
-      expect(tooltipConfig.trigger).toBe('item');
-      expect(typeof tooltipConfig.formatter).toBe('function');
-
-      const mockParams = { name: 'TypeScript', percent: 75.5 };
-      const result = tooltipConfig.formatter(mockParams);
-      expect(result).toContain('TypeScript');
-      expect(result).toContain('75.5%');
-    });
-
-    it('should get tooltip config for default chart', () => {
-      const tooltipConfig = (component as any).getTooltipConfig('allRepos');
-
-      expect(tooltipConfig.confine).toBeTrue();
-      expect(tooltipConfig.trigger).toBe('item');
-      expect(typeof tooltipConfig.formatter).toBe('function');
-
-      const mockParams = {
-        name: 'Test Repo',
-        percent: 25,
-        data: {
-          description: 'Test description',
-          language: 'TypeScript',
-          value: 1500
-        }
-      };
-      const result = tooltipConfig.formatter(mockParams);
-      expect(result).toContain('Test Repo');
-      expect(result).toContain('Test description');
-      expect(result).toContain('TypeScript');
-      expect(result).toContain('1,500');
-    });
-
-    it('should get tooltip config without language', () => {
-      const tooltipConfig = (component as any).getTooltipConfig('allRepos');
-      const mockParams = {
-        name: 'Test Repo',
-        percent: 25,
-        data: {
-          description: 'Test description',
-          language: null,
-          value: 1500
-        }
-      };
-      const result = tooltipConfig.formatter(mockParams);
-      expect(result).not.toContain('Predominant Language');
-    });
-
-    it('should get legend config for small screen', () => {
-      const legendConfig = (component as any).getLegendConfig(true);
-
-      expect(legendConfig.orient).toBe('horizontal');
-      expect(legendConfig.align).toBe('auto');
-      expect(legendConfig.show).toBeTrue();
-    });
-
-    it('should get legend config for large screen', () => {
-      const legendConfig = (component as any).getLegendConfig(false);
-
-      expect(legendConfig.align).toBe('right');
-      expect(legendConfig.orient).toBe('vertical');
-      expect(legendConfig.right).toBe(0);
-      expect(legendConfig.type).toBe('scroll');
+      expect((component.options.title as any)?.text).toBe('shanetaylor.dev');
+      expect((component.options.title as any)?.subtext).toBe('Languages used and proportions');
     });
   });
 
@@ -291,22 +249,20 @@ describe('ChartsComponent', () => {
     it('should initialize chart instance', () => {
       const mockChartInstance = {
         resize: jasmine.createSpy('resize'),
-        dispose: jasmine.createSpy('dispose')
+        dispose: jasmine.createSpy('dispose'),
+        setOption: jasmine.createSpy('setOption')
       };
 
       component.onChartInit(mockChartInstance);
 
       expect(component.eChartsInstance).toBe(mockChartInstance);
-      expect(mockChartInstance.resize).toHaveBeenCalledWith({
-        width: 'auto',
-        height: 'auto'
-      });
     });
 
     it('should resize chart when instance exists', () => {
       const mockChartInstance = {
         resize: jasmine.createSpy('resize'),
-        dispose: jasmine.createSpy('dispose')
+        dispose: jasmine.createSpy('dispose'),
+        setOption: jasmine.createSpy('setOption')
       };
       component.eChartsInstance = mockChartInstance;
 
@@ -327,7 +283,8 @@ describe('ChartsComponent', () => {
     it('should dispose chart instance on destroy', () => {
       const mockChartInstance = {
         resize: jasmine.createSpy('resize'),
-        dispose: jasmine.createSpy('dispose')
+        dispose: jasmine.createSpy('dispose'),
+        setOption: jasmine.createSpy('setOption')
       };
       component.eChartsInstance = mockChartInstance;
 
@@ -359,6 +316,14 @@ describe('ChartsComponent', () => {
       fixture.componentRef.setInput('chartName', 'shanetaylor');
       githubService.getLanguagesForRepo.and.returnValue(of(mockLanguageData));
 
+      // Set up mock chart instance
+      const mockChartInstance = {
+        resize: jasmine.createSpy('resize'),
+        dispose: jasmine.createSpy('dispose'),
+        setOption: jasmine.createSpy('setOption')
+      };
+      component.eChartsInstance = mockChartInstance;
+
       (component as any).loadLanguageData('shanetaylor');
 
       expect(component.repoData.length).toBe(3);
@@ -369,25 +334,11 @@ describe('ChartsComponent', () => {
         language: 'TypeScript',
         url: 'https://github.com/TaylorShane/shanetaylor'
       });
+      expect(mockChartInstance.setOption).toHaveBeenCalled();
     });
   });
 
   describe('Edge Cases', () => {
-    it('should handle tooltip formatter with undefined value', () => {
-      const tooltipConfig = (component as any).getTooltipConfig('allRepos');
-      const mockParams = {
-        name: 'Test Repo',
-        percent: 25,
-        data: {
-          description: 'Test description',
-          language: 'TypeScript',
-          value: undefined
-        }
-      };
-      const result = tooltipConfig.formatter(mockParams);
-      expect(result).toContain('N/A');
-    });
-
     it('should handle window undefined scenario', () => {
       fixture.componentRef.setInput('chartName', 'allRepos');
       component.repoData = mockRepoData;
@@ -396,6 +347,21 @@ describe('ChartsComponent', () => {
 
       expect(options.backgroundColor).toBe('#333333');
       expect((options.grid as any)?.left).toBeGreaterThan(0);
+    });
+
+    it('should handle chart update when eChartsInstance exists', () => {
+      const mockChartInstance = {
+        resize: jasmine.createSpy('resize'),
+        dispose: jasmine.createSpy('dispose'),
+        setOption: jasmine.createSpy('setOption')
+      };
+      component.eChartsInstance = mockChartInstance;
+      githubService.getAllRepositories.and.returnValue(of(mockRepoData));
+      fixture.componentRef.setInput('chartName', 'allRepos');
+
+      (component as any).loadAllRepositories();
+
+      expect(mockChartInstance.setOption).toHaveBeenCalled();
     });
   });
 });

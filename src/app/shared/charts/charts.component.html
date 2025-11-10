@@ -1,9 +1,7 @@
-@if (repoData.length > 0) {
-  <div
-    class="w-100 chart-container-size"
-    echarts
-    [autoResize]="true"
-    [options]="options"
-    [theme]="'dark'"
-    (chartInit)="onChartInit($event)"></div>
-}
+<div
+  class="w-100 chart-container-size"
+  echarts
+  [autoResize]="true"
+  [options]="options"
+  [theme]="'dark'"
+  (chartInit)="onChartInit($event)"></div>
