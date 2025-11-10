@@ -1,4 +1,5 @@
 [![pipeline](https://github.com/TaylorShane/shanetaylor.dev/actions/workflows/node.js.yml/badge.svg)](https://github.com/TaylorShane/shanetaylor.dev/actions/workflows/node.js.yml)
+[![codecov](https://codecov.io/gh/TaylorShane/shanetaylor.dev/branch/master/graph/badge.svg)](https://codecov.io/gh/TaylorShane/shanetaylor.dev)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
 # ShaneTaylor.dev
