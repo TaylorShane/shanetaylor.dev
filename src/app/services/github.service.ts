@@ -28,7 +28,7 @@ export class GithubService {
     baseUrl: 'https://api.github.com/repos/TaylorShane/',
     userReposUrl: 'https://api.github.com/users/TaylorShane/repos',
     rateLimitStatus: 403
-  } as const;
+  };
 
   private readonly staticProjects: ProjectData[] = [graphyInfo, thgInfo, spotterInfo, brewBuddyInfo, mdbmInfo];
 
@@ -36,15 +36,15 @@ export class GithubService {
   public readonly projects$ = this.projectsSubject.asObservable();
 
   initializeProjectsWithLanguageData(): Observable<ProjectData[]> {
-    const projectsWithRepos = this.staticProjects.filter((project) => project.id);
+    const projectsWithRepos = this.staticProjects.filter((project: ProjectData) => project.id);
 
     if (projectsWithRepos.length === 0) {
       return of(this.staticProjects);
     }
 
-    const languageRequests = projectsWithRepos.map((project) =>
+    const languageRequests = projectsWithRepos.map((project: ProjectData) =>
       this.getLanguagesForRepo(project.id!).pipe(
-        map((languages) => ({ project, languages })),
+        map((languages: Languages) => ({ project, languages })),
         catchError((error) => {
           console.error(`Failed to load languages for ${project.id}:`, error);
           return of({ project, languages: null });
@@ -53,11 +53,11 @@ export class GithubService {
     );
 
     return forkJoin(languageRequests).pipe(
-      map((results) => {
+      map((results: { project: ProjectData; languages: Languages | null }[]) => {
         const updatedProjects = [...this.staticProjects];
 
         results.forEach(({ project, languages }) => {
-          const index = updatedProjects.findIndex((p) => p.id === project.id);
+          const index = updatedProjects.findIndex((p: ProjectData) => p.id === project.id);
           if (index !== -1 && languages) {
             updatedProjects[index] = { ...updatedProjects[index], languageData: languages };
           }
@@ -72,8 +72,8 @@ export class GithubService {
 
   getAllRepositories(): Observable<RepoData[]> {
     return this.http.get<GitHubRepoResponse[]>(this.config.userReposUrl).pipe(
-      map((repos) => repos.map((repo) => new RepoData(repo))),
-      catchError((error) => {
+      map((repos: GitHubRepoResponse[]) => repos.map((repo) => new RepoData(repo))),
+      catchError((error: HttpErrorResponse) => {
         if (error.status === this.config.rateLimitStatus) {
           console.warn('GitHub API rate limit reached, using backup data');
           return of(allRepoBackupData);
@@ -88,12 +88,12 @@ export class GithubService {
     const url = `${this.config.baseUrl}${repoName}/languages`;
 
     return this.http.get<GitHubLanguageResponse>(url).pipe(
-      map((response) => ({
+      map((response: GitHubLanguageResponse) => ({
         name: repoName,
         lang: Object.keys(response),
         size: Object.values(response)
       })),
-      catchError((error) => {
+      catchError((error: HttpErrorResponse) => {
         if (error.status === this.config.rateLimitStatus) {
           console.warn(`GitHub API rate limit reached for ${repoName}, using backup data`);
           return of(getBackupLangData(repoName));
