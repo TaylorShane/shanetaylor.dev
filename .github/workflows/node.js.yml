@@ -37,3 +37,8 @@ jobs:
       run: npm run lint:editorconfig
     - name: Run unit tests
       run: npm run test:headless
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        directory: ./dist/coverage
+        fail_ci_if_error: false
