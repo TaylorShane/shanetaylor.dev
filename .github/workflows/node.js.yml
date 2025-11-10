@@ -37,8 +37,38 @@ jobs:
       run: npm run lint:editorconfig
     - name: Run unit tests
       run: npm run test:headless
-    - name: Upload coverage reports to Codecov
-      uses: codecov/codecov-action@v3
-      with:
-        directory: ./dist/coverage
-        fail_ci_if_error: false
+    - name: Update coverage badge
+      if: github.ref == 'refs/heads/master'
+      run: |
+        # Extract coverage percentage from lcov.info
+        TOTAL=$(grep -o 'LF:[0-9]*' dist/coverage/lcov.info | awk -F: '{sum += $2} END {print sum}')
+        COVERED=$(grep -o 'LH:[0-9]*' dist/coverage/lcov.info | awk -F: '{sum += $2} END {print sum}')
+
+        if [ "$TOTAL" -gt 0 ]; then
+          PERCENTAGE=$(awk "BEGIN {printf \"%.0f\", $COVERED * 100 / $TOTAL}")
+        else
+          PERCENTAGE="0"
+        fi
+
+        echo "Coverage: ${PERCENTAGE}%"
+
+        # Determine badge color
+        if [ "$PERCENTAGE" -ge 80 ]; then
+          COLOR="brightgreen"
+        elif [ "$PERCENTAGE" -ge 60 ]; then
+          COLOR="yellow"
+        elif [ "$PERCENTAGE" -ge 40 ]; then
+          COLOR="orange"
+        else
+          COLOR="red"
+        fi
+
+        # Update README.md
+        sed -i "s|\[\!\[coverage\]\(https://img\.shields\.io/badge/coverage-[0-9]*%25-[a-z]*\)\]|\[\!\[coverage\]\(https://img\.shields\.io/badge/coverage-${PERCENTAGE}%25-${COLOR}\)\]|g" README.md
+
+        # Commit if changed
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add README.md
+        git diff --staged --quiet || git commit -m "chore: update coverage badge to ${PERCENTAGE}% [skip ci]"
+        git push
