@@ -1,0 +1,16 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "sdras.night-owl",
+    "eamodio.gitlens",
+    "samuelepignone.fakedonalds",
+    "kisstkondoros.vscode-codemetrics",
+    "streetsidesoftware.code-spell-checker",
+    "angular.ng-template",
+    "eliverlara.andromeda",
+    "castanhocorreia.alphabetize",
+    "dbaeumer.vscode-eslint",
+    "stylelint.vscode-stylelint",
+    "johnpapa.winteriscoming"
+  ]
+}
