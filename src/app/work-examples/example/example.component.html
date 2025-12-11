@@ -1,25 +1,25 @@
 <div class="d-flex flex-container">
   <div>
     <div class="text-center">
-      <span class="emphasis">{{ exampleData?.name }}</span>
+      <span class="emphasis">{{ exampleData()?.name }}</span>
     </div>
-    @if (exampleData?.playstoreLink !== undefined) {
+    @if (exampleData()?.playStoreLink !== undefined) {
       <div class="text-center">
         <a
           rel="noopener noreferrer"
-          [href]="exampleData?.playstoreLink"
+          [href]="exampleData()?.playStoreLink"
           class="btn btn-outline-secondary min-btn-width"
           target="_blank">
           <i class="fab fa-google-play"></i>
-          {{ playstoreDownload }}
+          {{ playStoreDownload }}
         </a>
       </div>
     }
-    @if (exampleData?.websiteLink !== undefined) {
+    @if (exampleData()?.websiteLink !== undefined) {
       <div class="text-center">
         <a
           rel="noopener noreferrer"
-          [href]="exampleData?.websiteLink"
+          [href]="exampleData()?.websiteLink"
           class="btn btn-outline-secondary min-btn-width"
           target="_blank">
           <i class="fas fa-link"></i>
@@ -27,11 +27,11 @@
         </a>
       </div>
     }
-    @if (exampleData?.repoLink !== undefined) {
+    @if (exampleData()?.repoLink !== undefined) {
       <div class="text-center">
         <a
           rel="noopener noreferrer"
-          [href]="exampleData?.repoLink"
+          [href]="exampleData()?.repoLink"
           class="btn btn-outline-secondary min-btn-width"
           target="_blank">
           <i class="fab fa-github"></i>
@@ -40,11 +40,11 @@
       </div>
     }
 
-    @if (exampleData?.userGuideLink !== undefined) {
+    @if (exampleData()?.userGuideLink !== undefined) {
       <div class="text-center">
         <a
           rel="noopener noreferrer"
-          [href]="exampleData?.userGuideLink"
+          [href]="exampleData()?.userGuideLink"
           class="btn btn-outline-secondary min-btn-width"
           target="_self">
           <i class="fas fa-link"></i>
@@ -53,11 +53,11 @@
       </div>
     }
 
-    @if (exampleData?.privacyLink !== undefined) {
+    @if (exampleData()?.privacyLink !== undefined) {
       <div class="text-center">
         <a
           rel="noopener noreferrer"
-          [href]="exampleData?.privacyLink"
+          [href]="exampleData()?.privacyLink"
           class="btn btn-outline-secondary min-btn-width"
           target="_self">
           <i class="fas fa-link"></i>
@@ -68,9 +68,9 @@
 
     <div class="d-flex m-auto">
       <div class="d-flex mx-auto flex-column">
-        @if (exampleData?.languageData && exampleData?.languageData !== null) {
+        @if (exampleData()?.languageData && exampleData()?.languageData !== null) {
           <div>
-            @switch (exampleData?.languageData.lang[0]) {
+            @switch (exampleData()?.languageData.lang[0]) {
               @case ('Java') {
                 <i
                   role="img"
@@ -89,9 +89,9 @@
               }
               &nbsp;
             }
-            <label>Language: {{ exampleData?.languageData.lang[0] }}</label>
+            <label>Language: {{ exampleData()?.languageData.lang[0] }}</label>
           </div>
-          @if (exampleData?.name === 'BrewBuddy') {
+          @if (exampleData()?.name === 'BrewBuddy') {
             <div>
               <i
                 role="img"
@@ -114,7 +114,7 @@
     </div>
 
     <div class="row d-flex justify-content-center">
-      @for (attribute of exampleData?.attributes; track attribute; let isFirst = $first) {
+      @for (attribute of exampleData()?.attributes; track attribute; let isFirst = $first) {
         <p class="m-0 w-auto">
           @if (isFirst) {
             <span class="emphasis"></span> {{ attribute }}
@@ -132,23 +132,47 @@
     </div>
 
     <p class="p-3">
-      {{ exampleData?.blurb }}
+      {{ exampleData()?.blurb }}
     </p>
     <div
       class="d-flex"
-      [ngClass]="exampleData?.portrait ? 'w-75 m-auto' : 'w-100 m-auto'">
-      <carousel
-        class="d-flex m-auto"
-        [isAnimated]="true">
-        @for (image of exampleData?.images; track image; let i = $index; let c = $count) {
-          <slide>
-            <img
-              [src]="image"
-              alt="Application Screen Shot"
-              class="d-block w-100" />
-          </slide>
-        }
-      </carousel>
+      [ngClass]="exampleData()?.portrait ? 'w-75 m-auto' : 'w-100 m-auto'">
+      <div
+        class="carousel slide"
+        [attr.id]="exampleId()">
+        <div class="carousel-inner">
+          @for (image of exampleData()?.images; track image; let isFirst = $first) {
+            <div
+              class="carousel-item"
+              [class.active]="isFirst">
+              <img
+                [src]="image"
+                class="d-block w-100"
+                alt="" />
+            </div>
+          }
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          [attr.data-bs-target]="'#' + exampleId()"
+          data-bs-slide="prev">
+          <span
+            class="carousel-control-prev-icon"
+            aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          [attr.data-bs-target]="'#' + exampleId()"
+          data-bs-slide="next">
+          <span
+            class="carousel-control-next-icon"
+            aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
     </div>
   </div>
 </div>

@@ -36,23 +36,23 @@ export class NavLinks {
  * @member images string resource location
  * @member name name used for link and displayed in HTML
  * @member languageData languages used gathered from github
- * @member playstoreLink link to app in playstore
+ * @member playStoreLink link to app in playStore
  * @member repoLink link to github repo
  * @member websiteLink link to project site
  * @member docLinks url location to .pdf
  */
 export class ProjectData {
-  id?: string;
   attributes: string[];
   blurb: string;
-  images: string[];
-  portrait: boolean;
-  name: string;
-  languageData?: Languages;
-  playstoreLink?: string;
-  repoLink?: string;
-  websiteLink?: string;
   docLinks?: string[];
-  userGuideLink?: string;
+  id?: string;
+  images: string[];
+  languageData?: Languages;
+  name: string;
+  playStoreLink?: string;
+  portrait: boolean;
   privacyLink?: string;
+  repoLink?: string;
+  userGuideLink?: string;
+  websiteLink?: string;
 }
