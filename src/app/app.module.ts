@@ -2,10 +2,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { CarouselModule } from 'ngx-bootstrap/carousel';
-import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { NgxEchartsModule } from 'ngx-echarts';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -27,9 +24,6 @@ import { WorkExamplesComponent } from './work-examples/work-examples.component';
   bootstrap: [AppComponent],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
-    CarouselModule.forRoot(),
-    CollapseModule.forRoot(),
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts')
     }),

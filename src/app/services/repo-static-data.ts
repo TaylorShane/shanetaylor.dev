@@ -29,7 +29,7 @@ export const graphyInfo: ProjectData = {
   portrait: false,
   name: 'Graphy',
   languageData: graphyLangData,
-  playstoreLink: 'https://play.google.com/store/apps/details?id=com.shane_taylor.Graphy',
+  playStoreLink: 'https://play.google.com/store/apps/details?id=com.shane_taylor.Graphy',
   repoLink: 'https://github.com/TaylorShane/NEIU2017SummerInternship',
   userGuideLink: '/#/graphy-user-guide',
   privacyLink: '/#/graphy-privacy-terms'
@@ -47,7 +47,7 @@ export const thgInfo: ProjectData = {
   portrait: true,
   name: 'Trump Haiku Generator',
 
-  playstoreLink: 'https://play.google.com/store/apps/details?id=com.shane_taylor.trumphaikugenerator&hl=en',
+  playStoreLink: 'https://play.google.com/store/apps/details?id=com.shane_taylor.trumphaikugenerator&hl=en',
 
   websiteLink: 'https://trumphaikugenerator.com/',
   privacyLink: 'https://www.trumphaikugenerator.com/#/privacy-terms'
