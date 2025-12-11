@@ -64,3 +64,11 @@ import 'zone.js'; // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+
+/**
+ * Polyfill for process object in browser environment
+ * Needed for accessing process.env in environment files during testing
+ */
+(window as any).process = {
+  env: { DEBUG: undefined }
+};

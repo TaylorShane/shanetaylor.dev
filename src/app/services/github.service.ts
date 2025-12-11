@@ -1,7 +1,8 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable, BehaviorSubject, forkJoin, of, throwError } from 'rxjs';
 import { map, catchError, shareReplay, tap } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 import { Languages, ProjectData, RepoData } from '../shared/models/models';
 import { allRepoBackupData, getBackupLangData } from './github-backup-data';
 import { brewBuddyInfo, graphyInfo, mdbmInfo, spotterInfo, thgInfo } from './repo-static-data';
@@ -34,6 +35,17 @@ export class GithubService {
 
   private readonly projectsSubject = new BehaviorSubject<ProjectData[]>(this.staticProjects);
   public readonly projects$ = this.projectsSubject.asObservable();
+
+  private getAuthHeaders(): HttpHeaders {
+    let headers = new HttpHeaders();
+    const token = environment.gitHubToken;
+
+    if (token && token !== 'failed-to-load-token') {
+      headers = headers.set('Authorization', `Bearer ${token}`);
+    }
+
+    return headers;
+  }
 
   initializeProjectsWithLanguageData(): Observable<ProjectData[]> {
     const projectsWithRepos = this.staticProjects.filter((project: ProjectData) => project.id);
@@ -71,7 +83,7 @@ export class GithubService {
   }
 
   getAllRepositories(): Observable<RepoData[]> {
-    return this.http.get<GitHubRepoResponse[]>(this.config.userReposUrl).pipe(
+    return this.http.get<GitHubRepoResponse[]>(this.config.userReposUrl, { headers: this.getAuthHeaders() }).pipe(
       map((repos: GitHubRepoResponse[]) => repos.map((repo) => new RepoData(repo))),
       catchError((error: HttpErrorResponse) => {
         if (error.status === this.config.rateLimitStatus) {
@@ -87,7 +99,7 @@ export class GithubService {
   getLanguagesForRepo(repoName: string): Observable<Languages> {
     const url = `${this.config.baseUrl}${repoName}/languages`;
 
-    return this.http.get<GitHubLanguageResponse>(url).pipe(
+    return this.http.get<GitHubLanguageResponse>(url, { headers: this.getAuthHeaders() }).pipe(
       map((response: GitHubLanguageResponse) => ({
         name: repoName,
         lang: Object.keys(response),

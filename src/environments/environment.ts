@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  gitHubToken: process.env['GH_PAT'] || 'failed-to-load-token'
 };
 
 /*
