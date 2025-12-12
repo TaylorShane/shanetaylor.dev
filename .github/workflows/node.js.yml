@@ -23,11 +23,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Debug - Check NG_APP_GH_PAT
+    - name: Check NG_APP_GH_PAT
       run: |
-        echo "Direct secret value: ${{ secrets.NG_APP_GH_PAT }}"
-        echo "From env var: $NG_APP_GH_PAT"
-        echo "Token length: ${#NG_APP_GH_PAT}"
         if [ -z "$NG_APP_GH_PAT" ]; then
           echo "❌ NG_APP_GH_PAT is empty or not set"
           exit 1
