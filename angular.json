@@ -15,7 +15,7 @@
       "prefix": "st",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@ngx-env/builder:application",
           "options": {
             "outputPath": {
               "base": "dist/shanetaylor"
@@ -63,7 +63,7 @@
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@ngx-env/builder:dev-server",
           "options": {
             "buildTarget": "shanetaylor:build"
           },
@@ -74,7 +74,7 @@
           }
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "builder": "@ngx-env/builder:extract-i18n",
           "options": {
             "buildTarget": "shanetaylor:build"
           }

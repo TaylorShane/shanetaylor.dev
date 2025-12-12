@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  gitHubToken: process.env['GH_PAT'] || 'failed-to-load-token'
+  gitHubToken: process.env.NG_APP_GH_PAT || 'failed-to-load-token'
 };
 
 /*
