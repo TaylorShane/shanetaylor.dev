@@ -62,9 +62,8 @@ It is recommended that you use VSCode along with the following plugins, for the 
 
 For a new release
 
-- `yarn version <patch | minor | major>`
-- commit changes
-- `git push --follow-tags`
+- `npx standard-version`
+- `git push --follow-tags origin main`
 
 For a new tag:
 
