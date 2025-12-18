@@ -5,13 +5,14 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NGX_ECHARTS_CONFIG } from 'ngx-echarts';
 import { of, throwError } from 'rxjs';
 import { GithubService } from 'src/app/services/github.service';
+import { afterEach, beforeEach, describe, expect, it, type MockedObject, vi } from 'vitest';
 import { Languages, RepoData } from '../models/models';
 import { ChartsComponent } from './charts.component';
 
 describe('ChartsComponent', () => {
   let component: ChartsComponent;
   let fixture: ComponentFixture<ChartsComponent>;
-  let githubService: jasmine.SpyObj<GithubService>;
+  let githubService: MockedObject<GithubService>;
   let httpMock: HttpTestingController;
 
   const mockRepoData: RepoData[] = [
@@ -45,7 +46,10 @@ describe('ChartsComponent', () => {
   };
 
   beforeEach(async () => {
-    const githubServiceSpy = jasmine.createSpyObj('GithubService', ['getAllRepositories', 'getLanguagesForRepo']);
+    const githubServiceSpy = {
+      getAllRepositories: vi.fn().mockName('GithubService.getAllRepositories'),
+      getLanguagesForRepo: vi.fn().mockName('GithubService.getLanguagesForRepo')
+    };
 
     await TestBed.configureTestingModule({
       imports: [ChartsComponent],
@@ -58,7 +62,7 @@ describe('ChartsComponent', () => {
       ]
     }).compileComponents();
 
-    githubService = TestBed.inject(GithubService) as jasmine.SpyObj<GithubService>;
+    githubService = TestBed.inject(GithubService) as MockedObject<GithubService>;
     httpMock = TestBed.inject(HttpTestingController);
   });
 
@@ -87,12 +91,12 @@ describe('ChartsComponent', () => {
     it('should initialize with default values', () => {
       expect(component.repoData).toEqual([]);
       expect(component.eChartsInstance).toBeNull();
-      expect(component.loading).toBeFalse();
+      expect(component.loading).toBe(false);
       expect(component.error).toBeNull();
     });
 
     it('should call loadChartData on ngOnInit', () => {
-      spyOn(component as any, 'loadChartData');
+      vi.spyOn(component as any, 'loadChartData');
       component.ngOnInit();
       expect((component as any).loadChartData).toHaveBeenCalled();
     });
@@ -104,11 +108,11 @@ describe('ChartsComponent', () => {
     });
 
     it('should load all repositories data successfully', () => {
-      githubService.getAllRepositories.and.returnValue(of(mockRepoData));
+      githubService.getAllRepositories.mockReturnValue(of(mockRepoData));
 
       component.ngOnInit();
 
-      expect(component.loading).toBeFalse();
+      expect(component.loading).toBe(false);
       expect(component.error).toBeNull();
       expect(component.repoData.length).toBe(2); // TaylorShane should be filtered out
       expect(component.repoData[0].name).toBe('test-repo-1');
@@ -117,21 +121,21 @@ describe('ChartsComponent', () => {
 
     it('should handle error when loading all repositories', () => {
       const errorMessage = 'API Error';
-      githubService.getAllRepositories.and.returnValue(throwError(() => new Error(errorMessage)));
+      githubService.getAllRepositories.mockReturnValue(throwError(() => new Error(errorMessage)));
 
       component.ngOnInit();
 
-      expect(component.loading).toBeFalse();
+      expect(component.loading).toBe(false);
       expect(component.error).toBe('Failed to load repository data');
     });
 
     it('should load language data successfully', () => {
       fixture.componentRef.setInput('chartName', 'shanetaylor');
-      githubService.getLanguagesForRepo.and.returnValue(of(mockLanguageData));
+      githubService.getLanguagesForRepo.mockReturnValue(of(mockLanguageData));
 
       component.ngOnInit();
 
-      expect(component.loading).toBeFalse();
+      expect(component.loading).toBe(false);
       expect(component.error).toBeNull();
       expect(component.repoData.length).toBe(3);
       expect(component.repoData[0].name).toBe('TypeScript');
@@ -143,11 +147,11 @@ describe('ChartsComponent', () => {
     it('should handle error when loading language data', () => {
       fixture.componentRef.setInput('chartName', 'shanetaylor');
       const errorMessage = 'Language API Error';
-      githubService.getLanguagesForRepo.and.returnValue(throwError(() => new Error(errorMessage)));
+      githubService.getLanguagesForRepo.mockReturnValue(throwError(() => new Error(errorMessage)));
 
       component.ngOnInit();
 
-      expect(component.loading).toBeFalse();
+      expect(component.loading).toBe(false);
       expect(component.error).toBe('Failed to load language data for shanetaylor');
     });
 
@@ -156,7 +160,7 @@ describe('ChartsComponent', () => {
 
       component.ngOnInit();
 
-      expect(component.loading).toBeFalse();
+      expect(component.loading).toBe(false);
       expect(component.error).toBe('Unknown chart type: unknown');
     });
 
@@ -165,7 +169,7 @@ describe('ChartsComponent', () => {
 
       component.ngOnInit();
 
-      expect(component.loading).toBeFalse();
+      expect(component.loading).toBe(false);
       expect(component.error).toBe('Chart name is required');
     });
   });
@@ -203,7 +207,7 @@ describe('ChartsComponent', () => {
       smallScreenComponent.repoData = mockRepoData;
 
       // Mock the github service for this specific test
-      githubService.getAllRepositories.and.returnValue(of(mockRepoData));
+      githubService.getAllRepositories.mockReturnValue(of(mockRepoData));
 
       // Initialize component with small screen
       smallScreenComponent.ngOnInit();
@@ -236,7 +240,7 @@ describe('ChartsComponent', () => {
 
     it('should update chart options for shanetaylor chart', () => {
       fixture.componentRef.setInput('chartName', 'shanetaylor');
-      githubService.getLanguagesForRepo.and.returnValue(of(mockLanguageData));
+      githubService.getLanguagesForRepo.mockReturnValue(of(mockLanguageData));
 
       component.ngOnInit();
 
@@ -248,9 +252,9 @@ describe('ChartsComponent', () => {
   describe('Chart Instance Management', () => {
     it('should initialize chart instance', () => {
       const mockChartInstance = {
-        resize: jasmine.createSpy('resize'),
-        dispose: jasmine.createSpy('dispose'),
-        setOption: jasmine.createSpy('setOption')
+        resize: vi.fn(),
+        dispose: vi.fn(),
+        setOption: vi.fn()
       };
 
       component.onChartInit(mockChartInstance);
@@ -260,9 +264,9 @@ describe('ChartsComponent', () => {
 
     it('should resize chart when instance exists', () => {
       const mockChartInstance = {
-        resize: jasmine.createSpy('resize'),
-        dispose: jasmine.createSpy('dispose'),
-        setOption: jasmine.createSpy('setOption')
+        resize: vi.fn(),
+        dispose: vi.fn(),
+        setOption: vi.fn()
       };
       component.eChartsInstance = mockChartInstance;
 
@@ -282,9 +286,9 @@ describe('ChartsComponent', () => {
 
     it('should dispose chart instance on destroy', () => {
       const mockChartInstance = {
-        resize: jasmine.createSpy('resize'),
-        dispose: jasmine.createSpy('dispose'),
-        setOption: jasmine.createSpy('setOption')
+        resize: vi.fn(),
+        dispose: vi.fn(),
+        setOption: vi.fn()
       };
       component.eChartsInstance = mockChartInstance;
 
@@ -303,24 +307,24 @@ describe('ChartsComponent', () => {
 
   describe('Private Methods', () => {
     it('should filter out TaylorShane repository', () => {
-      githubService.getAllRepositories.and.returnValue(of(mockRepoData));
+      githubService.getAllRepositories.mockReturnValue(of(mockRepoData));
       fixture.componentRef.setInput('chartName', 'allRepos');
 
       (component as any).loadAllRepositories();
 
       expect(component.repoData.length).toBe(2);
-      expect(component.repoData.some((repo) => repo.name === 'TaylorShane')).toBeFalse();
+      expect(component.repoData.some((repo) => repo.name === 'TaylorShane')).toBe(false);
     });
 
     it('should transform language data correctly', () => {
       fixture.componentRef.setInput('chartName', 'shanetaylor');
-      githubService.getLanguagesForRepo.and.returnValue(of(mockLanguageData));
+      githubService.getLanguagesForRepo.mockReturnValue(of(mockLanguageData));
 
       // Set up mock chart instance
       const mockChartInstance = {
-        resize: jasmine.createSpy('resize'),
-        dispose: jasmine.createSpy('dispose'),
-        setOption: jasmine.createSpy('setOption')
+        resize: vi.fn(),
+        dispose: vi.fn(),
+        setOption: vi.fn()
       };
       component.eChartsInstance = mockChartInstance;
 
@@ -351,12 +355,12 @@ describe('ChartsComponent', () => {
 
     it('should handle chart update when eChartsInstance exists', () => {
       const mockChartInstance = {
-        resize: jasmine.createSpy('resize'),
-        dispose: jasmine.createSpy('dispose'),
-        setOption: jasmine.createSpy('setOption')
+        resize: vi.fn(),
+        dispose: vi.fn(),
+        setOption: vi.fn()
       };
       component.eChartsInstance = mockChartInstance;
-      githubService.getAllRepositories.and.returnValue(of(mockRepoData));
+      githubService.getAllRepositories.mockReturnValue(of(mockRepoData));
       fixture.componentRef.setInput('chartName', 'allRepos');
 
       (component as any).loadAllRepositories();

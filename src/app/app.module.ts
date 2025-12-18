@@ -20,25 +20,24 @@ import { ExampleComponent } from './work-examples/example/example.component';
 import { WorkExamplesComponent } from './work-examples/work-examples.component';
 
 @NgModule({
-  declarations: [AppComponent],
-  bootstrap: [AppComponent],
   imports: [
+    AppComponent,
+    AppRoutingModule,
     BrowserModule,
+    ChartsComponent,
+    ExampleComponent,
+    FooterComponent,
+    GraphyPrivacyTermsComponent,
+    GraphyUserGuideComponent,
+    MainComponent,
+    NavbarComponent,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts')
     }),
-    AppRoutingModule,
-    FooterComponent,
-    NavbarComponent,
-    WhoComponent,
-    WhatComponent,
-    WorkExamplesComponent,
-    ChartsComponent,
-    ExampleComponent,
-    GraphyPrivacyTermsComponent,
-    MainComponent,
     PageNotFoundComponent,
-    GraphyUserGuideComponent
+    WhatComponent,
+    WhoComponent,
+    WorkExamplesComponent
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },

@@ -59,6 +59,12 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             }
           }
         },
@@ -80,16 +86,12 @@
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "codeCoverageExclude": ["**/*models.ts", "**/*github-backup-data.ts"],
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
+            "browsers": ["chromium"],
+            "buildTarget": "shanetaylor:build:development",
             "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
-            "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["./node_modules/bootstrap/dist/css/bootstrap.min.css", "src/styles.scss"],
-            "scripts": []
+            "runnerConfig": "vitest.config.ts"
           }
         },
         "lint": {
@@ -137,6 +139,12 @@
     },
     "@schematics/angular:resolver": {
       "typeSeparator": "."
+    }
+  },
+  "cli": {
+    "analytics": false,
+    "cache": {
+      "enabled": false
     }
   }
 }

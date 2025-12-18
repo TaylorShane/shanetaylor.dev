@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProjectData } from 'src/app/shared/models/models';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { ExampleComponent } from './example.component';
 
 describe('ExampleComponent', () => {
