@@ -65,11 +65,6 @@ For a new release
 - `npx standard-version`
 - `git push --follow-tags origin main`
 
-For a new tag:
-
-- `git tag <tagname> -a`
-- `git push origin --tags`
-
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
