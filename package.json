@@ -33,7 +33,7 @@
     "release": "npm version patch && standard-version && git push --follow-tags",
     "sass-lint": "sass-lint --config .sass-lint.yml --verbose",
     "test": "ng test",
-    "test:headless": "ng test --watch=false --browsers=ChromeHeadlessCI"
+    "test:headless": "ng test --watch=false"
   },
   "private": true,
   "dependencies": {
