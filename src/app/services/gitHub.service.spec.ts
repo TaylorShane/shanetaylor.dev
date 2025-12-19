@@ -1,6 +1,7 @@
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { allRepoBackupData, getBackupLangData } from './github-backup-data';
 import { GithubService } from './github.service';
 
@@ -48,7 +49,9 @@ describe('githubService', () => {
 
     it('should handle other HTTP errors', () => {
       service.getAllRepositories().subscribe({
-        next: () => fail('Should have failed'),
+        next: () => {
+          throw new Error('Should have failed');
+        },
         error: (error) => {
           expect(error.message).toContain('GitHub API error');
         }

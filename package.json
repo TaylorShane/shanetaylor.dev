@@ -32,8 +32,8 @@
     "prepare": "husky install",
     "release": "npm version patch && standard-version && git push --follow-tags",
     "sass-lint": "sass-lint --config .sass-lint.yml --verbose",
-    "test": "ng test --code-coverage",
-    "test:headless": "ng test --watch=false --browsers=ChromeHeadlessCI"
+    "test": "ng test",
+    "test:headless": "ng test --watch=false"
   },
   "private": true,
   "dependencies": {
@@ -74,6 +74,9 @@
     "@types/node": "^25.0.0",
     "@typescript-eslint/eslint-plugin": "^8.49.0",
     "@typescript-eslint/parser": "^8.49.0",
+    "@vitest/browser-playwright": "^4.0.16",
+    "@vitest/browser-webdriverio": "^4.0.16",
+    "@vitest/ui": "^4.0.16",
     "eclint": "^2.8.1",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.1.8",
@@ -83,11 +86,7 @@
     "husky": "^9.0.11",
     "jasmine-core": "^5.13.0",
     "jasmine-spec-reporter": "^7.0.0",
-    "karma": "^6.4.2",
-    "karma-chrome-launcher": "^3.2.0",
-    "karma-coverage": "^2.2.1",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "^2.1.0",
+    "jsdom": "^27.3.0",
     "lint-staged": "^16.2.7",
     "prettier": "^3.7.4",
     "protractor": "~7.0.0",
@@ -95,7 +94,8 @@
     "sass-lint": "^1.13.1",
     "standard-version": "^9.5.0",
     "ts-node": "10.9.2",
-    "typescript": "5.9.3"
+    "typescript": "5.9.3",
+    "vitest": "^4.0.16"
   },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "4.21.3"
