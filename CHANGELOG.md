@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.2.0](https://github.com/TaylorShane/shanetaylor.dev/compare/v6.0.1...v6.2.0) (2025-12-19)
+
+
+### Features
+
+* add github pat and use in requests ([ba9724f](https://github.com/TaylorShane/shanetaylor.dev/commit/ba9724f3a0038a6be42729dc035692273b2a3c3d))
+* add readonly token to requests ([7a9365b](https://github.com/TaylorShane/shanetaylor.dev/commit/7a9365b92149c462e32d65e31b6e0a7b5bcc9f92))
+* bootstrap app ([5088a6c](https://github.com/TaylorShane/shanetaylor.dev/commit/5088a6ca39120a01681f92601e545bb16cd9b32d))
+* **tests:** migrate to vitest ([c9fbee7](https://github.com/TaylorShane/shanetaylor.dev/commit/c9fbee7938d4dd663633318271601019beeade2e))
+
+
+### Bug Fixes
+
+* add process to polyfills for tests ([7270669](https://github.com/TaylorShane/shanetaylor.dev/commit/7270669bb75e5d76471bcab9d6988a7efeae5888))
+* karma tests ([f4f075e](https://github.com/TaylorShane/shanetaylor.dev/commit/f4f075e04e5bac0ec79cadc8b82f6cd0ae250b0a))
+* pipeline test run ([4fc2e3a](https://github.com/TaylorShane/shanetaylor.dev/commit/4fc2e3a4cbb4ad5ad7bc52520f160f8a5f4a57a9))
+* run ci jobs on main ([b4a5e59](https://github.com/TaylorShane/shanetaylor.dev/commit/b4a5e595d3ebf4fda0da1815944d14b315dc9974))
+* test run ([0d1fc02](https://github.com/TaylorShane/shanetaylor.dev/commit/0d1fc02bc832f430268e6270c53c63cc0053f12a))
+
 ## [6.1.0](https://github.com/TaylorShane/shanetaylor.dev/compare/v6.0.1...v6.1.0) (2025-12-18)
 
 
