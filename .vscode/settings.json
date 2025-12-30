@@ -1,5 +1,5 @@
 {
-  "workbench.colorTheme": "Night Owl (No Italics)",
+  "workbench.colorTheme": "Tomorrow Night Blue",
   "typescript.tsdk": "node_modules\\typescript\\lib",
   "[markdown]": {
     "editor.formatOnSave": false

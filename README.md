@@ -1,6 +1,12 @@
 [![pipeline](https://github.com/TaylorShane/shanetaylor.dev/actions/workflows/node.js.yml/badge.svg)](https://github.com/TaylorShane/shanetaylor.dev/actions/workflows/node.js.yml)
 [![coverage](https://img.shields.io/badge/coverage-99%25-brightgreen)](https://github.com/TaylorShane/shanetaylor.dev)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+[![angular](https://img.shields.io/badge/angular-21.0.6-DD0031?logo=angular&logoColor=white)](https://angular.dev/)
+[![node](https://img.shields.io/badge/node-20%20LTS-43853D?logo=node.js&logoColor=white)](https://nodejs.org/)
+[![conventional commits](https://img.shields.io/badge/commits-conventional-yellow?logo=git)](https://www.conventionalcommits.org/)
+[![standard-version](https://img.shields.io/badge/releases-standard--version-blue)](https://github.com/conventional-changelog/standard-version)
+[![husky](https://img.shields.io/badge/git-hooks%20by%20husky-000?logo=git&logoColor=white)](https://typicode.github.io/husky/)
+
 
 # ShaneTaylor.dev
 
