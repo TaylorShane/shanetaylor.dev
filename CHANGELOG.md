@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.3.1](https://github.com/TaylorShane/shanetaylor.dev/compare/v6.3.0...v6.3.1) (2025-12-31)
+
 ### [6.2.2](https://github.com/TaylorShane/shanetaylor.dev/compare/v6.2.1...v6.2.2) (2025-12-30)
 
 ## [6.2.0](https://github.com/TaylorShane/shanetaylor.dev/compare/v6.0.1...v6.2.0) (2025-12-19)
