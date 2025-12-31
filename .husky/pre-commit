@@ -1,1 +1,2 @@
-npx --no-install lint-staged
+# Lint only the staged files via lint-staged (allow empty so partial commits work)
+npx --no-install lint-staged --allow-empty
