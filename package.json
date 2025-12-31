@@ -35,7 +35,7 @@
     "sass-lint": "sass-lint --config .sass-lint.yml --verbose",
     "start": "ng serve --port 5150",
     "test:coverage": "ng test --coverage",
-    "test:headless": "ng test --watch=false"
+    "test:headless": "ng test --watch=false --coverage"
   },
   "private": true,
   "dependencies": {
